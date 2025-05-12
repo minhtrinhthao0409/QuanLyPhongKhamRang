@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Models
 {
-    public class Receptionist(string userName, string password, string email) : User(userName, password, email)
+    public class Patient
     {
+        public Guid Id { get; set; }
+
     }
 }
