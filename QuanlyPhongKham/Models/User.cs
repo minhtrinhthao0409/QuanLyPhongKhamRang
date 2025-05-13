@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuanlyPhongKham
+namespace QuanlyPhongKham.Models
 {
     public class User
     {
@@ -15,9 +15,9 @@ namespace QuanlyPhongKham
             this.email = email;
         }
 
-        String userName { get; set; }
-        String password { get; set; }
-        String email {  get; set; }
+        string userName { get; set; }
+        string password { get; set; }
+        string email {  get; set; }
 
     }
 }

@@ -8,7 +8,11 @@ namespace QuanlyPhongKham.Models
 {
     public class Patient
     {
-        public Guid Id { get; set; }
+        public Guid PatientId { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+
+        //public ICollection<MedicalRecord> hso = [];
 
     }
 }
