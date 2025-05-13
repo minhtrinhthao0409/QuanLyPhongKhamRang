@@ -8,5 +8,6 @@ namespace QuanlyPhongKham.Models
 {
     public class Receptionist(string userName, string password, string email) : User(userName, password, email)
     {
+
     }
 }

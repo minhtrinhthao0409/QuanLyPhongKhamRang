@@ -11,6 +11,23 @@ namespace QuanlyPhongKham.Models
         public Guid PatientId { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
+        public string Email { get; set; } = null!;
+        public DateTime DOB { get; set; }
+
+        public Patient(Guid id, string name, string phoneNumber, string email, DateTime dob)
+        {
+            PatientId = id;
+            Name = name;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            DOB = dob;
+        }
+
+        public Patient()
+        {
+
+        }
+        
 
         //public ICollection<MedicalRecord> hso = [];
 

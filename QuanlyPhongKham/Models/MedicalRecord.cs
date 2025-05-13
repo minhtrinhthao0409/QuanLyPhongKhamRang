@@ -14,11 +14,28 @@ namespace QuanlyPhongKham.Models
 
         public Guid PatientId { get; set; }
 
+        public string PatientName { get; set; }
+
         public Patient Patient { get; set; }
 
         public string Details { get; set; }
 
         public DateTime Date { get; set; }
+
+
+        public MedicalRecord(Patient patient)
+        {
+            Patient = patient;
+            PatientId = patient.PatientId;
+            PatientName = patient.Name;
+        }
+
+        public MedicalRecord()
+        {
+
+        }
+
+
 
 
     }
