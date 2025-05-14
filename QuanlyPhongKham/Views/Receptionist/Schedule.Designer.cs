@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             CrudPanel = new System.Windows.Forms.Panel();
+            DoctorIdTxt = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            endTimelbl = new System.Windows.Forms.Label();
+            DoctorNameTxT = new System.Windows.Forms.TextBox();
+            start_time_lbl = new System.Windows.Forms.Label();
+            PatientPhoneNoTxt = new System.Windows.Forms.TextBox();
+            startTimePicker = new System.Windows.Forms.DateTimePicker();
+            PatientPhoneNolbl = new System.Windows.Forms.Label();
+            PatientNameTxt = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            CrudSchedule = new System.Windows.Forms.Label();
             ResetBtn = new System.Windows.Forms.Button();
             UpdateBtn = new System.Windows.Forms.Button();
             AddScheduleBtn = new System.Windows.Forms.Button();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            endTimelbl = new System.Windows.Forms.Label();
-            startTimePicker = new System.Windows.Forms.DateTimePicker();
-            start_time_lbl = new System.Windows.Forms.Label();
             doctorlbl = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
-            SearchDoctorNamelbl = new System.Windows.Forms.Label();
-            textBox1 = new System.Windows.Forms.TextBox();
+            Searchlbl = new System.Windows.Forms.Label();
+            Searchbtn = new System.Windows.Forms.Button();
+            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            SearchDatelbl = new System.Windows.Forms.Label();
             textBox2 = new System.Windows.Forms.TextBox();
             SearchPatientNameLbl = new System.Windows.Forms.Label();
-            SearchDatelbl = new System.Windows.Forms.Label();
-            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            Searchbtn = new System.Windows.Forms.Button();
-            Searchlbl = new System.Windows.Forms.Label();
-            CrudSchedule = new System.Windows.Forms.Label();
-            PatientNameTxt = new System.Windows.Forms.TextBox();
-            label1 = new System.Windows.Forms.Label();
-            PatientPhoneNoTxt = new System.Windows.Forms.TextBox();
-            PatientPhoneNolbl = new System.Windows.Forms.Label();
-            DoctorNameTxT = new System.Windows.Forms.TextBox();
-            DoctorIdTxt = new System.Windows.Forms.TextBox();
-            label2 = new System.Windows.Forms.Label();
+            textBox1 = new System.Windows.Forms.TextBox();
+            SearchDoctorNamelbl = new System.Windows.Forms.Label();
             panel2 = new System.Windows.Forms.Panel();
             CrudPanel.SuspendLayout();
             panel1.SuspendLayout();
@@ -82,6 +82,108 @@
             CrudPanel.Size = new System.Drawing.Size(815, 272);
             CrudPanel.TabIndex = 0;
             CrudPanel.Paint += CrudPanel_Paint;
+            // 
+            // DoctorIdTxt
+            // 
+            DoctorIdTxt.Location = new System.Drawing.Point(492, 42);
+            DoctorIdTxt.Name = "DoctorIdTxt";
+            DoctorIdTxt.Size = new System.Drawing.Size(211, 23);
+            DoctorIdTxt.TabIndex = 21;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(373, 52);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(66, 17);
+            label2.TabIndex = 20;
+            label2.Text = "Doctor Id";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new System.Drawing.Point(492, 144);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new System.Drawing.Size(210, 23);
+            dateTimePicker1.TabIndex = 4;
+            // 
+            // endTimelbl
+            // 
+            endTimelbl.AutoSize = true;
+            endTimelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            endTimelbl.Location = new System.Drawing.Point(387, 144);
+            endTimelbl.Name = "endTimelbl";
+            endTimelbl.Size = new System.Drawing.Size(99, 17);
+            endTimelbl.TabIndex = 3;
+            endTimelbl.Text = "End Date Time";
+            // 
+            // DoctorNameTxT
+            // 
+            DoctorNameTxT.Location = new System.Drawing.Point(138, 48);
+            DoctorNameTxT.Name = "DoctorNameTxT";
+            DoctorNameTxT.Size = new System.Drawing.Size(211, 23);
+            DoctorNameTxT.TabIndex = 19;
+            // 
+            // start_time_lbl
+            // 
+            start_time_lbl.AutoSize = true;
+            start_time_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            start_time_lbl.Location = new System.Drawing.Point(16, 144);
+            start_time_lbl.Name = "start_time_lbl";
+            start_time_lbl.Size = new System.Drawing.Size(105, 17);
+            start_time_lbl.TabIndex = 1;
+            start_time_lbl.Text = "Start Date Time";
+            // 
+            // PatientPhoneNoTxt
+            // 
+            PatientPhoneNoTxt.Location = new System.Drawing.Point(492, 85);
+            PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
+            PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
+            PatientPhoneNoTxt.TabIndex = 18;
+            // 
+            // startTimePicker
+            // 
+            startTimePicker.Location = new System.Drawing.Point(138, 144);
+            startTimePicker.Name = "startTimePicker";
+            startTimePicker.Size = new System.Drawing.Size(211, 23);
+            startTimePicker.TabIndex = 2;
+            // 
+            // PatientPhoneNolbl
+            // 
+            PatientPhoneNolbl.AutoSize = true;
+            PatientPhoneNolbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            PatientPhoneNolbl.Location = new System.Drawing.Point(373, 95);
+            PatientPhoneNolbl.Name = "PatientPhoneNolbl";
+            PatientPhoneNolbl.Size = new System.Drawing.Size(113, 17);
+            PatientPhoneNolbl.TabIndex = 17;
+            PatientPhoneNolbl.Text = "Patient PhoneNo";
+            // 
+            // PatientNameTxt
+            // 
+            PatientNameTxt.Location = new System.Drawing.Point(138, 89);
+            PatientNameTxt.Name = "PatientNameTxt";
+            PatientNameTxt.Size = new System.Drawing.Size(211, 23);
+            PatientNameTxt.TabIndex = 16;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(15, 91);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(92, 17);
+            label1.TabIndex = 15;
+            label1.Text = "Patient Name";
+            // 
+            // CrudSchedule
+            // 
+            CrudSchedule.AutoSize = true;
+            CrudSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            CrudSchedule.Location = new System.Drawing.Point(301, 10);
+            CrudSchedule.Name = "CrudSchedule";
+            CrudSchedule.Size = new System.Drawing.Size(162, 25);
+            CrudSchedule.TabIndex = 15;
+            CrudSchedule.Text = "Update Schedule";
             // 
             // ResetBtn
             // 
@@ -113,40 +215,6 @@
             AddScheduleBtn.Text = "Add";
             AddScheduleBtn.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new System.Drawing.Point(492, 144);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(210, 23);
-            dateTimePicker1.TabIndex = 4;
-            // 
-            // endTimelbl
-            // 
-            endTimelbl.AutoSize = true;
-            endTimelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            endTimelbl.Location = new System.Drawing.Point(387, 144);
-            endTimelbl.Name = "endTimelbl";
-            endTimelbl.Size = new System.Drawing.Size(99, 17);
-            endTimelbl.TabIndex = 3;
-            endTimelbl.Text = "End Date Time";
-            // 
-            // startTimePicker
-            // 
-            startTimePicker.Location = new System.Drawing.Point(138, 144);
-            startTimePicker.Name = "startTimePicker";
-            startTimePicker.Size = new System.Drawing.Size(211, 23);
-            startTimePicker.TabIndex = 2;
-            // 
-            // start_time_lbl
-            // 
-            start_time_lbl.AutoSize = true;
-            start_time_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            start_time_lbl.Location = new System.Drawing.Point(16, 144);
-            start_time_lbl.Name = "start_time_lbl";
-            start_time_lbl.Size = new System.Drawing.Size(105, 17);
-            start_time_lbl.TabIndex = 1;
-            start_time_lbl.Text = "Start Date Time";
-            // 
             // doctorlbl
             // 
             doctorlbl.AutoSize = true;
@@ -172,22 +240,42 @@
             panel1.Size = new System.Drawing.Size(816, 177);
             panel1.TabIndex = 1;
             // 
-            // SearchDoctorNamelbl
+            // Searchlbl
             // 
-            SearchDoctorNamelbl.AutoSize = true;
-            SearchDoctorNamelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            SearchDoctorNamelbl.Location = new System.Drawing.Point(77, 72);
-            SearchDoctorNamelbl.Name = "SearchDoctorNamelbl";
-            SearchDoctorNamelbl.Size = new System.Drawing.Size(90, 17);
-            SearchDoctorNamelbl.TabIndex = 8;
-            SearchDoctorNamelbl.Text = "Doctor Name";
+            Searchlbl.AutoSize = true;
+            Searchlbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Searchlbl.Location = new System.Drawing.Point(301, 23);
+            Searchlbl.Name = "Searchlbl";
+            Searchlbl.Size = new System.Drawing.Size(156, 25);
+            Searchlbl.TabIndex = 14;
+            Searchlbl.Text = "Search Schedule";
             // 
-            // textBox1
+            // Searchbtn
             // 
-            textBox1.Location = new System.Drawing.Point(199, 66);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(211, 23);
-            textBox1.TabIndex = 9;
+            Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            Searchbtn.Location = new System.Drawing.Point(492, 114);
+            Searchbtn.Name = "Searchbtn";
+            Searchbtn.Size = new System.Drawing.Size(93, 50);
+            Searchbtn.TabIndex = 8;
+            Searchbtn.Text = "Search";
+            Searchbtn.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new System.Drawing.Point(492, 66);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new System.Drawing.Size(211, 23);
+            dateTimePicker2.TabIndex = 13;
+            // 
+            // SearchDatelbl
+            // 
+            SearchDatelbl.AutoSize = true;
+            SearchDatelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            SearchDatelbl.Location = new System.Drawing.Point(449, 72);
+            SearchDatelbl.Name = "SearchDatelbl";
+            SearchDatelbl.Size = new System.Drawing.Size(37, 17);
+            SearchDatelbl.TabIndex = 12;
+            SearchDatelbl.Text = "Date";
             // 
             // textBox2
             // 
@@ -206,110 +294,22 @@
             SearchPatientNameLbl.TabIndex = 10;
             SearchPatientNameLbl.Text = "Patient Name";
             // 
-            // SearchDatelbl
+            // textBox1
             // 
-            SearchDatelbl.AutoSize = true;
-            SearchDatelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            SearchDatelbl.Location = new System.Drawing.Point(449, 72);
-            SearchDatelbl.Name = "SearchDatelbl";
-            SearchDatelbl.Size = new System.Drawing.Size(37, 17);
-            SearchDatelbl.TabIndex = 12;
-            SearchDatelbl.Text = "Date";
+            textBox1.Location = new System.Drawing.Point(199, 66);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(211, 23);
+            textBox1.TabIndex = 9;
             // 
-            // dateTimePicker2
+            // SearchDoctorNamelbl
             // 
-            dateTimePicker2.Location = new System.Drawing.Point(492, 66);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new System.Drawing.Size(211, 23);
-            dateTimePicker2.TabIndex = 13;
-            // 
-            // Searchbtn
-            // 
-            Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            Searchbtn.Location = new System.Drawing.Point(492, 124);
-            Searchbtn.Name = "Searchbtn";
-            Searchbtn.Size = new System.Drawing.Size(93, 50);
-            Searchbtn.TabIndex = 8;
-            Searchbtn.Text = "Search";
-            Searchbtn.UseVisualStyleBackColor = true;
-            // 
-            // Searchlbl
-            // 
-            Searchlbl.AutoSize = true;
-            Searchlbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Searchlbl.Location = new System.Drawing.Point(301, 23);
-            Searchlbl.Name = "Searchlbl";
-            Searchlbl.Size = new System.Drawing.Size(156, 25);
-            Searchlbl.TabIndex = 14;
-            Searchlbl.Text = "Search Schedule";
-            // 
-            // CrudSchedule
-            // 
-            CrudSchedule.AutoSize = true;
-            CrudSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            CrudSchedule.Location = new System.Drawing.Point(301, 10);
-            CrudSchedule.Name = "CrudSchedule";
-            CrudSchedule.Size = new System.Drawing.Size(162, 25);
-            CrudSchedule.TabIndex = 15;
-            CrudSchedule.Text = "Update Schedule";
-            // 
-            // PatientNameTxt
-            // 
-            PatientNameTxt.Location = new System.Drawing.Point(138, 89);
-            PatientNameTxt.Name = "PatientNameTxt";
-            PatientNameTxt.Size = new System.Drawing.Size(211, 23);
-            PatientNameTxt.TabIndex = 16;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(15, 91);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(92, 17);
-            label1.TabIndex = 15;
-            label1.Text = "Patient Name";
-            // 
-            // PatientPhoneNoTxt
-            // 
-            PatientPhoneNoTxt.Location = new System.Drawing.Point(492, 85);
-            PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
-            PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
-            PatientPhoneNoTxt.TabIndex = 18;
-            // 
-            // PatientPhoneNolbl
-            // 
-            PatientPhoneNolbl.AutoSize = true;
-            PatientPhoneNolbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            PatientPhoneNolbl.Location = new System.Drawing.Point(373, 95);
-            PatientPhoneNolbl.Name = "PatientPhoneNolbl";
-            PatientPhoneNolbl.Size = new System.Drawing.Size(113, 17);
-            PatientPhoneNolbl.TabIndex = 17;
-            PatientPhoneNolbl.Text = "Patient PhoneNo";
-            // 
-            // DoctorNameTxT
-            // 
-            DoctorNameTxT.Location = new System.Drawing.Point(138, 48);
-            DoctorNameTxT.Name = "DoctorNameTxT";
-            DoctorNameTxT.Size = new System.Drawing.Size(211, 23);
-            DoctorNameTxT.TabIndex = 19;
-            // 
-            // DoctorIdTxt
-            // 
-            DoctorIdTxt.Location = new System.Drawing.Point(492, 42);
-            DoctorIdTxt.Name = "DoctorIdTxt";
-            DoctorIdTxt.Size = new System.Drawing.Size(211, 23);
-            DoctorIdTxt.TabIndex = 21;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(373, 52);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(66, 17);
-            label2.TabIndex = 20;
-            label2.Text = "Doctor Id";
+            SearchDoctorNamelbl.AutoSize = true;
+            SearchDoctorNamelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            SearchDoctorNamelbl.Location = new System.Drawing.Point(77, 72);
+            SearchDoctorNamelbl.Name = "SearchDoctorNamelbl";
+            SearchDoctorNamelbl.Size = new System.Drawing.Size(90, 17);
+            SearchDoctorNamelbl.TabIndex = 8;
+            SearchDoctorNamelbl.Text = "Doctor Name";
             // 
             // panel2
             // 
