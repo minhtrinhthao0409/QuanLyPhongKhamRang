@@ -19,7 +19,7 @@ namespace QuanlyPhongKham
         private async void button1_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
-            lblResult.Text = await userControllers.getPasswordByEmail(email);
+            lblResult.Text = await userControllers.GetPasswordByEmail(email);
            
         }
 

@@ -25,7 +25,7 @@ namespace QuanlyPhongKham.Controllers
         {
             return await userService.VerifyUserAsync(username, password);
         }
-        public async Task<String> getPasswordByEmail(string email)
+        public async Task<String> GetPasswordByEmail(string email)
         {
             return await userService.GetPasswordByEmail(email);
         }
