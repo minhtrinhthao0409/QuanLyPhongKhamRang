@@ -1,6 +1,6 @@
-﻿namespace QuanlyPhongKham.Views
+﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class Home_Receptionist
+    partial class PaymentStatus
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // Home_Receptionist
+            // PaymentStatus
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
-            Name = "Home_Receptionist";
-            Text = "Home";
+            Name = "PaymentStatus";
+            Text = "PaymentStatus";
             ResumeLayout(false);
         }
 

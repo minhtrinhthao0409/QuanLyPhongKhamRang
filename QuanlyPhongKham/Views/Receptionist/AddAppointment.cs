@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanlyPhongKham.Views
+namespace QuanlyPhongKham.Views.Receptionist
 {
-    public partial class Home_Receptionist : Form
+    public partial class AddAppointment : Form
     {
-        public Home_Receptionist()
+        public AddAppointment()
         {
             InitializeComponent();
         }
