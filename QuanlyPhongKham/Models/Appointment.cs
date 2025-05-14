@@ -9,10 +9,20 @@ namespace QuanlyPhongKham.Models
     public class Appointment
     {
         public int AppointmentId { get; set; }
-
+        public Guid DoctorId { get; set; }
         public Guid PatientId { get; set; }
 
-        
-        public Patient Patient { get; set; }
+        public DateTime AppointmentTime { get; set; }
+        public string PaymentStatus { get; set; }
+
+        public Appointment(int appointmentId, Guid doctorId, Guid patientId, DateTime appointmentTime, string paymentStatus)
+        {
+            AppointmentId = appointmentId;
+            DoctorId = doctorId;
+            PatientId = patientId;
+            AppointmentTime = appointmentTime;
+            PaymentStatus = paymentStatus;
+        }
     }
+
 }

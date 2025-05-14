@@ -18,6 +18,7 @@ namespace QuanlyPhongKham.Models
         string userName { get; set; }
         string password { get; set; }
         string email {  get; set; }
+        string 
 
     }
 }

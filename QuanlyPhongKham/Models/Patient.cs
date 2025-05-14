@@ -10,14 +10,18 @@ namespace QuanlyPhongKham.Models
     {
         public Guid PatientId { get; set; }
         public string Name { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; } = null!;
         public DateTime DOB { get; set; }
 
-        public Patient(Guid id, string name, string phoneNumber, string email, DateTime dob)
+        public bool Gender { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; } = null!;
+        
+
+        public Patient(Guid id, string name, bool gender, string phoneNumber, string email, DateTime dob)
         {
             PatientId = id;
             Name = name;
+            Gender = gender;
             PhoneNumber = phoneNumber;
             Email = email;
             DOB = dob;
@@ -29,7 +33,7 @@ namespace QuanlyPhongKham.Models
         }
         
 
-        //public ICollection<MedicalRecord> hso = [];
+        public ICollection<MedicalRecord> MedRec = [];
 
     }
 }
