@@ -4,7 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Npgsql;
+//using Npgsql;
+using Microsoft.Data.Sqlite;
 using QuanlyPhongKham.Models;
 
 
@@ -22,7 +23,7 @@ namespace QuanlyPhongKham.repository
                 throw new ArgumentException("Tên người dùng không được rỗng.", nameof(username));
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new NpgsqlCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)", connection))
+            using (var command = new SqliteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)" ,connection))
             {
                 try
                 {
@@ -30,7 +31,7 @@ namespace QuanlyPhongKham.repository
                     var result = await command.ExecuteScalarAsync();
                     return Convert.ToBoolean(result);
                 }
-                catch (NpgsqlException ex)
+                catch (SqliteException ex)
                 {
                     throw new Exception("Lỗi cơ sở dữ liệu khi kiểm tra tên người dùng.", ex);
                 }
@@ -52,7 +53,7 @@ namespace QuanlyPhongKham.repository
                 try
                 {
                     // Kiểm tra trùng username
-                    using (var command = new NpgsqlCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)", connection))
+                    using (var command = new SqliteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)", connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
                         bool exists = Convert.ToBoolean(await command.ExecuteScalarAsync());
@@ -61,7 +62,7 @@ namespace QuanlyPhongKham.repository
                     }
 
                     // Tạo người dùng mới
-                    using (var command = new NpgsqlCommand(
+                    using (var command = new SqliteCommand(
                         "INSERT INTO users ( username, email, passwords) VALUES ( @username, @email, @password)",
                         connection))
                     {
@@ -92,7 +93,7 @@ namespace QuanlyPhongKham.repository
             UserResponse userResponse = null;
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new NpgsqlCommand("SELECT id, username, email, passwords FROM users WHERE username = @username", connection))
+            using (var command = new SqliteCommand("SELECT id, username, email, passwords FROM users WHERE username = @username", connection))
             {
                 try
                 {
@@ -117,7 +118,7 @@ namespace QuanlyPhongKham.repository
                         }
                     }
                 }
-                catch (NpgsqlException ex)
+                catch (SqliteException ex)
                 {
                     throw new Exception("Lỗi cơ sở dữ liệu khi lấy thông tin người dùng.", ex);
                 }
@@ -133,7 +134,7 @@ namespace QuanlyPhongKham.repository
             UserResponse userResponse = null;
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new NpgsqlCommand("SELECT id, username, email, passwords FROM users WHERE email = @email", connection))
+            using (var command = new SqliteCommand("SELECT id, username, email, passwords FROM users WHERE email = @email", connection))
             {
                 try
                 {
@@ -158,7 +159,7 @@ namespace QuanlyPhongKham.repository
                         }
                     }
                 }
-                catch (NpgsqlException ex)
+                catch (SqliteException ex)
                 {
                     throw new Exception("Lỗi cơ sở dữ liệu khi lấy thông tin người dùng.", ex);
                 }

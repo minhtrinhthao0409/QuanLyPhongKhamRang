@@ -1,4 +1,4 @@
-﻿using Npgsql;
+﻿using Microsoft.Data.Sqlite;
 using System.Configuration;
 using System.Threading.Tasks;
 using System;
@@ -20,9 +20,9 @@ public class BaseRepository : IDisposable
         }
     }
 
-    protected async Task<NpgsqlConnection> GetConnectionAsync()
+    protected async Task<SqliteConnection> GetConnectionAsync()
     {
-        var connection = new NpgsqlConnection(this.connection);
+        var connection = new SqliteConnection(this.connection);
         await connection.OpenAsync();
         return connection;
     }
