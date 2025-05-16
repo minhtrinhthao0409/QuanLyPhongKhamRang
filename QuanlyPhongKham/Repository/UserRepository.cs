@@ -106,11 +106,11 @@ namespace QuanlyPhongKham.repository
                             userResponse = new UserResponse
                             {
                                 Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                username = reader.GetString(reader.GetOrdinal("username")),
-                                email = reader.IsDBNull(reader.GetOrdinal("email"))
+                                UserName = reader.GetString(reader.GetOrdinal("username")),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email"))
                                         ? null
                                         : reader.GetString(reader.GetOrdinal("email")),
-                                password = reader.IsDBNull(reader.GetOrdinal("passwords"))
+                                Password = reader.IsDBNull(reader.GetOrdinal("passwords"))
                                         ? null
                                         : reader.GetString(reader.GetOrdinal("passwords"))
 
@@ -147,11 +147,11 @@ namespace QuanlyPhongKham.repository
                             userResponse = new UserResponse
                             {
                                 Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                username = reader.GetString(reader.GetOrdinal("username")),
-                                email = reader.IsDBNull(reader.GetOrdinal("email"))
+                                UserName = reader.GetString(reader.GetOrdinal("username")),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email"))
                                         ? null
                                         : reader.GetString(reader.GetOrdinal("email")),
-                                password = reader.IsDBNull(reader.GetOrdinal("passwords"))
+                                Password = reader.IsDBNull(reader.GetOrdinal("passwords"))
                                         ? null
                                         : reader.GetString(reader.GetOrdinal("passwords"))
 

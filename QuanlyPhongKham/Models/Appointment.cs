@@ -23,6 +23,8 @@ namespace QuanlyPhongKham.Models
             AppointmentTime = appointmentTime;
             PaymentStatus = paymentStatus;
         }
+
+        public Appointment() { }
     }
 
 }

@@ -10,18 +10,23 @@ namespace QuanlyPhongKham.Models
     public class UserResponse
     {
         public Guid Id { get; set; }
-        public String username { get; set; }
-        public String password { get; set; }
-       
-        public String email { get; set; }
+
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+
+        public UserRole Role { get; set; }
+
         public UserResponse() { }
 
-        public UserResponse(Guid id, string userName,String password, string email)
+        public UserResponse(Guid id, string userName, string password, string email, UserRole role)
         {
             Id = id;
-            this.username = userName;
-            this.email = email;
-            this.password = password;
+            UserName = userName;
+            Password = password;
+            Email = email;
+            Role = role;
         }
     }
+
 }

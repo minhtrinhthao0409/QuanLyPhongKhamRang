@@ -34,6 +34,7 @@ namespace QuanlyPhongKham.Models
         
 
         public ICollection<MedicalRecord> MedRec = [];
+        public ICollection<Appointment> Appointments = [];
 
     }
 }

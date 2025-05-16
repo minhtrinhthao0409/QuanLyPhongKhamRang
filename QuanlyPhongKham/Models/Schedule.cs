@@ -16,7 +16,7 @@ namespace QuanlyPhongKham.Models
         // "Available", "Booked", "Off"
         public string Status { get; set; } = "Available";
 
-        public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public ICollection<Appointment> Appointments { get; set; } = [];
     }
 }
 

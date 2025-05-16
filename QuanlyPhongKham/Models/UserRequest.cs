@@ -8,16 +8,20 @@ namespace QuanlyPhongKham.Models
 {
     public class UserRequest
     {
-        public UserRequest(string userName, string password, string email)
+        
+        public UserRequest(string userName, string password, string email, UserRole role)
         {
-            this.username = username;
-            this.password = password;
-            this.email = email;
-
+            UserName = userName;
+            Password = password;
+            Email = email;
+            Role = role;
         }
 
-        String username { get; set; }
-        String password { get; set; }
-        String email { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public UserRole Role { get; set; }
+        
+
     }
 }
