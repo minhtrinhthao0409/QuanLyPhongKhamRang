@@ -35,7 +35,7 @@ namespace QuanlyPhongKham.Services
             if (user == null)
                 return false;
 
-            return PasswordHasher.VerifyPassword(password, user.password); 
+            return PasswordHasher.VerifyPassword(password, user.Password); 
         }
 
         public async Task<String> GetPasswordByEmail (string email)
@@ -44,7 +44,7 @@ namespace QuanlyPhongKham.Services
                 return "Email không tồn tại";
             UserResponse user = await userRepository.GetUserByEmailAsync(email);
 
-            return PasswordHasher.DecryptPassword(user.password);
+            return PasswordHasher.DecryptPassword(user.Password);
 
         }
 
