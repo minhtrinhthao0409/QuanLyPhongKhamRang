@@ -28,12 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "AdminQLTK";
+            AdminQLTKDTGV = new System.Windows.Forms.DataGridView();
+            AdminQLTKDXbtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)AdminQLTKDTGV).BeginInit();
+            SuspendLayout();
+            // 
+            // AdminQLTKDTGV
+            // 
+            AdminQLTKDTGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdminQLTKDTGV.Location = new System.Drawing.Point(12, 156);
+            AdminQLTKDTGV.Name = "AdminQLTKDTGV";
+            AdminQLTKDTGV.RowHeadersWidth = 51;
+            AdminQLTKDTGV.Size = new System.Drawing.Size(767, 378);
+            AdminQLTKDTGV.TabIndex = 0;
+            // 
+            // AdminQLTKDXbtn
+            // 
+            AdminQLTKDXbtn.Location = new System.Drawing.Point(669, 36);
+            AdminQLTKDXbtn.Name = "AdminQLTKDXbtn";
+            AdminQLTKDXbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKDXbtn.TabIndex = 1;
+            AdminQLTKDXbtn.Text = "Đăng xuất";
+            AdminQLTKDXbtn.UseVisualStyleBackColor = true;
+            // 
+            // AdminQLTK
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(801, 557);
+            Controls.Add(AdminQLTKDXbtn);
+            Controls.Add(AdminQLTKDTGV);
+            Name = "AdminQLTK";
+            Text = "AdminQLTK";
+            ((System.ComponentModel.ISupportInitialize)AdminQLTKDTGV).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView AdminQLTKDTGV;
+        private System.Windows.Forms.Button AdminQLTKDXbtn;
     }
 }

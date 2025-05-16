@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Admin
 {
-    public partial class AdminQLDV: Form
+    public partial class AdminQLDV : Form
     {
         public AdminQLDV()
         {
             InitializeComponent();
         }
+
     }
 }
