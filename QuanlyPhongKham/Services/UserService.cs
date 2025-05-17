@@ -49,7 +49,6 @@ namespace QuanlyPhongKham.Services
         }
 
 
-
         private bool IsValidEmail(string email)
         {
             try

@@ -16,10 +16,5 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             InitializeComponent();
         }
-
-        private void CrudPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

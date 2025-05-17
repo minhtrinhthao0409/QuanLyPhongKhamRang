@@ -1,6 +1,6 @@
 ﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class Schedule
+    partial class Appointment
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
-            ScheduleTab = new System.Windows.Forms.TabControl();
+            AppointmentTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             CrudPanel = new System.Windows.Forms.Panel();
             DoctorIdTxt = new System.Windows.Forms.TextBox();
@@ -49,8 +49,8 @@
             PatientPhoneNolbl = new System.Windows.Forms.Label();
             PatientNameTxt = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
-            CrudSchedule = new System.Windows.Forms.Label();
-            ResetBtn = new System.Windows.Forms.Button();
+            CrudAppointment = new System.Windows.Forms.Label();
+            ViewInvoiceBtn = new System.Windows.Forms.Button();
             UpdateBtn = new System.Windows.Forms.Button();
             AddScheduleBtn = new System.Windows.Forms.Button();
             doctorlbl = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             textBox1 = new System.Windows.Forms.TextBox();
             SearchDoctorNamelbl = new System.Windows.Forms.Label();
             panel2.SuspendLayout();
-            ScheduleTab.SuspendLayout();
+            AppointmentTab.SuspendLayout();
             tabPage1.SuspendLayout();
             CrudPanel.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -83,7 +83,7 @@
             panel2.Location = new System.Drawing.Point(12, 31);
             panel2.Name = "panel2";
             panel2.Size = new System.Drawing.Size(176, 638);
-            panel2.TabIndex = 5;
+            panel2.TabIndex = 6;
             // 
             // Homelbl
             // 
@@ -157,15 +157,15 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ScheduleTab
+            // AppointmentTab
             // 
-            ScheduleTab.Controls.Add(tabPage1);
-            ScheduleTab.Controls.Add(tabPage2);
-            ScheduleTab.Location = new System.Drawing.Point(191, 12);
-            ScheduleTab.Name = "ScheduleTab";
-            ScheduleTab.SelectedIndex = 0;
-            ScheduleTab.Size = new System.Drawing.Size(805, 658);
-            ScheduleTab.TabIndex = 6;
+            AppointmentTab.Controls.Add(tabPage1);
+            AppointmentTab.Controls.Add(tabPage2);
+            AppointmentTab.Location = new System.Drawing.Point(193, 3);
+            AppointmentTab.Name = "AppointmentTab";
+            AppointmentTab.SelectedIndex = 0;
+            AppointmentTab.Size = new System.Drawing.Size(808, 668);
+            AppointmentTab.TabIndex = 7;
             // 
             // tabPage1
             // 
@@ -173,9 +173,9 @@
             tabPage1.Location = new System.Drawing.Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(797, 630);
+            tabPage1.Size = new System.Drawing.Size(800, 640);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Update Schedule";
+            tabPage1.Text = "Manage Appointment";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // CrudPanel
@@ -191,19 +191,19 @@
             CrudPanel.Controls.Add(PatientPhoneNolbl);
             CrudPanel.Controls.Add(PatientNameTxt);
             CrudPanel.Controls.Add(label1);
-            CrudPanel.Controls.Add(CrudSchedule);
-            CrudPanel.Controls.Add(ResetBtn);
+            CrudPanel.Controls.Add(CrudAppointment);
+            CrudPanel.Controls.Add(ViewInvoiceBtn);
             CrudPanel.Controls.Add(UpdateBtn);
             CrudPanel.Controls.Add(AddScheduleBtn);
             CrudPanel.Controls.Add(doctorlbl);
-            CrudPanel.Location = new System.Drawing.Point(3, 6);
+            CrudPanel.Location = new System.Drawing.Point(0, 0);
             CrudPanel.Name = "CrudPanel";
-            CrudPanel.Size = new System.Drawing.Size(794, 272);
-            CrudPanel.TabIndex = 1;
+            CrudPanel.Size = new System.Drawing.Size(797, 272);
+            CrudPanel.TabIndex = 4;
             // 
             // DoctorIdTxt
             // 
-            DoctorIdTxt.Location = new System.Drawing.Point(492, 42);
+            DoctorIdTxt.Location = new System.Drawing.Point(492, 51);
             DoctorIdTxt.Name = "DoctorIdTxt";
             DoctorIdTxt.Size = new System.Drawing.Size(211, 23);
             DoctorIdTxt.TabIndex = 21;
@@ -212,7 +212,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(373, 52);
+            label2.Location = new System.Drawing.Point(373, 54);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(66, 17);
             label2.TabIndex = 20;
@@ -229,7 +229,7 @@
             // 
             endTimelbl.AutoSize = true;
             endTimelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            endTimelbl.Location = new System.Drawing.Point(387, 144);
+            endTimelbl.Location = new System.Drawing.Point(373, 144);
             endTimelbl.Name = "endTimelbl";
             endTimelbl.Size = new System.Drawing.Size(99, 17);
             endTimelbl.TabIndex = 3;
@@ -254,7 +254,7 @@
             // 
             // PatientPhoneNoTxt
             // 
-            PatientPhoneNoTxt.Location = new System.Drawing.Point(492, 85);
+            PatientPhoneNoTxt.Location = new System.Drawing.Point(492, 94);
             PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
             PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
             PatientPhoneNoTxt.TabIndex = 18;
@@ -293,25 +293,25 @@
             label1.TabIndex = 15;
             label1.Text = "Patient Name";
             // 
-            // CrudSchedule
+            // CrudAppointment
             // 
-            CrudSchedule.AutoSize = true;
-            CrudSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            CrudSchedule.Location = new System.Drawing.Point(301, 10);
-            CrudSchedule.Name = "CrudSchedule";
-            CrudSchedule.Size = new System.Drawing.Size(162, 25);
-            CrudSchedule.TabIndex = 15;
-            CrudSchedule.Text = "Update Schedule";
+            CrudAppointment.AutoSize = true;
+            CrudAppointment.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            CrudAppointment.Location = new System.Drawing.Point(301, 10);
+            CrudAppointment.Name = "CrudAppointment";
+            CrudAppointment.Size = new System.Drawing.Size(208, 25);
+            CrudAppointment.TabIndex = 15;
+            CrudAppointment.Text = "Manage Appointment";
             // 
-            // ResetBtn
+            // ViewInvoiceBtn
             // 
-            ResetBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ResetBtn.Location = new System.Drawing.Point(492, 201);
-            ResetBtn.Name = "ResetBtn";
-            ResetBtn.Size = new System.Drawing.Size(93, 50);
-            ResetBtn.TabIndex = 7;
-            ResetBtn.Text = "Reset";
-            ResetBtn.UseVisualStyleBackColor = true;
+            ViewInvoiceBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            ViewInvoiceBtn.Location = new System.Drawing.Point(492, 201);
+            ViewInvoiceBtn.Name = "ViewInvoiceBtn";
+            ViewInvoiceBtn.Size = new System.Drawing.Size(93, 50);
+            ViewInvoiceBtn.TabIndex = 7;
+            ViewInvoiceBtn.Text = "View Invoice";
+            ViewInvoiceBtn.UseVisualStyleBackColor = true;
             // 
             // UpdateBtn
             // 
@@ -349,9 +349,9 @@
             tabPage2.Location = new System.Drawing.Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(797, 630);
+            tabPage2.Size = new System.Drawing.Size(800, 640);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Search Schedule";
+            tabPage2.Text = "Search Appointment";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -364,10 +364,10 @@
             panel1.Controls.Add(SearchPatientNameLbl);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(SearchDoctorNamelbl);
-            panel1.Location = new System.Drawing.Point(3, 3);
+            panel1.Location = new System.Drawing.Point(0, 6);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(794, 177);
-            panel1.TabIndex = 2;
+            panel1.Size = new System.Drawing.Size(804, 177);
+            panel1.TabIndex = 5;
             // 
             // Searchlbl
             // 
@@ -375,14 +375,14 @@
             Searchlbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             Searchlbl.Location = new System.Drawing.Point(301, 23);
             Searchlbl.Name = "Searchlbl";
-            Searchlbl.Size = new System.Drawing.Size(156, 25);
+            Searchlbl.Size = new System.Drawing.Size(195, 25);
             Searchlbl.TabIndex = 14;
-            Searchlbl.Text = "Search Schedule";
+            Searchlbl.Text = "Search Appointment";
             // 
             // Searchbtn
             // 
             Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            Searchbtn.Location = new System.Drawing.Point(492, 114);
+            Searchbtn.Location = new System.Drawing.Point(492, 124);
             Searchbtn.Name = "Searchbtn";
             Searchbtn.Size = new System.Drawing.Size(93, 50);
             Searchbtn.TabIndex = 8;
@@ -391,7 +391,7 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new System.Drawing.Point(492, 66);
+            dateTimePicker2.Location = new System.Drawing.Point(492, 68);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new System.Drawing.Size(211, 23);
             dateTimePicker2.TabIndex = 13;
@@ -417,11 +417,11 @@
             // 
             SearchPatientNameLbl.AutoSize = true;
             SearchPatientNameLbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            SearchPatientNameLbl.Location = new System.Drawing.Point(78, 114);
+            SearchPatientNameLbl.Location = new System.Drawing.Point(50, 114);
             SearchPatientNameLbl.Name = "SearchPatientNameLbl";
-            SearchPatientNameLbl.Size = new System.Drawing.Size(92, 17);
+            SearchPatientNameLbl.Size = new System.Drawing.Size(117, 17);
             SearchPatientNameLbl.TabIndex = 10;
-            SearchPatientNameLbl.Text = "Patient Name";
+            SearchPatientNameLbl.Text = "Patient Phone No";
             // 
             // textBox1
             // 
@@ -440,17 +440,17 @@
             SearchDoctorNamelbl.TabIndex = 8;
             SearchDoctorNamelbl.Text = "Doctor Name";
             // 
-            // Schedule
+            // Appointment
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
-            Controls.Add(ScheduleTab);
+            Controls.Add(AppointmentTab);
             Controls.Add(panel2);
-            Name = "Schedule";
-            Text = "Schedule";
+            Name = "Appointment";
+            Text = "Appointment";
             panel2.ResumeLayout(false);
-            ScheduleTab.ResumeLayout(false);
+            AppointmentTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             CrudPanel.ResumeLayout(false);
             CrudPanel.PerformLayout();
@@ -469,7 +469,7 @@
         private System.Windows.Forms.Label Schedulelbl;
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
-        private System.Windows.Forms.TabControl ScheduleTab;
+        private System.Windows.Forms.TabControl AppointmentTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel CrudPanel;
@@ -484,8 +484,8 @@
         private System.Windows.Forms.Label PatientPhoneNolbl;
         private System.Windows.Forms.TextBox PatientNameTxt;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label CrudSchedule;
-        private System.Windows.Forms.Button ResetBtn;
+        private System.Windows.Forms.Label CrudAppointment;
+        private System.Windows.Forms.Button ViewInvoiceBtn;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button AddScheduleBtn;
         private System.Windows.Forms.Label doctorlbl;

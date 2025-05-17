@@ -30,31 +30,34 @@
         {
             components = new System.ComponentModel.Container();
             panel2 = new System.Windows.Forms.Panel();
-            SignOutlbl = new System.Windows.Forms.Label();
-            Appointmentlbl = new System.Windows.Forms.Label();
-            Schedulelbl = new System.Windows.Forms.Label();
-            Patientlbl = new System.Windows.Forms.Label();
-            Invoicelbl = new System.Windows.Forms.Label();
             Homelbl = new System.Windows.Forms.Label();
+            Invoicelbl = new System.Windows.Forms.Label();
+            Patientlbl = new System.Windows.Forms.Label();
+            Schedulelbl = new System.Windows.Forms.Label();
+            Appointmentlbl = new System.Windows.Forms.Label();
+            SignOutlbl = new System.Windows.Forms.Label();
             Welcomelbl = new System.Windows.Forms.Label();
             monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
             homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             appointmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             searchAppointmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             addAppointmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             searchScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             addScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             searchPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             addPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             Emaillbl = new System.Windows.Forms.Label();
             Usernamelbl = new System.Windows.Forms.Label();
             Editbtn = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
             panel2.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -71,53 +74,17 @@
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
-            // SignOutlbl
+            // Homelbl
             // 
-            SignOutlbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            SignOutlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SignOutlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            SignOutlbl.Location = new System.Drawing.Point(3, 582);
-            SignOutlbl.Name = "SignOutlbl";
-            SignOutlbl.Size = new System.Drawing.Size(170, 46);
-            SignOutlbl.TabIndex = 4;
-            SignOutlbl.Text = "Sign Out";
-            SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Appointmentlbl
-            // 
-            Appointmentlbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            Appointmentlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Appointmentlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Appointmentlbl.Location = new System.Drawing.Point(3, 252);
-            Appointmentlbl.Name = "Appointmentlbl";
-            Appointmentlbl.Size = new System.Drawing.Size(170, 46);
-            Appointmentlbl.TabIndex = 5;
-            Appointmentlbl.Text = "Appointment";
-            Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Schedulelbl
-            // 
-            Schedulelbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            Schedulelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Schedulelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Schedulelbl.Location = new System.Drawing.Point(3, 298);
-            Schedulelbl.Name = "Schedulelbl";
-            Schedulelbl.Size = new System.Drawing.Size(170, 46);
-            Schedulelbl.TabIndex = 5;
-            Schedulelbl.Text = "Schedule";
-            Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Patientlbl
-            // 
-            Patientlbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            Patientlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Patientlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Patientlbl.Location = new System.Drawing.Point(3, 344);
-            Patientlbl.Name = "Patientlbl";
-            Patientlbl.Size = new System.Drawing.Size(170, 46);
-            Patientlbl.TabIndex = 5;
-            Patientlbl.Text = "Patient";
-            Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            Homelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Homelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
+            Homelbl.Location = new System.Drawing.Point(3, 206);
+            Homelbl.Name = "Homelbl";
+            Homelbl.Size = new System.Drawing.Size(170, 46);
+            Homelbl.TabIndex = 7;
+            Homelbl.Text = "Home";
+            Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Invoicelbl
             // 
@@ -131,17 +98,53 @@
             Invoicelbl.Text = "Invoice";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Homelbl
+            // Patientlbl
             // 
-            Homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            Homelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Homelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Homelbl.Location = new System.Drawing.Point(3, 206);
-            Homelbl.Name = "Homelbl";
-            Homelbl.Size = new System.Drawing.Size(170, 46);
-            Homelbl.TabIndex = 7;
-            Homelbl.Text = "Home";
-            Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Patientlbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            Patientlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Patientlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
+            Patientlbl.Location = new System.Drawing.Point(3, 344);
+            Patientlbl.Name = "Patientlbl";
+            Patientlbl.Size = new System.Drawing.Size(170, 46);
+            Patientlbl.TabIndex = 5;
+            Patientlbl.Text = "Patient";
+            Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Schedulelbl
+            // 
+            Schedulelbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            Schedulelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Schedulelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
+            Schedulelbl.Location = new System.Drawing.Point(3, 298);
+            Schedulelbl.Name = "Schedulelbl";
+            Schedulelbl.Size = new System.Drawing.Size(170, 46);
+            Schedulelbl.TabIndex = 5;
+            Schedulelbl.Text = "Schedule";
+            Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Appointmentlbl
+            // 
+            Appointmentlbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            Appointmentlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            Appointmentlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
+            Appointmentlbl.Location = new System.Drawing.Point(3, 252);
+            Appointmentlbl.Name = "Appointmentlbl";
+            Appointmentlbl.Size = new System.Drawing.Size(170, 46);
+            Appointmentlbl.TabIndex = 5;
+            Appointmentlbl.Text = "Appointment";
+            Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // SignOutlbl
+            // 
+            SignOutlbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            SignOutlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SignOutlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
+            SignOutlbl.Location = new System.Drawing.Point(3, 582);
+            SignOutlbl.Name = "SignOutlbl";
+            SignOutlbl.Size = new System.Drawing.Size(170, 46);
+            SignOutlbl.TabIndex = 4;
+            SignOutlbl.Text = "Sign Out";
+            SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Welcomelbl
             // 
@@ -180,26 +183,6 @@
             appointmentToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             appointmentToolStripMenuItem.Text = "Appointment";
             // 
-            // scheduleToolStripMenuItem
-            // 
-            scheduleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { searchScheduleToolStripMenuItem, addScheduleToolStripMenuItem });
-            scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            scheduleToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            scheduleToolStripMenuItem.Text = "Schedule";
-            // 
-            // patientToolStripMenuItem
-            // 
-            patientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { searchPatientToolStripMenuItem, addPatientToolStripMenuItem });
-            patientToolStripMenuItem.Name = "patientToolStripMenuItem";
-            patientToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            patientToolStripMenuItem.Text = "Patient";
-            // 
-            // invoiceToolStripMenuItem
-            // 
-            invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
-            invoiceToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            invoiceToolStripMenuItem.Text = "Invoice";
-            // 
             // searchAppointmentToolStripMenuItem
             // 
             searchAppointmentToolStripMenuItem.Name = "searchAppointmentToolStripMenuItem";
@@ -212,29 +195,49 @@
             addAppointmentToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             addAppointmentToolStripMenuItem.Text = "Add Appointment";
             // 
+            // scheduleToolStripMenuItem
+            // 
+            scheduleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { searchScheduleToolStripMenuItem, addScheduleToolStripMenuItem });
+            scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
+            scheduleToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            scheduleToolStripMenuItem.Text = "Schedule";
+            // 
             // searchScheduleToolStripMenuItem
             // 
             searchScheduleToolStripMenuItem.Name = "searchScheduleToolStripMenuItem";
-            searchScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            searchScheduleToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             searchScheduleToolStripMenuItem.Text = "Search Schedule";
             // 
             // addScheduleToolStripMenuItem
             // 
             addScheduleToolStripMenuItem.Name = "addScheduleToolStripMenuItem";
-            addScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            addScheduleToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             addScheduleToolStripMenuItem.Text = "Add Schedule";
+            // 
+            // patientToolStripMenuItem
+            // 
+            patientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { searchPatientToolStripMenuItem, addPatientToolStripMenuItem });
+            patientToolStripMenuItem.Name = "patientToolStripMenuItem";
+            patientToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            patientToolStripMenuItem.Text = "Patient";
             // 
             // searchPatientToolStripMenuItem
             // 
             searchPatientToolStripMenuItem.Name = "searchPatientToolStripMenuItem";
-            searchPatientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            searchPatientToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             searchPatientToolStripMenuItem.Text = "Search Patient";
             // 
             // addPatientToolStripMenuItem
             // 
             addPatientToolStripMenuItem.Name = "addPatientToolStripMenuItem";
-            addPatientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            addPatientToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             addPatientToolStripMenuItem.Text = "Add Patient";
+            // 
+            // invoiceToolStripMenuItem
+            // 
+            invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
+            invoiceToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            invoiceToolStripMenuItem.Text = "Invoice";
             // 
             // Emaillbl
             // 
@@ -264,11 +267,31 @@
             Editbtn.Text = "Edit";
             Editbtn.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(208, 251);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(291, 32);
+            label1.TabIndex = 10;
+            label1.Text = "Upcoming Appointment";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(250, 302);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new System.Drawing.Size(675, 357);
+            dataGridView1.TabIndex = 11;
+            // 
             // ReceptionistMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
+            Controls.Add(dataGridView1);
+            Controls.Add(label1);
             Controls.Add(Editbtn);
             Controls.Add(Usernamelbl);
             Controls.Add(Emaillbl);
@@ -279,7 +302,9 @@
             Text = "Home";
             panel2.ResumeLayout(false);
             contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -308,5 +333,7 @@
         private System.Windows.Forms.Label Emaillbl;
         private System.Windows.Forms.Label Usernamelbl;
         private System.Windows.Forms.Button Editbtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

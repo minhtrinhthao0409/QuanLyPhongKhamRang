@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
-    public partial class PatientInfo : Form
+    public partial class Patient : Form
     {
-        public PatientInfo()
+        public Patient()
         {
             InitializeComponent();
+        }
+
+        private void CrudPatient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
