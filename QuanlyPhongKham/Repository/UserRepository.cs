@@ -110,9 +110,9 @@ namespace QuanlyPhongKham.repository
                                 Email = reader.IsDBNull(reader.GetOrdinal("email"))
                                         ? null
                                         : reader.GetString(reader.GetOrdinal("email")),
-                                Password = reader.IsDBNull(reader.GetOrdinal("passwords"))
+                                Password = reader.IsDBNull(reader.GetOrdinal("password"))
                                         ? null
-                                        : reader.GetString(reader.GetOrdinal("passwords"))
+                                        : reader.GetString(reader.GetOrdinal("password"))
 
                             };
                         }
@@ -134,7 +134,7 @@ namespace QuanlyPhongKham.repository
             UserResponse userResponse = null;
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new SqliteCommand("SELECT id, username, email, passwords FROM users WHERE email = @email", connection))
+            using (var command = new SqliteCommand("SELECT id, username, email, password FROM users WHERE email = @email", connection))
             {
                 try
                 {
@@ -151,9 +151,9 @@ namespace QuanlyPhongKham.repository
                                 Email = reader.IsDBNull(reader.GetOrdinal("email"))
                                         ? null
                                         : reader.GetString(reader.GetOrdinal("email")),
-                                Password = reader.IsDBNull(reader.GetOrdinal("passwords"))
+                                Password = reader.IsDBNull(reader.GetOrdinal("password"))
                                         ? null
-                                        : reader.GetString(reader.GetOrdinal("passwords"))
+                                        : reader.GetString(reader.GetOrdinal("password"))
 
                             };
                         }
