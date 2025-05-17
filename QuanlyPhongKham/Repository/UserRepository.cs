@@ -63,7 +63,7 @@ namespace QuanlyPhongKham.repository
 
                     // Tạo người dùng mới
                     using (var command = new SqliteCommand(
-                        "INSERT INTO users ( username, email, passwords) VALUES ( @username, @email, @password)",
+                        "INSERT INTO users ( username, email, password) VALUES ( @username, @email, @password)",
                         connection))
                     {
                         
@@ -93,7 +93,7 @@ namespace QuanlyPhongKham.repository
             UserResponse userResponse = null;
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new SqliteCommand("SELECT id, username, email, passwords FROM users WHERE username = @username", connection))
+            using (var command = new SqliteCommand("SELECT id, username, email, password FROM users WHERE username = @username", connection))
             {
                 try
                 {
