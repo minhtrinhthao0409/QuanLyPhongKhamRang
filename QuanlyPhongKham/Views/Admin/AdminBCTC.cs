@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Admin
 {
-    public partial class AdminBCTC: Form
+    public partial class AdminBCTC : Form
     {
         public AdminBCTC()
         {
             InitializeComponent();
+        }
+
+        private void AdminBCTC_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
