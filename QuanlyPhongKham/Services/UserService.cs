@@ -61,9 +61,16 @@ namespace QuanlyPhongKham.Services
                 return false;
             }
         }
+
+        // Sai kiến trúc lớp rùi, truy vấn phải đặt trong repository
         public async Task<User> GetUserByCredentials(string username, string password)
         {
-            string connectionString = "Data Source=QuanLyPhongKham.db;Version=3;";
+            return await userRepository.GetUserByCredentials(username, password);
+        }
+
+        /*public async Task<User> GetUserByCredentials(string username, string password)
+        {
+            string connectionString = "Data Source=C:\\Users\\Tung\\source\\repos\\QuanLyPhongKhamRang\\QuanlyPhongKham\\QuanLyPhongKham.db;Version=3;";
             using (var conn = new SQLiteConnection(connectionString))
             {
                 await conn.OpenAsync();
@@ -92,5 +99,7 @@ namespace QuanlyPhongKham.Services
 
             return null;
         }
+
+        */
     }
 }

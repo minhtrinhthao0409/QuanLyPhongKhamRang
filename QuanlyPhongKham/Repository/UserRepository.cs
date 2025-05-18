@@ -167,8 +167,32 @@ namespace QuanlyPhongKham.repository
 
             return userResponse;
         }
+
+        public async Task<User> GetUserByCredentials(string username, string password)
+        {
+            
+            User user = null;
+            using (var connection = await GetConnectionAsync())
+            using (var cmd = new SqliteCommand("SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password", connection))
+            {
+                cmd.Parameters.AddWithValue("@UserName", username);
+                cmd.Parameters.AddWithValue("@Password", password);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return new User
+                        {
+                            Id = reader["Id"].ToString(),
+                            UserName = reader["UserName"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Role = (UserRole)Convert.ToInt32(reader["Role"])
+                        };
+                    }
+                }
+            }
+            return user;
+        }
     }
 }
-
-    
-

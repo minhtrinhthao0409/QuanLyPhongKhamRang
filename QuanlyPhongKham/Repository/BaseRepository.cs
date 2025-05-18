@@ -8,7 +8,8 @@ public class BaseRepository : IDisposable
     public readonly string connection;
     private bool disposed;
 
-    public BaseRepository(string connectionString = null)
+    // ??: chọn đầu tiên trong các chuỗi kết nối
+    public BaseRepository(string connectionString = null) // nếu không có chuỗi kết nối thì lấy từ cấu hình
     {
         this.connection = connectionString
             ?? ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ConnectionString
