@@ -22,6 +22,8 @@ namespace QuanlyPhongKham.Models
         public string Email { get; set; }
         public UserRole Role { get; set; }
 
+        public User() { }
+
         public User(string userName, string password, string email, UserRole role)
         {
             UserName = userName;
