@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            tabPage3 = new System.Windows.Forms.TabPage();
+            GhiBenhAn = new System.Windows.Forms.TabPage();
             btnSaveRecord = new System.Windows.Forms.Button();
             dtpExaminationDate = new System.Windows.Forms.DateTimePicker();
             txtDetails = new System.Windows.Forms.TextBox();
@@ -37,7 +37,7 @@
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            tabPage2 = new System.Windows.Forms.TabPage();
+            LenLichHen = new System.Windows.Forms.TabPage();
             cbPatientName = new System.Windows.Forms.ComboBox();
             dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
             btnSchedule = new System.Windows.Forms.Button();
@@ -46,12 +46,11 @@
             lbEndTime = new System.Windows.Forms.Label();
             lbStartTime = new System.Windows.Forms.Label();
             lbdtpAppointmentDate = new System.Windows.Forms.Label();
-            lblDoctorName = new System.Windows.Forms.Label();
             lbPatientID = new System.Windows.Forms.Label();
-            tabPage1 = new System.Windows.Forms.TabPage();
+            XemLichHen = new System.Windows.Forms.TabPage();
             dgvAppointments = new System.Windows.Forms.DataGridView();
             tabControl1 = new System.Windows.Forms.TabControl();
-            tabPage4 = new System.Windows.Forms.TabPage();
+            QLHoaDon = new System.Windows.Forms.TabPage();
             btnSaveInvoice = new System.Windows.Forms.Button();
             dgvInvoiceServices = new System.Windows.Forms.DataGridView();
             ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,37 +72,41 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
-            tabPage3.SuspendLayout();
-            tabPage2.SuspendLayout();
-            tabPage1.SuspendLayout();
+            XemBenhAn = new System.Windows.Forms.TabPage();
+            dgvXemBenhAn = new System.Windows.Forms.DataGridView();
+            GhiBenhAn.SuspendLayout();
+            LenLichHen.SuspendLayout();
+            XemLichHen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).BeginInit();
             tabControl1.SuspendLayout();
-            tabPage4.SuspendLayout();
+            QLHoaDon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInvoiceServices).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudInvoiceQuantity).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            XemBenhAn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).BeginInit();
             SuspendLayout();
             // 
-            // tabPage3
+            // GhiBenhAn
             // 
-            tabPage3.Controls.Add(btnSaveRecord);
-            tabPage3.Controls.Add(dtpExaminationDate);
-            tabPage3.Controls.Add(txtDetails);
-            tabPage3.Controls.Add(txtMedicalPatientID);
-            tabPage3.Controls.Add(label3);
-            tabPage3.Controls.Add(label2);
-            tabPage3.Controls.Add(label1);
-            tabPage3.Location = new System.Drawing.Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Size = new System.Drawing.Size(773, 521);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Ghi Bệnh Án";
-            tabPage3.UseVisualStyleBackColor = true;
+            GhiBenhAn.Controls.Add(btnSaveRecord);
+            GhiBenhAn.Controls.Add(dtpExaminationDate);
+            GhiBenhAn.Controls.Add(txtDetails);
+            GhiBenhAn.Controls.Add(txtMedicalPatientID);
+            GhiBenhAn.Controls.Add(label3);
+            GhiBenhAn.Controls.Add(label2);
+            GhiBenhAn.Controls.Add(label1);
+            GhiBenhAn.Location = new System.Drawing.Point(4, 29);
+            GhiBenhAn.Name = "GhiBenhAn";
+            GhiBenhAn.Size = new System.Drawing.Size(773, 521);
+            GhiBenhAn.TabIndex = 2;
+            GhiBenhAn.Text = "Ghi Bệnh Án";
+            GhiBenhAn.UseVisualStyleBackColor = true;
             // 
             // btnSaveRecord
             // 
-            btnSaveRecord.Location = new System.Drawing.Point(307, 263);
+            btnSaveRecord.Location = new System.Drawing.Point(331, 332);
             btnSaveRecord.Name = "btnSaveRecord";
             btnSaveRecord.Size = new System.Drawing.Size(111, 29);
             btnSaveRecord.TabIndex = 6;
@@ -113,21 +116,21 @@
             // 
             // dtpExaminationDate
             // 
-            dtpExaminationDate.Location = new System.Drawing.Point(195, 196);
+            dtpExaminationDate.Location = new System.Drawing.Point(246, 265);
             dtpExaminationDate.Name = "dtpExaminationDate";
             dtpExaminationDate.Size = new System.Drawing.Size(250, 27);
             dtpExaminationDate.TabIndex = 5;
             // 
             // txtDetails
             // 
-            txtDetails.Location = new System.Drawing.Point(195, 141);
+            txtDetails.Location = new System.Drawing.Point(246, 210);
             txtDetails.Name = "txtDetails";
             txtDetails.Size = new System.Drawing.Size(394, 27);
             txtDetails.TabIndex = 4;
             // 
             // txtMedicalPatientID
             // 
-            txtMedicalPatientID.Location = new System.Drawing.Point(195, 88);
+            txtMedicalPatientID.Location = new System.Drawing.Point(246, 160);
             txtMedicalPatientID.Name = "txtMedicalPatientID";
             txtMedicalPatientID.Size = new System.Drawing.Size(394, 27);
             txtMedicalPatientID.TabIndex = 3;
@@ -135,7 +138,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(81, 196);
+            label3.Location = new System.Drawing.Point(132, 265);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(87, 20);
             label3.TabIndex = 2;
@@ -144,7 +147,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(81, 144);
+            label2.Location = new System.Drawing.Point(132, 213);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(96, 20);
             label2.TabIndex = 1;
@@ -153,31 +156,30 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(81, 95);
+            label1.Location = new System.Drawing.Point(132, 167);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(108, 20);
             label1.TabIndex = 0;
             label1.Text = "Tên bệnh nhân:";
             // 
-            // tabPage2
+            // LenLichHen
             // 
-            tabPage2.BackColor = System.Drawing.Color.Transparent;
-            tabPage2.Controls.Add(cbPatientName);
-            tabPage2.Controls.Add(dtpAppointmentDate);
-            tabPage2.Controls.Add(btnSchedule);
-            tabPage2.Controls.Add(txtEndTime);
-            tabPage2.Controls.Add(txtStartTime);
-            tabPage2.Controls.Add(lbEndTime);
-            tabPage2.Controls.Add(lbStartTime);
-            tabPage2.Controls.Add(lbdtpAppointmentDate);
-            tabPage2.Controls.Add(lblDoctorName);
-            tabPage2.Controls.Add(lbPatientID);
-            tabPage2.Location = new System.Drawing.Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(773, 521);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Lên Lịch Hẹn";
+            LenLichHen.BackColor = System.Drawing.Color.Transparent;
+            LenLichHen.Controls.Add(cbPatientName);
+            LenLichHen.Controls.Add(dtpAppointmentDate);
+            LenLichHen.Controls.Add(btnSchedule);
+            LenLichHen.Controls.Add(txtEndTime);
+            LenLichHen.Controls.Add(txtStartTime);
+            LenLichHen.Controls.Add(lbEndTime);
+            LenLichHen.Controls.Add(lbStartTime);
+            LenLichHen.Controls.Add(lbdtpAppointmentDate);
+            LenLichHen.Controls.Add(lbPatientID);
+            LenLichHen.Location = new System.Drawing.Point(4, 29);
+            LenLichHen.Name = "LenLichHen";
+            LenLichHen.Padding = new System.Windows.Forms.Padding(3);
+            LenLichHen.Size = new System.Drawing.Size(773, 521);
+            LenLichHen.TabIndex = 1;
+            LenLichHen.Text = "Lên Lịch Hẹn";
             // 
             // cbPatientName
             // 
@@ -246,15 +248,6 @@
             lbdtpAppointmentDate.TabIndex = 2;
             lbdtpAppointmentDate.Text = "Ngày hẹn:";
             // 
-            // lblDoctorName
-            // 
-            lblDoctorName.AutoSize = true;
-            lblDoctorName.Location = new System.Drawing.Point(339, 59);
-            lblDoctorName.Name = "lblDoctorName";
-            lblDoctorName.Size = new System.Drawing.Size(47, 20);
-            lblDoctorName.TabIndex = 1;
-            lblDoctorName.Text = "Bác sĩ";
-            // 
             // lbPatientID
             // 
             lbPatientID.AutoSize = true;
@@ -264,16 +257,16 @@
             lbPatientID.TabIndex = 0;
             lbPatientID.Text = "Tên bệnh nhân:";
             // 
-            // tabPage1
+            // XemLichHen
             // 
-            tabPage1.Controls.Add(dgvAppointments);
-            tabPage1.Location = new System.Drawing.Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(773, 521);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Xem Lịch Hẹn";
-            tabPage1.UseVisualStyleBackColor = true;
+            XemLichHen.Controls.Add(dgvAppointments);
+            XemLichHen.Location = new System.Drawing.Point(4, 29);
+            XemLichHen.Name = "XemLichHen";
+            XemLichHen.Padding = new System.Windows.Forms.Padding(3);
+            XemLichHen.Size = new System.Drawing.Size(773, 521);
+            XemLichHen.TabIndex = 0;
+            XemLichHen.Text = "Xem Lịch Hẹn";
+            XemLichHen.UseVisualStyleBackColor = true;
             // 
             // dgvAppointments
             // 
@@ -287,10 +280,11 @@
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPage4);
+            tabControl1.Controls.Add(XemLichHen);
+            tabControl1.Controls.Add(LenLichHen);
+            tabControl1.Controls.Add(GhiBenhAn);
+            tabControl1.Controls.Add(XemBenhAn);
+            tabControl1.Controls.Add(QLHoaDon);
             tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -298,26 +292,26 @@
             tabControl1.Size = new System.Drawing.Size(781, 554);
             tabControl1.TabIndex = 0;
             // 
-            // tabPage4
+            // QLHoaDon
             // 
-            tabPage4.Controls.Add(btnSaveInvoice);
-            tabPage4.Controls.Add(dgvInvoiceServices);
-            tabPage4.Controls.Add(btnAddvice);
-            tabPage4.Controls.Add(nudInvoiceQuantity);
-            tabPage4.Controls.Add(cbInvoiceService);
-            tabPage4.Controls.Add(dtpInvoiceIssueDate);
-            tabPage4.Controls.Add(txtInvoicePatientName);
-            tabPage4.Controls.Add(label4);
-            tabPage4.Controls.Add(label5);
-            tabPage4.Controls.Add(groupBox1);
-            tabPage4.Controls.Add(groupBox2);
-            tabPage4.Location = new System.Drawing.Point(4, 29);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            tabPage4.Size = new System.Drawing.Size(773, 521);
-            tabPage4.TabIndex = 3;
-            tabPage4.Text = "Quản Lý Hóa Đơn";
-            tabPage4.UseVisualStyleBackColor = true;
+            QLHoaDon.Controls.Add(btnSaveInvoice);
+            QLHoaDon.Controls.Add(dgvInvoiceServices);
+            QLHoaDon.Controls.Add(btnAddvice);
+            QLHoaDon.Controls.Add(nudInvoiceQuantity);
+            QLHoaDon.Controls.Add(cbInvoiceService);
+            QLHoaDon.Controls.Add(dtpInvoiceIssueDate);
+            QLHoaDon.Controls.Add(txtInvoicePatientName);
+            QLHoaDon.Controls.Add(label4);
+            QLHoaDon.Controls.Add(label5);
+            QLHoaDon.Controls.Add(groupBox1);
+            QLHoaDon.Controls.Add(groupBox2);
+            QLHoaDon.Location = new System.Drawing.Point(4, 29);
+            QLHoaDon.Name = "QLHoaDon";
+            QLHoaDon.Padding = new System.Windows.Forms.Padding(3);
+            QLHoaDon.Size = new System.Drawing.Size(773, 521);
+            QLHoaDon.TabIndex = 3;
+            QLHoaDon.Text = "Quản Lý Hóa Đơn";
+            QLHoaDon.UseVisualStyleBackColor = true;
             // 
             // btnSaveInvoice
             // 
@@ -504,6 +498,27 @@
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
+            // XemBenhAn
+            // 
+            XemBenhAn.Controls.Add(dgvXemBenhAn);
+            XemBenhAn.Location = new System.Drawing.Point(4, 29);
+            XemBenhAn.Name = "XemBenhAn";
+            XemBenhAn.Padding = new System.Windows.Forms.Padding(3);
+            XemBenhAn.Size = new System.Drawing.Size(773, 521);
+            XemBenhAn.TabIndex = 4;
+            XemBenhAn.Text = "Xem Bệnh Án";
+            XemBenhAn.UseVisualStyleBackColor = true;
+            // 
+            // dgvXemBenhAn
+            // 
+            dgvXemBenhAn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvXemBenhAn.ColumnHeadersHeight = 29;
+            dgvXemBenhAn.Location = new System.Drawing.Point(3, 1);
+            dgvXemBenhAn.Name = "dgvXemBenhAn";
+            dgvXemBenhAn.RowHeadersWidth = 51;
+            dgvXemBenhAn.Size = new System.Drawing.Size(767, 518);
+            dgvXemBenhAn.TabIndex = 1;
+            // 
             // BacSi
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -513,27 +528,29 @@
             Name = "BacSi";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Bác Sĩ";
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            tabPage1.ResumeLayout(false);
+            GhiBenhAn.ResumeLayout(false);
+            GhiBenhAn.PerformLayout();
+            LenLichHen.ResumeLayout(false);
+            LenLichHen.PerformLayout();
+            XemLichHen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).EndInit();
             tabControl1.ResumeLayout(false);
-            tabPage4.ResumeLayout(false);
-            tabPage4.PerformLayout();
+            QLHoaDon.ResumeLayout(false);
+            QLHoaDon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInvoiceServices).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudInvoiceQuantity).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            XemBenhAn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage GhiBenhAn;
         private System.Windows.Forms.Button btnSaveRecord;
         private System.Windows.Forms.DateTimePicker dtpExaminationDate;
         private System.Windows.Forms.TextBox txtDetails;
@@ -541,7 +558,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage LenLichHen;
         private System.Windows.Forms.DateTimePicker dtpAppointmentDate;
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.TextBox txtEndTime;
@@ -549,12 +566,11 @@
         private System.Windows.Forms.Label lbEndTime;
         private System.Windows.Forms.Label lbStartTime;
         private System.Windows.Forms.Label lbdtpAppointmentDate;
-        private System.Windows.Forms.Label lblDoctorName;
         private System.Windows.Forms.Label lbPatientID;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage XemLichHen;
         private System.Windows.Forms.DataGridView dgvAppointments;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage QLHoaDon;
         private System.Windows.Forms.DateTimePicker dtpInvoiceIssueDate;
         private System.Windows.Forms.TextBox txtInvoicePatientName;
         private System.Windows.Forms.Label label4;
@@ -577,5 +593,7 @@
         private System.Windows.Forms.Button btnCalculateTotal;
         private System.Windows.Forms.Label lblInvoiceTotalAmount;
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
+        private System.Windows.Forms.TabPage XemBenhAn;
+        private System.Windows.Forms.DataGridView dgvXemBenhAn;
     }
 }
