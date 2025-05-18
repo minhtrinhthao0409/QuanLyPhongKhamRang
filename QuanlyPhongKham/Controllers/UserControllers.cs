@@ -18,12 +18,7 @@ namespace QuanlyPhongKham.Controllers
         {
             userService = new UserService();
         }
-        //public async Task<int> CreateUser(string username, string password, string email)
-        //{
-
-        //    return await userService.CreateUserAsync(username, email, password);
-
-        //}
+        
         public async Task<bool> CreateAccount(string username, string password, string email, string fullName, string phone, int role)
         {
             if (role != 2 && role != 3)
@@ -84,9 +79,13 @@ namespace QuanlyPhongKham.Controllers
 
             return true;
         }
-        public async Task<bool> Login(string username, string password)
+        /*public async Task<bool> Login(string username, string password)
         {
             return await userService.VerifyUserAsync(username, password);
+        }*/
+        public async Task<User> Login(string username, string password)
+        {
+            return await userService.GetUserByCredentials(username, password);
         }
         public async Task<String> GetPasswordByEmail(string email)
         {

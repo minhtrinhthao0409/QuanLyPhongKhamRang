@@ -27,8 +27,8 @@ namespace QuanlyPhongKham
         {
 
         }
-      
-       
+
+
         private async void btnDangKy_Click(object sender, EventArgs e)
         {
             string username = txtTentaikhoan.Text.Trim();
@@ -84,6 +84,11 @@ namespace QuanlyPhongKham
             {
                 btnDangKy.PerformClick();
             }
+        }
+
+        private void btnQuaylai_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

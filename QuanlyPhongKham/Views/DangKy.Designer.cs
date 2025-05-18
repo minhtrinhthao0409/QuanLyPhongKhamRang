@@ -45,6 +45,7 @@
             rbCashier = new System.Windows.Forms.RadioButton();
             label6 = new System.Windows.Forms.Label();
             txtSDT = new System.Windows.Forms.TextBox();
+            btnQuaylai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -152,7 +153,7 @@
             btnDangKy.BackColor = System.Drawing.Color.FromArgb(0, 0, 192);
             btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnDangKy.ForeColor = System.Drawing.Color.White;
-            btnDangKy.Location = new System.Drawing.Point(196, 641);
+            btnDangKy.Location = new System.Drawing.Point(279, 641);
             btnDangKy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             btnDangKy.Name = "btnDangKy";
             btnDangKy.Size = new System.Drawing.Size(131, 66);
@@ -185,7 +186,7 @@
             // rbDoctor
             // 
             rbDoctor.AutoSize = true;
-            rbDoctor.Location = new System.Drawing.Point(113, 592);
+            rbDoctor.Location = new System.Drawing.Point(212, 592);
             rbDoctor.Name = "rbDoctor";
             rbDoctor.Size = new System.Drawing.Size(68, 24);
             rbDoctor.TabIndex = 13;
@@ -196,7 +197,7 @@
             // rbCashier
             // 
             rbCashier.AutoSize = true;
-            rbCashier.Location = new System.Drawing.Point(319, 592);
+            rbCashier.Location = new System.Drawing.Point(396, 592);
             rbCashier.Name = "rbCashier";
             rbCashier.Size = new System.Drawing.Size(91, 24);
             rbCashier.TabIndex = 14;
@@ -225,11 +226,27 @@
             txtSDT.Size = new System.Drawing.Size(275, 29);
             txtSDT.TabIndex = 15;
             // 
+            // btnQuaylai
+            // 
+            btnQuaylai.AutoSize = true;
+            btnQuaylai.BackColor = System.Drawing.Color.FromArgb(0, 0, 192);
+            btnQuaylai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuaylai.ForeColor = System.Drawing.Color.White;
+            btnQuaylai.Location = new System.Drawing.Point(13, 672);
+            btnQuaylai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnQuaylai.Name = "btnQuaylai";
+            btnQuaylai.Size = new System.Drawing.Size(94, 35);
+            btnQuaylai.TabIndex = 17;
+            btnQuaylai.Text = "Quay lại";
+            btnQuaylai.UseVisualStyleBackColor = false;
+            btnQuaylai.Click += btnQuaylai_Click;
+            // 
             // DangKy
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(523, 732);
+            Controls.Add(btnQuaylai);
             Controls.Add(label6);
             Controls.Add(txtSDT);
             Controls.Add(rbCashier);
@@ -277,5 +294,6 @@
         private System.Windows.Forms.RadioButton rbCashier;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.Button btnQuaylai;
     }
 }

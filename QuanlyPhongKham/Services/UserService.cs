@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QuanlyPhongKham.Models;
 using QuanlyPhongKham.repository;
+using System.Data.SQLite;
 
 namespace QuanlyPhongKham.Services
 {
@@ -48,7 +49,6 @@ namespace QuanlyPhongKham.Services
 
         }
 
-
         private bool IsValidEmail(string email)
         {
             try
@@ -60,6 +60,37 @@ namespace QuanlyPhongKham.Services
             {
                 return false;
             }
+        }
+        public async Task<User> GetUserByCredentials(string username, string password)
+        {
+            string connectionString = "Data Source=QuanLyPhongKham.db;Version=3;";
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                await conn.OpenAsync();
+
+                string query = "SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserName", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new User
+                            {
+                                Id = reader["Id"].ToString(),
+                                UserName = reader["UserName"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Role = (UserRole)Convert.ToInt32(reader["Role"])
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

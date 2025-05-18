@@ -20,7 +20,7 @@ namespace QuanlyPhongKham
         {
             string email = txtEmail.Text;
             lblResult.Text = await userControllers.GetPasswordByEmail(email);
-           
+
         }
 
         private void QuenMatKhau_KeyDown(object sender, KeyEventArgs e)
@@ -29,6 +29,11 @@ namespace QuanlyPhongKham
             {
                 button1.PerformClick();
             }
+        }
+
+        private void btnQuaylai_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

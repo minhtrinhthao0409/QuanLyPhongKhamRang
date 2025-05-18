@@ -3,23 +3,42 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Linq;
+using QuanlyPhongKham.Models;
 
 namespace QuanlyPhongKham.Views
 {
     public partial class BacSi : Form
     {
-        private string connectionString = @"Data Source=C:\Users\Mr DAT\source\repos\QuanLyPhongKhamRang\QuanlyPhongKham\bin\HospitalDB.db";
+        private string connectionString = @"QuanLyPhongKham.db";
         private DataTable invoiceDetailsTable;
         private string lastPatientName;
         private int lastPatientId;
-        private int currentDoctorId = 1; // Giả sử ID mặc định, cần thay bằng logic đăng nhập
-        private string currentDoctorName = "Dr. Nguyen Van B"; // Giả sử tên mặc định
+        private int currentDoctorId; 
+        private string currentDoctorName;
+        private User currentUser;
+        private User user;
 
-        public BacSi()
+
+        public BacSi(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
+        private int GetDoctorIdFromUserId(string userId)
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT IdDoctor FROM Doctors WHERE IdUser = @UserId";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    var result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : -1;
+                }
+            }
+        }
         private void btnLoadAppointments_Click(object sender, EventArgs e)
         {
             try
@@ -143,13 +162,52 @@ namespace QuanlyPhongKham.Views
             invoiceDetailsTable.Columns.Add("Quantity", typeof(int));
             invoiceDetailsTable.Columns.Add("Subtotal", typeof(decimal));
             dgvInvoiceServices.DataSource = invoiceDetailsTable;
+
             LoadServices();
             LoadPatients();
-            // Gán bác sĩ mặc định (thay bằng logic đăng nhập)
-            currentDoctorId = 1; // Giả sử ID của "Dr. Nguyen Van B"
-            currentDoctorName = "Dr. Nguyen Van B";
-        }
 
+            // Gán đúng bác sĩ đang đăng nhập
+            currentDoctorId = GetDoctorIdFromUserId(currentUser.Id);
+            currentDoctorName = currentUser.UserName;
+
+            LoadAppointmentsForDoctor();
+        }
+        private void LoadAppointmentsForDoctor()
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"SELECT a.ID AS AppointmentID, p.Name AS PatientName, d.Name AS DoctorName, 
+                                    a.AppointmentDate, a.StartTime, a.EndTime
+                             FROM Appointments a
+                             JOIN Patients p ON a.PatientID = p.ID
+                             JOIN Doctors d ON a.DoctorID = d.ID
+                             WHERE a.DoctorID = @DoctorId";
+
+                    SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@DoctorId", currentDoctorId);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    // Đặt tên cột tiếng Việt
+                    dt.Columns["AppointmentID"].ColumnName = "ID Lịch Hẹn";
+                    dt.Columns["PatientName"].ColumnName = "Tên Bệnh Nhân";
+                    dt.Columns["DoctorName"].ColumnName = "Tên Bác Sĩ";
+                    dt.Columns["AppointmentDate"].ColumnName = "Ngày Hẹn";
+                    dt.Columns["StartTime"].ColumnName = "Giờ Bắt Đầu";
+                    dt.Columns["EndTime"].ColumnName = "Giờ Kết Thúc";
+
+                    dgvAppointments.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải lịch hẹn: " + ex.Message);
+            }
+        }
         private void LoadServices()
         {
             try

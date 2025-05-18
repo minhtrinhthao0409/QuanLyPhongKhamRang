@@ -8,19 +8,14 @@ namespace QuanlyPhongKham.Models
 {
     public class Doctor : User
     {
-        private string qualification;
+        private User currentUser;
+        public string Qualification { get; set; }
+        public ICollection<Appointment> Appointments { get; set; } = [];
 
-        public string Qualification { get => qualification; set => qualification = value; }
-
-        public Doctor(string userName, string password, string email, string qualification) : base(userName, password, email, UserRole.Doctor)
+        public Doctor(string userName, string password, string email, string qualification)
+            : base(userName, password, email, UserRole.Doctor)
         {
             this.Qualification = qualification;
         }
-
-        public Doctor() { }
-
-        public ICollection<Appointment> Appointments = [];
-
-        
     }
 }

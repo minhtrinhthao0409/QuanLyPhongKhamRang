@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanlyPhongKham.Controllers;
+using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Views;
 
 namespace QuanlyPhongKham
 {
     public partial class Login : Form
     {
         UserControllers userController;
+        private User currentUser;
         public Login()
         {
             InitializeComponent();
@@ -23,14 +26,22 @@ namespace QuanlyPhongKham
 
         private void linkQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            QuenMatKhau quenMatKhau = new QuenMatKhau();
-            quenMatKhau.ShowDialog();
+            this.Hide();
+            using (QuenMatKhau quenMatKhau = new QuenMatKhau())
+            { 
+                quenMatKhau.ShowDialog(); 
+            }
+            this.Show();
         }
 
         private void linkDangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            DangKy login = new DangKy();
-            login.ShowDialog();
+            this.Hide();
+            using (DangKy dangKyForm = new DangKy())
+            {
+                dangKyForm.ShowDialog(); // Show modal
+            }
+            this.Show();
         }
 
         private async void btnDangNhap_Click(object sender, EventArgs e)
@@ -47,19 +58,34 @@ namespace QuanlyPhongKham
                 MessageBox.Show("Vui lòng nhập mật khẩu!");
                 return;
             }
-            bool result = await userController.Login(userName, password);
-            //String hasPassword = PasswordHasher.HashPassword(password);
-            
-            if (result)
+
+            var user = await userController.Login(userName, password);
+            if (user != null)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+
+                if (user.Role == UserRole.Doctor)
+                {
+                    BacSi form = new BacSi(user);
+                    form.ShowDialog();
+                }
+                else if (user.Role == UserRole.Receptionist)
+                {
+                    ReceptionistMain form = new ReceptionistMain();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                this.Show();
             }
             else
             {
-                MessageBox.Show("Đăng nhập thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                MessageBox.Show("Đăng nhập thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void Login_KeyPress(object sender, KeyPressEventArgs e)

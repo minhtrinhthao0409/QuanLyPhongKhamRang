@@ -29,104 +29,121 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuenMatKhau));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblResult = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            label4 = new System.Windows.Forms.Label();
+            txtEmail = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            lblResult = new System.Windows.Forms.Label();
+            button1 = new System.Windows.Forms.Button();
+            btnQuaylai = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(125, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 215);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new System.Drawing.Point(125, 55);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(317, 269);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(32, 315);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 20);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Email Đăng Ký:";
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label4.ForeColor = System.Drawing.Color.FromArgb(0, 0, 192);
+            label4.Location = new System.Drawing.Point(32, 394);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(147, 25);
+            label4.TabIndex = 11;
+            label4.Text = "Email Đăng Ký:";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(195, 303);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtEmail.Multiline = true;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(275, 36);
-            this.txtEmail.TabIndex = 10;
+            txtEmail.Location = new System.Drawing.Point(195, 379);
+            txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            txtEmail.Multiline = true;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new System.Drawing.Size(275, 44);
+            txtEmail.TabIndex = 10;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(32, 361);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 20);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Kết Quả:";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.ForeColor = System.Drawing.Color.FromArgb(0, 0, 192);
+            label1.Location = new System.Drawing.Point(32, 469);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(91, 25);
+            label1.TabIndex = 11;
+            label1.Text = "Kết Quả:";
             // 
             // lblResult
             // 
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.ForeColor = System.Drawing.Color.Red;
-            this.lblResult.Location = new System.Drawing.Point(189, 361);
-            this.lblResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(280, 42);
-            this.lblResult.TabIndex = 12;
+            lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblResult.ForeColor = System.Drawing.Color.Red;
+            lblResult.Location = new System.Drawing.Point(189, 451);
+            lblResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblResult.Name = "lblResult";
+            lblResult.Size = new System.Drawing.Size(280, 52);
+            lblResult.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.Blue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(195, 457);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 37);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Lấy Lại Mât Khẩu";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.AutoSize = true;
+            button1.BackColor = System.Drawing.Color.Blue;
+            button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            button1.ForeColor = System.Drawing.Color.White;
+            button1.Location = new System.Drawing.Point(254, 558);
+            button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(188, 46);
+            button1.TabIndex = 13;
+            button1.Text = "Lấy Lại Mât Khẩu";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // btnQuaylai
+            // 
+            btnQuaylai.AutoSize = true;
+            btnQuaylai.BackColor = System.Drawing.Color.FromArgb(0, 0, 192);
+            btnQuaylai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuaylai.ForeColor = System.Drawing.Color.White;
+            btnQuaylai.Location = new System.Drawing.Point(32, 569);
+            btnQuaylai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnQuaylai.Name = "btnQuaylai";
+            btnQuaylai.Size = new System.Drawing.Size(94, 35);
+            btnQuaylai.TabIndex = 18;
+            btnQuaylai.Text = "Quay lại";
+            btnQuaylai.UseVisualStyleBackColor = false;
+            btnQuaylai.Click += btnQuaylai_Click;
             // 
             // QuenMatKhau
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 537);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lblResult);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.pictureBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "QuenMatKhau";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QuenMatKhau";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuenMatKhau_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(565, 671);
+            Controls.Add(btnQuaylai);
+            Controls.Add(button1);
+            Controls.Add(lblResult);
+            Controls.Add(label1);
+            Controls.Add(label4);
+            Controls.Add(txtEmail);
+            Controls.Add(pictureBox1);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Name = "QuenMatKhau";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "QuenMatKhau";
+            KeyDown += QuenMatKhau_KeyDown;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -138,5 +155,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnQuaylai;
     }
 }

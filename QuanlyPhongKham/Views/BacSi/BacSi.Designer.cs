@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             tabPage3 = new System.Windows.Forms.TabPage();
             btnSaveRecord = new System.Windows.Forms.Button();
             dtpExaminationDate = new System.Windows.Forms.DateTimePicker();
@@ -49,7 +49,6 @@
             lblDoctorName = new System.Windows.Forms.Label();
             lbPatientID = new System.Windows.Forms.Label();
             tabPage1 = new System.Windows.Forms.TabPage();
-            btnLoadAppointments = new System.Windows.Forms.Button();
             dgvAppointments = new System.Windows.Forms.DataGridView();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPage4 = new System.Windows.Forms.TabPage();
@@ -73,6 +72,7 @@
             txtInvoiceTotalAmount = new System.Windows.Forms.TextBox();
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
+            sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             tabPage3.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -96,7 +96,7 @@
             tabPage3.Controls.Add(label1);
             tabPage3.Location = new System.Drawing.Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new System.Drawing.Size(773, 524);
+            tabPage3.Size = new System.Drawing.Size(773, 521);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Ghi Bệnh Án";
             tabPage3.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             tabPage2.Location = new System.Drawing.Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(773, 524);
+            tabPage2.Size = new System.Drawing.Size(773, 521);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Lên Lịch Hẹn";
             // 
@@ -266,25 +266,14 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(btnLoadAppointments);
             tabPage1.Controls.Add(dgvAppointments);
             tabPage1.Location = new System.Drawing.Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(773, 524);
+            tabPage1.Size = new System.Drawing.Size(773, 521);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Xem Lịch Hẹn";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnLoadAppointments
-            // 
-            btnLoadAppointments.Location = new System.Drawing.Point(324, 474);
-            btnLoadAppointments.Name = "btnLoadAppointments";
-            btnLoadAppointments.Size = new System.Drawing.Size(125, 29);
-            btnLoadAppointments.TabIndex = 1;
-            btnLoadAppointments.Text = "Tải Lịch Hẹn";
-            btnLoadAppointments.UseVisualStyleBackColor = true;
-            btnLoadAppointments.Click += btnLoadAppointments_Click;
             // 
             // dgvAppointments
             // 
@@ -293,7 +282,7 @@
             dgvAppointments.Location = new System.Drawing.Point(3, 3);
             dgvAppointments.Name = "dgvAppointments";
             dgvAppointments.RowHeadersWidth = 51;
-            dgvAppointments.Size = new System.Drawing.Size(767, 446);
+            dgvAppointments.Size = new System.Drawing.Size(767, 518);
             dgvAppointments.TabIndex = 0;
             // 
             // tabControl1
@@ -306,7 +295,7 @@
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(781, 557);
+            tabControl1.Size = new System.Drawing.Size(781, 554);
             tabControl1.TabIndex = 0;
             // 
             // tabPage4
@@ -325,7 +314,7 @@
             tabPage4.Location = new System.Drawing.Point(4, 29);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            tabPage4.Size = new System.Drawing.Size(773, 524);
+            tabPage4.Size = new System.Drawing.Size(773, 521);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Quản Lý Hóa Đơn";
             tabPage4.UseVisualStyleBackColor = true;
@@ -350,14 +339,14 @@
             dgvInvoiceServices.Location = new System.Drawing.Point(0, 195);
             dgvInvoiceServices.Name = "dgvInvoiceServices";
             dgvInvoiceServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvInvoiceServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvInvoiceServices.Size = new System.Drawing.Size(770, 188);
             dgvInvoiceServices.TabIndex = 10;
@@ -508,11 +497,18 @@
             lblInvoiceTotalAmount.TabIndex = 13;
             lblInvoiceTotalAmount.Text = "Tổng tiền:";
             // 
+            // sqliteCommand1
+            // 
+            sqliteCommand1.CommandTimeout = 30;
+            sqliteCommand1.Connection = null;
+            sqliteCommand1.Transaction = null;
+            sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
             // BacSi
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(781, 557);
+            ClientSize = new System.Drawing.Size(781, 554);
             Controls.Add(tabControl1);
             Name = "BacSi";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -556,7 +552,6 @@
         private System.Windows.Forms.Label lblDoctorName;
         private System.Windows.Forms.Label lbPatientID;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btnLoadAppointments;
         private System.Windows.Forms.DataGridView dgvAppointments;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage4;
@@ -581,5 +576,6 @@
         private System.Windows.Forms.TextBox txtInvoiceTotalAmount;
         private System.Windows.Forms.Button btnCalculateTotal;
         private System.Windows.Forms.Label lblInvoiceTotalAmount;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
     }
 }
