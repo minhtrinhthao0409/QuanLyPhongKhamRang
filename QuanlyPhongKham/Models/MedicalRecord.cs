@@ -17,10 +17,13 @@ namespace QuanlyPhongKham.Models
         public string PatientName { get; set; }
 
         public Patient Patient { get; set; }
+        public string Symtoms { get; set; }
 
-        public string Details { get; set; }
+        public string Diagnosis { get; set; }
 
-        public DateTime Date { get; set; }
+        public string TreatmentPlan { get; set; }
+
+        public DateTime RecordDate { get; set; }
 
 
         public MedicalRecord(Patient patient)
