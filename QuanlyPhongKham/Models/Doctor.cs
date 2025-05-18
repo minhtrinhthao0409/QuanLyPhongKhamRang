@@ -10,7 +10,6 @@ namespace QuanlyPhongKham.Models
     {
         private User currentUser;
         public string Qualification { get; set; }
-        public ICollection<Appointment> Appointments { get; set; } = [];
 
         public Doctor(string userName, string password, string email, string qualification)
             : base(userName, password, email, UserRole.Doctor)

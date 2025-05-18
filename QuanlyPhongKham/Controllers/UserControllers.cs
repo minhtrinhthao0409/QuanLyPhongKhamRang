@@ -79,10 +79,7 @@ namespace QuanlyPhongKham.Controllers
 
             return true;
         }
-        /*public async Task<bool> Login(string username, string password)
-        {
-            return await userService.VerifyUserAsync(username, password);
-        }*/
+        
         public async Task<User> Login(string username, string password)
         {
             return await userService.GetUserByCredentials(username, password);

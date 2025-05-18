@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Views;
+using QuanlyPhongKham.Views.Admin;
 
 namespace QuanlyPhongKham
 {
@@ -65,7 +66,12 @@ namespace QuanlyPhongKham
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
 
-                if (user.Role == UserRole.Doctor)
+                if (user.Role == UserRole.Admin)
+                {
+                    AdminMain form = new AdminMain();
+                    form.ShowDialog();
+                }
+                else if (user.Role == UserRole.Doctor)
                 {
                     BacSi form = new BacSi(user);
                     form.ShowDialog();
