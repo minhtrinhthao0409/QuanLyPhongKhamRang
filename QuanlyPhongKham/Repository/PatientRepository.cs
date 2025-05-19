@@ -62,49 +62,103 @@ namespace QuanlyPhongKham.Repository
         {
             var patients = new List<Patient>();
 
-            using (var connection = await GetConnectionAsync())
+            using var connection = await GetConnectionAsync();
+
+            var query = new StringBuilder("SELECT * FROM Patients WHERE 1=1");
+
+            if (!string.IsNullOrWhiteSpace(name))
+                query.Append(" AND FullName LIKE @FullName");
+
+            if (!string.IsNullOrWhiteSpace(phone))
+                query.Append(" AND PhoneNumber = @PhoneNumber");
+
+            if (!string.IsNullOrWhiteSpace(email))
+                query.Append(" AND Email LIKE @Email");
+
+            using var command = new SQLiteCommand(query.ToString(), connection);
+
+            if (!string.IsNullOrWhiteSpace(name))
+                command.Parameters.AddWithValue("@FullName", $"%{name}%");
+
+            if (!string.IsNullOrWhiteSpace(phone))
+                command.Parameters.AddWithValue("@PhoneNumber", phone);
+
+            if (!string.IsNullOrWhiteSpace(email))
+                command.Parameters.AddWithValue("@Email", $"%{email}%");
+
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
-                var query = new StringBuilder("SELECT * FROM Patients WHERE 1=1");
-
-                if (!string.IsNullOrWhiteSpace(name))
-                    query.Append(" AND FullName LIKE @Name");
-
-                if (!string.IsNullOrWhiteSpace(phone))
-                    query.Append(" AND PhoneNumber = @Phone");
-
-                if (!string.IsNullOrWhiteSpace(email))
-                    query.Append(" AND Email LIKE @Email");
-
-                using var command = new SQLiteCommand(query.ToString(), connection);
-                if (!string.IsNullOrWhiteSpace(name))
-                    command.Parameters.AddWithValue("@Name", $"%{name}%");
-
-                if (!string.IsNullOrWhiteSpace(phone))
-                    command.Parameters.AddWithValue("@Phone", phone);
-
-                if (!string.IsNullOrWhiteSpace(email))
-                    command.Parameters.AddWithValue("@Email", $"%{email}%");
-
-                using var reader = await command.ExecuteReaderAsync();
-                while (await reader.ReadAsync())
+                var patient = new Patient
                 {
-                    var patient = new Patient
-                    {
-                        PatientId = Guid.Parse(reader["PatientId"].ToString()!),
-                        Name = reader["FullName"].ToString()!,
-                        PhoneNumber = reader["PhoneNumber"].ToString()!,
-                        Email = reader["Email"].ToString()!,
-                        Gender = Convert.ToBoolean(reader["Gender"]),
-                        DOB = Convert.ToDateTime(reader["Dob"]),
-                        GuardianId = reader["GuardianId"] == DBNull.Value ? null : Guid.Parse(reader["GuardianId"].ToString()!)
-                    };
+                    PatientId = Guid.Parse(reader["PatientId"].ToString()!),
+                    Name = reader["FullName"].ToString()!,
+                    PhoneNumber = reader["PhoneNumber"].ToString()!,
+                    Email = reader["Email"].ToString()!,
+                    Gender = Convert.ToBoolean(reader["Gender"]),
+                    DOB = Convert.ToDateTime(reader["Dob"]),
+                    GuardianId = reader["GuardianId"] == DBNull.Value
+                        ? null
+                        : Guid.Parse(reader["GuardianId"].ToString()!)
+                };
 
-                    patients.Add(patient);
-                }
+                patients.Add(patient);
             }
 
             return patients;
         }
+
+        public async Task<int> UpdatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Tên bệnh nhân không được rỗng.", nameof(name));
+            if (string.IsNullOrWhiteSpace(phoneNumber))
+                throw new ArgumentException("Số điện thoại không được rỗng.", nameof(phoneNumber));
+
+            int affectedRows = 0;
+
+            using (var connection = await GetConnectionAsync())
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    string updateSql = @"
+                                        UPDATE Patients 
+                                        SET 
+                                            FullName = @FullName,
+                                            Email = @Email,
+                                            Gender = @Gender,
+                                            PhoneNumber = @PhoneNumber,
+                                            Dob = @Dob,
+                                            GuardianId = @GuardianId
+                                        WHERE PatientId = @PatientId";
+
+                    using (var cmd = new SQLiteCommand(updateSql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", name);
+                        cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Gender", gender);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                        cmd.Parameters.AddWithValue("@Dob", dob);
+                        cmd.Parameters.AddWithValue("@GuardianId", guardianId as object ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PatientId", patientId);
+
+                        affectedRows = await cmd.ExecuteNonQueryAsync();
+                    }
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception("Lỗi khi cập nhật thông tin bệnh nhân.", ex);
+                }
+            }
+
+            return affectedRows;
+        }
+
+
 
 
 
