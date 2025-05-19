@@ -77,7 +77,7 @@
             // 
             linkQuenMatKhau.AutoSize = true;
             linkQuenMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            linkQuenMatKhau.Location = new System.Drawing.Point(109, 545);
+            linkQuenMatKhau.Location = new System.Drawing.Point(76, 545);
             linkQuenMatKhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             linkQuenMatKhau.Name = "linkQuenMatKhau";
             linkQuenMatKhau.Size = new System.Drawing.Size(142, 24);
@@ -91,7 +91,7 @@
             // 
             linkDangKy.AutoSize = true;
             linkDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            linkDangKy.Location = new System.Drawing.Point(333, 545);
+            linkDangKy.Location = new System.Drawing.Point(365, 545);
             linkDangKy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             linkDangKy.Name = "linkDangKy";
             linkDangKy.Size = new System.Drawing.Size(81, 24);

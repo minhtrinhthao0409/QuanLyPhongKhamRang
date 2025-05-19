@@ -13,7 +13,7 @@ namespace QuanlyPhongKham.Views
         private DataTable invoiceDetailsTable;
         private string lastPatientName;
         private int lastPatientId;
-        private int currentDoctorId; 
+        private string currentDoctorId; 
         private string currentDoctorName;
         private User currentUser;
         private User user;
@@ -25,20 +25,6 @@ namespace QuanlyPhongKham.Views
             this.user = user;
         }
 
-        private int GetDoctorIdFromUserId(string userId)
-        {
-            using (var conn = new SQLiteConnection(connectionString))
-            {
-                conn.Open();
-                string query = "SELECT IdDoctor FROM Doctors WHERE IdUser = @UserId";
-                using (var cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@UserId", userId);
-                    var result = cmd.ExecuteScalar();
-                    return result != null ? Convert.ToInt32(result) : -1;
-                }
-            }
-        }
         private void btnLoadAppointments_Click(object sender, EventArgs e)
         {
             try
@@ -73,7 +59,11 @@ namespace QuanlyPhongKham.Views
         {
             try
             {
-                if (cbPatientName.SelectedIndex == -1 || string.IsNullOrEmpty(txtStartTime.Text) || string.IsNullOrEmpty(txtEndTime.Text))
+                string patientName = cbPatientName.Text.Trim();
+                string startTime = txtStartTime.Text.Trim();
+                string endTime = txtEndTime.Text.Trim();
+
+                if (string.IsNullOrEmpty(patientName) || string.IsNullOrEmpty(startTime) || string.IsNullOrEmpty(endTime))
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
                     return;
@@ -82,18 +72,43 @@ namespace QuanlyPhongKham.Views
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO Appointments (PatientID, DoctorID, AppointmentDate, StartTime, EndTime) " +
-                                   "VALUES (@PatientID, @DoctorID, @AppointmentDate, @StartTime, @EndTime)";
+
+                    // 1. Kiểm tra bệnh nhân đã tồn tại chưa
+                    string getPatientIdQuery = "SELECT ID FROM Patients WHERE Name = @Name";
+                    SQLiteCommand getCmd = new SQLiteCommand(getPatientIdQuery, conn);
+                    getCmd.Parameters.AddWithValue("@Name", patientName);
+                    object patientIdObj = getCmd.ExecuteScalar();
+
+                    int patientId;
+
+                    if (patientIdObj == null)
+                    {
+                        // 2. Nếu chưa có, thêm mới bệnh nhân
+                        string insertPatientQuery = "INSERT INTO Patients (Name) VALUES (@Name); SELECT last_insert_rowid();";
+                        SQLiteCommand insertCmd = new SQLiteCommand(insertPatientQuery, conn);
+                        insertCmd.Parameters.AddWithValue("@Name", patientName);
+                        patientId = Convert.ToInt32(insertCmd.ExecuteScalar());
+                    }
+                    else
+                    {
+                        patientId = Convert.ToInt32(patientIdObj);
+                    }
+
+                    // 3. Tạo lịch hẹn
+                    string query = @"INSERT INTO Appointments (PatientID, DoctorUserId, AppointmentDate, StartTime, EndTime) 
+                             VALUES (@PatientID, @DoctorUserId, @AppointmentDate, @StartTime, @EndTime)";
                     SQLiteCommand cmd = new SQLiteCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@PatientID", cbPatientName.SelectedValue);
-                    cmd.Parameters.AddWithValue("@DoctorID", currentDoctorId); // Sử dụng ID bác sĩ đang đăng nhập
+                    cmd.Parameters.AddWithValue("@PatientID", patientId);
+                    cmd.Parameters.AddWithValue("@DoctorUserId", currentDoctorId); // string
                     cmd.Parameters.AddWithValue("@AppointmentDate", dtpAppointmentDate.Value.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@StartTime", txtStartTime.Text);
-                    cmd.Parameters.AddWithValue("@EndTime", txtEndTime.Text);
+                    cmd.Parameters.AddWithValue("@StartTime", startTime);
+                    cmd.Parameters.AddWithValue("@EndTime", endTime);
                     cmd.ExecuteNonQuery();
+
                     MessageBox.Show("Lên lịch hẹn thành công!");
-                    // Làm mới các điều khiển
-                    cbPatientName.SelectedIndex = -1;
+
+                    // Làm mới
+                    cbPatientName.Text = "";
                     txtStartTime.Text = "";
                     txtEndTime.Text = "";
                 }
@@ -166,9 +181,8 @@ namespace QuanlyPhongKham.Views
             LoadServices();
             LoadPatients();
 
-            // Gán đúng bác sĩ đang đăng nhập
-            currentDoctorId = GetDoctorIdFromUserId(currentUser.Id);
-            currentDoctorName = currentUser.UserName;
+            currentDoctorId = user.Id;
+            currentDoctorName = user.UserName;
 
             LoadAppointmentsForDoctor();
         }
@@ -184,7 +198,7 @@ namespace QuanlyPhongKham.Views
                              FROM Appointments a
                              JOIN Patients p ON a.PatientID = p.ID
                              JOIN Doctors d ON a.DoctorID = d.ID
-                             WHERE a.DoctorID = @DoctorId";
+                             WHERE a.DoctorUserId = @DoctorId";
 
                     SQLiteCommand cmd = new SQLiteCommand(query, conn);
                     cmd.Parameters.AddWithValue("@DoctorId", currentDoctorId);

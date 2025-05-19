@@ -50,6 +50,8 @@
             XemLichHen = new System.Windows.Forms.TabPage();
             dgvAppointments = new System.Windows.Forms.DataGridView();
             tabControl1 = new System.Windows.Forms.TabControl();
+            XemBenhAn = new System.Windows.Forms.TabPage();
+            dgvXemBenhAn = new System.Windows.Forms.DataGridView();
             QLHoaDon = new System.Windows.Forms.TabPage();
             btnSaveInvoice = new System.Windows.Forms.Button();
             dgvInvoiceServices = new System.Windows.Forms.DataGridView();
@@ -72,20 +74,23 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
-            XemBenhAn = new System.Windows.Forms.TabPage();
-            dgvXemBenhAn = new System.Windows.Forms.DataGridView();
+            BenhNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            TenBacSi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            NgayHen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            GioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            GioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).BeginInit();
             tabControl1.SuspendLayout();
+            XemBenhAn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).BeginInit();
             QLHoaDon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInvoiceServices).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudInvoiceQuantity).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            XemBenhAn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).BeginInit();
             SuspendLayout();
             // 
             // GhiBenhAn
@@ -233,7 +238,7 @@
             // lbStartTime
             // 
             lbStartTime.AutoSize = true;
-            lbStartTime.Location = new System.Drawing.Point(115, 204);
+            lbStartTime.Location = new System.Drawing.Point(115, 211);
             lbStartTime.Name = "lbStartTime";
             lbStartTime.Size = new System.Drawing.Size(90, 20);
             lbStartTime.TabIndex = 3;
@@ -272,6 +277,7 @@
             // 
             dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvAppointments.ColumnHeadersHeight = 29;
+            dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { BenhNhan, TenBacSi, NgayHen, GioBatDau, GioKetThuc });
             dgvAppointments.Location = new System.Drawing.Point(3, 3);
             dgvAppointments.Name = "dgvAppointments";
             dgvAppointments.RowHeadersWidth = 51;
@@ -291,6 +297,27 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new System.Drawing.Size(781, 554);
             tabControl1.TabIndex = 0;
+            // 
+            // XemBenhAn
+            // 
+            XemBenhAn.Controls.Add(dgvXemBenhAn);
+            XemBenhAn.Location = new System.Drawing.Point(4, 29);
+            XemBenhAn.Name = "XemBenhAn";
+            XemBenhAn.Padding = new System.Windows.Forms.Padding(3);
+            XemBenhAn.Size = new System.Drawing.Size(773, 521);
+            XemBenhAn.TabIndex = 4;
+            XemBenhAn.Text = "Xem Bệnh Án";
+            XemBenhAn.UseVisualStyleBackColor = true;
+            // 
+            // dgvXemBenhAn
+            // 
+            dgvXemBenhAn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvXemBenhAn.ColumnHeadersHeight = 29;
+            dgvXemBenhAn.Location = new System.Drawing.Point(3, 1);
+            dgvXemBenhAn.Name = "dgvXemBenhAn";
+            dgvXemBenhAn.RowHeadersWidth = 51;
+            dgvXemBenhAn.Size = new System.Drawing.Size(767, 518);
+            dgvXemBenhAn.TabIndex = 1;
             // 
             // QLHoaDon
             // 
@@ -498,26 +525,35 @@
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
-            // XemBenhAn
+            // BenhNhan
             // 
-            XemBenhAn.Controls.Add(dgvXemBenhAn);
-            XemBenhAn.Location = new System.Drawing.Point(4, 29);
-            XemBenhAn.Name = "XemBenhAn";
-            XemBenhAn.Padding = new System.Windows.Forms.Padding(3);
-            XemBenhAn.Size = new System.Drawing.Size(773, 521);
-            XemBenhAn.TabIndex = 4;
-            XemBenhAn.Text = "Xem Bệnh Án";
-            XemBenhAn.UseVisualStyleBackColor = true;
+            BenhNhan.HeaderText = "Tên bệnh nhân";
+            BenhNhan.MinimumWidth = 6;
+            BenhNhan.Name = "BenhNhan";
             // 
-            // dgvXemBenhAn
+            // TenBacSi
             // 
-            dgvXemBenhAn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvXemBenhAn.ColumnHeadersHeight = 29;
-            dgvXemBenhAn.Location = new System.Drawing.Point(3, 1);
-            dgvXemBenhAn.Name = "dgvXemBenhAn";
-            dgvXemBenhAn.RowHeadersWidth = 51;
-            dgvXemBenhAn.Size = new System.Drawing.Size(767, 518);
-            dgvXemBenhAn.TabIndex = 1;
+            TenBacSi.HeaderText = "Tên bác sĩ";
+            TenBacSi.MinimumWidth = 6;
+            TenBacSi.Name = "TenBacSi";
+            // 
+            // NgayHen
+            // 
+            NgayHen.HeaderText = "Ngày hẹn";
+            NgayHen.MinimumWidth = 6;
+            NgayHen.Name = "NgayHen";
+            // 
+            // GioBatDau
+            // 
+            GioBatDau.HeaderText = "Giờ bắt đầu";
+            GioBatDau.MinimumWidth = 6;
+            GioBatDau.Name = "GioBatDau";
+            // 
+            // GioKetThuc
+            // 
+            GioKetThuc.HeaderText = "Giờ kết thúc";
+            GioKetThuc.MinimumWidth = 6;
+            GioKetThuc.Name = "GioKetThuc";
             // 
             // BacSi
             // 
@@ -535,6 +571,8 @@
             XemLichHen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).EndInit();
             tabControl1.ResumeLayout(false);
+            XemBenhAn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).EndInit();
             QLHoaDon.ResumeLayout(false);
             QLHoaDon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInvoiceServices).EndInit();
@@ -543,8 +581,6 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            XemBenhAn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).EndInit();
             ResumeLayout(false);
         }
 
@@ -595,5 +631,10 @@
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private System.Windows.Forms.TabPage XemBenhAn;
         private System.Windows.Forms.DataGridView dgvXemBenhAn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BenhNhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenBacSi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayHen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GioBatDau;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GioKetThuc;
     }
 }
