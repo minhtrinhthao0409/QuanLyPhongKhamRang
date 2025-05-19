@@ -1,6 +1,6 @@
 ﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class Appointment
+    partial class AppointmentFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -440,14 +440,14 @@
             SearchDoctorNamelbl.TabIndex = 8;
             SearchDoctorNamelbl.Text = "Doctor Name";
             // 
-            // Appointment
+            // AppointmentFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(AppointmentTab);
             Controls.Add(panel2);
-            Name = "Appointment";
+            Name = "AppointmentFrm";
             Text = "Appointment";
             panel2.ResumeLayout(false);
             AppointmentTab.ResumeLayout(false);

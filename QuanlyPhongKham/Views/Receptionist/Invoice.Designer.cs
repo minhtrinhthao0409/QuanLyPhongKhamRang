@@ -1,6 +1,6 @@
 ﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class Invoice
+    partial class InvoiceFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,13 +36,13 @@
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
+            Searchbtn = new System.Windows.Forms.Button();
+            textBox2 = new System.Windows.Forms.TextBox();
+            label5 = new System.Windows.Forms.Label();
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             endTimelbl = new System.Windows.Forms.Label();
             start_time_lbl = new System.Windows.Forms.Label();
             startTimePicker = new System.Windows.Forms.DateTimePicker();
-            textBox2 = new System.Windows.Forms.TextBox();
-            label5 = new System.Windows.Forms.Label();
-            Searchbtn = new System.Windows.Forms.Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -146,6 +146,33 @@
             panel1.Size = new System.Drawing.Size(791, 206);
             panel1.TabIndex = 8;
             // 
+            // Searchbtn
+            // 
+            Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            Searchbtn.Location = new System.Drawing.Point(409, 118);
+            Searchbtn.Name = "Searchbtn";
+            Searchbtn.Size = new System.Drawing.Size(93, 50);
+            Searchbtn.TabIndex = 21;
+            Searchbtn.Text = "Search";
+            Searchbtn.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new System.Drawing.Point(169, 117);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(211, 23);
+            textBox2.TabIndex = 20;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Location = new System.Drawing.Point(50, 118);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(101, 17);
+            label5.TabIndex = 19;
+            label5.Text = "Phone Number";
+            // 
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new System.Drawing.Point(522, 51);
@@ -180,41 +207,14 @@
             startTimePicker.Size = new System.Drawing.Size(211, 23);
             startTimePicker.TabIndex = 6;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new System.Drawing.Point(169, 117);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(211, 23);
-            textBox2.TabIndex = 20;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(50, 118);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(101, 17);
-            label5.TabIndex = 19;
-            label5.Text = "Phone Number";
-            // 
-            // Searchbtn
-            // 
-            Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            Searchbtn.Location = new System.Drawing.Point(409, 118);
-            Searchbtn.Name = "Searchbtn";
-            Searchbtn.Size = new System.Drawing.Size(93, 50);
-            Searchbtn.TabIndex = 21;
-            Searchbtn.Text = "Search";
-            Searchbtn.UseVisualStyleBackColor = true;
-            // 
-            // Invoice
+            // InvoiceFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Name = "Invoice";
+            Name = "InvoiceFrm";
             Text = "PaymentStatus";
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);

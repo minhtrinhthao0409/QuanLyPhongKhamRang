@@ -1,6 +1,6 @@
 ﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class Schedule
+    partial class ScheduleFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -440,14 +440,14 @@
             SearchDoctorNamelbl.TabIndex = 8;
             SearchDoctorNamelbl.Text = "Doctor Name";
             // 
-            // Schedule
+            // ScheduleFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(ScheduleTab);
             Controls.Add(panel2);
-            Name = "Schedule";
+            Name = "ScheduleFrm";
             Text = "Schedule";
             panel2.ResumeLayout(false);
             ScheduleTab.ResumeLayout(false);

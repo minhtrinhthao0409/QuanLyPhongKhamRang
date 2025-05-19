@@ -78,7 +78,7 @@ namespace QuanlyPhongKham
                 }
                 else if (user.Role == UserRole.Receptionist)
                 {
-                    ReceptionistMain form = new ReceptionistMain();
+                    ReceptionistMain form = new ReceptionistMain(user);
                     form.ShowDialog();
                 }
                 else
@@ -92,6 +92,8 @@ namespace QuanlyPhongKham
             {
                 MessageBox.Show("Đăng nhập thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
 
         private void Login_KeyPress(object sender, KeyPressEventArgs e)

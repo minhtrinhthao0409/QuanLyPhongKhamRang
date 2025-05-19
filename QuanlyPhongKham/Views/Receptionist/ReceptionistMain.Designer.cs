@@ -97,6 +97,7 @@
             Invoicelbl.TabIndex = 6;
             Invoicelbl.Text = "Invoice";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Invoicelbl.Click += MenuLabel_Click;
             // 
             // Patientlbl
             // 
@@ -109,6 +110,7 @@
             Patientlbl.TabIndex = 5;
             Patientlbl.Text = "Patient";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Patientlbl.Click += MenuLabel_Click;
             // 
             // Schedulelbl
             // 
@@ -121,6 +123,7 @@
             Schedulelbl.TabIndex = 5;
             Schedulelbl.Text = "Schedule";
             Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Schedulelbl.Click += MenuLabel_Click;
             // 
             // Appointmentlbl
             // 
@@ -133,6 +136,7 @@
             Appointmentlbl.TabIndex = 5;
             Appointmentlbl.Text = "Appointment";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Appointmentlbl.Click += MenuLabel_Click;
             // 
             // SignOutlbl
             // 

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
-    public partial class Invoice : Form
+    public partial class InvoiceFrm : Form
     {
-        public Invoice()
+        public InvoiceFrm()
         {
             InitializeComponent();
         }

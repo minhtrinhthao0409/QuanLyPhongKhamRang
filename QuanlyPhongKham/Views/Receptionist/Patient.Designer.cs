@@ -1,6 +1,6 @@
 ﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class Patient
+    partial class PatientFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,9 @@
             SignOutlbl = new System.Windows.Forms.Label();
             PatientTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
             CrudPanel = new System.Windows.Forms.Panel();
+            ResetSearchPatientbtn = new System.Windows.Forms.Button();
             patientEmailTxt = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
             PatientPhoneNoTxt = new System.Windows.Forms.TextBox();
@@ -47,7 +49,12 @@
             CrudPatient = new System.Windows.Forms.Label();
             AddScheduleBtn = new System.Windows.Forms.Button();
             tabPage2 = new System.Windows.Forms.TabPage();
+            dataGridView2 = new System.Windows.Forms.DataGridView();
             panel1 = new System.Windows.Forms.Panel();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            Doblbl = new System.Windows.Forms.Label();
+            textBox4 = new System.Windows.Forms.TextBox();
+            Guardianlbl = new System.Windows.Forms.Label();
             listBox2 = new System.Windows.Forms.ListBox();
             label3 = new System.Windows.Forms.Label();
             textBox1 = new System.Windows.Forms.TextBox();
@@ -60,21 +67,14 @@
             ResetBtn = new System.Windows.Forms.Button();
             UpdateBtn = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
-            textBox4 = new System.Windows.Forms.TextBox();
-            Guardianlbl = new System.Windows.Forms.Label();
-            Doblbl = new System.Windows.Forms.Label();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
-            dataGridView2 = new System.Windows.Forms.DataGridView();
-            ResetSearchPatientbtn = new System.Windows.Forms.Button();
             panel2.SuspendLayout();
             PatientTab.SuspendLayout();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             CrudPanel.SuspendLayout();
             tabPage2.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -184,6 +184,14 @@
             tabPage1.Text = "Search Patient";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(2, 237);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new System.Drawing.Size(795, 400);
+            dataGridView1.TabIndex = 8;
+            // 
             // CrudPanel
             // 
             CrudPanel.Controls.Add(ResetSearchPatientbtn);
@@ -199,6 +207,16 @@
             CrudPanel.Name = "CrudPanel";
             CrudPanel.Size = new System.Drawing.Size(796, 225);
             CrudPanel.TabIndex = 7;
+            // 
+            // ResetSearchPatientbtn
+            // 
+            ResetSearchPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            ResetSearchPatientbtn.Location = new System.Drawing.Point(398, 148);
+            ResetSearchPatientbtn.Name = "ResetSearchPatientbtn";
+            ResetSearchPatientbtn.Size = new System.Drawing.Size(93, 50);
+            ResetSearchPatientbtn.TabIndex = 23;
+            ResetSearchPatientbtn.Text = "Reset";
+            ResetSearchPatientbtn.UseVisualStyleBackColor = true;
             // 
             // patientEmailTxt
             // 
@@ -284,6 +302,14 @@
             tabPage2.Text = "Add Patient";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new System.Drawing.Point(4, 304);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new System.Drawing.Size(795, 331);
+            dataGridView2.TabIndex = 5;
+            // 
             // panel1
             // 
             panel1.Controls.Add(dateTimePicker1);
@@ -307,6 +333,40 @@
             panel1.Size = new System.Drawing.Size(796, 296);
             panel1.TabIndex = 4;
             panel1.Paint += panel1_Paint;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new System.Drawing.Point(143, 88);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new System.Drawing.Size(211, 23);
+            dateTimePicker1.TabIndex = 26;
+            // 
+            // Doblbl
+            // 
+            Doblbl.AutoSize = true;
+            Doblbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Doblbl.Location = new System.Drawing.Point(20, 92);
+            Doblbl.Name = "Doblbl";
+            Doblbl.Size = new System.Drawing.Size(36, 17);
+            Doblbl.TabIndex = 25;
+            Doblbl.Text = "DOB";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new System.Drawing.Point(143, 162);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new System.Drawing.Size(211, 23);
+            textBox4.TabIndex = 24;
+            // 
+            // Guardianlbl
+            // 
+            Guardianlbl.AutoSize = true;
+            Guardianlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Guardianlbl.Location = new System.Drawing.Point(24, 163);
+            Guardianlbl.Name = "Guardianlbl";
+            Guardianlbl.Size = new System.Drawing.Size(64, 17);
+            Guardianlbl.TabIndex = 23;
+            Guardianlbl.Text = "Guardian";
             // 
             // listBox2
             // 
@@ -419,85 +479,25 @@
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
             // 
-            // textBox4
-            // 
-            textBox4.Location = new System.Drawing.Point(143, 162);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new System.Drawing.Size(211, 23);
-            textBox4.TabIndex = 24;
-            // 
-            // Guardianlbl
-            // 
-            Guardianlbl.AutoSize = true;
-            Guardianlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Guardianlbl.Location = new System.Drawing.Point(24, 163);
-            Guardianlbl.Name = "Guardianlbl";
-            Guardianlbl.Size = new System.Drawing.Size(64, 17);
-            Guardianlbl.TabIndex = 23;
-            Guardianlbl.Text = "Guardian";
-            // 
-            // Doblbl
-            // 
-            Doblbl.AutoSize = true;
-            Doblbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Doblbl.Location = new System.Drawing.Point(20, 92);
-            Doblbl.Name = "Doblbl";
-            Doblbl.Size = new System.Drawing.Size(36, 17);
-            Doblbl.TabIndex = 25;
-            Doblbl.Text = "DOB";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new System.Drawing.Point(143, 88);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(211, 23);
-            dateTimePicker1.TabIndex = 26;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(2, 237);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(795, 400);
-            dataGridView1.TabIndex = 8;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new System.Drawing.Point(4, 304);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new System.Drawing.Size(795, 331);
-            dataGridView2.TabIndex = 5;
-            // 
-            // ResetSearchPatientbtn
-            // 
-            ResetSearchPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ResetSearchPatientbtn.Location = new System.Drawing.Point(398, 148);
-            ResetSearchPatientbtn.Name = "ResetSearchPatientbtn";
-            ResetSearchPatientbtn.Size = new System.Drawing.Size(93, 50);
-            ResetSearchPatientbtn.TabIndex = 23;
-            ResetSearchPatientbtn.Text = "Reset";
-            ResetSearchPatientbtn.UseVisualStyleBackColor = true;
-            // 
-            // Patient
+            // PatientFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(PatientTab);
             Controls.Add(panel2);
-            Name = "Patient";
+            Name = "PatientFrm";
             Text = "Patient";
             panel2.ResumeLayout(false);
             PatientTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             CrudPanel.ResumeLayout(false);
             CrudPanel.PerformLayout();
             tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
