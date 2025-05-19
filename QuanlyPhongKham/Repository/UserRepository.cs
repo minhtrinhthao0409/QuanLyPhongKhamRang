@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //using Npgsql;
-using Microsoft.Data.Sqlite;
+//using Microsoft.Data.Sqlite;
 using QuanlyPhongKham.Models;
+using System.Data.SQLite;
+
 
 
 namespace QuanlyPhongKham.repository
@@ -23,7 +25,7 @@ namespace QuanlyPhongKham.repository
                 throw new ArgumentException("Tên người dùng không được rỗng.", nameof(username));
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new SqliteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)" ,connection))
+            using (var command = new SQLiteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)" ,connection))
             {
                 try
                 {
@@ -31,7 +33,7 @@ namespace QuanlyPhongKham.repository
                     var result = await command.ExecuteScalarAsync();
                     return Convert.ToBoolean(result);
                 }
-                catch (SqliteException ex)
+                catch (SQLiteException ex)
                 {
                     throw new Exception("Lỗi cơ sở dữ liệu khi kiểm tra tên người dùng.", ex);
                 }
@@ -53,7 +55,7 @@ namespace QuanlyPhongKham.repository
                 try
                 {
                     // Kiểm tra trùng username
-                    using (var command = new SqliteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)", connection))
+                    using (var command = new SQLiteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)", connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
                         bool exists = Convert.ToBoolean(await command.ExecuteScalarAsync());
@@ -62,7 +64,7 @@ namespace QuanlyPhongKham.repository
                     }
 
                     // Tạo người dùng mới
-                    using (var command = new SqliteCommand(
+                    using (var command = new SQLiteCommand(
                         "INSERT INTO users ( username, email, password) VALUES ( @username, @email, @password)",
                         connection))
                     {
@@ -93,7 +95,7 @@ namespace QuanlyPhongKham.repository
             UserResponse userResponse = null;
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new SqliteCommand("SELECT id, username, email, password FROM users WHERE username = @username", connection))
+            using (var command = new SQLiteCommand("SELECT id, username, email, password FROM users WHERE username = @username", connection))
             {
                 try
                 {
@@ -118,7 +120,7 @@ namespace QuanlyPhongKham.repository
                         }
                     }
                 }
-                catch (SqliteException ex)
+                catch (SQLiteException ex)
                 {
                     throw new Exception("Lỗi cơ sở dữ liệu khi lấy thông tin người dùng.", ex);
                 }
@@ -134,7 +136,7 @@ namespace QuanlyPhongKham.repository
             UserResponse userResponse = null;
 
             using (var connection = await GetConnectionAsync())
-            using (var command = new SqliteCommand("SELECT id, username, email, password FROM users WHERE email = @email", connection))
+            using (var command = new SQLiteCommand("SELECT id, username, email, password FROM users WHERE email = @email", connection))
             {
                 try
                 {
@@ -159,7 +161,7 @@ namespace QuanlyPhongKham.repository
                         }
                     }
                 }
-                catch (SqliteException ex)
+                catch (SQLiteException ex)
                 {
                     throw new Exception("Lỗi cơ sở dữ liệu khi lấy thông tin người dùng.", ex);
                 }
@@ -167,8 +169,32 @@ namespace QuanlyPhongKham.repository
 
             return userResponse;
         }
+
+        public async Task<User> GetUserByCredentials(string username, string password)
+        {
+            
+            User user = null;
+            using (var connection = await GetConnectionAsync())
+            using (var cmd = new SQLiteCommand("SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password", connection))
+            {
+                cmd.Parameters.AddWithValue("@UserName", username);
+                cmd.Parameters.AddWithValue("@Password", password);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return new User
+                        {
+                            Id = reader["Id"].ToString(),
+                            UserName = reader["UserName"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Role = (UserRole)Convert.ToInt32(reader["Role"])
+                        };
+                    }
+                }
+            }
+            return user;
+        }
     }
 }
-
-    
-

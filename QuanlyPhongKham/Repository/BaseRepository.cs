@@ -1,14 +1,17 @@
-﻿using Microsoft.Data.Sqlite;
+﻿//using Microsoft.Data.Sqlite;
 using System.Configuration;
 using System.Threading.Tasks;
 using System;
+using System.Data.SQLite;
+
 
 public class BaseRepository : IDisposable
 {
     public readonly string connection;
     private bool disposed;
 
-    public BaseRepository(string connectionString = null)
+    // ??: chọn đầu tiên trong các chuỗi kết nối
+    public BaseRepository(string connectionString = null) // nếu không có chuỗi kết nối thì lấy từ cấu hình
     {
         this.connection = connectionString
             ?? ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ConnectionString
@@ -20,9 +23,9 @@ public class BaseRepository : IDisposable
         }
     }
 
-    protected async Task<SqliteConnection> GetConnectionAsync()
+    protected async Task<SQLiteConnection> GetConnectionAsync()
     {
-        var connection = new SqliteConnection(this.connection);
+        var connection = new SQLiteConnection(this.connection);
         await connection.OpenAsync();
         return connection;
     }

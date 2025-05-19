@@ -14,7 +14,7 @@ namespace QuanlyPhongKham.Models
 
         }
 
-        public Receptionist() { }
+        //public Receptionist() { }
 
     }
 }
