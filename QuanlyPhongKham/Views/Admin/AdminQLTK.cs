@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Admin
 {
-    public partial class AdminQLTK: Form
+    public partial class AdminQLTK : Form
     {
         public AdminQLTK()
         {
             InitializeComponent();
+        }
+
+        private void AdminQLTK_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

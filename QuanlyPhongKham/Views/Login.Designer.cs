@@ -157,6 +157,7 @@
             Name = "Login";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Đăng Nhập";
+            FormClosing += Login_FormClosing;
             KeyDown += Login_KeyDown;
             KeyPress += Login_KeyPress;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

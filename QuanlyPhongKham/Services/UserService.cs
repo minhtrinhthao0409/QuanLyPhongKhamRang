@@ -11,42 +11,59 @@ namespace QuanlyPhongKham.Services
 {
     public class UserService
     {
-        public  UserRepository userRepository;
+        private readonly UserRepository _userRepository;
+        private readonly string connectionString = "Data Source=QuanLyPhongKham.db;Version=3;";
 
         public UserService()
         {
-            userRepository = new UserRepository();
+            _userRepository = new UserRepository();
         }
 
-        public async Task<int> CreateUserAsync(string username, string email, string password)
+        public async Task<bool> CreateAccountAsync(User user)
         {
-            if (!IsValidEmail(email))
-                throw new ArgumentException("Email không hợp lệ.", nameof(email));
+            using var conn = new SQLiteConnection(connectionString);
+            await conn.OpenAsync();
 
-            string hashedPassword = PasswordHasher.HashPassword(password); 
-            return await userRepository.CreateUserAsync(username, email, hashedPassword);
+            string query = @"INSERT INTO Users (Id, UserName, Password, Email, FullName, PhoneNumber, Role)
+                     VALUES (@Id, @UserName, @Password, @Email, @FullName, @PhoneNumber, @Role)";
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Id", user.Id);
+            cmd.Parameters.AddWithValue("@UserName", user.UserName);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@FullName", user.FullName);
+            cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
+            cmd.Parameters.AddWithValue("@Role", user.Role);
+
+            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+            return rowsAffected > 0;
         }
 
-        public async Task<bool> VerifyUserAsync(string username, string password)
+        public async Task<User> AuthenticateAsync(string username, string password)
         {
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("Tên người dùng và mật khẩu không được rỗng.");
+            using var conn = new SQLiteConnection(connectionString);
+            await conn.OpenAsync();
 
-            UserResponse user = await userRepository.GetUserAsync(username);
-            if (user == null)
-                return false;
+            string query = @"SELECT * FROM Users WHERE UserName = @username AND Password = @password";
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
 
-            return PasswordHasher.VerifyPassword(password, user.Password); 
-        }
-
-        public async Task<String> GetPasswordByEmail (string email)
-        {
-            if (!IsValidEmail(email))
-                return "Email không tồn tại";
-            UserResponse user = await userRepository.GetUserByEmailAsync(email);
-
-            return PasswordHasher.DecryptPassword(user.Password);
-
+            using var reader = await cmd.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                return new User
+                {
+                    Id = reader["Id"].ToString(),
+                    UserName = reader["UserName"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    FullName = reader["FullName"].ToString(),
+                    PhoneNumber = reader["PhoneNumber"].ToString(),
+                    Role = (UserRole)Convert.ToInt32(reader["Role"])
+                };
+            }
+            return null;
         }
 
         private bool IsValidEmail(string email)
@@ -61,45 +78,16 @@ namespace QuanlyPhongKham.Services
                 return false;
             }
         }
-
-        // Sai kiến trúc lớp rùi, truy vấn phải đặt trong repository
-        public async Task<User> GetUserByCredentials(string username, string password)
+        public async Task<string> GetPasswordByEmail(string email)
         {
-            return await userRepository.GetUserByCredentials(username, password);
+            using var conn = new SQLiteConnection(connectionString);
+            await conn.OpenAsync();
+
+            var cmd = new SQLiteCommand("SELECT Password FROM Users WHERE Email = @Email", conn);
+            cmd.Parameters.AddWithValue("@Email", email);
+            var result = await cmd.ExecuteScalarAsync();
+
+            return result?.ToString();
         }
-
-        /*public async Task<User> GetUserByCredentials(string username, string password)
-        {
-            string connectionString = "Data Source=C:\\Users\\Tung\\source\\repos\\QuanLyPhongKhamRang\\QuanlyPhongKham\\QuanLyPhongKham.db;Version=3;";
-            using (var conn = new SQLiteConnection(connectionString))
-            {
-                await conn.OpenAsync();
-
-                string query = "SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password";
-                using (var cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@UserName", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
-
-                    using (var reader = await cmd.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            return new User
-                            {
-                                Id = reader["Id"].ToString(),
-                                UserName = reader["UserName"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                Role = (UserRole)Convert.ToInt32(reader["Role"])
-                            };
-                        }
-                    }
-                }
-            }
-
-            return null;
-        }
-
-        */
     }
 }

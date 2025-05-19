@@ -49,20 +49,18 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(210, 147);
-            dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            dataGridView1.Location = new System.Drawing.Point(240, 196);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new System.Drawing.Size(782, 522);
+            dataGridView1.Size = new System.Drawing.Size(894, 696);
             dataGridView1.TabIndex = 0;
             // 
             // AdminQLDVQv
             // 
             AdminQLDVQv.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVQv.Location = new System.Drawing.Point(910, 31);
-            AdminQLDVQv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQLDVQv.Location = new System.Drawing.Point(1040, 41);
             AdminQLDVQv.Name = "AdminQLDVQv";
-            AdminQLDVQv.Size = new System.Drawing.Size(82, 22);
+            AdminQLDVQv.Size = new System.Drawing.Size(94, 29);
             AdminQLDVQv.TabIndex = 1;
             AdminQLDVQv.Text = "Quay về";
             AdminQLDVQv.UseVisualStyleBackColor = true;
@@ -70,28 +68,26 @@
             // AdminQLDVNameTb
             // 
             AdminQLDVNameTb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVNameTb.Location = new System.Drawing.Point(310, 42);
-            AdminQLDVNameTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQLDVNameTb.Location = new System.Drawing.Point(354, 56);
             AdminQLDVNameTb.Name = "AdminQLDVNameTb";
-            AdminQLDVNameTb.Size = new System.Drawing.Size(287, 25);
+            AdminQLDVNameTb.Size = new System.Drawing.Size(327, 29);
             AdminQLDVNameTb.TabIndex = 2;
             // 
             // AdminQLDVPricetbx
             // 
             AdminQLDVPricetbx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVPricetbx.Location = new System.Drawing.Point(310, 87);
-            AdminQLDVPricetbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQLDVPricetbx.Location = new System.Drawing.Point(354, 116);
             AdminQLDVPricetbx.Name = "AdminQLDVPricetbx";
-            AdminQLDVPricetbx.Size = new System.Drawing.Size(287, 25);
+            AdminQLDVPricetbx.Size = new System.Drawing.Size(327, 29);
             AdminQLDVPricetbx.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            label1.Location = new System.Drawing.Point(210, 45);
+            label1.Location = new System.Drawing.Point(240, 60);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(81, 17);
+            label1.Size = new System.Drawing.Size(102, 23);
             label1.TabIndex = 4;
             label1.Text = "Tên Dịch vụ";
             // 
@@ -99,19 +95,18 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            label2.Location = new System.Drawing.Point(212, 90);
+            label2.Location = new System.Drawing.Point(242, 120);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(79, 17);
+            label2.Size = new System.Drawing.Size(101, 23);
             label2.TabIndex = 5;
             label2.Text = "Giá Dịch vụ";
             // 
             // AdminQbtnLDVCx
             // 
             AdminQbtnLDVCx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQbtnLDVCx.Location = new System.Drawing.Point(683, 45);
-            AdminQbtnLDVCx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQbtnLDVCx.Location = new System.Drawing.Point(781, 60);
             AdminQbtnLDVCx.Name = "AdminQbtnLDVCx";
-            AdminQbtnLDVCx.Size = new System.Drawing.Size(82, 22);
+            AdminQbtnLDVCx.Size = new System.Drawing.Size(94, 29);
             AdminQbtnLDVCx.TabIndex = 6;
             AdminQbtnLDVCx.Text = "Chỉnh sửa";
             AdminQbtnLDVCx.UseVisualStyleBackColor = true;
@@ -119,10 +114,9 @@
             // AdminQLDVXbtn
             // 
             AdminQLDVXbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVXbtn.Location = new System.Drawing.Point(683, 90);
-            AdminQLDVXbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQLDVXbtn.Location = new System.Drawing.Point(781, 120);
             AdminQLDVXbtn.Name = "AdminQLDVXbtn";
-            AdminQLDVXbtn.Size = new System.Drawing.Size(82, 22);
+            AdminQLDVXbtn.Size = new System.Drawing.Size(94, 29);
             AdminQLDVXbtn.TabIndex = 7;
             AdminQLDVXbtn.Text = "Xóa";
             AdminQLDVXbtn.UseVisualStyleBackColor = true;
@@ -134,9 +128,10 @@
             panel2.Controls.Add(Statisticlbl);
             panel2.Controls.Add(Serviceslbl);
             panel2.Controls.Add(SignOutlbl);
-            panel2.Location = new System.Drawing.Point(12, 31);
+            panel2.Location = new System.Drawing.Point(14, 41);
+            panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(176, 638);
+            panel2.Size = new System.Drawing.Size(201, 851);
             panel2.TabIndex = 8;
             // 
             // Homelbl
@@ -144,9 +139,9 @@
             Homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Homelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Homelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Homelbl.Location = new System.Drawing.Point(3, 206);
+            Homelbl.Location = new System.Drawing.Point(3, 275);
             Homelbl.Name = "Homelbl";
-            Homelbl.Size = new System.Drawing.Size(170, 46);
+            Homelbl.Size = new System.Drawing.Size(194, 61);
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,9 +151,9 @@
             FinReplbl.Cursor = System.Windows.Forms.Cursors.Hand;
             FinReplbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             FinReplbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            FinReplbl.Location = new System.Drawing.Point(3, 344);
+            FinReplbl.Location = new System.Drawing.Point(3, 459);
             FinReplbl.Name = "FinReplbl";
-            FinReplbl.Size = new System.Drawing.Size(170, 46);
+            FinReplbl.Size = new System.Drawing.Size(194, 61);
             FinReplbl.TabIndex = 5;
             FinReplbl.Text = "BCTC";
             FinReplbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,9 +163,9 @@
             Statisticlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Statisticlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Statisticlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Statisticlbl.Location = new System.Drawing.Point(3, 298);
+            Statisticlbl.Location = new System.Drawing.Point(3, 397);
             Statisticlbl.Name = "Statisticlbl";
-            Statisticlbl.Size = new System.Drawing.Size(170, 46);
+            Statisticlbl.Size = new System.Drawing.Size(194, 61);
             Statisticlbl.TabIndex = 5;
             Statisticlbl.Text = "QLTK";
             Statisticlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,9 +175,9 @@
             Serviceslbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Serviceslbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Serviceslbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Serviceslbl.Location = new System.Drawing.Point(3, 252);
+            Serviceslbl.Location = new System.Drawing.Point(3, 336);
             Serviceslbl.Name = "Serviceslbl";
-            Serviceslbl.Size = new System.Drawing.Size(170, 46);
+            Serviceslbl.Size = new System.Drawing.Size(194, 61);
             Serviceslbl.TabIndex = 5;
             Serviceslbl.Text = "QLDV";
             Serviceslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,18 +187,18 @@
             SignOutlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             SignOutlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SignOutlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            SignOutlbl.Location = new System.Drawing.Point(3, 582);
+            SignOutlbl.Location = new System.Drawing.Point(3, 776);
             SignOutlbl.Name = "SignOutlbl";
-            SignOutlbl.Size = new System.Drawing.Size(170, 46);
+            SignOutlbl.Size = new System.Drawing.Size(194, 61);
             SignOutlbl.TabIndex = 4;
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AdminQLDV
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1008, 681);
+            ClientSize = new System.Drawing.Size(1152, 908);
             Controls.Add(panel2);
             Controls.Add(AdminQLDVXbtn);
             Controls.Add(AdminQbtnLDVCx);
@@ -213,9 +208,9 @@
             Controls.Add(AdminQLDVNameTb);
             Controls.Add(AdminQLDVQv);
             Controls.Add(dataGridView1);
-            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "AdminQLDV";
             Text = "AdminQLDV";
+            FormClosing += AdminQLDV_FormClosing;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             ResumeLayout(false);

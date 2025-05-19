@@ -13,7 +13,7 @@ namespace QuanlyPhongKham.Views
         private DataTable invoiceDetailsTable;
         private string lastPatientName;
         private int lastPatientId;
-        private string currentDoctorId; 
+        private string currentDoctorId;
         private string currentDoctorName;
         private User currentUser;
         private User user;
@@ -372,6 +372,11 @@ namespace QuanlyPhongKham.Views
                 object result = cmd.ExecuteScalar();
                 return result != null ? Convert.ToInt32(result) : 0;
             }
+        }
+
+        private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

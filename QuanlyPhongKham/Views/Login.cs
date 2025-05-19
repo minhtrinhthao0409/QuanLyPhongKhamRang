@@ -29,8 +29,8 @@ namespace QuanlyPhongKham
         {
             this.Hide();
             using (QuenMatKhau quenMatKhau = new QuenMatKhau())
-            { 
-                quenMatKhau.ShowDialog(); 
+            {
+                quenMatKhau.ShowDialog();
             }
             this.Show();
         }
@@ -48,19 +48,19 @@ namespace QuanlyPhongKham
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             string userName = txtTendangnhap.Text;
-            string password = txtMatKhau.Text;  
+            string password = txtMatKhau.Text;
             if (userName.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập tên tài khoản!");
                 return;
             }
-            if(password.Trim() == "")
+            if (password.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập mật khẩu!");
                 return;
             }
 
-            var user = await userController.Login(userName, password);
+            var user = await userController.LoginAssyn(userName, password);
             if (user != null)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -96,7 +96,7 @@ namespace QuanlyPhongKham
 
         private void Login_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void Login_KeyDown(object sender, KeyEventArgs e)
@@ -105,6 +105,11 @@ namespace QuanlyPhongKham
             {
                 btnDangNhap.PerformClick();
             }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

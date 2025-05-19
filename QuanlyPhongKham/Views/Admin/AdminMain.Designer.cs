@@ -49,9 +49,10 @@
             panel2.Controls.Add(Statisticlbl);
             panel2.Controls.Add(Serviceslbl);
             panel2.Controls.Add(SignOutlbl);
-            panel2.Location = new System.Drawing.Point(12, 31);
+            panel2.Location = new System.Drawing.Point(14, 41);
+            panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(176, 638);
+            panel2.Size = new System.Drawing.Size(201, 851);
             panel2.TabIndex = 6;
             // 
             // Homelbl
@@ -59,9 +60,9 @@
             Homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Homelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Homelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Homelbl.Location = new System.Drawing.Point(3, 206);
+            Homelbl.Location = new System.Drawing.Point(3, 275);
             Homelbl.Name = "Homelbl";
-            Homelbl.Size = new System.Drawing.Size(170, 46);
+            Homelbl.Size = new System.Drawing.Size(194, 61);
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,9 +72,9 @@
             FinReplbl.Cursor = System.Windows.Forms.Cursors.Hand;
             FinReplbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             FinReplbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            FinReplbl.Location = new System.Drawing.Point(3, 344);
+            FinReplbl.Location = new System.Drawing.Point(3, 459);
             FinReplbl.Name = "FinReplbl";
-            FinReplbl.Size = new System.Drawing.Size(170, 46);
+            FinReplbl.Size = new System.Drawing.Size(194, 61);
             FinReplbl.TabIndex = 5;
             FinReplbl.Text = "BCTC";
             FinReplbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,9 +84,9 @@
             Statisticlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Statisticlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Statisticlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Statisticlbl.Location = new System.Drawing.Point(3, 298);
+            Statisticlbl.Location = new System.Drawing.Point(3, 397);
             Statisticlbl.Name = "Statisticlbl";
-            Statisticlbl.Size = new System.Drawing.Size(170, 46);
+            Statisticlbl.Size = new System.Drawing.Size(194, 61);
             Statisticlbl.TabIndex = 5;
             Statisticlbl.Text = "QLTK";
             Statisticlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -95,9 +96,9 @@
             Serviceslbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Serviceslbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Serviceslbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Serviceslbl.Location = new System.Drawing.Point(3, 252);
+            Serviceslbl.Location = new System.Drawing.Point(3, 336);
             Serviceslbl.Name = "Serviceslbl";
-            Serviceslbl.Size = new System.Drawing.Size(170, 46);
+            Serviceslbl.Size = new System.Drawing.Size(194, 61);
             Serviceslbl.TabIndex = 5;
             Serviceslbl.Text = "QLDV";
             Serviceslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,9 +108,9 @@
             SignOutlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             SignOutlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SignOutlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            SignOutlbl.Location = new System.Drawing.Point(3, 582);
+            SignOutlbl.Location = new System.Drawing.Point(3, 776);
             SignOutlbl.Name = "SignOutlbl";
-            SignOutlbl.Size = new System.Drawing.Size(170, 46);
+            SignOutlbl.Size = new System.Drawing.Size(194, 61);
             SignOutlbl.TabIndex = 4;
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,9 +118,10 @@
             // Editbtn
             // 
             Editbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Editbtn.Location = new System.Drawing.Point(624, 154);
+            Editbtn.Location = new System.Drawing.Point(713, 205);
+            Editbtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Editbtn.Name = "Editbtn";
-            Editbtn.Size = new System.Drawing.Size(72, 39);
+            Editbtn.Size = new System.Drawing.Size(82, 52);
             Editbtn.TabIndex = 14;
             Editbtn.Text = "Edit";
             Editbtn.UseVisualStyleBackColor = true;
@@ -127,50 +129,51 @@
             // Usernamelbl
             // 
             Usernamelbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Usernamelbl.Location = new System.Drawing.Point(194, 74);
+            Usernamelbl.Location = new System.Drawing.Point(222, 99);
             Usernamelbl.Name = "Usernamelbl";
-            Usernamelbl.Size = new System.Drawing.Size(170, 25);
+            Usernamelbl.Size = new System.Drawing.Size(194, 33);
             Usernamelbl.TabIndex = 13;
             Usernamelbl.Text = "Username:";
             // 
             // Emaillbl
             // 
             Emaillbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Emaillbl.Location = new System.Drawing.Point(194, 112);
+            Emaillbl.Location = new System.Drawing.Point(222, 149);
             Emaillbl.Name = "Emaillbl";
-            Emaillbl.Size = new System.Drawing.Size(170, 25);
+            Emaillbl.Size = new System.Drawing.Size(194, 33);
             Emaillbl.TabIndex = 12;
             Emaillbl.Text = "Email:";
             // 
             // monthCalendar1
             // 
-            monthCalendar1.Location = new System.Drawing.Point(749, 31);
+            monthCalendar1.Location = new System.Drawing.Point(856, 41);
+            monthCalendar1.Margin = new System.Windows.Forms.Padding(10, 12, 10, 12);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 11;
             // 
             // Welcomelbl
             // 
             Welcomelbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Welcomelbl.Location = new System.Drawing.Point(194, 31);
+            Welcomelbl.Location = new System.Drawing.Point(222, 41);
             Welcomelbl.Name = "Welcomelbl";
-            Welcomelbl.Size = new System.Drawing.Size(397, 43);
+            Welcomelbl.Size = new System.Drawing.Size(454, 57);
             Welcomelbl.TabIndex = 10;
             Welcomelbl.Text = "Welcome, user123";
             // 
             // AdminMain
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1008, 681);
+            ClientSize = new System.Drawing.Size(1152, 908);
             Controls.Add(Editbtn);
             Controls.Add(Usernamelbl);
             Controls.Add(Emaillbl);
             Controls.Add(monthCalendar1);
             Controls.Add(Welcomelbl);
             Controls.Add(panel2);
-            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "AdminMain";
             Text = "AdminMain";
+            FormClosing += AdminMain_FormClosing;
             panel2.ResumeLayout(false);
             ResumeLayout(false);
         }

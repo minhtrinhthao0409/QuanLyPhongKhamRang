@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Admin
 {
-    public partial class AdminMain: Form
+    public partial class AdminMain : Form
     {
         public AdminMain()
         {
             InitializeComponent();
+        }
+
+        private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

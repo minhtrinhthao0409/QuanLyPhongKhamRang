@@ -21,5 +21,10 @@ namespace QuanlyPhongKham.Views.Admin
         {
 
         }
+
+        private void AdminBCTC_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

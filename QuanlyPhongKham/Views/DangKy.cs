@@ -90,5 +90,10 @@ namespace QuanlyPhongKham
         {
             this.Close();
         }
+
+        private void DangKy_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

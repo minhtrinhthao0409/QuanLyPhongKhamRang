@@ -42,11 +42,10 @@
             // AdminQLTKDTGV
             // 
             AdminQLTKDTGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminQLTKDTGV.Location = new System.Drawing.Point(210, 147);
-            AdminQLTKDTGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQLTKDTGV.Location = new System.Drawing.Point(240, 196);
             AdminQLTKDTGV.Name = "AdminQLTKDTGV";
             AdminQLTKDTGV.RowHeadersWidth = 51;
-            AdminQLTKDTGV.Size = new System.Drawing.Size(782, 522);
+            AdminQLTKDTGV.Size = new System.Drawing.Size(894, 696);
             AdminQLTKDTGV.TabIndex = 0;
             // 
             // panel2
@@ -56,9 +55,10 @@
             panel2.Controls.Add(Statisticlbl);
             panel2.Controls.Add(Serviceslbl);
             panel2.Controls.Add(SignOutlbl);
-            panel2.Location = new System.Drawing.Point(12, 31);
+            panel2.Location = new System.Drawing.Point(14, 41);
+            panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(176, 638);
+            panel2.Size = new System.Drawing.Size(201, 851);
             panel2.TabIndex = 9;
             // 
             // Homelbl
@@ -66,9 +66,9 @@
             Homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Homelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Homelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Homelbl.Location = new System.Drawing.Point(3, 206);
+            Homelbl.Location = new System.Drawing.Point(3, 275);
             Homelbl.Name = "Homelbl";
-            Homelbl.Size = new System.Drawing.Size(170, 46);
+            Homelbl.Size = new System.Drawing.Size(194, 61);
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -78,9 +78,9 @@
             FinReplbl.Cursor = System.Windows.Forms.Cursors.Hand;
             FinReplbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             FinReplbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            FinReplbl.Location = new System.Drawing.Point(3, 344);
+            FinReplbl.Location = new System.Drawing.Point(3, 459);
             FinReplbl.Name = "FinReplbl";
-            FinReplbl.Size = new System.Drawing.Size(170, 46);
+            FinReplbl.Size = new System.Drawing.Size(194, 61);
             FinReplbl.TabIndex = 5;
             FinReplbl.Text = "BCTC";
             FinReplbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -90,9 +90,9 @@
             Statisticlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Statisticlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Statisticlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Statisticlbl.Location = new System.Drawing.Point(3, 298);
+            Statisticlbl.Location = new System.Drawing.Point(3, 397);
             Statisticlbl.Name = "Statisticlbl";
-            Statisticlbl.Size = new System.Drawing.Size(170, 46);
+            Statisticlbl.Size = new System.Drawing.Size(194, 61);
             Statisticlbl.TabIndex = 5;
             Statisticlbl.Text = "QLTK";
             Statisticlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -102,9 +102,9 @@
             Serviceslbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Serviceslbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Serviceslbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Serviceslbl.Location = new System.Drawing.Point(3, 252);
+            Serviceslbl.Location = new System.Drawing.Point(3, 336);
             Serviceslbl.Name = "Serviceslbl";
-            Serviceslbl.Size = new System.Drawing.Size(170, 46);
+            Serviceslbl.Size = new System.Drawing.Size(194, 61);
             Serviceslbl.TabIndex = 5;
             Serviceslbl.Text = "QLDV";
             Serviceslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,23 +114,23 @@
             SignOutlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             SignOutlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SignOutlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            SignOutlbl.Location = new System.Drawing.Point(3, 582);
+            SignOutlbl.Location = new System.Drawing.Point(3, 776);
             SignOutlbl.Name = "SignOutlbl";
-            SignOutlbl.Size = new System.Drawing.Size(170, 46);
+            SignOutlbl.Size = new System.Drawing.Size(194, 61);
             SignOutlbl.TabIndex = 4;
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AdminQLTK
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1008, 681);
+            ClientSize = new System.Drawing.Size(1152, 908);
             Controls.Add(panel2);
             Controls.Add(AdminQLTKDTGV);
-            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "AdminQLTK";
             Text = "AdminQLTK";
+            FormClosing += AdminQLTK_FormClosing;
             ((System.ComponentModel.ISupportInitialize)AdminQLTKDTGV).EndInit();
             panel2.ResumeLayout(false);
             ResumeLayout(false);

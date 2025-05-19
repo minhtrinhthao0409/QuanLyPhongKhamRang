@@ -140,6 +140,7 @@
             Name = "QuenMatKhau";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "QuenMatKhau";
+            FormClosing += QuenMatKhau_FormClosing;
             KeyDown += QuenMatKhau_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

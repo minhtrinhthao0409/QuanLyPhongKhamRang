@@ -4,8 +4,6 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Npgsql;
-//using Microsoft.Data.Sqlite;
 using QuanlyPhongKham.Models;
 using System.Data.SQLite;
 
@@ -15,186 +13,58 @@ namespace QuanlyPhongKham.repository
 {
     public class UserRepository : BaseRepository
     {
-        public UserRepository(string connectionString = null) : base(connectionString)
-        {
-        }
+        public UserRepository(string connectionString = null) : base(connectionString) { }
 
         public async Task<bool> CheckUsernameExistsAsync(string username)
         {
-            if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentException("Tên người dùng không được rỗng.", nameof(username));
-
-            using (var connection = await GetConnectionAsync())
-            using (var command = new SQLiteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)" ,connection))
-            {
-                try
-                {
-                    command.Parameters.AddWithValue("@username", username);
-                    var result = await command.ExecuteScalarAsync();
-                    return Convert.ToBoolean(result);
-                }
-                catch (SQLiteException ex)
-                {
-                    throw new Exception("Lỗi cơ sở dữ liệu khi kiểm tra tên người dùng.", ex);
-                }
-            }
+            using var connection = await GetConnectionAsync();
+            using var command = new SQLiteCommand("SELECT 1 FROM Users WHERE username = @username", connection);
+            command.Parameters.AddWithValue("@username", username);
+            var result = await command.ExecuteScalarAsync();
+            return result != null;
         }
 
-        public async Task<int> CreateUserAsync(string username, string email, string password)
+        public async Task<string> CreateUserAsync(User user)
         {
-            if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentException("Tên người dùng không được rỗng.", nameof(username));
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("Email không được rỗng.", nameof(email));
-            if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("Mật khẩu không được rỗng.", nameof(password));
-            int affectedRows = 0;
-            using (var connection = await GetConnectionAsync())
-            using (var transaction = connection.BeginTransaction())
-            {
-                try
-                {
-                    // Kiểm tra trùng username
-                    using (var command = new SQLiteCommand("SELECT EXISTS (SELECT 1 FROM Users WHERE username = @username)", connection))
-                    {
-                        command.Parameters.AddWithValue("@username", username);
-                        bool exists = Convert.ToBoolean(await command.ExecuteScalarAsync());
-                        if (exists)
-                            throw new Exception("Tên người dùng đã tồn tại.");
-                    }
+            string userId = Guid.NewGuid().ToString();
 
-                    // Tạo người dùng mới
-                    using (var command = new SQLiteCommand(
-                        "INSERT INTO users ( username, email, password) VALUES ( @username, @email, @password)",
-                        connection))
-                    {
-                        
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@email", email);
-                        command.Parameters.AddWithValue("@password", password);
+            using var connection = await GetConnectionAsync();
+            using var transaction = connection.BeginTransaction();
 
-                        affectedRows = await command.ExecuteNonQueryAsync();
-                    }
+            var cmd = new SQLiteCommand(@"INSERT INTO Users (Id, UserName, Password, Email, Role) 
+                                      VALUES (@Id, @UserName, @Password, @Email, @Role)", connection);
 
-                     await transaction.CommitAsync();
-                }
-                catch (Exception ex)
-                {
-                    await transaction.RollbackAsync();
-                    throw new Exception("Lỗi khi tạo người dùng.", ex);
-                }
-            }
-            return affectedRows;
+            cmd.Parameters.AddWithValue("@Id", userId);
+            cmd.Parameters.AddWithValue("@UserName", user.UserName);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@Role", (int)user.Role);
+
+            await cmd.ExecuteNonQueryAsync();
+            await transaction.CommitAsync();
+            return userId;
         }
 
-        public async Task<UserResponse> GetUserAsync(string username)
+        public async Task<User> GetUserByUsernameAsync(string username)
         {
-            if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentException("Tên người dùng không được rỗng.", nameof(username));
+            using var connection = await GetConnectionAsync();
+            using var cmd = new SQLiteCommand("SELECT * FROM Users WHERE UserName = @UserName", connection);
+            cmd.Parameters.AddWithValue("@UserName", username);
 
-            UserResponse userResponse = null;
-
-            using (var connection = await GetConnectionAsync())
-            using (var command = new SQLiteCommand("SELECT id, username, email, password FROM users WHERE username = @username", connection))
+            using var reader = await cmd.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
             {
-                try
+                return new User
                 {
-                    command.Parameters.AddWithValue("@username", username);
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            userResponse = new UserResponse
-                            {
-                                Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                UserName = reader.GetString(reader.GetOrdinal("username")),
-                                Email = reader.IsDBNull(reader.GetOrdinal("email"))
-                                        ? null
-                                        : reader.GetString(reader.GetOrdinal("email")),
-                                Password = reader.IsDBNull(reader.GetOrdinal("password"))
-                                        ? null
-                                        : reader.GetString(reader.GetOrdinal("password"))
-
-                            };
-                        }
-                    }
-                }
-                catch (SQLiteException ex)
-                {
-                    throw new Exception("Lỗi cơ sở dữ liệu khi lấy thông tin người dùng.", ex);
-                }
+                    Id = reader["Id"].ToString(),
+                    UserName = reader["UserName"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    Role = (UserRole)Convert.ToInt32(reader["Role"])
+                };
             }
-
-            return userResponse;
-        }
-        public async Task<UserResponse> GetUserByEmailAsync(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("Tên email không được rỗng.", nameof(email));
-
-            UserResponse userResponse = null;
-
-            using (var connection = await GetConnectionAsync())
-            using (var command = new SQLiteCommand("SELECT id, username, email, password FROM users WHERE email = @email", connection))
-            {
-                try
-                {
-                    command.Parameters.AddWithValue("@email", email);
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            userResponse = new UserResponse
-                            {
-                                Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                UserName = reader.GetString(reader.GetOrdinal("username")),
-                                Email = reader.IsDBNull(reader.GetOrdinal("email"))
-                                        ? null
-                                        : reader.GetString(reader.GetOrdinal("email")),
-                                Password = reader.IsDBNull(reader.GetOrdinal("password"))
-                                        ? null
-                                        : reader.GetString(reader.GetOrdinal("password"))
-
-                            };
-                        }
-                    }
-                }
-                catch (SQLiteException ex)
-                {
-                    throw new Exception("Lỗi cơ sở dữ liệu khi lấy thông tin người dùng.", ex);
-                }
-            }
-
-            return userResponse;
-        }
-
-        public async Task<User> GetUserByCredentials(string username, string password)
-        {
-            
-            User user = null;
-            using (var connection = await GetConnectionAsync())
-            using (var cmd = new SQLiteCommand("SELECT * FROM Users WHERE UserName = @UserName AND Password = @Password", connection))
-            {
-                cmd.Parameters.AddWithValue("@UserName", username);
-                cmd.Parameters.AddWithValue("@Password", password);
-
-                using (var reader = await cmd.ExecuteReaderAsync())
-                {
-                    if (await reader.ReadAsync())
-                    {
-                        return new User
-                        {
-                            Id = reader["Id"].ToString(),
-                            UserName = reader["UserName"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            Role = (UserRole)Convert.ToInt32(reader["Role"])
-                        };
-                    }
-                }
-            }
-            return user;
+            return null;
         }
     }
+
 }

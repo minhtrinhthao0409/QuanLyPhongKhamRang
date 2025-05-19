@@ -67,7 +67,7 @@
             txtTentaikhoan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             txtTentaikhoan.Name = "txtTentaikhoan";
             txtTentaikhoan.Size = new System.Drawing.Size(275, 29);
-            txtTentaikhoan.TabIndex = 2;
+            txtTentaikhoan.TabIndex = 1;
             // 
             // txtMatKhau
             // 
@@ -77,7 +77,7 @@
             txtMatKhau.Name = "txtMatKhau";
             txtMatKhau.PasswordChar = '*';
             txtMatKhau.Size = new System.Drawing.Size(275, 29);
-            txtMatKhau.TabIndex = 3;
+            txtMatKhau.TabIndex = 2;
             // 
             // txt_XNMatKhai
             // 
@@ -87,7 +87,7 @@
             txt_XNMatKhai.Name = "txt_XNMatKhai";
             txt_XNMatKhai.PasswordChar = '*';
             txt_XNMatKhai.Size = new System.Drawing.Size(275, 29);
-            txt_XNMatKhai.TabIndex = 4;
+            txt_XNMatKhai.TabIndex = 3;
             // 
             // txtEmail
             // 
@@ -108,7 +108,7 @@
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(122, 20);
-            label1.TabIndex = 6;
+            label1.TabIndex = 11;
             label1.Text = "Tên Tài Khoản:";
             // 
             // label2
@@ -120,7 +120,7 @@
             label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(90, 20);
-            label2.TabIndex = 7;
+            label2.TabIndex = 12;
             label2.Text = "Mật Khẩu: ";
             // 
             // label3
@@ -132,7 +132,7 @@
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(163, 20);
-            label3.TabIndex = 8;
+            label3.TabIndex = 13;
             label3.Text = "Xác Nhận Mật Khẩu:";
             // 
             // label4
@@ -144,7 +144,7 @@
             label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(56, 20);
-            label4.TabIndex = 9;
+            label4.TabIndex = 15;
             label4.Text = "Email:";
             // 
             // btnDangKy
@@ -157,7 +157,7 @@
             btnDangKy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             btnDangKy.Name = "btnDangKy";
             btnDangKy.Size = new System.Drawing.Size(131, 66);
-            btnDangKy.TabIndex = 10;
+            btnDangKy.TabIndex = 8;
             btnDangKy.Text = "Đăng Ký";
             btnDangKy.UseVisualStyleBackColor = false;
             btnDangKy.Click += btnDangKy_Click;
@@ -171,7 +171,7 @@
             label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(86, 20);
-            label5.TabIndex = 12;
+            label5.TabIndex = 10;
             label5.Text = "Họ và tên:";
             // 
             // txtHoten
@@ -181,7 +181,7 @@
             txtHoten.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             txtHoten.Name = "txtHoten";
             txtHoten.Size = new System.Drawing.Size(275, 29);
-            txtHoten.TabIndex = 11;
+            txtHoten.TabIndex = 0;
             // 
             // rbDoctor
             // 
@@ -189,7 +189,7 @@
             rbDoctor.Location = new System.Drawing.Point(212, 592);
             rbDoctor.Name = "rbDoctor";
             rbDoctor.Size = new System.Drawing.Size(68, 24);
-            rbDoctor.TabIndex = 13;
+            rbDoctor.TabIndex = 6;
             rbDoctor.TabStop = true;
             rbDoctor.Text = "Bác sĩ";
             rbDoctor.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             rbCashier.Location = new System.Drawing.Point(396, 592);
             rbCashier.Name = "rbCashier";
             rbCashier.Size = new System.Drawing.Size(91, 24);
-            rbCashier.TabIndex = 14;
+            rbCashier.TabIndex = 7;
             rbCashier.TabStop = true;
             rbCashier.Text = "Thu ngân";
             rbCashier.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@
             label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(111, 20);
-            label6.TabIndex = 16;
+            label6.TabIndex = 14;
             label6.Text = "Số điện thoại:";
             // 
             // txtSDT
@@ -224,7 +224,7 @@
             txtSDT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new System.Drawing.Size(275, 29);
-            txtSDT.TabIndex = 15;
+            txtSDT.TabIndex = 4;
             // 
             // btnQuaylai
             // 
@@ -236,7 +236,7 @@
             btnQuaylai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             btnQuaylai.Name = "btnQuaylai";
             btnQuaylai.Size = new System.Drawing.Size(94, 35);
-            btnQuaylai.TabIndex = 17;
+            btnQuaylai.TabIndex = 9;
             btnQuaylai.Text = "Quay lại";
             btnQuaylai.UseVisualStyleBackColor = false;
             btnQuaylai.Click += btnQuaylai_Click;
@@ -268,6 +268,7 @@
             Name = "DangKy";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Đăng Ký";
+            FormClosing += DangKy_FormClosing;
             Load += DangKy_Load;
             KeyDown += DangKy_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

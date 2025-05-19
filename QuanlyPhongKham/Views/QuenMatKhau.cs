@@ -35,5 +35,10 @@ namespace QuanlyPhongKham
         {
             this.Close();
         }
+
+        private void QuenMatKhau_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

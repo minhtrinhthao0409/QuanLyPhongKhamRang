@@ -17,5 +17,9 @@ namespace QuanlyPhongKham.Views.Admin
             InitializeComponent();
         }
 
+        private void AdminQLDV_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             GhiBenhAn = new System.Windows.Forms.TabPage();
             btnSaveRecord = new System.Windows.Forms.Button();
             dtpExaminationDate = new System.Windows.Forms.DateTimePicker();
@@ -49,6 +49,11 @@
             lbPatientID = new System.Windows.Forms.Label();
             XemLichHen = new System.Windows.Forms.TabPage();
             dgvAppointments = new System.Windows.Forms.DataGridView();
+            BenhNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            TenBacSi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            NgayHen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            GioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            GioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             tabControl1 = new System.Windows.Forms.TabControl();
             XemBenhAn = new System.Windows.Forms.TabPage();
             dgvXemBenhAn = new System.Windows.Forms.DataGridView();
@@ -74,11 +79,6 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
-            BenhNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            TenBacSi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            NgayHen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            GioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            GioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
@@ -284,6 +284,36 @@
             dgvAppointments.Size = new System.Drawing.Size(767, 518);
             dgvAppointments.TabIndex = 0;
             // 
+            // BenhNhan
+            // 
+            BenhNhan.HeaderText = "Tên bệnh nhân";
+            BenhNhan.MinimumWidth = 6;
+            BenhNhan.Name = "BenhNhan";
+            // 
+            // TenBacSi
+            // 
+            TenBacSi.HeaderText = "Tên bác sĩ";
+            TenBacSi.MinimumWidth = 6;
+            TenBacSi.Name = "TenBacSi";
+            // 
+            // NgayHen
+            // 
+            NgayHen.HeaderText = "Ngày hẹn";
+            NgayHen.MinimumWidth = 6;
+            NgayHen.Name = "NgayHen";
+            // 
+            // GioBatDau
+            // 
+            GioBatDau.HeaderText = "Giờ bắt đầu";
+            GioBatDau.MinimumWidth = 6;
+            GioBatDau.Name = "GioBatDau";
+            // 
+            // GioKetThuc
+            // 
+            GioKetThuc.HeaderText = "Giờ kết thúc";
+            GioKetThuc.MinimumWidth = 6;
+            GioKetThuc.Name = "GioKetThuc";
+            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(XemLichHen);
@@ -360,14 +390,14 @@
             dgvInvoiceServices.Location = new System.Drawing.Point(0, 195);
             dgvInvoiceServices.Name = "dgvInvoiceServices";
             dgvInvoiceServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvInvoiceServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvInvoiceServices.Size = new System.Drawing.Size(770, 188);
             dgvInvoiceServices.TabIndex = 10;
@@ -525,36 +555,6 @@
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
-            // BenhNhan
-            // 
-            BenhNhan.HeaderText = "Tên bệnh nhân";
-            BenhNhan.MinimumWidth = 6;
-            BenhNhan.Name = "BenhNhan";
-            // 
-            // TenBacSi
-            // 
-            TenBacSi.HeaderText = "Tên bác sĩ";
-            TenBacSi.MinimumWidth = 6;
-            TenBacSi.Name = "TenBacSi";
-            // 
-            // NgayHen
-            // 
-            NgayHen.HeaderText = "Ngày hẹn";
-            NgayHen.MinimumWidth = 6;
-            NgayHen.Name = "NgayHen";
-            // 
-            // GioBatDau
-            // 
-            GioBatDau.HeaderText = "Giờ bắt đầu";
-            GioBatDau.MinimumWidth = 6;
-            GioBatDau.Name = "GioBatDau";
-            // 
-            // GioKetThuc
-            // 
-            GioKetThuc.HeaderText = "Giờ kết thúc";
-            GioKetThuc.MinimumWidth = 6;
-            GioKetThuc.Name = "GioKetThuc";
-            // 
             // BacSi
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -564,6 +564,7 @@
             Name = "BacSi";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Bác Sĩ";
+            FormClosing += BacSi_FormClosing;
             GhiBenhAn.ResumeLayout(false);
             GhiBenhAn.PerformLayout();
             LenLichHen.ResumeLayout(false);
