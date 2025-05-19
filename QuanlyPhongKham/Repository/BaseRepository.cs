@@ -1,7 +1,9 @@
-﻿using Microsoft.Data.Sqlite;
+﻿//using Microsoft.Data.Sqlite;
 using System.Configuration;
 using System.Threading.Tasks;
 using System;
+using System.Data.SQLite;
+
 
 public class BaseRepository : IDisposable
 {
@@ -21,9 +23,9 @@ public class BaseRepository : IDisposable
         }
     }
 
-    protected async Task<SqliteConnection> GetConnectionAsync()
+    protected async Task<SQLiteConnection> GetConnectionAsync()
     {
-        var connection = new SqliteConnection(this.connection);
+        var connection = new SQLiteConnection(this.connection);
         await connection.OpenAsync();
         return connection;
     }
