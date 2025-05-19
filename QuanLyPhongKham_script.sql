@@ -78,10 +78,13 @@ CREATE TABLE "Users" (
 	"Id"	TEXT,
 	"UserName"	TEXT NOT NULL,
 	"Password"	TEXT NOT NULL,
+	"FullName"	TEXT,
 	"Email"	TEXT,
+	"PhoneNumber"	TEXT,
 	"Role"	INTEGER NOT NULL CHECK("Role" IN (1, 2, 3)),
 	PRIMARY KEY("Id")
-);
+)
+
 INSERT INTO "Users" VALUES('U100','dr.hung','123456','hung@clinic.com',2);
 INSERT INTO "Users" VALUES('U101','cashier.mai','abc@123','mai@clinic.com',3);
 INSERT INTO "Users" VALUES('admin-0001-uuid-unique-9999','admin','admin123','admin@clinic.com',1);
