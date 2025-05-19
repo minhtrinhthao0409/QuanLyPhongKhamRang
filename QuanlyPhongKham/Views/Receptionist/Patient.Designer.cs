@@ -37,10 +37,7 @@
             SignOutlbl = new System.Windows.Forms.Label();
             PatientTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            tabPage2 = new System.Windows.Forms.TabPage();
             CrudPanel = new System.Windows.Forms.Panel();
-            listBox1 = new System.Windows.Forms.ListBox();
-            PatientGenderTxt = new System.Windows.Forms.Label();
             patientEmailTxt = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
             PatientPhoneNoTxt = new System.Windows.Forms.TextBox();
@@ -49,6 +46,7 @@
             label1 = new System.Windows.Forms.Label();
             CrudPatient = new System.Windows.Forms.Label();
             AddScheduleBtn = new System.Windows.Forms.Button();
+            tabPage2 = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
             listBox2 = new System.Windows.Forms.ListBox();
             label3 = new System.Windows.Forms.Label();
@@ -62,12 +60,21 @@
             ResetBtn = new System.Windows.Forms.Button();
             UpdateBtn = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
+            textBox4 = new System.Windows.Forms.TextBox();
+            Guardianlbl = new System.Windows.Forms.Label();
+            Doblbl = new System.Windows.Forms.Label();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            dataGridView2 = new System.Windows.Forms.DataGridView();
+            ResetSearchPatientbtn = new System.Windows.Forms.Button();
             panel2.SuspendLayout();
             PatientTab.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
             CrudPanel.SuspendLayout();
+            tabPage2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -167,6 +174,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(CrudPanel);
             tabPage1.Location = new System.Drawing.Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -176,21 +184,9 @@
             tabPage1.Text = "Search Patient";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(panel1);
-            tabPage2.Location = new System.Drawing.Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(799, 637);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Add Patient";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
             // CrudPanel
             // 
-            CrudPanel.Controls.Add(listBox1);
-            CrudPanel.Controls.Add(PatientGenderTxt);
+            CrudPanel.Controls.Add(ResetSearchPatientbtn);
             CrudPanel.Controls.Add(patientEmailTxt);
             CrudPanel.Controls.Add(label2);
             CrudPanel.Controls.Add(PatientPhoneNoTxt);
@@ -201,32 +197,12 @@
             CrudPanel.Controls.Add(AddScheduleBtn);
             CrudPanel.Location = new System.Drawing.Point(6, 6);
             CrudPanel.Name = "CrudPanel";
-            CrudPanel.Size = new System.Drawing.Size(791, 226);
+            CrudPanel.Size = new System.Drawing.Size(796, 225);
             CrudPanel.TabIndex = 7;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Items.AddRange(new object[] { "Male", "Female" });
-            listBox1.Location = new System.Drawing.Point(521, 46);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new System.Drawing.Size(54, 19);
-            listBox1.TabIndex = 22;
-            // 
-            // PatientGenderTxt
-            // 
-            PatientGenderTxt.AutoSize = true;
-            PatientGenderTxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            PatientGenderTxt.Location = new System.Drawing.Point(439, 48);
-            PatientGenderTxt.Name = "PatientGenderTxt";
-            PatientGenderTxt.Size = new System.Drawing.Size(52, 17);
-            PatientGenderTxt.TabIndex = 21;
-            PatientGenderTxt.Text = "Gender";
             // 
             // patientEmailTxt
             // 
-            patientEmailTxt.Location = new System.Drawing.Point(521, 91);
+            patientEmailTxt.Location = new System.Drawing.Point(521, 96);
             patientEmailTxt.Name = "patientEmailTxt";
             patientEmailTxt.Size = new System.Drawing.Size(211, 23);
             patientEmailTxt.TabIndex = 20;
@@ -235,7 +211,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(438, 93);
+            label2.Location = new System.Drawing.Point(438, 98);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(42, 17);
             label2.TabIndex = 19;
@@ -243,7 +219,7 @@
             // 
             // PatientPhoneNoTxt
             // 
-            PatientPhoneNoTxt.Location = new System.Drawing.Point(143, 90);
+            PatientPhoneNoTxt.Location = new System.Drawing.Point(143, 95);
             PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
             PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
             PatientPhoneNoTxt.TabIndex = 18;
@@ -252,7 +228,7 @@
             // 
             PatientPhoneNolbl.AutoSize = true;
             PatientPhoneNolbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            PatientPhoneNolbl.Location = new System.Drawing.Point(24, 91);
+            PatientPhoneNolbl.Location = new System.Drawing.Point(24, 96);
             PatientPhoneNolbl.Name = "PatientPhoneNolbl";
             PatientPhoneNolbl.Size = new System.Drawing.Size(101, 17);
             PatientPhoneNolbl.TabIndex = 17;
@@ -262,7 +238,7 @@
             // 
             PatientNameTxt.Location = new System.Drawing.Point(143, 48);
             PatientNameTxt.Name = "PatientNameTxt";
-            PatientNameTxt.Size = new System.Drawing.Size(211, 23);
+            PatientNameTxt.Size = new System.Drawing.Size(589, 23);
             PatientNameTxt.TabIndex = 16;
             // 
             // label1
@@ -289,15 +265,31 @@
             // AddScheduleBtn
             // 
             AddScheduleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddScheduleBtn.Location = new System.Drawing.Point(342, 149);
+            AddScheduleBtn.Location = new System.Drawing.Point(261, 148);
             AddScheduleBtn.Name = "AddScheduleBtn";
             AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
             AddScheduleBtn.TabIndex = 5;
             AddScheduleBtn.Text = "Search";
             AddScheduleBtn.UseVisualStyleBackColor = true;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(dataGridView2);
+            tabPage2.Controls.Add(panel1);
+            tabPage2.Location = new System.Drawing.Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            tabPage2.Size = new System.Drawing.Size(799, 637);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Add Patient";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
+            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(Doblbl);
+            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(Guardianlbl);
             panel1.Controls.Add(listBox2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(textBox1);
@@ -312,15 +304,16 @@
             panel1.Controls.Add(button1);
             panel1.Location = new System.Drawing.Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(796, 226);
+            panel1.Size = new System.Drawing.Size(796, 296);
             panel1.TabIndex = 4;
+            panel1.Paint += panel1_Paint;
             // 
             // listBox2
             // 
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
             listBox2.Items.AddRange(new object[] { "Male", "Female" });
-            listBox2.Location = new System.Drawing.Point(521, 46);
+            listBox2.Location = new System.Drawing.Point(466, 92);
             listBox2.Name = "listBox2";
             listBox2.Size = new System.Drawing.Size(54, 19);
             listBox2.TabIndex = 22;
@@ -329,7 +322,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(439, 48);
+            label3.Location = new System.Drawing.Point(397, 92);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(52, 17);
             label3.TabIndex = 21;
@@ -337,16 +330,16 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new System.Drawing.Point(521, 91);
+            textBox1.Location = new System.Drawing.Point(466, 130);
             textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(211, 23);
+            textBox1.Size = new System.Drawing.Size(268, 23);
             textBox1.TabIndex = 20;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label4.Location = new System.Drawing.Point(438, 93);
+            label4.Location = new System.Drawing.Point(397, 135);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(42, 17);
             label4.TabIndex = 19;
@@ -354,7 +347,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new System.Drawing.Point(143, 90);
+            textBox2.Location = new System.Drawing.Point(143, 129);
             textBox2.Name = "textBox2";
             textBox2.Size = new System.Drawing.Size(211, 23);
             textBox2.TabIndex = 18;
@@ -363,7 +356,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(24, 91);
+            label5.Location = new System.Drawing.Point(20, 130);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(101, 17);
             label5.TabIndex = 17;
@@ -373,7 +366,7 @@
             // 
             textBox3.Location = new System.Drawing.Point(143, 48);
             textBox3.Name = "textBox3";
-            textBox3.Size = new System.Drawing.Size(211, 23);
+            textBox3.Size = new System.Drawing.Size(591, 23);
             textBox3.TabIndex = 16;
             // 
             // label6
@@ -399,7 +392,7 @@
             // ResetBtn
             // 
             ResetBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ResetBtn.Location = new System.Drawing.Point(521, 146);
+            ResetBtn.Location = new System.Drawing.Point(521, 215);
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new System.Drawing.Size(93, 50);
             ResetBtn.TabIndex = 7;
@@ -409,7 +402,7 @@
             // UpdateBtn
             // 
             UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdateBtn.Location = new System.Drawing.Point(346, 146);
+            UpdateBtn.Location = new System.Drawing.Point(346, 215);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new System.Drawing.Size(93, 50);
             UpdateBtn.TabIndex = 6;
@@ -419,12 +412,72 @@
             // button1
             // 
             button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            button1.Location = new System.Drawing.Point(155, 146);
+            button1.Location = new System.Drawing.Point(155, 215);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(93, 50);
             button1.TabIndex = 5;
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new System.Drawing.Point(143, 162);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new System.Drawing.Size(211, 23);
+            textBox4.TabIndex = 24;
+            // 
+            // Guardianlbl
+            // 
+            Guardianlbl.AutoSize = true;
+            Guardianlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Guardianlbl.Location = new System.Drawing.Point(24, 163);
+            Guardianlbl.Name = "Guardianlbl";
+            Guardianlbl.Size = new System.Drawing.Size(64, 17);
+            Guardianlbl.TabIndex = 23;
+            Guardianlbl.Text = "Guardian";
+            // 
+            // Doblbl
+            // 
+            Doblbl.AutoSize = true;
+            Doblbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Doblbl.Location = new System.Drawing.Point(20, 92);
+            Doblbl.Name = "Doblbl";
+            Doblbl.Size = new System.Drawing.Size(36, 17);
+            Doblbl.TabIndex = 25;
+            Doblbl.Text = "DOB";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new System.Drawing.Point(143, 88);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new System.Drawing.Size(211, 23);
+            dateTimePicker1.TabIndex = 26;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(2, 237);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new System.Drawing.Size(795, 400);
+            dataGridView1.TabIndex = 8;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new System.Drawing.Point(4, 304);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new System.Drawing.Size(795, 331);
+            dataGridView2.TabIndex = 5;
+            // 
+            // ResetSearchPatientbtn
+            // 
+            ResetSearchPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            ResetSearchPatientbtn.Location = new System.Drawing.Point(398, 148);
+            ResetSearchPatientbtn.Name = "ResetSearchPatientbtn";
+            ResetSearchPatientbtn.Size = new System.Drawing.Size(93, 50);
+            ResetSearchPatientbtn.TabIndex = 23;
+            ResetSearchPatientbtn.Text = "Reset";
+            ResetSearchPatientbtn.UseVisualStyleBackColor = true;
             // 
             // Patient
             // 
@@ -438,11 +491,13 @@
             panel2.ResumeLayout(false);
             PatientTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
             CrudPanel.ResumeLayout(false);
             CrudPanel.PerformLayout();
+            tabPage2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -459,8 +514,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel CrudPanel;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label PatientGenderTxt;
         private System.Windows.Forms.TextBox patientEmailTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PatientPhoneNoTxt;
@@ -482,5 +535,12 @@
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label Doblbl;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label Guardianlbl;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button ResetSearchPatientbtn;
     }
 }
