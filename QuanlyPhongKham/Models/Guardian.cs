@@ -24,7 +24,7 @@ namespace QuanlyPhongKham.Models
             FullName = name;
             PhoneNumber = phoneNumber;
             Email = email;
-            Patients = new List<Patient>();
+            Patients = [];
         }
 
         
