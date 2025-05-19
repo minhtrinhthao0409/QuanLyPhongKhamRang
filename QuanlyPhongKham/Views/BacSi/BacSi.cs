@@ -12,15 +12,11 @@ namespace QuanlyPhongKham.Views
 {
     public partial class BacSi : Form
     {
-        private string connectionString = @"QuanLyPhongKham.db";
-        private DataTable invoiceDetailsTable;
-        private string lastPatientName;
-        private int lastPatientId;
+        AppointmentController appointmentController;
         private string currentDoctorId;
         private string currentDoctorName;
         private User currentUser;
         private User user;
-        private AppointmentController appointmentController = new AppointmentController();
 
         public BacSi(User user)
         {
@@ -30,32 +26,7 @@ namespace QuanlyPhongKham.Views
 
         private void btnLoadAppointments_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = "SELECT a.ID AS AppointmentID, p.Name AS PatientName, d.Name AS DoctorName, a.AppointmentDate, a.StartTime, a.EndTime " +
-                                   "FROM Appointments a " +
-                                   "JOIN Patients p ON a.PatientID = p.ID " +
-                                   "JOIN Doctors d ON a.DoctorID = d.ID";
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    // Tùy chỉnh tiêu đề cột
-                    dt.Columns["AppointmentID"].ColumnName = "ID Lịch Hẹn";
-                    dt.Columns["PatientName"].ColumnName = "Tên Bệnh Nhân";
-                    dt.Columns["DoctorName"].ColumnName = "Tên Bác Sĩ";
-                    dt.Columns["AppointmentDate"].ColumnName = "Ngày Hẹn";
-                    dt.Columns["StartTime"].ColumnName = "Giờ Bắt Đầu";
-                    dt.Columns["EndTime"].ColumnName = "Giờ Kết Thúc";
-                    dgvAppointments.DataSource = dt;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
+            
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
