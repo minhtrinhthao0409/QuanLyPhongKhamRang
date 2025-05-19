@@ -1,56 +1,29 @@
 ﻿using QuanlyPhongKham.Models;
-using QuanlyPhongKham.Views.Receptionist;
+using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace QuanlyPhongKham.Controllers
 {
     public class AppointmentController
     {
-        private readonly string connectionString = "Data Source=QuanLyPhongKham.db";
+        private readonly AppointmentService _service;
+
+        public AppointmentController()
+        {
+            _service = new AppointmentService();
+        }
 
         public List<AppointmentViewModel> GetAppointmentsByDoctor(string doctorUserId)
-        {
-            var list = new List<AppointmentViewModel>();
+            => _service.GetAppointmentsByDoctor(doctorUserId);
 
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
+        public List<Patient> GetAllPatients()
+            => _service.GetAllPatients();
 
-                string query = @"
-            SELECT a.AppointmentId, a.AppointmentDate, a.StartTime, a.EndTime,
-                   p.FullName AS PatientName
-            FROM Appointments a
-            JOIN Patients p ON a.PatientId = p.Id
-            WHERE a.DoctorUserId = @DoctorUserId
-            ORDER BY a.AppointmentDate, a.StartTime;
-        ";
+        public bool HasScheduleConflict(string doctorUserId, DateTime date, TimeSpan start, TimeSpan end)
+            => _service.HasScheduleConflict(doctorUserId, date, start, end);
 
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@DoctorUserId", doctorUserId);
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            list.Add(new AppointmentViewModel
-                            {
-                                AppointmentId = reader["AppointmentId"].ToString(),
-                                PatientName = reader["PatientName"].ToString(),
-                                AppointmentDate = DateTime.Parse(reader["AppointmentDate"].ToString()),
-                                StartTime = TimeSpan.Parse(reader["StartTime"].ToString()),
-                                EndTime = TimeSpan.Parse(reader["EndTime"].ToString())
-                            });
-                        }
-                    }
-                }
-            }
-
-            return list;
-        }
+        public bool AddAppointment(string doctorUserId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
+            => _service.AddAppointment(doctorUserId, patientId, date, start, end);
     }
 }

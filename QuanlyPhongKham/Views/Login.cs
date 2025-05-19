@@ -85,15 +85,12 @@ namespace QuanlyPhongKham
                 {
                     MessageBox.Show("Tài khoản không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
                 this.Show();
             }
             else
             {
                 MessageBox.Show("Đăng nhập thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
         }
 
         private void Login_KeyPress(object sender, KeyPressEventArgs e)

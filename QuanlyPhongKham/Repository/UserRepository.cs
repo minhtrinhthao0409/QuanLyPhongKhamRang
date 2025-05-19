@@ -66,5 +66,4 @@ namespace QuanlyPhongKham.repository
             return null;
         }
     }
-
 }

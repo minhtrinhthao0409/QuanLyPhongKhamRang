@@ -38,7 +38,6 @@ namespace QuanlyPhongKham.Services
             int rowsAffected = await cmd.ExecuteNonQueryAsync();
             return rowsAffected > 0;
         }
-
         public async Task<User> AuthenticateAsync(string username, string password)
         {
             using var conn = new SQLiteConnection(connectionString);
@@ -65,7 +64,6 @@ namespace QuanlyPhongKham.Services
             }
             return null;
         }
-
         private bool IsValidEmail(string email)
         {
             try

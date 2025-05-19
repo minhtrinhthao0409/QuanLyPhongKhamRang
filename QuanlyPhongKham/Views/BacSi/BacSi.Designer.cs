@@ -38,11 +38,9 @@
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             LenLichHen = new System.Windows.Forms.TabPage();
+            btnSchedule = new System.Windows.Forms.Button();
             cbPatientName = new System.Windows.Forms.ComboBox();
             dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
-            btnSchedule = new System.Windows.Forms.Button();
-            txtEndTime = new System.Windows.Forms.TextBox();
-            txtStartTime = new System.Windows.Forms.TextBox();
             lbEndTime = new System.Windows.Forms.Label();
             lbStartTime = new System.Windows.Forms.Label();
             lbdtpAppointmentDate = new System.Windows.Forms.Label();
@@ -79,6 +77,8 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            mtbStartTime = new System.Windows.Forms.MaskedTextBox();
+            mtbEndTime = new System.Windows.Forms.MaskedTextBox();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
@@ -170,11 +170,11 @@
             // LenLichHen
             // 
             LenLichHen.BackColor = System.Drawing.Color.Transparent;
+            LenLichHen.Controls.Add(mtbEndTime);
+            LenLichHen.Controls.Add(mtbStartTime);
+            LenLichHen.Controls.Add(btnSchedule);
             LenLichHen.Controls.Add(cbPatientName);
             LenLichHen.Controls.Add(dtpAppointmentDate);
-            LenLichHen.Controls.Add(btnSchedule);
-            LenLichHen.Controls.Add(txtEndTime);
-            LenLichHen.Controls.Add(txtStartTime);
             LenLichHen.Controls.Add(lbEndTime);
             LenLichHen.Controls.Add(lbStartTime);
             LenLichHen.Controls.Add(lbdtpAppointmentDate);
@@ -186,10 +186,21 @@
             LenLichHen.TabIndex = 1;
             LenLichHen.Text = "Lên Lịch Hẹn";
             // 
+            // btnSchedule
+            // 
+            btnSchedule.AutoSize = true;
+            btnSchedule.Location = new System.Drawing.Point(330, 311);
+            btnSchedule.Name = "btnSchedule";
+            btnSchedule.Size = new System.Drawing.Size(112, 30);
+            btnSchedule.TabIndex = 10;
+            btnSchedule.Text = "Xác Nhận Lịch";
+            btnSchedule.UseVisualStyleBackColor = true;
+            btnSchedule.Click += btnSchedule_Click;
+            // 
             // cbPatientName
             // 
             cbPatientName.FormattingEnabled = true;
-            cbPatientName.Location = new System.Drawing.Point(229, 116);
+            cbPatientName.Location = new System.Drawing.Point(273, 116);
             cbPatientName.Name = "cbPatientName";
             cbPatientName.Size = new System.Drawing.Size(340, 28);
             cbPatientName.TabIndex = 12;
@@ -197,39 +208,15 @@
             // dtpAppointmentDate
             // 
             dtpAppointmentDate.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            dtpAppointmentDate.Location = new System.Drawing.Point(227, 159);
+            dtpAppointmentDate.Location = new System.Drawing.Point(271, 159);
             dtpAppointmentDate.Name = "dtpAppointmentDate";
             dtpAppointmentDate.Size = new System.Drawing.Size(250, 27);
             dtpAppointmentDate.TabIndex = 11;
             // 
-            // btnSchedule
-            // 
-            btnSchedule.Location = new System.Drawing.Point(339, 311);
-            btnSchedule.Name = "btnSchedule";
-            btnSchedule.Size = new System.Drawing.Size(94, 29);
-            btnSchedule.TabIndex = 10;
-            btnSchedule.Text = "Lên Lịch";
-            btnSchedule.UseVisualStyleBackColor = true;
-            btnSchedule.Click += btnSchedule_Click;
-            // 
-            // txtEndTime
-            // 
-            txtEndTime.Location = new System.Drawing.Point(227, 251);
-            txtEndTime.Name = "txtEndTime";
-            txtEndTime.Size = new System.Drawing.Size(340, 27);
-            txtEndTime.TabIndex = 9;
-            // 
-            // txtStartTime
-            // 
-            txtStartTime.Location = new System.Drawing.Point(227, 204);
-            txtStartTime.Name = "txtStartTime";
-            txtStartTime.Size = new System.Drawing.Size(340, 27);
-            txtStartTime.TabIndex = 8;
-            // 
             // lbEndTime
             // 
             lbEndTime.AutoSize = true;
-            lbEndTime.Location = new System.Drawing.Point(115, 254);
+            lbEndTime.Location = new System.Drawing.Point(159, 254);
             lbEndTime.Name = "lbEndTime";
             lbEndTime.Size = new System.Drawing.Size(91, 20);
             lbEndTime.TabIndex = 4;
@@ -238,7 +225,7 @@
             // lbStartTime
             // 
             lbStartTime.AutoSize = true;
-            lbStartTime.Location = new System.Drawing.Point(115, 211);
+            lbStartTime.Location = new System.Drawing.Point(159, 211);
             lbStartTime.Name = "lbStartTime";
             lbStartTime.Size = new System.Drawing.Size(90, 20);
             lbStartTime.TabIndex = 3;
@@ -247,7 +234,7 @@
             // lbdtpAppointmentDate
             // 
             lbdtpAppointmentDate.AutoSize = true;
-            lbdtpAppointmentDate.Location = new System.Drawing.Point(115, 164);
+            lbdtpAppointmentDate.Location = new System.Drawing.Point(159, 164);
             lbdtpAppointmentDate.Name = "lbdtpAppointmentDate";
             lbdtpAppointmentDate.Size = new System.Drawing.Size(75, 20);
             lbdtpAppointmentDate.TabIndex = 2;
@@ -256,7 +243,7 @@
             // lbPatientID
             // 
             lbPatientID.AutoSize = true;
-            lbPatientID.Location = new System.Drawing.Point(115, 124);
+            lbPatientID.Location = new System.Drawing.Point(159, 124);
             lbPatientID.Name = "lbPatientID";
             lbPatientID.Size = new System.Drawing.Size(108, 20);
             lbPatientID.TabIndex = 0;
@@ -555,6 +542,24 @@
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
+            // mtbStartTime
+            // 
+            mtbStartTime.Location = new System.Drawing.Point(273, 204);
+            mtbStartTime.Mask = "00:00";
+            mtbStartTime.Name = "mtbStartTime";
+            mtbStartTime.PromptChar = ' ';
+            mtbStartTime.Size = new System.Drawing.Size(125, 27);
+            mtbStartTime.TabIndex = 13;
+            // 
+            // mtbEndTime
+            // 
+            mtbEndTime.Location = new System.Drawing.Point(273, 247);
+            mtbEndTime.Mask = "00:00";
+            mtbEndTime.Name = "mtbEndTime";
+            mtbEndTime.PromptChar = ' ';
+            mtbEndTime.Size = new System.Drawing.Size(125, 27);
+            mtbEndTime.TabIndex = 14;
+            // 
             // BacSi
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -598,8 +603,6 @@
         private System.Windows.Forms.TabPage LenLichHen;
         private System.Windows.Forms.DateTimePicker dtpAppointmentDate;
         private System.Windows.Forms.Button btnSchedule;
-        private System.Windows.Forms.TextBox txtEndTime;
-        private System.Windows.Forms.TextBox txtStartTime;
         private System.Windows.Forms.Label lbEndTime;
         private System.Windows.Forms.Label lbStartTime;
         private System.Windows.Forms.Label lbdtpAppointmentDate;
@@ -637,5 +640,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHen;
         private System.Windows.Forms.DataGridViewTextBoxColumn GioBatDau;
         private System.Windows.Forms.DataGridViewTextBoxColumn GioKetThuc;
+        private System.Windows.Forms.MaskedTextBox mtbEndTime;
+        private System.Windows.Forms.MaskedTextBox mtbStartTime;
     }
 }
