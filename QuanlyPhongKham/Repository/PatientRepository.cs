@@ -9,13 +9,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanlyPhongKham.Repository
 {
-    public class PatientRepository : BaseRepository
+    public class PatientRepository(string connectionString = null) : BaseRepository(connectionString)
     {
-        public PatientRepository(string connectionString = null) : base(connectionString)
-        {
-
-        }
-
         public async Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -46,7 +41,7 @@ namespace QuanlyPhongKham.Repository
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                         cmd.Parameters.AddWithValue("@Dob", dob);
-                        cmd.Parameters.AddWithValue("@GuardianId", (object?)guardianId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@GuardianId", guardianId as object ?? DBNull.Value);
 
                         affectedRows = await cmd.ExecuteNonQueryAsync();
                     }
@@ -80,35 +75,31 @@ namespace QuanlyPhongKham.Repository
                 if (!string.IsNullOrWhiteSpace(email))
                     query.Append(" AND Email LIKE @Email");
 
-                using (var command = new SQLiteCommand(query.ToString(), connection))
+                using var command = new SQLiteCommand(query.ToString(), connection);
+                if (!string.IsNullOrWhiteSpace(name))
+                    command.Parameters.AddWithValue("@Name", $"%{name}%");
+
+                if (!string.IsNullOrWhiteSpace(phone))
+                    command.Parameters.AddWithValue("@Phone", phone);
+
+                if (!string.IsNullOrWhiteSpace(email))
+                    command.Parameters.AddWithValue("@Email", $"%{email}%");
+
+                using var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
                 {
-                    if (!string.IsNullOrWhiteSpace(name))
-                        command.Parameters.AddWithValue("@Name", $"%{name}%");
-
-                    if (!string.IsNullOrWhiteSpace(phone))
-                        command.Parameters.AddWithValue("@Phone", phone);
-
-                    if (!string.IsNullOrWhiteSpace(email))
-                        command.Parameters.AddWithValue("@Email", $"%{email}%");
-
-                    using (var reader = await command.ExecuteReaderAsync())
+                    var patient = new Patient
                     {
-                        while (await reader.ReadAsync())
-                        {
-                            var patient = new Patient
-                            {
-                                PatientId = Guid.Parse(reader["PatientId"].ToString()!),
-                                Name = reader["FullName"].ToString()!,
-                                PhoneNumber = reader["PhoneNumber"].ToString()!,
-                                Email = reader["Email"].ToString()!,
-                                Gender = Convert.ToBoolean(reader["Gender"]),
-                                DOB = Convert.ToDateTime(reader["Dob"]),
-                                GuardianId = reader["GuardianId"] == DBNull.Value ? null : Guid.Parse(reader["GuardianId"].ToString()!)
-                            };
+                        PatientId = Guid.Parse(reader["PatientId"].ToString()!),
+                        Name = reader["FullName"].ToString()!,
+                        PhoneNumber = reader["PhoneNumber"].ToString()!,
+                        Email = reader["Email"].ToString()!,
+                        Gender = Convert.ToBoolean(reader["Gender"]),
+                        DOB = Convert.ToDateTime(reader["Dob"]),
+                        GuardianId = reader["GuardianId"] == DBNull.Value ? null : Guid.Parse(reader["GuardianId"].ToString()!)
+                    };
 
-                            patients.Add(patient);
-                        }
-                    }
+                    patients.Add(patient);
                 }
             }
 
