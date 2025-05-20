@@ -8,8 +8,6 @@ using QuanlyPhongKham.Models;
 using System.Data.SQLite;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
-
-
 namespace QuanlyPhongKham.Repository
 {
     public class UserRepository : BaseRepository
@@ -115,7 +113,7 @@ namespace QuanlyPhongKham.Repository
             List<User> users = new List<User>();
             using var conn = await GetConnectionAsync();
             var cmd = new SQLiteCommand("SELECT * FROM Users", conn);
-            using var reader = await cmd.ExecuteReaderAsync(); // đọc từng dòng một
+            using var reader = await cmd.ExecuteReaderAsync();
             while (true)
             {
                 if (!await reader.ReadAsync())

@@ -9,7 +9,6 @@ public class BaseRepository : IDisposable
     public readonly string connection;
     private bool disposed;
 
-    // ??: chọn đầu tiên trong các chuỗi kết nối
     public BaseRepository(string connectionString = null) // nếu không có chuỗi kết nối thì lấy từ cấu hình
     {
         this.connection = connectionString

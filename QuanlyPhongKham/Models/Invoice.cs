@@ -11,14 +11,17 @@ namespace QuanlyPhongKham.Models
     {
         public int InvoiceId { get; set; }
 
-        public Guid PatientId { get; set; }
+        public string PatientId { get; set; }
 
-        //public string PatientName { get; set; }
+        public string? PatientName { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public List<InvoiceDetail> Details { get; set; } = [];
+
+        public Invoice() 
+        {
+            PatientId = Guid.NewGuid().ToString();
+        }
     }
-
-
 }
