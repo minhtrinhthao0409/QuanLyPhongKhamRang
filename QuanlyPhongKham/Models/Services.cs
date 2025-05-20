@@ -13,5 +13,7 @@ namespace QuanlyPhongKham.Models
         public string ServicesName { get; set; }
 
         public decimal CurrentPrice { get; set; }
+
+        public int active { get; set; } = 1; // 1: active, 0: inactive
     }
 }

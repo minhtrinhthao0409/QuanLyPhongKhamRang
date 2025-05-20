@@ -132,7 +132,6 @@
             AdminMainNamelbl.Size = new System.Drawing.Size(49, 20);
             AdminMainNamelbl.TabIndex = 0;
             AdminMainNamelbl.Text = "Name";
-            AdminMainNamelbl.Click += this.AdminMainNamelbl_Click;
             // 
             // AdminMainIDlbl
             // 
@@ -142,7 +141,6 @@
             AdminMainIDlbl.Size = new System.Drawing.Size(24, 20);
             AdminMainIDlbl.TabIndex = 1;
             AdminMainIDlbl.Text = "ID";
-            AdminMainIDlbl.Click += this.AdminMainIDlbl_Click;
             // 
             // AdminNametb
             // 
@@ -150,7 +148,6 @@
             AdminNametb.Name = "AdminNametb";
             AdminNametb.Size = new System.Drawing.Size(273, 27);
             AdminNametb.TabIndex = 2;
-            AdminNametb.TextChanged += AdminNametb_TextChanged;
             // 
             // AdminIDtb
             // 
@@ -158,7 +155,6 @@
             AdminIDtb.Name = "AdminIDtb";
             AdminIDtb.Size = new System.Drawing.Size(273, 27);
             AdminIDtb.TabIndex = 3;
-            AdminIDtb.TextChanged += this.AdminIDtb_TextChanged;
             // 
             // monthCalendar1
             // 
@@ -203,17 +199,10 @@
             AdminBCTCFromlbl.Size = new System.Drawing.Size(75, 23);
             AdminBCTCFromlbl.TabIndex = 6;
             AdminBCTCFromlbl.Text = "Từ ngày";
-            AdminBCTCFromlbl.Click += AdminBCTCFromlbl_Click;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new System.Drawing.Point(129, 71);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new System.Drawing.Size(250, 27);
             dateTimePicker2.TabIndex = 5;
             // 
-            // dateTimePicker1
             // 
+            //
             dateTimePicker1.Location = new System.Drawing.Point(129, 27);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new System.Drawing.Size(250, 27);
@@ -262,7 +251,7 @@
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.Size = new System.Drawing.Size(853, 532);
             dataGridView2.TabIndex = 0;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            
             // 
             // label2
             // 
@@ -272,7 +261,7 @@
             label2.Size = new System.Drawing.Size(39, 20);
             label2.TabIndex = 1;
             label2.Text = "Role";
-            label2.Click += label2_Click;
+          
             // 
             // label3
             // 
@@ -291,7 +280,7 @@
             label5.Size = new System.Drawing.Size(70, 20);
             label5.TabIndex = 4;
             label5.Text = "Password";
-            label5.Click += label5_Click;
+           
             // 
             // label4
             // 
@@ -375,7 +364,7 @@
             AdminQbtnLDVCx.TabIndex = 12;
             AdminQbtnLDVCx.Text = "Sửa";
             AdminQbtnLDVCx.UseVisualStyleBackColor = true;
-            AdminQbtnLDVCx.Click += AdminQbtnLDVCx_Click;
+         
             // 
             // label8
             // 
