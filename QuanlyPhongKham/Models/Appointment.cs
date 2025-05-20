@@ -9,7 +9,7 @@ namespace QuanlyPhongKham.Models
     public class Appointment
     {
         public string AppointmentId { get; set; }
-        public string DoctorUserId { get; set; }
+        public string DoctorId { get; set; }
         public string PatientId { get; set; }
         public string PatientName { get; set; }
 
@@ -19,7 +19,10 @@ namespace QuanlyPhongKham.Models
 
         public int PaymentStatus { get; set; }
 
-        public Appointment() { }
+        public Appointment() 
+        {
+            AppointmentId = Guid.NewGuid().ToString();
+        }
 
     }
 

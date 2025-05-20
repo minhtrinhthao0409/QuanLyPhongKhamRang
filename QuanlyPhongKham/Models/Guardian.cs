@@ -8,17 +8,18 @@ namespace QuanlyPhongKham.Models
 {
     public class Guardian
     {
-        public Guid GuardianId { get; set; }
+        public string GuardianId { get; set; }
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
         public Guardian()
         {
+            GuardianId = Guid.NewGuid().ToString();
             Patients = new List<Patient>();
         }
 
-        public Guardian(Guid id, string name, string phoneNumber, string email)
+        public Guardian(string id, string name, string phoneNumber, string email)
         {
             GuardianId = id;
             FullName = name;
@@ -26,7 +27,6 @@ namespace QuanlyPhongKham.Models
             Email = email;
             Patients = [];
         }
-
         
         public ICollection<Patient> Patients { get; set; }
     }

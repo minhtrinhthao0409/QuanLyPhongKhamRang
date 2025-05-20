@@ -8,11 +8,10 @@ namespace QuanlyPhongKham.Models
 {
     public class Patient
     {
-        public Guid PatientId { get; set; }
+        public string PatientId { get; set; }
         public string Name { get; set; }
         public DateTime DOB { get; set; }
         public bool Gender { get; set; }
-
         public string PhoneNumber { get; set; }
         public string Email { get; set; } = null!;
 
@@ -21,11 +20,12 @@ namespace QuanlyPhongKham.Models
 
         public Patient()
         {
+            PatientId = Guid.NewGuid().ToString();
             MedRec = [];
             Appointments = [];
         }
 
-        public Patient(Guid id, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
+        public Patient(string id, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             PatientId = id;
             Name = name;
@@ -42,5 +42,4 @@ namespace QuanlyPhongKham.Models
         public ICollection<MedicalRecord> MedRec { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
     }
-
 }

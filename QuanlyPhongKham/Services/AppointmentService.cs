@@ -2,6 +2,7 @@
 using QuanlyPhongKham.Repository;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Services
 {
@@ -14,18 +15,21 @@ namespace QuanlyPhongKham.Services
             _repository = new AppointmentRepository();
         }
 
-        public List<Patient> GetAllPatients()
-            => _repository.GetAllPatients();
+        public async Task<List<Patient>> GetAllPatientsAsync()
+            => await _repository.GetAllPatientsAsync();
 
-        public bool HasScheduleConflict(string doctorUserId, DateTime date, TimeSpan start, TimeSpan end)
-            => _repository.HasScheduleConflict(doctorUserId, date, start, end);
+        public async Task<bool> HasScheduleConflictAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
+            => await _repository.HasScheduleConflictAsync(doctorId, patientId, date, start, end);
 
-        public bool AddAppointment(string doctorUserId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
+        public async Task<bool> AddAppointmentAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
         {
-            if (HasScheduleConflict(doctorUserId, date, start, end))
+            if (await HasScheduleConflictAsync(doctorId, patientId, date, start, end))
                 return false;
 
-            return _repository.AddAppointment(doctorUserId, patientId, date, start, end);
+            return await _repository.AddAppointmentAsync(doctorId, patientId, date, start, end);
         }
+
+        public async Task<List<Appointment>> GetDoctorAppointmentsAsync(string doctorId)
+            => await _repository.GetDoctorAppointmentsAsync(doctorId);
     }
 }

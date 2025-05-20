@@ -14,7 +14,7 @@ namespace QuanlyPhongKham.Controllers
         private readonly PatientService _patientService;
         public PatientController()
         {
-            _patientService = new PatientService(new PatientRepository());
+            _patientService = new PatientService();
         }
         public PatientController(PatientService service)
         {
@@ -36,8 +36,12 @@ namespace QuanlyPhongKham.Controllers
         }
 
         public List<Patient> GetAllPatients()
-    {
-        return _patientService.GetAllPatients();
-    }
+        {
+            return _patientService.GetAllPatients();
+        }
+        public Task<List<Patient>> GetAllPatientsAsync()
+        {
+            return Task.FromResult(_patientService.GetAllPatients());
+        }
     }
 }

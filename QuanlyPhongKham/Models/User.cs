@@ -24,7 +24,10 @@ namespace QuanlyPhongKham.Models
 
         public int active { get; set; } = 1; // 1: active, 0: inactive
         public UserRole Role { get; set; }
-        public User() { }
+        public User() 
+        {
+            Id = Guid.NewGuid().ToString();
+        }
 
         public User(string userName, string password, string email, UserRole role)
         {
@@ -34,5 +37,4 @@ namespace QuanlyPhongKham.Models
             Role = role;
         }
     }
-
 }

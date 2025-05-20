@@ -57,7 +57,7 @@
             NgayHen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             GioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             GioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            tabControl1 = new System.Windows.Forms.TabControl();
+            TapBacSi = new System.Windows.Forms.TabControl();
             XemBenhAn = new System.Windows.Forms.TabPage();
             dgvXemBenhAn = new System.Windows.Forms.DataGridView();
             QLHoaDon = new System.Windows.Forms.TabPage();
@@ -81,11 +81,12 @@
             txtInvoiceTotalAmount = new System.Windows.Forms.TextBox();
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
+            sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).BeginInit();
-            tabControl1.SuspendLayout();
+            TapBacSi.SuspendLayout();
             XemBenhAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).BeginInit();
             QLHoaDon.SuspendLayout();
@@ -345,19 +346,19 @@
             GioKetThuc.MinimumWidth = 6;
             GioKetThuc.Name = "GioKetThuc";
             // 
-            // tabControl1
+            // TapBacSi
             // 
-            tabControl1.Controls.Add(XemLichHen);
-            tabControl1.Controls.Add(LenLichHen);
-            tabControl1.Controls.Add(GhiBenhAn);
-            tabControl1.Controls.Add(XemBenhAn);
-            tabControl1.Controls.Add(QLHoaDon);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabControl1.Location = new System.Drawing.Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(781, 554);
-            tabControl1.TabIndex = 0;
+            TapBacSi.Controls.Add(XemLichHen);
+            TapBacSi.Controls.Add(LenLichHen);
+            TapBacSi.Controls.Add(GhiBenhAn);
+            TapBacSi.Controls.Add(XemBenhAn);
+            TapBacSi.Controls.Add(QLHoaDon);
+            TapBacSi.Dock = System.Windows.Forms.DockStyle.Fill;
+            TapBacSi.Location = new System.Drawing.Point(0, 0);
+            TapBacSi.Name = "TapBacSi";
+            TapBacSi.SelectedIndex = 0;
+            TapBacSi.Size = new System.Drawing.Size(781, 554);
+            TapBacSi.TabIndex = 0;
             // 
             // XemBenhAn
             // 
@@ -587,12 +588,19 @@
             lblInvoiceTotalAmount.TabIndex = 13;
             lblInvoiceTotalAmount.Text = "Tổng tiền:";
             // 
+            // sqliteCommand1
+            // 
+            sqliteCommand1.CommandTimeout = 30;
+            sqliteCommand1.Connection = null;
+            sqliteCommand1.Transaction = null;
+            sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
             // BacSi
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(781, 554);
-            Controls.Add(tabControl1);
+            Controls.Add(TapBacSi);
             Name = "BacSi";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Bác Sĩ";
@@ -603,7 +611,7 @@
             LenLichHen.PerformLayout();
             XemLichHen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).EndInit();
-            tabControl1.ResumeLayout(false);
+            TapBacSi.ResumeLayout(false);
             XemBenhAn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvXemBenhAn).EndInit();
             QLHoaDon.ResumeLayout(false);
@@ -636,7 +644,7 @@
         private System.Windows.Forms.Label lbPatientID;
         private System.Windows.Forms.TabPage XemLichHen;
         private System.Windows.Forms.DataGridView dgvAppointments;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TapBacSi;
         private System.Windows.Forms.TabPage QLHoaDon;
         private System.Windows.Forms.DateTimePicker dtpInvoiceIssueDate;
         private System.Windows.Forms.TextBox txtInvoicePatientName;
@@ -669,5 +677,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GioKetThuc;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbPatientId;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
     }
 }

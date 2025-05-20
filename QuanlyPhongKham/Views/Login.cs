@@ -21,7 +21,7 @@ namespace QuanlyPhongKham
         {
             InitializeComponent();
             userController = new UserControllers();
-            KeyPreview = true; //bat su kien nhan enter
+            KeyPreview = true;
         }
 
         private void linkQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

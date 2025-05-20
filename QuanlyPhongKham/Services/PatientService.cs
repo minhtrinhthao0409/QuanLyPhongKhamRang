@@ -12,9 +12,9 @@ namespace QuanlyPhongKham.Services
     {
         private readonly PatientRepository _patientRepository;
 
-        public PatientService(PatientRepository patientRepo)
+        public PatientService()
         {
-            _patientRepository = patientRepo;
+            _patientRepository = new PatientRepository();
         }
 
         public Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)

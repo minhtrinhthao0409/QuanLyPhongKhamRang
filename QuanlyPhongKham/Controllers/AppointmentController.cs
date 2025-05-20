@@ -2,6 +2,7 @@
 using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Controllers
 {
@@ -14,13 +15,16 @@ namespace QuanlyPhongKham.Controllers
             _service = new AppointmentService();
         }
 
-        public List<Patient> GetAllPatients()
-            => _service.GetAllPatients();
+        public async Task<List<Patient>> GetAllPatientsAsync()
+            => await _service.GetAllPatientsAsync();
 
-        public bool HasScheduleConflict(string doctorUserId, DateTime date, TimeSpan start, TimeSpan end)
-            => _service.HasScheduleConflict(doctorUserId, date, start, end);
+        public async Task<bool> HasScheduleConflictAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
+            => await _service.HasScheduleConflictAsync(doctorId, patientId, date, start, end);
 
-        public bool AddAppointment(string doctorUserId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
-            => _service.AddAppointment(doctorUserId, patientId, date, start, end);
+        public async Task<bool> AddAppointmentAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
+            => await _service.AddAppointmentAsync(doctorId, patientId, date, start, end);
+
+        public async Task<List<Appointment>> GetDoctorAppointmentsAsync(string doctorId)
+            => await _service.GetDoctorAppointmentsAsync(doctorId);
     }
 }

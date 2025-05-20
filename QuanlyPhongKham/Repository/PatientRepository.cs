@@ -9,8 +9,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanlyPhongKham.Repository
 {
-    public class PatientRepository(string connectionString = null) : BaseRepository(connectionString)
-    {
+    public class PatientRepository : BaseRepository {
+        public PatientRepository(string connectionString = null) : base(connectionString) { }
         public async Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -67,7 +67,7 @@ namespace QuanlyPhongKham.Repository
             var query = new StringBuilder("SELECT * FROM Patients WHERE 1=1");
 
             if (!string.IsNullOrWhiteSpace(name))
-                query.Append(" AND FullName LIKE @FullName");
+                query.Append(" AND Name LIKE @Name");
 
             if (!string.IsNullOrWhiteSpace(phone))
                 query.Append(" AND PhoneNumber = @PhoneNumber");
@@ -78,7 +78,7 @@ namespace QuanlyPhongKham.Repository
             using var command = new SQLiteCommand(query.ToString(), connection);
 
             if (!string.IsNullOrWhiteSpace(name))
-                command.Parameters.AddWithValue("@FullName", $"%{name}%");
+                command.Parameters.AddWithValue("@Name", $"%{name}%");
 
             if (!string.IsNullOrWhiteSpace(phone))
                 command.Parameters.AddWithValue("@PhoneNumber", phone);
@@ -91,8 +91,8 @@ namespace QuanlyPhongKham.Repository
             {
                 var patient = new Patient
                 {
-                    PatientId = Guid.Parse(reader["PatientId"].ToString()!),
-                    Name = reader["FullName"].ToString()!,
+                    PatientId = reader["PatientId"].ToString(),
+                    Name = reader["Name"].ToString()!,
                     PhoneNumber = reader["PhoneNumber"].ToString()!,
                     Email = reader["Email"].ToString()!,
                     Gender = Convert.ToBoolean(reader["Gender"]),
@@ -125,7 +125,7 @@ namespace QuanlyPhongKham.Repository
                     string updateSql = @"
                                         UPDATE Patients 
                                         SET 
-                                            FullName = @FullName,
+                                            Name = @Name,
                                             Email = @Email,
                                             Gender = @Gender,
                                             PhoneNumber = @PhoneNumber,
@@ -135,7 +135,7 @@ namespace QuanlyPhongKham.Repository
 
                     using (var cmd = new SQLiteCommand(updateSql, connection))
                     {
-                        cmd.Parameters.AddWithValue("@FullName", name);
+                        cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
@@ -160,24 +160,35 @@ namespace QuanlyPhongKham.Repository
 
         public List<Patient> GetAllPatients()
         {
-            var list = new List<Patient>();
+            List<Patient> patients = new List<Patient>();
 
-            using var conn = GetConnection();
-            string query = "SELECT PatientId, FullName FROM Patients";
-
-            using var cmd = new SQLiteCommand(query, conn);
-            using var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                list.Add(new Patient
+                using var conn = GetConnection();
+                conn.Open();
+                string query = "SELECT PatientId, Name FROM Patients";
+
+                using var cmd = new SQLiteCommand(query, conn);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    PatientId = Guid.Parse(reader["PatientId"].ToString()),
-                    Name = reader["FullName"].ToString()
-                });
+                    if (reader["PatientId"] != DBNull.Value && reader["Name"] != DBNull.Value)
+                    {
+                        patients.Add(new Patient
+                        {
+                            PatientId = reader["PatientId"].ToString(),
+                            Name = reader["Name"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách bệnh nhân: " + ex.Message);
             }
 
-            return list;
+            return patients;
         }
     }
 }
