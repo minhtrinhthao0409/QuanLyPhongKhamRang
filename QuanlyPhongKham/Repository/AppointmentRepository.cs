@@ -7,9 +7,9 @@ namespace QuanlyPhongKham.Repository
 {
     public class AppointmentRepository : BaseRepository
     {
-        public List<AppointmentViewModel> GetAppointmentsByDoctor(string doctorUserId)
+        public List<Appointment> GetAppointmentsByDoctor(string doctorUserId)
         {
-            var list = new List<AppointmentViewModel>();
+            var list = new List<Appointment>();
 
             using var connection = GetConnection();
             connection.Open();
@@ -29,7 +29,7 @@ namespace QuanlyPhongKham.Repository
             using var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                list.Add(new AppointmentViewModel
+                list.Add(new Appointment
                 {
                     AppointmentId = reader["AppointmentId"].ToString(),
                     PatientName = reader["PatientName"].ToString(),

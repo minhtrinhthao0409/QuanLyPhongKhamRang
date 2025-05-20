@@ -7,12 +7,15 @@ using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Views.Receptionist;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Collections.Generic;
 
 namespace QuanlyPhongKham.Views
 {
     public partial class BacSi : Form
     {
         AppointmentController appointmentController;
+        private PatientController patientController = new PatientController();
+        private Dictionary<string, string> patientMap;
         private string currentDoctorId;
         private string currentDoctorName;
         private User currentUser;
@@ -26,7 +29,7 @@ namespace QuanlyPhongKham.Views
 
         private void btnLoadAppointments_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
@@ -62,33 +65,52 @@ namespace QuanlyPhongKham.Views
 
         private void btnSaveRecord_Click(object sender, EventArgs e)
         {
-         
+
         }
 
         private void BacSi_Load(object sender, EventArgs e)
         {
-            
+            LoadPatientIds();
         }
-       
+        private void LoadPatientIds()
+        {
+            var patients = patientController.GetAllPatients();
+            patientMap = patients.ToDictionary(p => p.PatientId.ToString(), p => p.Name);
+
+            cbPatientId.DataSource = new BindingSource(patientMap, null);
+            cbPatientId.DisplayMember = "Key";   // hiển thị ID
+            cbPatientId.ValueMember = "Value";   // dùng để lấy tên
+            cbPatientId.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbPatientId.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
         private void btnAddInvoiceService_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnCalculateInvoiceTotal_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnSaveInvoice_Click(object sender, EventArgs e)
         {
         }
 
-        
+
 
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPatientId.SelectedItem is KeyValuePair<string, string> selected)
+            {
+                cbPatientName.Text = selected.Value;
+            }
         }
     }
 }

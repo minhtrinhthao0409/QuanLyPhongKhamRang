@@ -14,9 +14,6 @@ namespace QuanlyPhongKham.Services
             _repository = new AppointmentRepository();
         }
 
-        public List<AppointmentViewModel> GetAppointmentsByDoctor(string doctorUserId)
-            => _repository.GetAppointmentsByDoctor(doctorUserId);
-
         public List<Patient> GetAllPatients()
             => _repository.GetAllPatients();
 

@@ -25,18 +25,17 @@ namespace QuanlyPhongKham.Controllers
                 PhoneNumber = phone,
                 Role = (UserRole)role
             };
-
             return await _userService.CreateAccountAsync(user);
         }
 
-        public async Task<User> LoginAssyn(string username, string password)
+        public async Task<User> LoginAsync(string username, string password)
         {
             return await _userService.AuthenticateAsync(username, password);
         }
+
         public async Task<string> GetPasswordByEmail(string email)
         {
             return await _userService.GetPasswordByEmail(email);
         }
-
     }
 }

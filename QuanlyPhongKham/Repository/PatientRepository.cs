@@ -158,9 +158,26 @@ namespace QuanlyPhongKham.Repository
             return affectedRows;
         }
 
+        public List<Patient> GetAllPatients()
+        {
+            var list = new List<Patient>();
 
+            using var conn = GetConnection();
+            string query = "SELECT PatientId, FullName FROM Patients";
 
+            using var cmd = new SQLiteCommand(query, conn);
+            using var reader = cmd.ExecuteReader();
 
+            while (reader.Read())
+            {
+                list.Add(new Patient
+                {
+                    PatientId = Guid.Parse(reader["PatientId"].ToString()),
+                    Name = reader["FullName"].ToString()
+                });
+            }
 
+            return list;
+        }
     }
 }

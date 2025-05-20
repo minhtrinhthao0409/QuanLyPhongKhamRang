@@ -30,6 +30,9 @@ namespace QuanlyPhongKham.Services
         {
             return _patientRepository.UpdatePatientAsync(patientId, name, gender, phoneNumber, email, dob, guardianId);
         }
+        public List<Patient> GetAllPatients()
+        {
+            return _patientRepository.GetAllPatients();
+        }
     }
-
 }

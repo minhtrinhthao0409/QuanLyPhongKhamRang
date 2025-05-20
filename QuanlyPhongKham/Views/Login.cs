@@ -60,7 +60,7 @@ namespace QuanlyPhongKham
                 return;
             }
 
-            var user = await userController.LoginAssyn(userName, password);
+            var user = await userController.LoginAsync(userName, password);
             if (user != null)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

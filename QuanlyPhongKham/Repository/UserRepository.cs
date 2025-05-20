@@ -26,23 +26,25 @@ namespace QuanlyPhongKham.repository
 
         public async Task<string> CreateUserAsync(User user)
         {
-            string userId = Guid.NewGuid().ToString();
-
             using var connection = await GetConnectionAsync();
             using var transaction = connection.BeginTransaction();
 
-            var cmd = new SQLiteCommand(@"INSERT INTO Users (Id, UserName, Password, Email, Role) 
-                                      VALUES (@Id, @UserName, @Password, @Email, @Role)", connection);
+            var cmd = new SQLiteCommand(@"
+                INSERT INTO Users (Id, UserName, Password, Email, FullName, PhoneNumber, Role)
+                VALUES (@Id, @UserName, @Password, @Email, @FullName, @PhoneNumber, @Role)", connection);
 
-            cmd.Parameters.AddWithValue("@Id", userId);
+            cmd.Parameters.AddWithValue("@Id", user.Id);
             cmd.Parameters.AddWithValue("@UserName", user.UserName);
             cmd.Parameters.AddWithValue("@Password", user.Password);
             cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@FullName", user.FullName);
+            cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
             cmd.Parameters.AddWithValue("@Role", (int)user.Role);
 
             await cmd.ExecuteNonQueryAsync();
             await transaction.CommitAsync();
-            return userId;
+
+            return user.Id;
         }
 
         public async Task<User> GetUserByUsernameAsync(string username)
@@ -65,5 +67,41 @@ namespace QuanlyPhongKham.repository
             }
             return null;
         }
+
+        public async Task<User> GetByUsernameAndPasswordAsync(string username, string password)
+        {
+            using var conn = await GetConnectionAsync();
+
+            string query = @"SELECT * FROM Users WHERE UserName = @username AND Password = @password";
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                return new User
+                {
+                    Id = reader["Id"].ToString(),
+                    UserName = reader["UserName"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    FullName = reader["FullName"].ToString(),
+                    PhoneNumber = reader["PhoneNumber"].ToString(),
+                    Role = (UserRole)Convert.ToInt32(reader["Role"])
+                };
+            }
+            return null;
+        }
+
+        public async Task<string> GetPasswordByEmailAsync(string email)
+        {
+            using var conn = await GetConnectionAsync();
+            var cmd = new SQLiteCommand("SELECT Password FROM Users WHERE Email = @Email", conn);
+            cmd.Parameters.AddWithValue("@Email", email);
+            var result = await cmd.ExecuteScalarAsync();
+            return result?.ToString();
+        }
+
     }
 }

@@ -14,9 +14,6 @@ namespace QuanlyPhongKham.Controllers
             _service = new AppointmentService();
         }
 
-        public List<AppointmentViewModel> GetAppointmentsByDoctor(string doctorUserId)
-            => _service.GetAppointmentsByDoctor(doctorUserId);
-
         public List<Patient> GetAllPatients()
             => _service.GetAllPatients();
 
