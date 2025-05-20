@@ -21,6 +21,8 @@ namespace QuanlyPhongKham.Models
         public string Email { get; set; }
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
+
+        public int active { get; set; } = 1; // 1: active, 0: inactive
         public UserRole Role { get; set; }
         public User() { }
 

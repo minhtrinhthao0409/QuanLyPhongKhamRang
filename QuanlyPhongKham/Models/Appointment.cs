@@ -11,6 +11,7 @@ namespace QuanlyPhongKham.Models
         public string AppointmentId { get; set; }
         public string DoctorUserId { get; set; }
         public string PatientId { get; set; }
+        public string PatientName { get; set; }
 
         public DateTime AppointmentDate { get; set; }
         public TimeSpan StartTime { get; set; }

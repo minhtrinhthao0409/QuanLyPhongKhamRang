@@ -9,10 +9,17 @@ using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Controllers
 {
-    public class PatientController(PatientService service)
+    public class PatientController
     {
-        private readonly PatientService _patientService = service;
-
+        private readonly PatientService _patientService;
+        public PatientController()
+        {
+            _patientService = new PatientService(new PatientRepository());
+        }
+        public PatientController(PatientService service)
+        {
+            _patientService = service;
+        }
         public async Task<string> AddNewPatientAsync(string name, bool gender, string phone, string email, DateTime dob, Guid? guardianId = null)
         {
             if (string.IsNullOrWhiteSpace(name)) return "Tên không được rỗng";
@@ -27,7 +34,10 @@ namespace QuanlyPhongKham.Controllers
         {
             return _patientService.SearchPatientsAsync(name, phone, email);
         }
+
+        public List<Patient> GetAllPatients()
+    {
+        return _patientService.GetAllPatients();
     }
-
-
+    }
 }

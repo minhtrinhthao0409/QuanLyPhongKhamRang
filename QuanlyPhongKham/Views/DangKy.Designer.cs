@@ -199,10 +199,10 @@
             rbCashier.AutoSize = true;
             rbCashier.Location = new System.Drawing.Point(396, 592);
             rbCashier.Name = "rbCashier";
-            rbCashier.Size = new System.Drawing.Size(91, 24);
+            rbCashier.Size = new System.Drawing.Size(70, 24);
             rbCashier.TabIndex = 7;
             rbCashier.TabStop = true;
-            rbCashier.Text = "Thu ngân";
+            rbCashier.Text = "Lễ tân";
             rbCashier.UseVisualStyleBackColor = true;
             // 
             // label6
