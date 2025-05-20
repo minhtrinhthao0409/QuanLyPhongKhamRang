@@ -41,5 +41,10 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _userService.GetAllUser();
         }
+
+        public async Task<bool> CheckUsernameExists(string username)
+        {
+            return await _userService.CheckUsernameExists(username);
+        }
     }
 }

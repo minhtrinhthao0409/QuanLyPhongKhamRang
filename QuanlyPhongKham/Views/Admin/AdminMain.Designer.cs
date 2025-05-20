@@ -44,13 +44,13 @@
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             tabPage2 = new System.Windows.Forms.TabPage();
-            textBox6 = new System.Windows.Forms.TextBox();
-            textBox5 = new System.Windows.Forms.TextBox();
-            textBox4 = new System.Windows.Forms.TextBox();
-            textBox3 = new System.Windows.Forms.TextBox();
-            textBox2 = new System.Windows.Forms.TextBox();
-            textBox1 = new System.Windows.Forms.TextBox();
-            button4 = new System.Windows.Forms.Button();
+            AdminQLTKRolecb = new System.Windows.Forms.ComboBox();
+            AdminQLTKPhonetbx = new System.Windows.Forms.TextBox();
+            AdminQLTKFullNametbx = new System.Windows.Forms.TextBox();
+            AdminQLTKEmailtbx = new System.Windows.Forms.TextBox();
+            AdminQLTKPasstbx = new System.Windows.Forms.TextBox();
+            AdminQLTKUserNametbx = new System.Windows.Forms.TextBox();
+            AdminQLTKAddbtn = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
             label7 = new System.Windows.Forms.Label();
@@ -225,13 +225,13 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(textBox6);
-            tabPage2.Controls.Add(textBox5);
-            tabPage2.Controls.Add(textBox4);
-            tabPage2.Controls.Add(textBox3);
-            tabPage2.Controls.Add(textBox2);
-            tabPage2.Controls.Add(textBox1);
-            tabPage2.Controls.Add(button4);
+            tabPage2.Controls.Add(AdminQLTKRolecb);
+            tabPage2.Controls.Add(AdminQLTKPhonetbx);
+            tabPage2.Controls.Add(AdminQLTKFullNametbx);
+            tabPage2.Controls.Add(AdminQLTKEmailtbx);
+            tabPage2.Controls.Add(AdminQLTKPasstbx);
+            tabPage2.Controls.Add(AdminQLTKUserNametbx);
+            tabPage2.Controls.Add(AdminQLTKAddbtn);
             tabPage2.Controls.Add(button2);
             tabPage2.Controls.Add(button1);
             tabPage2.Controls.Add(label7);
@@ -248,57 +248,61 @@
             tabPage2.TabIndex = 2;
             tabPage2.Text = "QLTK";
             tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Click += tabPage2_Click;
             // 
-            // textBox6
+            // AdminQLTKRolecb
             // 
-            textBox6.Location = new System.Drawing.Point(469, 82);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new System.Drawing.Size(239, 27);
-            textBox6.TabIndex = 16;
+            AdminQLTKRolecb.FormattingEnabled = true;
+            AdminQLTKRolecb.Items.AddRange(new object[] { "Doctor", "Receptionist", "Admin", "Null" });
+            AdminQLTKRolecb.Location = new System.Drawing.Point(469, 82);
+            AdminQLTKRolecb.Name = "AdminQLTKRolecb";
+            AdminQLTKRolecb.Size = new System.Drawing.Size(239, 28);
+            AdminQLTKRolecb.TabIndex = 16;
             // 
-            // textBox5
+            // AdminQLTKPhonetbx
             // 
-            textBox5.Location = new System.Drawing.Point(469, 46);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new System.Drawing.Size(239, 27);
-            textBox5.TabIndex = 15;
+            AdminQLTKPhonetbx.Location = new System.Drawing.Point(469, 46);
+            AdminQLTKPhonetbx.Name = "AdminQLTKPhonetbx";
+            AdminQLTKPhonetbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKPhonetbx.TabIndex = 15;
             // 
-            // textBox4
+            // AdminQLTKFullNametbx
             // 
-            textBox4.Location = new System.Drawing.Point(469, 15);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new System.Drawing.Size(239, 27);
-            textBox4.TabIndex = 14;
+            AdminQLTKFullNametbx.Location = new System.Drawing.Point(469, 15);
+            AdminQLTKFullNametbx.Name = "AdminQLTKFullNametbx";
+            AdminQLTKFullNametbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKFullNametbx.TabIndex = 14;
             // 
-            // textBox3
+            // AdminQLTKEmailtbx
             // 
-            textBox3.Location = new System.Drawing.Point(109, 82);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new System.Drawing.Size(239, 27);
-            textBox3.TabIndex = 13;
+            AdminQLTKEmailtbx.Location = new System.Drawing.Point(109, 82);
+            AdminQLTKEmailtbx.Name = "AdminQLTKEmailtbx";
+            AdminQLTKEmailtbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKEmailtbx.TabIndex = 13;
             // 
-            // textBox2
+            // AdminQLTKPasstbx
             // 
-            textBox2.Location = new System.Drawing.Point(109, 46);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(239, 27);
-            textBox2.TabIndex = 12;
+            AdminQLTKPasstbx.Location = new System.Drawing.Point(109, 46);
+            AdminQLTKPasstbx.Name = "AdminQLTKPasstbx";
+            AdminQLTKPasstbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKPasstbx.TabIndex = 12;
             // 
-            // textBox1
+            // AdminQLTKUserNametbx
             // 
-            textBox1.Location = new System.Drawing.Point(109, 15);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(239, 27);
-            textBox1.TabIndex = 11;
+            AdminQLTKUserNametbx.Location = new System.Drawing.Point(109, 15);
+            AdminQLTKUserNametbx.Name = "AdminQLTKUserNametbx";
+            AdminQLTKUserNametbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKUserNametbx.TabIndex = 11;
             // 
-            // button4
+            // AdminQLTKAddbtn
             // 
-            button4.Location = new System.Drawing.Point(767, 9);
-            button4.Name = "button4";
-            button4.Size = new System.Drawing.Size(94, 29);
-            button4.TabIndex = 10;
-            button4.Text = "Thêm";
-            button4.UseVisualStyleBackColor = true;
+            AdminQLTKAddbtn.Location = new System.Drawing.Point(767, 9);
+            AdminQLTKAddbtn.Name = "AdminQLTKAddbtn";
+            AdminQLTKAddbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKAddbtn.TabIndex = 10;
+            AdminQLTKAddbtn.Text = "Thêm";
+            AdminQLTKAddbtn.UseVisualStyleBackColor = true;
+            AdminQLTKAddbtn.Click += AdminQLTKAddbtn_Click;
             // 
             // button2
             // 
@@ -380,6 +384,7 @@
             AdminQLTKdata.RowHeadersWidth = 51;
             AdminQLTKdata.Size = new System.Drawing.Size(853, 532);
             AdminQLTKdata.TabIndex = 0;
+            AdminQLTKdata.CellContentClick += AdminQLTKdata_CellContentClick;
             // 
             // AdminQLDV
             // 
@@ -534,12 +539,12 @@
         private System.Windows.Forms.TextBox AdminQLDVNameTb;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button AdminQLTKAddbtn;
+        private System.Windows.Forms.TextBox AdminQLTKPhonetbx;
+        private System.Windows.Forms.TextBox AdminQLTKFullNametbx;
+        private System.Windows.Forms.TextBox AdminQLTKEmailtbx;
+        private System.Windows.Forms.TextBox AdminQLTKPasstbx;
+        private System.Windows.Forms.TextBox AdminQLTKUserNametbx;
+        private System.Windows.Forms.ComboBox AdminQLTKRolecb;
     }
 }

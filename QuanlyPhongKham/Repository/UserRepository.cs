@@ -16,6 +16,7 @@ namespace QuanlyPhongKham.Repository
     {
         public UserRepository(string connectionString = null) : base(connectionString) { }
 
+        // kiem tra username ton tai
         public async Task<bool> CheckUsernameExistsAsync(string username)
         {
             using var connection = await GetConnectionAsync();
@@ -25,6 +26,7 @@ namespace QuanlyPhongKham.Repository
             return result != null;
         }
 
+        //tao user
         public async Task<string> CreateUserAsync(User user)
         {
             using var connection = await GetConnectionAsync();
@@ -47,7 +49,7 @@ namespace QuanlyPhongKham.Repository
 
             return user.Id;
         }
-
+        // Lay User theo username
         public async Task<User> GetUserByUsernameAsync(string username)
         {
             using var connection = await GetConnectionAsync();
@@ -70,6 +72,7 @@ namespace QuanlyPhongKham.Repository
             return null;
         }
 
+        // Lay User bang Username va Password
         public async Task<User> GetByUsernameAndPasswordAsync(string username, string password)
         {
             using var conn = await GetConnectionAsync();
@@ -96,6 +99,7 @@ namespace QuanlyPhongKham.Repository
             return null;
         }
 
+        // Lay Password bang Email
         public async Task<string> GetPasswordByEmailAsync(string email)
         {
             using var conn = await GetConnectionAsync();
@@ -105,6 +109,7 @@ namespace QuanlyPhongKham.Repository
             return result?.ToString();
         }
 
+        // Lay tat ca User
         public async Task<List<User>> GetAllUserAsync()
         {
             List<User> users = new List<User>();

@@ -39,6 +39,10 @@ namespace QuanlyPhongKham.Services
                 return false;
             }
         }
+        public async Task<bool> CheckUsernameExists(string username)
+        {
+            return await _userRepository.CheckUsernameExistsAsync(username);
+        }
         public async Task<string> GetPasswordByEmail(string email)
         {
             return await _userRepository.GetPasswordByEmailAsync(email);
@@ -55,6 +59,6 @@ namespace QuanlyPhongKham.Services
                 }
             }
             return users;
-        }
+        } 
     }
 }
