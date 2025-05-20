@@ -16,16 +16,16 @@ namespace QuanlyPhongKham.Views.Admin
     public partial class AdminMain : Form
     {
         private User Admin { get; set; }
-        private UserControllers _userControllers; // Add an instance of UserControllers
+        private UserControllers _userControllers;
 
         public AdminMain(User user)
         {
             InitializeComponent();
             this.Admin = user;
-            this._userControllers = new UserControllers(); // Initialize the instance
+            this._userControllers = new UserControllers(); 
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
-            LoadUserDataAsync(); // Call the async method to load user data
+            LoadUserDataAsync();
         }
 
         private async void LoadUserDataAsync()
