@@ -1,6 +1,6 @@
 ﻿namespace QuanlyPhongKham.Views.Receptionist
 {
-    partial class InvoiceFrm
+    partial class ReceptionistMainFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,16 +35,15 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
-            panel1 = new System.Windows.Forms.Panel();
-            Searchbtn = new System.Windows.Forms.Button();
-            textBox2 = new System.Windows.Forms.TextBox();
-            label5 = new System.Windows.Forms.Label();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            endTimelbl = new System.Windows.Forms.Label();
-            start_time_lbl = new System.Windows.Forms.Label();
-            startTimePicker = new System.Windows.Forms.DateTimePicker();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            label1 = new System.Windows.Forms.Label();
+            Editbtn = new System.Windows.Forms.Button();
+            Usernamelbl = new System.Windows.Forms.Label();
+            Emaillbl = new System.Windows.Forms.Label();
+            monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            Welcomelbl = new System.Windows.Forms.Label();
             panel2.SuspendLayout();
-            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -58,7 +57,7 @@
             panel2.Location = new System.Drawing.Point(12, 31);
             panel2.Name = "panel2";
             panel2.Size = new System.Drawing.Size(176, 638);
-            panel2.TabIndex = 7;
+            panel2.TabIndex = 5;
             // 
             // Homelbl
             // 
@@ -71,6 +70,7 @@
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Homelbl.Click += menulbl_click;
             // 
             // Invoicelbl
             // 
@@ -83,6 +83,7 @@
             Invoicelbl.TabIndex = 6;
             Invoicelbl.Text = "Invoice";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Invoicelbl.Click += menulbl_click;
             // 
             // Patientlbl
             // 
@@ -95,6 +96,7 @@
             Patientlbl.TabIndex = 5;
             Patientlbl.Text = "Patient";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Patientlbl.Click += menulbl_click;
             // 
             // Schedulelbl
             // 
@@ -107,6 +109,7 @@
             Schedulelbl.TabIndex = 5;
             Schedulelbl.Text = "Schedule";
             Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Schedulelbl.Click += menulbl_click;
             // 
             // Appointmentlbl
             // 
@@ -119,6 +122,7 @@
             Appointmentlbl.TabIndex = 5;
             Appointmentlbl.Text = "Appointment";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Appointmentlbl.Click += menulbl_click;
             // 
             // SignOutlbl
             // 
@@ -132,94 +136,86 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
+            // dataGridView1
             // 
-            panel1.Controls.Add(Searchbtn);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(dateTimePicker1);
-            panel1.Controls.Add(endTimelbl);
-            panel1.Controls.Add(start_time_lbl);
-            panel1.Controls.Add(startTimePicker);
-            panel1.Location = new System.Drawing.Point(202, 32);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(791, 206);
-            panel1.TabIndex = 8;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(250, 301);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new System.Drawing.Size(675, 357);
+            dataGridView1.TabIndex = 18;
             // 
-            // Searchbtn
+            // label1
             // 
-            Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            Searchbtn.Location = new System.Drawing.Point(409, 118);
-            Searchbtn.Name = "Searchbtn";
-            Searchbtn.Size = new System.Drawing.Size(93, 50);
-            Searchbtn.TabIndex = 21;
-            Searchbtn.Text = "Search";
-            Searchbtn.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(208, 250);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(291, 32);
+            label1.TabIndex = 17;
+            label1.Text = "Upcoming Appointment";
             // 
-            // textBox2
+            // Editbtn
             // 
-            textBox2.Location = new System.Drawing.Point(169, 117);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(211, 23);
-            textBox2.TabIndex = 20;
+            Editbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Editbtn.Location = new System.Drawing.Point(638, 154);
+            Editbtn.Name = "Editbtn";
+            Editbtn.Size = new System.Drawing.Size(72, 39);
+            Editbtn.TabIndex = 16;
+            Editbtn.Text = "Edit";
+            Editbtn.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // Usernamelbl
             // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(50, 118);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(101, 17);
-            label5.TabIndex = 19;
-            label5.Text = "Phone Number";
+            Usernamelbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Usernamelbl.Location = new System.Drawing.Point(208, 74);
+            Usernamelbl.Name = "Usernamelbl";
+            Usernamelbl.Size = new System.Drawing.Size(502, 25);
+            Usernamelbl.TabIndex = 15;
+            Usernamelbl.Text = "Username:";
             // 
-            // dateTimePicker1
+            // Emaillbl
             // 
-            dateTimePicker1.Location = new System.Drawing.Point(522, 51);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(210, 23);
-            dateTimePicker1.TabIndex = 8;
+            Emaillbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Emaillbl.Location = new System.Drawing.Point(208, 112);
+            Emaillbl.Name = "Emaillbl";
+            Emaillbl.Size = new System.Drawing.Size(502, 25);
+            Emaillbl.TabIndex = 14;
+            Emaillbl.Text = "Email:";
             // 
-            // endTimelbl
+            // monthCalendar1
             // 
-            endTimelbl.AutoSize = true;
-            endTimelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            endTimelbl.Location = new System.Drawing.Point(403, 51);
-            endTimelbl.Name = "endTimelbl";
-            endTimelbl.Size = new System.Drawing.Size(99, 17);
-            endTimelbl.TabIndex = 7;
-            endTimelbl.Text = "End Date Time";
+            monthCalendar1.Location = new System.Drawing.Point(763, 31);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 13;
             // 
-            // start_time_lbl
+            // Welcomelbl
             // 
-            start_time_lbl.AutoSize = true;
-            start_time_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            start_time_lbl.Location = new System.Drawing.Point(46, 51);
-            start_time_lbl.Name = "start_time_lbl";
-            start_time_lbl.Size = new System.Drawing.Size(105, 17);
-            start_time_lbl.TabIndex = 5;
-            start_time_lbl.Text = "Start Date Time";
+            Welcomelbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            Welcomelbl.Location = new System.Drawing.Point(208, 31);
+            Welcomelbl.Name = "Welcomelbl";
+            Welcomelbl.Size = new System.Drawing.Size(397, 43);
+            Welcomelbl.TabIndex = 12;
+            Welcomelbl.Text = "Welcome,";
             // 
-            // startTimePicker
-            // 
-            startTimePicker.Location = new System.Drawing.Point(168, 51);
-            startTimePicker.Name = "startTimePicker";
-            startTimePicker.Size = new System.Drawing.Size(211, 23);
-            startTimePicker.TabIndex = 6;
-            // 
-            // InvoiceFrm
+            // ReceptionistMainFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
-            Controls.Add(panel1);
+            Controls.Add(dataGridView1);
+            Controls.Add(label1);
+            Controls.Add(Editbtn);
+            Controls.Add(Usernamelbl);
+            Controls.Add(Emaillbl);
+            Controls.Add(monthCalendar1);
+            Controls.Add(Welcomelbl);
             Controls.Add(panel2);
-            Name = "InvoiceFrm";
-            Text = "PaymentStatus";
+            Name = "ReceptionistMainFrm";
+            Text = "ReceptionistMainFrm";
             panel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -231,13 +227,12 @@
         private System.Windows.Forms.Label Schedulelbl;
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label endTimelbl;
-        private System.Windows.Forms.Label start_time_lbl;
-        private System.Windows.Forms.DateTimePicker startTimePicker;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Searchbtn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Editbtn;
+        private System.Windows.Forms.Label Usernamelbl;
+        private System.Windows.Forms.Label Emaillbl;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label Welcomelbl;
     }
 }

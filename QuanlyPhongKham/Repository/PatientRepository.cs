@@ -9,8 +9,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanlyPhongKham.Repository
 {
-    public class PatientRepository : BaseRepository {
-        public PatientRepository(string connectionString = null) : base(connectionString) { }
+    public class PatientRepository(string connectionString = null) : BaseRepository(connectionString)
+    {
         public async Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             if (string.IsNullOrWhiteSpace(name))

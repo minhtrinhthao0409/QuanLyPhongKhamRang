@@ -53,20 +53,20 @@
             panel1 = new System.Windows.Forms.Panel();
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             Doblbl = new System.Windows.Forms.Label();
-            textBox4 = new System.Windows.Forms.TextBox();
+            Guardian = new System.Windows.Forms.TextBox();
             Guardianlbl = new System.Windows.Forms.Label();
             listBox2 = new System.Windows.Forms.ListBox();
             label3 = new System.Windows.Forms.Label();
-            textBox1 = new System.Windows.Forms.TextBox();
+            PatientEmail = new System.Windows.Forms.TextBox();
             label4 = new System.Windows.Forms.Label();
-            textBox2 = new System.Windows.Forms.TextBox();
+            PatientPhoneNo = new System.Windows.Forms.TextBox();
             label5 = new System.Windows.Forms.Label();
-            textBox3 = new System.Windows.Forms.TextBox();
+            PatientName = new System.Windows.Forms.TextBox();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             ResetBtn = new System.Windows.Forms.Button();
-            UpdateBtn = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
+            UpdatePatientBtn = new System.Windows.Forms.Button();
+            AddPatientbtn = new System.Windows.Forms.Button();
             panel2.SuspendLayout();
             PatientTab.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -101,6 +101,7 @@
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Homelbl.Click += menulbl_click;
             // 
             // Invoicelbl
             // 
@@ -113,6 +114,7 @@
             Invoicelbl.TabIndex = 6;
             Invoicelbl.Text = "Invoice";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Invoicelbl.Click += menulbl_click;
             // 
             // Patientlbl
             // 
@@ -125,6 +127,7 @@
             Patientlbl.TabIndex = 5;
             Patientlbl.Text = "Patient";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Patientlbl.Click += menulbl_click;
             // 
             // Schedulelbl
             // 
@@ -137,6 +140,7 @@
             Schedulelbl.TabIndex = 5;
             Schedulelbl.Text = "Schedule";
             Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Schedulelbl.Click += menulbl_click;
             // 
             // Appointmentlbl
             // 
@@ -149,6 +153,7 @@
             Appointmentlbl.TabIndex = 5;
             Appointmentlbl.Text = "Appointment";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Appointmentlbl.Click += menulbl_click;
             // 
             // SignOutlbl
             // 
@@ -166,11 +171,11 @@
             // 
             PatientTab.Controls.Add(tabPage1);
             PatientTab.Controls.Add(tabPage2);
-            PatientTab.Location = new System.Drawing.Point(195, 6);
+            PatientTab.Location = new System.Drawing.Point(194, 4);
             PatientTab.Name = "PatientTab";
             PatientTab.SelectedIndex = 0;
             PatientTab.Size = new System.Drawing.Size(807, 665);
-            PatientTab.TabIndex = 7;
+            PatientTab.TabIndex = 8;
             // 
             // tabPage1
             // 
@@ -278,7 +283,6 @@
             CrudPatient.Size = new System.Drawing.Size(244, 25);
             CrudPatient.TabIndex = 15;
             CrudPatient.Text = "Search Patient Infomation";
-            CrudPatient.Click += CrudPatient_Click;
             // 
             // AddScheduleBtn
             // 
@@ -314,25 +318,24 @@
             // 
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(Doblbl);
-            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(Guardian);
             panel1.Controls.Add(Guardianlbl);
             panel1.Controls.Add(listBox2);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(PatientEmail);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(PatientPhoneNo);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(PatientName);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(ResetBtn);
-            panel1.Controls.Add(UpdateBtn);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(UpdatePatientBtn);
+            panel1.Controls.Add(AddPatientbtn);
             panel1.Location = new System.Drawing.Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(796, 296);
             panel1.TabIndex = 4;
-            panel1.Paint += panel1_Paint;
             // 
             // dateTimePicker1
             // 
@@ -351,12 +354,12 @@
             Doblbl.TabIndex = 25;
             Doblbl.Text = "DOB";
             // 
-            // textBox4
+            // Guardian
             // 
-            textBox4.Location = new System.Drawing.Point(143, 162);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new System.Drawing.Size(211, 23);
-            textBox4.TabIndex = 24;
+            Guardian.Location = new System.Drawing.Point(143, 162);
+            Guardian.Name = "Guardian";
+            Guardian.Size = new System.Drawing.Size(211, 23);
+            Guardian.TabIndex = 24;
             // 
             // Guardianlbl
             // 
@@ -388,12 +391,12 @@
             label3.TabIndex = 21;
             label3.Text = "Gender";
             // 
-            // textBox1
+            // PatientEmail
             // 
-            textBox1.Location = new System.Drawing.Point(466, 130);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(268, 23);
-            textBox1.TabIndex = 20;
+            PatientEmail.Location = new System.Drawing.Point(466, 130);
+            PatientEmail.Name = "PatientEmail";
+            PatientEmail.Size = new System.Drawing.Size(268, 23);
+            PatientEmail.TabIndex = 20;
             // 
             // label4
             // 
@@ -405,12 +408,12 @@
             label4.TabIndex = 19;
             label4.Text = "Email";
             // 
-            // textBox2
+            // PatientPhoneNo
             // 
-            textBox2.Location = new System.Drawing.Point(143, 129);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(211, 23);
-            textBox2.TabIndex = 18;
+            PatientPhoneNo.Location = new System.Drawing.Point(143, 129);
+            PatientPhoneNo.Name = "PatientPhoneNo";
+            PatientPhoneNo.Size = new System.Drawing.Size(211, 23);
+            PatientPhoneNo.TabIndex = 18;
             // 
             // label5
             // 
@@ -422,12 +425,12 @@
             label5.TabIndex = 17;
             label5.Text = "Phone Number";
             // 
-            // textBox3
+            // PatientName
             // 
-            textBox3.Location = new System.Drawing.Point(143, 48);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new System.Drawing.Size(591, 23);
-            textBox3.TabIndex = 16;
+            PatientName.Location = new System.Drawing.Point(143, 48);
+            PatientName.Name = "PatientName";
+            PatientName.Size = new System.Drawing.Size(591, 23);
+            PatientName.TabIndex = 16;
             // 
             // label6
             // 
@@ -459,25 +462,26 @@
             ResetBtn.Text = "Reset";
             ResetBtn.UseVisualStyleBackColor = true;
             // 
-            // UpdateBtn
+            // UpdatePatientBtn
             // 
-            UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdateBtn.Location = new System.Drawing.Point(346, 215);
-            UpdateBtn.Name = "UpdateBtn";
-            UpdateBtn.Size = new System.Drawing.Size(93, 50);
-            UpdateBtn.TabIndex = 6;
-            UpdateBtn.Text = "Update";
-            UpdateBtn.UseVisualStyleBackColor = true;
+            UpdatePatientBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            UpdatePatientBtn.Location = new System.Drawing.Point(346, 215);
+            UpdatePatientBtn.Name = "UpdatePatientBtn";
+            UpdatePatientBtn.Size = new System.Drawing.Size(93, 50);
+            UpdatePatientBtn.TabIndex = 6;
+            UpdatePatientBtn.Text = "Update";
+            UpdatePatientBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // AddPatientbtn
             // 
-            button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            button1.Location = new System.Drawing.Point(155, 215);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(93, 50);
-            button1.TabIndex = 5;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = true;
+            AddPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            AddPatientbtn.Location = new System.Drawing.Point(155, 215);
+            AddPatientbtn.Name = "AddPatientbtn";
+            AddPatientbtn.Size = new System.Drawing.Size(93, 50);
+            AddPatientbtn.TabIndex = 5;
+            AddPatientbtn.Text = "Add";
+            AddPatientbtn.UseVisualStyleBackColor = true;
+            AddPatientbtn.Click += AddPatientbtn_Click;
             // 
             // PatientFrm
             // 
@@ -487,7 +491,7 @@
             Controls.Add(PatientTab);
             Controls.Add(panel2);
             Name = "PatientFrm";
-            Text = "Patient";
+            Text = "PatientForm";
             panel2.ResumeLayout(false);
             PatientTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -512,8 +516,9 @@
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.TabControl PatientTab;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel CrudPanel;
+        private System.Windows.Forms.Button ResetSearchPatientbtn;
         private System.Windows.Forms.TextBox patientEmailTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PatientPhoneNoTxt;
@@ -522,25 +527,24 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CrudPatient;
         private System.Windows.Forms.Button AddScheduleBtn;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label Doblbl;
+        private System.Windows.Forms.TextBox Guardian;
+        private System.Windows.Forms.Label Guardianlbl;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PatientEmail;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PatientPhoneNo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox PatientName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button ResetBtn;
-        private System.Windows.Forms.Button UpdateBtn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label Doblbl;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label Guardianlbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button ResetSearchPatientbtn;
+        private System.Windows.Forms.Button UpdatePatientBtn;
+        private System.Windows.Forms.Button AddPatientbtn;
     }
 }

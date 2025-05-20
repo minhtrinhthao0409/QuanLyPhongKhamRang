@@ -11,31 +11,26 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
-    public partial class LeftSideMenu : Form
+    public partial class ScheduleFrm : Form
     {
+
         private User user;
-        public LeftSideMenu()
+        private Form currentForm = null;
+        public ScheduleFrm(User user)
         {
-            //this.user = user;
+            this.user = user;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            Appointmentlbl.Click += MenuLabel_Click;
-            Patientlbl.Click += MenuLabel_Click;
-            Schedulelbl.Click += MenuLabel_Click;
-            Invoicelbl.Click += MenuLabel_Click;
-            Homelbl.Click += MenuLabel_Click;
+
+
+            Appointmentlbl.Click += menulbl_click;
+            Patientlbl.Click += menulbl_click;
+            Schedulelbl.Click += menulbl_click;
+            Invoicelbl.Click += menulbl_click;
+            Homelbl.Click += menulbl_click;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-
-        private Form currentForm = null;
-
-        protected virtual void MenuLabel_Click(object sender, EventArgs e)
+        private void menulbl_click(object sender, EventArgs e)
         {
             if (currentForm != null && !currentForm.IsDisposed)
             {
@@ -64,15 +59,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 };
                 currentForm.Show();
             }
-        }
-
-
-        protected virtual void btnExit_Click(object sender, EventArgs e)
-        {
-            
-            Application.Exit();
 
         }
-
     }
 }

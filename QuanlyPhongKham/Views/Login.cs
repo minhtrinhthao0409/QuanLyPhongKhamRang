@@ -11,6 +11,7 @@ using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Views;
 using QuanlyPhongKham.Views.Admin;
+using QuanlyPhongKham.Views.Receptionist;
 
 namespace QuanlyPhongKham
 {
@@ -83,7 +84,7 @@ namespace QuanlyPhongKham
                 }
                 else if (user.Role == UserRole.Receptionist)
                 {
-                    form = new ReceptionistMain(user);
+                    form = new ReceptionistMainFrm(user);
                     //form.ShowDialog();
                 }
                 else
