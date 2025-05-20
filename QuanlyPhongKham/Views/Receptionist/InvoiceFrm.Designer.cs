@@ -58,7 +58,7 @@
             panel2.Location = new System.Drawing.Point(12, 31);
             panel2.Name = "panel2";
             panel2.Size = new System.Drawing.Size(176, 638);
-            panel2.TabIndex = 7;
+            panel2.TabIndex = 10;
             // 
             // Homelbl
             // 
@@ -71,6 +71,7 @@
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Homelbl.Click += menulbl_click;
             // 
             // Invoicelbl
             // 
@@ -83,6 +84,7 @@
             Invoicelbl.TabIndex = 6;
             Invoicelbl.Text = "Invoice";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Invoicelbl.Click += menulbl_click;
             // 
             // Patientlbl
             // 
@@ -95,6 +97,7 @@
             Patientlbl.TabIndex = 5;
             Patientlbl.Text = "Patient";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Patientlbl.Click += menulbl_click;
             // 
             // Schedulelbl
             // 
@@ -107,6 +110,7 @@
             Schedulelbl.TabIndex = 5;
             Schedulelbl.Text = "Schedule";
             Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Schedulelbl.Click += menulbl_click;
             // 
             // Appointmentlbl
             // 
@@ -119,6 +123,7 @@
             Appointmentlbl.TabIndex = 5;
             Appointmentlbl.Text = "Appointment";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Appointmentlbl.Click += menulbl_click;
             // 
             // SignOutlbl
             // 
@@ -141,10 +146,10 @@
             panel1.Controls.Add(endTimelbl);
             panel1.Controls.Add(start_time_lbl);
             panel1.Controls.Add(startTimePicker);
-            panel1.Location = new System.Drawing.Point(202, 32);
+            panel1.Location = new System.Drawing.Point(205, 31);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(791, 206);
-            panel1.TabIndex = 8;
+            panel1.TabIndex = 11;
             // 
             // Searchbtn
             // 
@@ -207,15 +212,15 @@
             startTimePicker.Size = new System.Drawing.Size(211, 23);
             startTimePicker.TabIndex = 6;
             // 
-            // InvoiceFrm
+            // InvoiceForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Name = "InvoiceFrm";
-            Text = "PaymentStatus";
+            Name = "InvoiceForm";
+            Text = "InvoiceForm";
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -232,12 +237,12 @@
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Searchbtn;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label endTimelbl;
         private System.Windows.Forms.Label start_time_lbl;
         private System.Windows.Forms.DateTimePicker startTimePicker;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Searchbtn;
     }
 }

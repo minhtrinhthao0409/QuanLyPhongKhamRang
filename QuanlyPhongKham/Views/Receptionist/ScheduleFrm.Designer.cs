@@ -83,7 +83,7 @@
             panel2.Location = new System.Drawing.Point(12, 31);
             panel2.Name = "panel2";
             panel2.Size = new System.Drawing.Size(176, 638);
-            panel2.TabIndex = 5;
+            panel2.TabIndex = 10;
             // 
             // Homelbl
             // 
@@ -161,11 +161,11 @@
             // 
             ScheduleTab.Controls.Add(tabPage1);
             ScheduleTab.Controls.Add(tabPage2);
-            ScheduleTab.Location = new System.Drawing.Point(191, 12);
+            ScheduleTab.Location = new System.Drawing.Point(194, 11);
             ScheduleTab.Name = "ScheduleTab";
             ScheduleTab.SelectedIndex = 0;
             ScheduleTab.Size = new System.Drawing.Size(805, 658);
-            ScheduleTab.TabIndex = 6;
+            ScheduleTab.TabIndex = 11;
             // 
             // tabPage1
             // 
@@ -440,15 +440,15 @@
             SearchDoctorNamelbl.TabIndex = 8;
             SearchDoctorNamelbl.Text = "Doctor Name";
             // 
-            // ScheduleFrm
+            // ScheduleForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(ScheduleTab);
             Controls.Add(panel2);
-            Name = "ScheduleFrm";
-            Text = "Schedule";
+            Name = "ScheduleForm";
+            Text = "ScheduleForm";
             panel2.ResumeLayout(false);
             ScheduleTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -471,7 +471,6 @@
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.TabControl ScheduleTab;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel CrudPanel;
         private System.Windows.Forms.TextBox DoctorIdTxt;
         private System.Windows.Forms.Label label2;
@@ -489,6 +488,7 @@
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button AddScheduleBtn;
         private System.Windows.Forms.Label doctorlbl;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Searchlbl;
         private System.Windows.Forms.Button Searchbtn;
