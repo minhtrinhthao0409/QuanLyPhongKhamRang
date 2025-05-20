@@ -10,7 +10,7 @@ namespace QuanlyPhongKham.Repository
 {
     public class MedicalRecordRepository(string connectionString = null) : BaseRepository(connectionString)
     {
-        public async Task<int> CreateMedicalRecordAsync(Guid patientId, string patientName, string symtoms, string diagnosis, string treatmentPlan, DateTime recordDate)
+        public async Task<int> CreateMedicalRecordAsync(Guid patientId, string patientName, string symtoms, string diagnosis, string treatmentPlan)
         {
             if (string.IsNullOrWhiteSpace(patientName))
                 throw new ArgumentException("Tên bệnh nhân không được rỗng.", nameof(patientName));
@@ -18,7 +18,7 @@ namespace QuanlyPhongKham.Repository
             if (string.IsNullOrWhiteSpace(symtoms))
                 throw new ArgumentException("Triệu chứng không được rỗng.", nameof(symtoms));
 
-            recordDate = DateTime.Now;
+            DateTime recordDate = DateTime.Now;
 
             int affectedRows = 0;
 

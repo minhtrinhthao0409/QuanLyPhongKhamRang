@@ -83,15 +83,15 @@ CREATE TABLE "Users" (
 	"PhoneNumber"	TEXT,
 	"Role"	INTEGER NOT NULL CHECK("Role" IN (1, 2, 3)),
 	PRIMARY KEY("Id")
-)
-
-INSERT INTO "Users" VALUES('U100','dr.hung','123456','hung@clinic.com',2);
-INSERT INTO "Users" VALUES('U101','cashier.mai','abc@123','mai@clinic.com',3);
-INSERT INTO "Users" VALUES('admin-0001-uuid-unique-9999','admin','admin123','admin@clinic.com',1);
-INSERT INTO "Users" VALUES('dat','dat','dat','dat@dat.com',2);
-INSERT INTO "Users" VALUES('33c0d563-7358-4af5-a8b7-c53dd0023895','minh','123','minh@gmail.com',3);
-INSERT INTO "Users" VALUES('db7e78be-3c16-49c2-9fdf-fa8a5122b6df','minh','123','minh@gmail.com',2);
-INSERT INTO "Users" VALUES('2f5c14d7-01f9-488a-91a3-a2b1ee22b0d0','123','123','m@g.com',3);
+);
+INSERT INTO "Users" VALUES('U100','dr.hung','123456',NULL,'hung@clinic.com',NULL,2);
+INSERT INTO "Users" VALUES('U101','cashier.mai','abc@123',NULL,'mai@clinic.com',NULL,3);
+INSERT INTO "Users" VALUES('admin-0001-uuid-unique-9999','admin','admin123',NULL,'admin@clinic.com',NULL,1);
+INSERT INTO "Users" VALUES('dat','dat','dat',NULL,'dat@dat.com',NULL,2);
+INSERT INTO "Users" VALUES('33c0d563-7358-4af5-a8b7-c53dd0023895','minh','123',NULL,'minh@gmail.com',NULL,3);
+INSERT INTO "Users" VALUES('db7e78be-3c16-49c2-9fdf-fa8a5122b6df','minh','123',NULL,'minh@gmail.com',NULL,2);
+INSERT INTO "Users" VALUES('2f5c14d7-01f9-488a-91a3-a2b1ee22b0d0','123','123',NULL,'m@g.com',NULL,3);
+INSERT INTO "Users" VALUES('08f97092-fb78-44d1-8c39-4f89f9bf1bc7','minh','123','minh','minh@gmail.com','000',3);
 CREATE TABLE "log" (
 	"Id"	INTEGER,
 	"UserId"	TEXT NOT NULL,
