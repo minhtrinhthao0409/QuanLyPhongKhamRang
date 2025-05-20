@@ -157,7 +157,7 @@
             Welcomelbl.Name = "Welcomelbl";
             Welcomelbl.Size = new System.Drawing.Size(397, 43);
             Welcomelbl.TabIndex = 4;
-            Welcomelbl.Text = "Welcome, user123";
+            Welcomelbl.Text = "Welcome,";
             // 
             // monthCalendar1
             // 

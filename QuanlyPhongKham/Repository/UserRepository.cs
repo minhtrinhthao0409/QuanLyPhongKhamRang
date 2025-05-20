@@ -9,7 +9,7 @@ using System.Data.SQLite;
 
 
 
-namespace QuanlyPhongKham.repository
+namespace QuanlyPhongKham.Repository
 {
     public class UserRepository : BaseRepository
     {
@@ -60,6 +60,7 @@ namespace QuanlyPhongKham.repository
                 {
                     Id = reader["Id"].ToString(),
                     UserName = reader["UserName"].ToString(),
+                    FullName = reader["FullName"].ToString(),
                     Email = reader["Email"].ToString(),
                     Password = reader["Password"].ToString(),
                     Role = (UserRole)Convert.ToInt32(reader["Role"])

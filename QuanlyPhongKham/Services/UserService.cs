@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuanlyPhongKham.Models;
-using QuanlyPhongKham.repository;
+using QuanlyPhongKham.Repository;
 using System.Data.SQLite;
 
 namespace QuanlyPhongKham.Services
