@@ -11,6 +11,10 @@ namespace QuanlyPhongKham.Repository
 {
     public class PatientRepository(string connectionString = null) : BaseRepository(connectionString)
     {
+
+        
+
+
         public async Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             if (string.IsNullOrWhiteSpace(name))

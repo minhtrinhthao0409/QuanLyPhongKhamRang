@@ -17,6 +17,9 @@ namespace QuanlyPhongKham.Services
             _patientRepository = patientRepo;
         }
 
+        
+
+
         public Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             return _patientRepository.CreatePatientAsync(patientId, name, gender, phoneNumber, email, dob, guardianId);

@@ -1,4 +1,5 @@
 ﻿using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +17,16 @@ namespace QuanlyPhongKham.Views.Receptionist
         private User user;
         private Form currentForm = null;
 
+        private readonly PatientService _patientService;
 
 
         public PatientFrm(User user)
         {
             InitializeComponent();
             this.user = user;
+
+
+
             this.StartPosition = FormStartPosition.CenterScreen;
 
             Appointmentlbl.Click += menulbl_click;
@@ -63,5 +68,43 @@ namespace QuanlyPhongKham.Views.Receptionist
             }
 
         }
+
+        private async void AddPatientbtn_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string name = PatientName.Text.Trim();
+                string phoneNo = PatientPhoneNo.Text.Trim();
+                string? guardian = Guardian.Text.Trim();
+                string email = PatientEmail.Text.Trim();
+                DateTime dob = dateTimePicker1.Value;
+                bool gender = listBox2.Text.Trim() == "Male";
+
+                Guid patientId = Guid.NewGuid();
+
+
+                int result = await _patientService.CreatePatientAsync(
+                patientId, name, gender, phoneNo, email, dob);
+
+                if (result > 0)
+                {
+                    MessageBox.Show("Thêm bệnh nhân thành công!");
+                    //ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm bệnh nhân thất bại.");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+
+
     }
 }
