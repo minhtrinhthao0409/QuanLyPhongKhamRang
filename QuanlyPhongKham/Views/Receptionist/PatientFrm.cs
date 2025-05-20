@@ -1,5 +1,4 @@
 ﻿using QuanlyPhongKham.Models;
-using QuanlyPhongKham.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,20 +11,18 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
-    public partial class AppointmentFrm : Form
+    public partial class PatientFrm : Form
     {
         private User user;
         private Form currentForm = null;
 
-        private readonly AppointmentRepository _appointmentRepo = new();
-        private readonly UserRepository _userRepo = new();
 
-        public AppointmentFrm(User user)
+
+        public PatientFrm(User user)
         {
-            this.user = user;
             InitializeComponent();
+            this.user = user;
             this.StartPosition = FormStartPosition.CenterScreen;
-
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;

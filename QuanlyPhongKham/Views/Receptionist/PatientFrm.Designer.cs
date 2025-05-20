@@ -101,6 +101,7 @@
             Homelbl.TabIndex = 7;
             Homelbl.Text = "Home";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Homelbl.Click += menulbl_click;
             // 
             // Invoicelbl
             // 
@@ -113,6 +114,7 @@
             Invoicelbl.TabIndex = 6;
             Invoicelbl.Text = "Invoice";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Invoicelbl.Click += menulbl_click;
             // 
             // Patientlbl
             // 
@@ -125,6 +127,7 @@
             Patientlbl.TabIndex = 5;
             Patientlbl.Text = "Patient";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Patientlbl.Click += menulbl_click;
             // 
             // Schedulelbl
             // 
@@ -137,6 +140,7 @@
             Schedulelbl.TabIndex = 5;
             Schedulelbl.Text = "Schedule";
             Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Schedulelbl.Click += menulbl_click;
             // 
             // Appointmentlbl
             // 
@@ -149,6 +153,7 @@
             Appointmentlbl.TabIndex = 5;
             Appointmentlbl.Text = "Appointment";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Appointmentlbl.Click += menulbl_click;
             // 
             // SignOutlbl
             // 
@@ -166,11 +171,11 @@
             // 
             PatientTab.Controls.Add(tabPage1);
             PatientTab.Controls.Add(tabPage2);
-            PatientTab.Location = new System.Drawing.Point(195, 6);
+            PatientTab.Location = new System.Drawing.Point(194, 4);
             PatientTab.Name = "PatientTab";
             PatientTab.SelectedIndex = 0;
             PatientTab.Size = new System.Drawing.Size(807, 665);
-            PatientTab.TabIndex = 7;
+            PatientTab.TabIndex = 8;
             // 
             // tabPage1
             // 
@@ -278,7 +283,6 @@
             CrudPatient.Size = new System.Drawing.Size(244, 25);
             CrudPatient.TabIndex = 15;
             CrudPatient.Text = "Search Patient Infomation";
-            CrudPatient.Click += CrudPatient_Click;
             // 
             // AddScheduleBtn
             // 
@@ -332,7 +336,6 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(796, 296);
             panel1.TabIndex = 4;
-            panel1.Paint += panel1_Paint;
             // 
             // dateTimePicker1
             // 
@@ -479,15 +482,15 @@
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
             // 
-            // PatientFrm
+            // PatientForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
             Controls.Add(PatientTab);
             Controls.Add(panel2);
-            Name = "PatientFrm";
-            Text = "Patient";
+            Name = "PatientForm";
+            Text = "PatientForm";
             panel2.ResumeLayout(false);
             PatientTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -512,8 +515,9 @@
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.TabControl PatientTab;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel CrudPanel;
+        private System.Windows.Forms.Button ResetSearchPatientbtn;
         private System.Windows.Forms.TextBox patientEmailTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PatientPhoneNoTxt;
@@ -522,7 +526,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CrudPatient;
         private System.Windows.Forms.Button AddScheduleBtn;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label Doblbl;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label Guardianlbl;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
@@ -535,12 +545,5 @@
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label Doblbl;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label Guardianlbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button ResetSearchPatientbtn;
     }
 }
