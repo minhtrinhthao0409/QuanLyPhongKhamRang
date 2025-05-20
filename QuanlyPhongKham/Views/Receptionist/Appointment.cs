@@ -16,9 +16,7 @@ namespace QuanlyPhongKham.Views.Receptionist
     {
         private User user;
         private Form currentForm = null;
-        //private string connectionString = @"QuanLyPhongKham.db";
         private readonly AppointmentRepository _appointmentRepo = new AppointmentRepository();
-
 
         public AppointmentFrm(User user)
         {

@@ -18,9 +18,7 @@ namespace QuanlyPhongKham.Views
         private Dictionary<string, string> patientMap;
         private string currentDoctorId;
         private string currentDoctorName;
-        private User currentUser;
         private User user;
-
         public BacSi(User user)
         {
             InitializeComponent();
@@ -70,18 +68,22 @@ namespace QuanlyPhongKham.Views
 
         private void BacSi_Load(object sender, EventArgs e)
         {
-            LoadPatientIds();
+            appointmentController = new AppointmentController();
+            currentDoctorId = user.Id;
+            currentDoctorName = user.UserName;
+            LoadPatients();
         }
-        private void LoadPatientIds()
+        private void LoadPatients()
         {
             var patients = patientController.GetAllPatients();
-            patientMap = patients.ToDictionary(p => p.PatientId.ToString(), p => p.Name);
 
-            cbPatientId.DataSource = new BindingSource(patientMap, null);
-            cbPatientId.DisplayMember = "Key";   // hiển thị ID
-            cbPatientId.ValueMember = "Value";   // dùng để lấy tên
-            cbPatientId.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cbPatientId.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbPatientId.DataSource = new BindingSource(patients, null);
+            cbPatientId.DisplayMember = "PatientId";
+            cbPatientId.ValueMember = "PatientId";
+
+            cbPatientName.DataSource = new BindingSource(patients, null);
+            cbPatientName.DisplayMember = "Name";
+            cbPatientName.ValueMember = "PatientId";
         }
 
         private void btnAddInvoiceService_Click(object sender, EventArgs e)
@@ -107,9 +109,9 @@ namespace QuanlyPhongKham.Views
 
         private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbPatientId.SelectedItem is KeyValuePair<string, string> selected)
+            if (cbPatientId.SelectedItem is Patient selectedPatient)
             {
-                cbPatientName.Text = selected.Value;
+                cbPatientName.Text = selectedPatient.Name;
             }
         }
     }

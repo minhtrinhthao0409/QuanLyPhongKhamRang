@@ -17,7 +17,6 @@ namespace QuanlyPhongKham
     public partial class Login : Form
     {
         UserControllers userController;
-        private User currentUser;
         public Login()
         {
             InitializeComponent();

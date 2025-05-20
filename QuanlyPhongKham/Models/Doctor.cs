@@ -8,7 +8,6 @@ namespace QuanlyPhongKham.Models
 {
     public class Doctor : User
     {
-        private User currentUser;
         public string Qualification { get; set; }
 
         public Doctor(string userName, string password, string email, string qualification)
