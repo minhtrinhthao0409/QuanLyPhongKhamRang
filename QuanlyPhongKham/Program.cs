@@ -1,6 +1,7 @@
 ﻿using QuanlyPhongKham.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,9 @@ namespace QuanlyPhongKham
         [STAThread]
         static void Main()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Database");
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(basePath));
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
