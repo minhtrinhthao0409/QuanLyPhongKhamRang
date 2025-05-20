@@ -68,7 +68,7 @@ namespace QuanlyPhongKham
 
                 if (user.Role == UserRole.Admin)
                 {
-                    AdminMain form = new AdminMain();
+                    AdminMain form = new AdminMain(user);
                     form.ShowDialog();
                 }
                 else if (user.Role == UserRole.Doctor)
