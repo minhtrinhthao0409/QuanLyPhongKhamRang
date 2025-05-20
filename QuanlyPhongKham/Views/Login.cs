@@ -66,26 +66,32 @@ namespace QuanlyPhongKham
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
 
+                Form form = null;
+
                 if (user.Role == UserRole.Admin)
                 {
-                    AdminMain form = new AdminMain();
-                    form.ShowDialog();
+                    form = new AdminMain();
+                    //form.ShowDialog();
                 }
                 else if (user.Role == UserRole.Doctor)
                 {
-                    BacSi form = new BacSi(user);
-                    form.ShowDialog();
+                    form = new BacSi(user);
+                    //form.ShowDialog();
                 }
                 else if (user.Role == UserRole.Receptionist)
                 {
-                    ReceptionistMain form = new ReceptionistMain(user);
-                    form.ShowDialog();
+                    form = new ReceptionistMain(user);
+                    //form.ShowDialog();
                 }
                 else
                 {
                     MessageBox.Show("Tài khoản không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                this.Show();
+                //this.Show();
+                this.Hide(); // Ẩn LoginForm
+                form.FormClosed += (s, args) => this.Close(); // Khi mainForm đóng thì LoginForm cũng đóng
+                form.Show();
             }
             else
             {

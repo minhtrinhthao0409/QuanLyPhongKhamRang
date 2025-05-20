@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,18 @@ using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
-    public partial class ScheduleFrm : Form
+    public partial class ScheduleFrm : LeftSideMenu
     {
-        public ScheduleFrm()
+        private User user;
+        private Form currentForm = null;
+        //private string connectionString = @"QuanLyPhongKham.db";
+        private readonly AppointmentRepository _appointmentRepo = new AppointmentRepository();
+
+
+        public ScheduleFrm(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
     }
 }
