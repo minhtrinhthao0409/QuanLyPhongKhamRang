@@ -30,51 +30,51 @@
         {
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            AdminBCTC = new System.Windows.Forms.TabPage();
-            AdminMainNamelbl = new System.Windows.Forms.Label();
-            AdminMainIDlbl = new System.Windows.Forms.Label();
-            AdminNametb = new System.Windows.Forms.TextBox();
-            AdminIDtb = new System.Windows.Forms.TextBox();
-            monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             AdminMainDXbtn = new System.Windows.Forms.Button();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            AdminIDtb = new System.Windows.Forms.TextBox();
+            AdminNametb = new System.Windows.Forms.TextBox();
+            AdminMainIDlbl = new System.Windows.Forms.Label();
+            AdminMainNamelbl = new System.Windows.Forms.Label();
+            AdminBCTC = new System.Windows.Forms.TabPage();
+            AdminBCTCXuatbtn = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             AdminBCTCFromlbl = new System.Windows.Forms.Label();
             dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            AdminBCTCXuatbtn = new System.Windows.Forms.Button();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
             tabPage2 = new System.Windows.Forms.TabPage();
-            dataGridView2 = new System.Windows.Forms.DataGridView();
-            label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            button1 = new System.Windows.Forms.Button();
+            textBox6 = new System.Windows.Forms.TextBox();
+            textBox5 = new System.Windows.Forms.TextBox();
+            textBox4 = new System.Windows.Forms.TextBox();
+            textBox3 = new System.Windows.Forms.TextBox();
+            textBox2 = new System.Windows.Forms.TextBox();
+            textBox1 = new System.Windows.Forms.TextBox();
+            button4 = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
+            label7 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            AdminQLTKdata = new System.Windows.Forms.DataGridView();
             AdminQLDV = new System.Windows.Forms.TabPage();
+            dataGridView3 = new System.Windows.Forms.DataGridView();
+            button3 = new System.Windows.Forms.Button();
             AdminQLDVXbtn = new System.Windows.Forms.Button();
             AdminQbtnLDVCx = new System.Windows.Forms.Button();
             label8 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             AdminQLDVPricetbx = new System.Windows.Forms.TextBox();
             AdminQLDVNameTb = new System.Windows.Forms.TextBox();
-            button3 = new System.Windows.Forms.Button();
-            dataGridView3 = new System.Windows.Forms.DataGridView();
-            button4 = new System.Windows.Forms.Button();
-            textBox1 = new System.Windows.Forms.TextBox();
-            textBox2 = new System.Windows.Forms.TextBox();
-            textBox3 = new System.Windows.Forms.TextBox();
-            textBox4 = new System.Windows.Forms.TextBox();
-            textBox5 = new System.Windows.Forms.TextBox();
-            textBox6 = new System.Windows.Forms.TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             AdminBCTC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).BeginInit();
             AdminQLDV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
@@ -108,6 +108,53 @@
             tabPage1.Text = "Main";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // AdminMainDXbtn
+            // 
+            AdminMainDXbtn.Location = new System.Drawing.Point(43, 622);
+            AdminMainDXbtn.Name = "AdminMainDXbtn";
+            AdminMainDXbtn.Size = new System.Drawing.Size(94, 29);
+            AdminMainDXbtn.TabIndex = 5;
+            AdminMainDXbtn.Text = "Đăng xuất";
+            AdminMainDXbtn.UseVisualStyleBackColor = true;
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new System.Drawing.Point(593, 444);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 4;
+            // 
+            // AdminIDtb
+            // 
+            AdminIDtb.Location = new System.Drawing.Point(104, 46);
+            AdminIDtb.Name = "AdminIDtb";
+            AdminIDtb.Size = new System.Drawing.Size(273, 27);
+            AdminIDtb.TabIndex = 3;
+            // 
+            // AdminNametb
+            // 
+            AdminNametb.Location = new System.Drawing.Point(104, 89);
+            AdminNametb.Name = "AdminNametb";
+            AdminNametb.Size = new System.Drawing.Size(273, 27);
+            AdminNametb.TabIndex = 2;
+            // 
+            // AdminMainIDlbl
+            // 
+            AdminMainIDlbl.AutoSize = true;
+            AdminMainIDlbl.Location = new System.Drawing.Point(43, 53);
+            AdminMainIDlbl.Name = "AdminMainIDlbl";
+            AdminMainIDlbl.Size = new System.Drawing.Size(24, 20);
+            AdminMainIDlbl.TabIndex = 1;
+            AdminMainIDlbl.Text = "ID";
+            // 
+            // AdminMainNamelbl
+            // 
+            AdminMainNamelbl.AutoSize = true;
+            AdminMainNamelbl.Location = new System.Drawing.Point(43, 96);
+            AdminMainNamelbl.Name = "AdminMainNamelbl";
+            AdminMainNamelbl.Size = new System.Drawing.Size(49, 20);
+            AdminMainNamelbl.TabIndex = 0;
+            AdminMainNamelbl.Text = "Name";
+            // 
             // AdminBCTC
             // 
             AdminBCTC.Controls.Add(AdminBCTCXuatbtn);
@@ -124,61 +171,14 @@
             AdminBCTC.Text = "BCTC";
             AdminBCTC.UseVisualStyleBackColor = true;
             // 
-            // AdminMainNamelbl
+            // AdminBCTCXuatbtn
             // 
-            AdminMainNamelbl.AutoSize = true;
-            AdminMainNamelbl.Location = new System.Drawing.Point(43, 96);
-            AdminMainNamelbl.Name = "AdminMainNamelbl";
-            AdminMainNamelbl.Size = new System.Drawing.Size(49, 20);
-            AdminMainNamelbl.TabIndex = 0;
-            AdminMainNamelbl.Text = "Name";
-            // 
-            // AdminMainIDlbl
-            // 
-            AdminMainIDlbl.AutoSize = true;
-            AdminMainIDlbl.Location = new System.Drawing.Point(43, 53);
-            AdminMainIDlbl.Name = "AdminMainIDlbl";
-            AdminMainIDlbl.Size = new System.Drawing.Size(24, 20);
-            AdminMainIDlbl.TabIndex = 1;
-            AdminMainIDlbl.Text = "ID";
-            // 
-            // AdminNametb
-            // 
-            AdminNametb.Location = new System.Drawing.Point(104, 89);
-            AdminNametb.Name = "AdminNametb";
-            AdminNametb.Size = new System.Drawing.Size(273, 27);
-            AdminNametb.TabIndex = 2;
-            // 
-            // AdminIDtb
-            // 
-            AdminIDtb.Location = new System.Drawing.Point(104, 46);
-            AdminIDtb.Name = "AdminIDtb";
-            AdminIDtb.Size = new System.Drawing.Size(273, 27);
-            AdminIDtb.TabIndex = 3;
-            // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new System.Drawing.Point(593, 444);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 4;
-            // 
-            // AdminMainDXbtn
-            // 
-            AdminMainDXbtn.Location = new System.Drawing.Point(43, 622);
-            AdminMainDXbtn.Name = "AdminMainDXbtn";
-            AdminMainDXbtn.Size = new System.Drawing.Size(94, 29);
-            AdminMainDXbtn.TabIndex = 5;
-            AdminMainDXbtn.Text = "Đăng xuất";
-            AdminMainDXbtn.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(8, 125);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new System.Drawing.Size(853, 532);
-            dataGridView1.TabIndex = 0;
+            AdminBCTCXuatbtn.Location = new System.Drawing.Point(726, 71);
+            AdminBCTCXuatbtn.Name = "AdminBCTCXuatbtn";
+            AdminBCTCXuatbtn.Size = new System.Drawing.Size(112, 29);
+            AdminBCTCXuatbtn.TabIndex = 8;
+            AdminBCTCXuatbtn.Text = "Xuất báo cáo";
+            AdminBCTCXuatbtn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -199,23 +199,29 @@
             AdminBCTCFromlbl.Size = new System.Drawing.Size(75, 23);
             AdminBCTCFromlbl.TabIndex = 6;
             AdminBCTCFromlbl.Text = "Từ ngày";
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new System.Drawing.Point(129, 67);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new System.Drawing.Size(250, 27);
             dateTimePicker2.TabIndex = 5;
             // 
+            // dateTimePicker1
             // 
-            //
             dateTimePicker1.Location = new System.Drawing.Point(129, 27);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new System.Drawing.Size(250, 27);
             dateTimePicker1.TabIndex = 4;
             // 
-            // AdminBCTCXuatbtn
+            // dataGridView1
             // 
-            AdminBCTCXuatbtn.Location = new System.Drawing.Point(726, 71);
-            AdminBCTCXuatbtn.Name = "AdminBCTCXuatbtn";
-            AdminBCTCXuatbtn.Size = new System.Drawing.Size(112, 29);
-            AdminBCTCXuatbtn.TabIndex = 8;
-            AdminBCTCXuatbtn.Text = "Xuất báo cáo";
-            AdminBCTCXuatbtn.UseVisualStyleBackColor = true;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(8, 125);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new System.Drawing.Size(853, 532);
+            dataGridView1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -234,7 +240,7 @@
             tabPage2.Controls.Add(label5);
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(dataGridView2);
+            tabPage2.Controls.Add(AdminQLTKdata);
             tabPage2.Location = new System.Drawing.Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -243,71 +249,65 @@
             tabPage2.Text = "QLTK";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // textBox6
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new System.Drawing.Point(8, 125);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new System.Drawing.Size(853, 532);
-            dataGridView2.TabIndex = 0;
-            
+            textBox6.Location = new System.Drawing.Point(469, 82);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new System.Drawing.Size(239, 27);
+            textBox6.TabIndex = 16;
             // 
-            // label2
+            // textBox5
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(378, 82);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(39, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Role";
-          
+            textBox5.Location = new System.Drawing.Point(469, 46);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new System.Drawing.Size(239, 27);
+            textBox5.TabIndex = 15;
             // 
-            // label3
+            // textBox4
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(25, 18);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(78, 20);
-            label3.TabIndex = 2;
-            label3.Text = "UserName";
+            textBox4.Location = new System.Drawing.Point(469, 15);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new System.Drawing.Size(239, 27);
+            textBox4.TabIndex = 14;
             // 
-            // label5
+            // textBox3
             // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(25, 49);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(70, 20);
-            label5.TabIndex = 4;
-            label5.Text = "Password";
-           
+            textBox3.Location = new System.Drawing.Point(109, 82);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new System.Drawing.Size(239, 27);
+            textBox3.TabIndex = 13;
             // 
-            // label4
+            // textBox2
             // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(25, 82);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(46, 20);
-            label4.TabIndex = 5;
-            label4.Text = "Email";
+            textBox2.Location = new System.Drawing.Point(109, 46);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new System.Drawing.Size(239, 27);
+            textBox2.TabIndex = 12;
             // 
-            // label6
+            // textBox1
             // 
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(378, 18);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(72, 20);
-            label6.TabIndex = 6;
-            label6.Text = "FullName";
+            textBox1.Location = new System.Drawing.Point(109, 15);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(239, 27);
+            textBox1.TabIndex = 11;
             // 
-            // label7
+            // button4
             // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(378, 49);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(50, 20);
-            label7.TabIndex = 7;
-            label7.Text = "Phone";
+            button4.Location = new System.Drawing.Point(767, 9);
+            button4.Name = "button4";
+            button4.Size = new System.Drawing.Size(94, 29);
+            button4.TabIndex = 10;
+            button4.Text = "Thêm";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(767, 90);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(94, 29);
+            button2.TabIndex = 9;
+            button2.Text = "Xóa";
+            button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -318,14 +318,68 @@
             button1.Text = "Cập nhật";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // label7
             // 
-            button2.Location = new System.Drawing.Point(767, 90);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(94, 29);
-            button2.TabIndex = 9;
-            button2.Text = "Xóa";
-            button2.UseVisualStyleBackColor = true;
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(378, 49);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(50, 20);
+            label7.TabIndex = 7;
+            label7.Text = "Phone";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(378, 18);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(72, 20);
+            label6.TabIndex = 6;
+            label6.Text = "FullName";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(25, 82);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(46, 20);
+            label4.TabIndex = 5;
+            label4.Text = "Email";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(25, 49);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(70, 20);
+            label5.TabIndex = 4;
+            label5.Text = "Password";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(25, 18);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(78, 20);
+            label3.TabIndex = 2;
+            label3.Text = "UserName";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(378, 82);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(39, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Role";
+            // 
+            // AdminQLTKdata
+            // 
+            AdminQLTKdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdminQLTKdata.Location = new System.Drawing.Point(8, 125);
+            AdminQLTKdata.Name = "AdminQLTKdata";
+            AdminQLTKdata.RowHeadersWidth = 51;
+            AdminQLTKdata.Size = new System.Drawing.Size(853, 532);
+            AdminQLTKdata.TabIndex = 0;
             // 
             // AdminQLDV
             // 
@@ -344,6 +398,25 @@
             AdminQLDV.TabIndex = 3;
             AdminQLDV.Text = "QLDV";
             AdminQLDV.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new System.Drawing.Point(6, 127);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowHeadersWidth = 51;
+            dataGridView3.Size = new System.Drawing.Size(853, 532);
+            dataGridView3.TabIndex = 15;
+            // 
+            // button3
+            // 
+            button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            button3.Location = new System.Drawing.Point(558, 21);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(94, 29);
+            button3.TabIndex = 14;
+            button3.Text = "Thêm";
+            button3.UseVisualStyleBackColor = true;
             // 
             // AdminQLDVXbtn
             // 
@@ -364,7 +437,6 @@
             AdminQbtnLDVCx.TabIndex = 12;
             AdminQbtnLDVCx.Text = "Sửa";
             AdminQbtnLDVCx.UseVisualStyleBackColor = true;
-         
             // 
             // label8
             // 
@@ -402,76 +474,6 @@
             AdminQLDVNameTb.Size = new System.Drawing.Size(327, 29);
             AdminQLDVNameTb.TabIndex = 8;
             // 
-            // button3
-            // 
-            button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            button3.Location = new System.Drawing.Point(558, 21);
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(94, 29);
-            button3.TabIndex = 14;
-            button3.Text = "Thêm";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new System.Drawing.Point(6, 127);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.Size = new System.Drawing.Size(853, 532);
-            dataGridView3.TabIndex = 15;
-            // 
-            // button4
-            // 
-            button4.Location = new System.Drawing.Point(767, 9);
-            button4.Name = "button4";
-            button4.Size = new System.Drawing.Size(94, 29);
-            button4.TabIndex = 10;
-            button4.Text = "Thêm";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new System.Drawing.Point(109, 15);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(239, 27);
-            textBox1.TabIndex = 11;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new System.Drawing.Point(109, 46);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(239, 27);
-            textBox2.TabIndex = 12;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new System.Drawing.Point(109, 82);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new System.Drawing.Size(239, 27);
-            textBox3.TabIndex = 13;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new System.Drawing.Point(469, 15);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new System.Drawing.Size(239, 27);
-            textBox4.TabIndex = 14;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new System.Drawing.Point(469, 46);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new System.Drawing.Size(239, 27);
-            textBox5.TabIndex = 15;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new System.Drawing.Point(469, 82);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new System.Drawing.Size(239, 27);
-            textBox6.TabIndex = 16;
-            // 
             // AdminMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -489,7 +491,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).EndInit();
             AdminQLDV.ResumeLayout(false);
             AdminQLDV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
@@ -514,7 +516,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button AdminBCTCXuatbtn;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView AdminQLTKdata;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

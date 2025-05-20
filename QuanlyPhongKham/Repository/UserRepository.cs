@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QuanlyPhongKham.Models;
 using System.Data.SQLite;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 
 
@@ -103,5 +104,28 @@ namespace QuanlyPhongKham.repository
             return result?.ToString();
         }
 
+        public async Task<List<User>> GetAllUserAsync()
+        {
+            List<User> users = new List<User>();
+            using var conn = await GetConnectionAsync();
+            var cmd = new SQLiteCommand("SELECT * FROM Users", conn);
+            using var reader = await cmd.ExecuteReaderAsync(); // đọc từng dòng một
+            while (true)
+            {
+                if (!await reader.ReadAsync())
+                    break;
+                users.Add(new User
+                {
+                    Id = reader["Id"].ToString(),
+                    UserName = reader["UserName"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    FullName = reader["FullName"].ToString(),
+                    PhoneNumber = reader["PhoneNumber"].ToString(),
+                    Role = (UserRole)Convert.ToInt32(reader["Role"])
+                });
+            }
+            return users;
+        }
     }
 }

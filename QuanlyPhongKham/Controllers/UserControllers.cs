@@ -37,5 +37,9 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _userService.GetPasswordByEmail(email);
         }
+        public async Task<List<User>> GetAllUser()
+        {
+            return await _userService.GetAllUser();
+        }
     }
 }

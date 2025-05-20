@@ -43,5 +43,18 @@ namespace QuanlyPhongKham.Services
         {
             return await _userRepository.GetPasswordByEmailAsync(email);
         }
+
+        public async Task<List<User>> GetAllUser()
+        {
+            List<User> users = new List<User>();
+            foreach (var user in await _userRepository.GetAllUserAsync())
+            {
+                if (user.active == 1)
+                {
+                    users.Add(user);
+                }
+            }
+            return users;
+        }
     }
 }
