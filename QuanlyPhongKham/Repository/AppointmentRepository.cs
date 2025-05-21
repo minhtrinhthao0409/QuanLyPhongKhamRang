@@ -24,8 +24,8 @@ namespace QuanlyPhongKham.Repository
 
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
-                cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd")); 
-                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm")); 
+                cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm"));
                 cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm"));
 
                 long count = Convert.ToInt64(await cmd.ExecuteScalarAsync());
@@ -136,5 +136,91 @@ namespace QuanlyPhongKham.Repository
 
             return list;
         }
+
+
+        public async Task<bool> AddAppointmentAsync_v2(string doctorName, string patientName, string doctorPhoneNo, string patientPhoneNo, DateTime date, TimeSpan start, TimeSpan end)
+        {
+            SQLiteConnection conn = null;
+            SQLiteTransaction transaction = null;
+            
+            try
+            {
+                conn = await GetConnectionAsync();
+                transaction = conn.BeginTransaction();
+
+
+                Guid doctorId;
+                Guid patientId;
+                
+
+                string getDoctorIdQuery = "SELECT Id FROM Users WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber AND Role = @Role";
+                await using (var getDoctorCmd = new SQLiteCommand(getDoctorIdQuery, conn, transaction))
+                {
+                    int role = 2;
+                    getDoctorCmd.Parameters.AddWithValue("@FullName", doctorName);
+                    getDoctorCmd.Parameters.AddWithValue("@PhoneNumber", doctorPhoneNo);
+                    getDoctorCmd.Parameters.AddWithValue("@Role", role);
+                    var result = await getDoctorCmd.ExecuteScalarAsync();
+
+                    if (result == null)
+                    {
+                        throw new Exception("Thông tin bác sĩ không chính xác. Vui lòng kiểm tra lại thông tin bác sĩ.");
+                    }
+
+                    doctorId = Guid.Parse(result.ToString());
+                }
+
+                string getPatientIdQuery = "SELECT PatientId FROM Patients WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber";
+                await using (var getPatientCmd = new SQLiteCommand(getPatientIdQuery, conn, transaction))
+                {
+                    getPatientCmd.Parameters.AddWithValue("@FullName", patientName);
+                    getPatientCmd.Parameters.AddWithValue("@PhoneNumber", patientPhoneNo);
+
+                    var result = await getPatientCmd.ExecuteScalarAsync();
+
+                    if (result == null)
+                    {
+                        throw new Exception("Thông tin bác sĩ không chính xác hoặc chưa có hồ sơ bệnh nhân!");
+                    }
+                    patientId = Guid.Parse(result.ToString());
+
+
+                    string insertQuery = @"
+                                            INSERT INTO Appointments (AppointmentId, DoctorId, PatientId, AppointmentDate, StartTime, EndTime)
+                                            VALUES (@AppointmentId, @DoctorId, @PatientId, @AppointmentDate, @StartTime, @EndTime)";
+
+                    await using var cmd = new SQLiteCommand(insertQuery, conn, transaction);
+                    cmd.Parameters.AddWithValue("@AppointmentId", Guid.NewGuid().ToString());
+                    cmd.Parameters.AddWithValue("@DoctorId", doctorId.ToString());
+                    cmd.Parameters.AddWithValue("@PatientId", patientId.ToString());
+                    cmd.Parameters.AddWithValue("@AppointmentDate", date);
+                    cmd.Parameters.AddWithValue("@StartTime", start);
+                    cmd.Parameters.AddWithValue("@EndTime", end);
+
+                    int affectedRows = await cmd.ExecuteNonQueryAsync();
+                    await transaction.CommitAsync();
+
+                    return affectedRows > 0;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                if (transaction != null)
+                {
+                    await transaction.RollbackAsync();
+                }
+                throw new Exception("Lỗi khi thêm lịch hẹn: " + ex.Message);
+            }
+            finally
+            {
+                if (transaction != null) await transaction.DisposeAsync();
+                if (conn != null)
+                {
+                    await conn.CloseAsync();
+                    await conn.DisposeAsync();
+                }
+            }
+        }
     }
 }
+

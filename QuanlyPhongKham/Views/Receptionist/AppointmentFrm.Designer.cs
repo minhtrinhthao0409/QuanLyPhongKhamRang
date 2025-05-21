@@ -35,7 +35,7 @@
             label3 = new System.Windows.Forms.Label();
             startTimeTxt = new System.Windows.Forms.TextBox();
             startTime = new System.Windows.Forms.Label();
-            DoctorIdTxt = new System.Windows.Forms.TextBox();
+            DoctorPhoneNoTxt = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
             DoctorNameTxT = new System.Windows.Forms.TextBox();
             start_time_lbl = new System.Windows.Forms.Label();
@@ -101,7 +101,7 @@
             CrudPanel.Controls.Add(label3);
             CrudPanel.Controls.Add(startTimeTxt);
             CrudPanel.Controls.Add(startTime);
-            CrudPanel.Controls.Add(DoctorIdTxt);
+            CrudPanel.Controls.Add(DoctorPhoneNoTxt);
             CrudPanel.Controls.Add(label2);
             CrudPanel.Controls.Add(DoctorNameTxT);
             CrudPanel.Controls.Add(start_time_lbl);
@@ -156,12 +156,12 @@
             startTime.TabIndex = 22;
             startTime.Text = "Start Time";
             // 
-            // DoctorIdTxt
+            // DoctorPhoneNoTxt
             // 
-            DoctorIdTxt.Location = new System.Drawing.Point(492, 51);
-            DoctorIdTxt.Name = "DoctorIdTxt";
-            DoctorIdTxt.Size = new System.Drawing.Size(211, 23);
-            DoctorIdTxt.TabIndex = 21;
+            DoctorPhoneNoTxt.Location = new System.Drawing.Point(492, 51);
+            DoctorPhoneNoTxt.Name = "DoctorPhoneNoTxt";
+            DoctorPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
+            DoctorPhoneNoTxt.TabIndex = 21;
             // 
             // label2
             // 
@@ -169,9 +169,9 @@
             label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label2.Location = new System.Drawing.Point(373, 54);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(66, 17);
+            label2.Size = new System.Drawing.Size(111, 17);
             label2.TabIndex = 20;
-            label2.Text = "Doctor Id";
+            label2.Text = "Doctor PhoneNo";
             // 
             // DoctorNameTxT
             // 
@@ -495,7 +495,7 @@
         private System.Windows.Forms.TabControl AppointmentTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel CrudPanel;
-        private System.Windows.Forms.TextBox DoctorIdTxt;
+        private System.Windows.Forms.TextBox DoctorPhoneNoTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox DoctorNameTxT;
         private System.Windows.Forms.Label start_time_lbl;
