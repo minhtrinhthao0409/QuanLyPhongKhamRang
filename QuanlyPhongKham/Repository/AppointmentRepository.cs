@@ -95,13 +95,13 @@ namespace QuanlyPhongKham.Repository
             {
                 using var conn = await GetConnectionAsync();
                 string query = @"
-                    SELECT a.AppointmentId, a.DoctorId, a.PatientId, p.Name AS PatientName, a.AppointmentDate, a.StartTime, a.EndTime
+                    SELECT a.AppointmentId, a.DoctorUserId, a.PatientId, p.FullName AS PatientName, a.AppointmentDate, a.StartTime, a.EndTime
                     FROM Appointments a
                     JOIN Patients p ON a.PatientId = p.PatientId
-                    WHERE a.DoctorId = @DoctorId AND a.AppointmentDate >= @CurrentDate";
+                    WHERE a.DoctorUserId = @DoctorId AND a.AppointmentDate >= @CurrentDate";
                 using var cmd = new SQLiteCommand(query, conn);
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
-                cmd.Parameters.AddWithValue("@CurrentDate", DateTime.Today); // 20/05/2025
+                cmd.Parameters.AddWithValue("@CurrentDate", DateTime.Today);
 
                 using var reader = await cmd.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
@@ -109,7 +109,7 @@ namespace QuanlyPhongKham.Repository
                     list.Add(new Appointment
                     {
                         AppointmentId = reader["AppointmentId"].ToString(),
-                        DoctorId = reader["DoctorId"].ToString(),
+                        DoctorUserId = reader["DoctorId"].ToString(),
                         PatientId = reader["PatientId"].ToString(),
                         PatientName = reader["PatientName"].ToString(),
                         AppointmentDate = DateTime.Parse(reader["AppointmentDate"].ToString()),
@@ -122,39 +122,6 @@ namespace QuanlyPhongKham.Repository
             {
                 throw new Exception("Lỗi khi lấy danh sách lịch hẹn: " + ex.Message);
             }
-
-            return list;
-        }
-
-        public async Task<List<Patient>> GetAllPatientsAsync()
-        {
-            var list = new List<Patient>();
-
-            try
-            {
-                using var conn = await GetConnectionAsync();
-                string query = "SELECT PatientId, Name FROM Patients";
-
-                using var cmd = new SQLiteCommand(query, conn);
-                using var reader = await cmd.ExecuteReaderAsync();
-
-                while (await reader.ReadAsync())
-                {
-                    if (reader["PatientId"] != DBNull.Value && reader["Name"] != DBNull.Value)
-                    {
-                        list.Add(new Patient
-                        {
-                            PatientId = reader["PatientId"].ToString(),
-                            Name = reader["Name"].ToString()
-                        });
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new Exception("Lỗi khi lấy danh sách bệnh nhân: " + ex.Message);
-            }
-
             return list;
         }
     }

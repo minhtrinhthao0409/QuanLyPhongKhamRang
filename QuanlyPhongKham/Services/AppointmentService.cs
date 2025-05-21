@@ -9,14 +9,12 @@ namespace QuanlyPhongKham.Services
     public class AppointmentService
     {
         private readonly AppointmentRepository _repository;
+        private readonly PatientRepository _patiensrepository;
 
         public AppointmentService()
         {
             _repository = new AppointmentRepository();
         }
-
-        public async Task<List<Patient>> GetAllPatientsAsync()
-            => await _repository.GetAllPatientsAsync();
 
         public async Task<bool> HasScheduleConflictAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
             => await _repository.HasScheduleConflictAsync(doctorId, patientId, date, start, end);

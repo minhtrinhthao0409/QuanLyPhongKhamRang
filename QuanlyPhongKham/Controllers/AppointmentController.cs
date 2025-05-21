@@ -14,16 +14,16 @@ namespace QuanlyPhongKham.Controllers
         {
             _service = new AppointmentService();
         }
-
-        public async Task<List<Patient>> GetAllPatientsAsync()
-            => await _service.GetAllPatientsAsync();
-
+        
+        //Kiểm tra trùng lịch hẹn
         public async Task<bool> HasScheduleConflictAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
             => await _service.HasScheduleConflictAsync(doctorId, patientId, date, start, end);
 
+        //Bác sĩ thêm lịch hẹn
         public async Task<bool> AddAppointmentAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
             => await _service.AddAppointmentAsync(doctorId, patientId, date, start, end);
 
+        //Load lịch hẹn của bác sĩ
         public async Task<List<Appointment>> GetDoctorAppointmentsAsync(string doctorId)
             => await _service.GetDoctorAppointmentsAsync(doctorId);
     }

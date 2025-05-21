@@ -21,15 +21,101 @@ namespace QuanlyPhongKham.Views
         private string currentDoctorId;
         private string currentDoctorName;
         private User user;
+
         public BacSi(User user)
         {
             InitializeComponent();
             this.user = user;
         }
-
-        private void btnLoadAppointments_Click(object sender, EventArgs e)
+        private async void BacSi_Load(object sender, EventArgs e)
         {
+            appointmentController = new AppointmentController();
+            currentDoctorId = user.Id;
+            currentDoctorName = user.UserName;
 
+            await LoadPatientsAsync();
+            await LoadAppointmentsAsync();
+
+            dgvAppointments.Columns["NgayHen"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvAppointments.Columns["GioBatDau"].DefaultCellStyle.Format = "HH:mm:ss";
+            dgvAppointments.Columns["GioKetThuc"].DefaultCellStyle.Format = "HH:mm:ss";
+        }
+        private async Task LoadPatientsAsync() //Tải danh sách bệnh nhân
+        {
+            try
+            {
+                var patients = await patientController.GetAllPatientsAsync(); // Sử dụng GetAllPatientsAsync
+                Console.WriteLine($"Số bệnh nhân: {patients?.Count ?? 0}"); // Log để gỡ lỗi
+                if (patients == null || patients.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy bệnh nhân nào!");
+                    cbPatientId.DataSource = null;
+                    cbPatientName.DataSource = null;
+                    return;
+                }
+
+                // Làm mới DataSource
+                cbPatientId.DataSource = null;
+                cbPatientName.DataSource = null;
+
+                cbPatientId.DataSource = patients;
+                cbPatientId.DisplayMember = "PatientId";
+                cbPatientId.ValueMember = "PatientId";
+
+                cbPatientName.DataSource = patients.ToList();
+                cbPatientName.DisplayMember = "Name";
+                cbPatientName.ValueMember = "PatientId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải danh sách bệnh nhân: {ex.Message}");
+            }
+        }
+
+        private async Task LoadAppointmentsAsync() //Tải danh sách lịch hẹn của bác sĩ
+        {
+            try
+            {
+                var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
+                if (appointments == null || appointments.Count == 0)
+                {
+                    MessageBox.Show("Không có lịch hẹn nào để hiển thị!");
+                    dgvAppointments.DataSource = null;
+                    return;
+                }
+                dgvAppointments.DataSource = appointments;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải lịch hẹn: {ex.Message}");
+            }
+        }
+        private async void btnLoadAppointments_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy danh sách lịch hẹn của bác sĩ hiện tại
+                var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
+
+                if (appointments == null || appointments.Count == 0)
+                {
+                    MessageBox.Show("Không có lịch hẹn nào để hiển thị!");
+                    dgvAppointments.DataSource = null;
+                    return;
+                }
+
+                // Hiển thị danh sách lên DataGridView
+                dgvAppointments.DataSource = appointments;
+
+                // Định dạng các cột ngày và giờ (nếu chưa được định dạng trong BacSi_Load)
+                dgvAppointments.Columns["NgayHen"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dgvAppointments.Columns["GioBatDau"].DefaultCellStyle.Format = "HH:mm:ss";
+                dgvAppointments.Columns["GioKetThuc"].DefaultCellStyle.Format = "HH:mm:ss";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải lịch hẹn: {ex.Message}");
+            }
         }
 
         private async void btnSchedule_Click(object sender, EventArgs e)
@@ -77,7 +163,7 @@ namespace QuanlyPhongKham.Views
             if (success)
             {
                 MessageBox.Show("Thêm lịch hẹn thành công!");
-                await LoadAppointments(); // Làm mới danh sách
+                await LoadAppointmentsAsync(); // Làm mới danh sách
             }
             else
             {
@@ -90,83 +176,12 @@ namespace QuanlyPhongKham.Views
 
         }
 
-        private async void BacSi_Load(object sender, EventArgs e)
-        {
-            appointmentController = new AppointmentController();
-            currentDoctorId = user.Id;
-            currentDoctorName = user.UserName;
-
-            await LoadPatients(); 
-            await LoadAppointments();
-
-            dgvAppointments.Columns["NgayHen"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dgvAppointments.Columns["GioBatDau"].DefaultCellStyle.Format = "HH:mm:ss";
-            dgvAppointments.Columns["GioKetThuc"].DefaultCellStyle.Format = "HH:mm:ss";
-        }
-        private async Task LoadPatients()
-        {
-            try
-            {
-                var patients = patientController.GetAllPatients();
-                Console.WriteLine($"Số bệnh nhân: {patients?.Count ?? 0}"); // Log để gỡ lỗi
-                if (patients == null || patients.Count == 0)
-                {
-                    MessageBox.Show("Không tìm thấy bệnh nhân nào!");
-                    cbPatientId.DataSource = null;
-                    cbPatientName.DataSource = null;
-                    return;
-                }
-
-                // Làm mới DataSource
-                cbPatientId.DataSource = null;
-                cbPatientName.DataSource = null;
-
-                cbPatientId.DataSource = patients;
-                cbPatientId.DisplayMember = "PatientId";
-                cbPatientId.ValueMember = "PatientId";
-
-                cbPatientName.DataSource = patients.ToList();
-                cbPatientName.DisplayMember = "Name";
-                cbPatientName.ValueMember = "PatientId";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải danh sách bệnh nhân: {ex.Message}");
-            }
-        }
-        private async Task LoadAppointments()
-        {
-            try
-            {
-                var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
-                if (appointments == null || appointments.Count == 0)
-                {
-                    MessageBox.Show("Không có lịch hẹn nào để hiển thị!");
-                    dgvAppointments.DataSource = null;
-                    return;
-                }
-                dgvAppointments.DataSource = appointments;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải lịch hẹn: {ex.Message}");
-            }
-        }
-        
         private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void btnAddInvoiceService_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCalculateInvoiceTotal_Click(object sender, EventArgs e)
         {
 
         }
@@ -179,6 +194,5 @@ namespace QuanlyPhongKham.Views
         {
             Application.Exit();
         }
-
     }
 }

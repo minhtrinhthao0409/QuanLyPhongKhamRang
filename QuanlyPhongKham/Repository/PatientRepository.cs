@@ -25,23 +25,23 @@ namespace QuanlyPhongKham.Repository
             {
                 try
                 {
-       
-
                     string insertSql = @"
                                         INSERT INTO Patients 
-                                        (PatientId, FullName, Email, Gender, PhoneNumber, Dob, GuardianId) 
+                                        (PatientId, Name, Email, Gender, PhoneNumber, DOB, GuardianId) 
                                         VALUES 
-                                        (@PatientId, @FullName, @Email, @Gender, @PhoneNumber, @Dob, @GuardianId)";
+                                        (@PatientId, @Name, @Email, @Gender, @PhoneNumber, @DOB, @GuardianId)";
 
                     using (var cmd = new SQLiteCommand(insertSql, connection))
                     {
-                        cmd.Parameters.AddWithValue("@PatientId", patientId.ToString());
-                        cmd.Parameters.AddWithValue("@FullName", name);
+                        cmd.Parameters.AddWithValue("@PatientId", patientId);
+                        cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+
                         cmd.Parameters.AddWithValue("@Dob", dob);
                         cmd.Parameters.AddWithValue("@GuardianId", guardianId.ToString() as object ?? DBNull.Value);
+
 
                         affectedRows = await cmd.ExecuteNonQueryAsync();
                     }
@@ -54,7 +54,6 @@ namespace QuanlyPhongKham.Repository
                     throw new Exception("Lỗi khi tạo hồ sơ bệnh nhân.", ex);
                 }
             }
-
             return affectedRows;
         }
 
@@ -129,7 +128,7 @@ namespace QuanlyPhongKham.Repository
                                             Email = @Email,
                                             Gender = @Gender,
                                             PhoneNumber = @PhoneNumber,
-                                            Dob = @Dob,
+                                            DOB = @DOB,
                                             GuardianId = @GuardianId
                                         WHERE PatientId = @PatientId";
 
@@ -139,7 +138,7 @@ namespace QuanlyPhongKham.Repository
                         cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                        cmd.Parameters.AddWithValue("@Dob", dob);
+                        cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@GuardianId", guardianId as object ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@PatientId", patientId);
 
@@ -158,20 +157,19 @@ namespace QuanlyPhongKham.Repository
             return affectedRows;
         }
 
-        public List<Patient> GetAllPatients()
+        public async Task<List<Patient>> GetAllPatientsAsync()
         {
             List<Patient> patients = new List<Patient>();
 
             try
             {
-                using var conn = GetConnection();
-                conn.Open();
+                using var connection = await GetConnectionAsync();
                 string query = "SELECT PatientId, Name FROM Patients";
 
-                using var cmd = new SQLiteCommand(query, conn);
-                using var reader = cmd.ExecuteReader();
+                using var cmd = new SQLiteCommand(query, connection);
+                using var reader = await cmd.ExecuteReaderAsync();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     if (reader["PatientId"] != DBNull.Value && reader["Name"] != DBNull.Value)
                     {
