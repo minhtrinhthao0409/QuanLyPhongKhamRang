@@ -35,7 +35,7 @@ namespace QuanlyPhongKham.Repository
 
                     using (var cmd = new SQLiteCommand(insertSql, connection))
                     {
-                        cmd.Parameters.AddWithValue("@PatientId", patientId);
+                        cmd.Parameters.AddWithValue("@PatientId", patientId.ToString());
                         cmd.Parameters.AddWithValue("@FullName", name);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Gender", gender);

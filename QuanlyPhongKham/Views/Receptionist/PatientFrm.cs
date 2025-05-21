@@ -24,6 +24,7 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             InitializeComponent();
             this.user = user;
+            _patientService = new PatientService();
 
 
 
@@ -82,10 +83,11 @@ namespace QuanlyPhongKham.Views.Receptionist
                 bool gender = listBox2.Text.Trim() == "Male";
 
                 Guid patientId = Guid.NewGuid();
+                Guid? guardianId = null;
 
 
                 int result = await _patientService.CreatePatientAsync(
-                patientId, name, gender, phoneNo, email, dob);
+                patientId, name, gender, phoneNo, email, dob, guardianId);
 
                 if (result > 0)
                 {
@@ -100,8 +102,11 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi: " + ex.Message +
+                                "\nChi tiết: " + ex.InnerException?.Message +
+                                "\nToàn bộ: " + ex.ToString());
             }
+
         }
 
 
