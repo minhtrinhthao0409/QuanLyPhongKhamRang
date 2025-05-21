@@ -47,7 +47,7 @@
             PatientNameTxt = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             CrudPatient = new System.Windows.Forms.Label();
-            AddScheduleBtn = new System.Windows.Forms.Button();
+            SearchPatientBtn = new System.Windows.Forms.Button();
             tabPage2 = new System.Windows.Forms.TabPage();
             dataGridView2 = new System.Windows.Forms.DataGridView();
             panel1 = new System.Windows.Forms.Panel();
@@ -207,7 +207,7 @@
             CrudPanel.Controls.Add(PatientNameTxt);
             CrudPanel.Controls.Add(label1);
             CrudPanel.Controls.Add(CrudPatient);
-            CrudPanel.Controls.Add(AddScheduleBtn);
+            CrudPanel.Controls.Add(SearchPatientBtn);
             CrudPanel.Location = new System.Drawing.Point(6, 6);
             CrudPanel.Name = "CrudPanel";
             CrudPanel.Size = new System.Drawing.Size(796, 225);
@@ -284,15 +284,16 @@
             CrudPatient.TabIndex = 15;
             CrudPatient.Text = "Search Patient Infomation";
             // 
-            // AddScheduleBtn
+            // SearchPatientBtn
             // 
-            AddScheduleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddScheduleBtn.Location = new System.Drawing.Point(261, 148);
-            AddScheduleBtn.Name = "AddScheduleBtn";
-            AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
-            AddScheduleBtn.TabIndex = 5;
-            AddScheduleBtn.Text = "Search";
-            AddScheduleBtn.UseVisualStyleBackColor = true;
+            SearchPatientBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            SearchPatientBtn.Location = new System.Drawing.Point(261, 148);
+            SearchPatientBtn.Name = "SearchPatientBtn";
+            SearchPatientBtn.Size = new System.Drawing.Size(93, 50);
+            SearchPatientBtn.TabIndex = 5;
+            SearchPatientBtn.Text = "Search";
+            SearchPatientBtn.UseVisualStyleBackColor = true;
+            SearchPatientBtn.Click += SearchPatientBtn_Click;
             // 
             // tabPage2
             // 
@@ -526,7 +527,7 @@
         private System.Windows.Forms.TextBox PatientNameTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CrudPatient;
-        private System.Windows.Forms.Button AddScheduleBtn;
+        private System.Windows.Forms.Button SearchPatientBtn;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel1;
