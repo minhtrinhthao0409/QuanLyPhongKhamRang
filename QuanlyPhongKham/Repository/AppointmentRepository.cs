@@ -145,6 +145,13 @@ namespace QuanlyPhongKham.Repository
             
             try
             {
+                if (end <= start)
+                    throw new Exception("Giờ kết thúc phải sau giờ bắt đầu.");
+
+                if (date.Date < DateTime.Today)
+                    throw new Exception("Không thể đặt lịch ở ngày quá khứ.");
+
+
                 conn = await GetConnectionAsync();
                 transaction = conn.BeginTransaction();
 
