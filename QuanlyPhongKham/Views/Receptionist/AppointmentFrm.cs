@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Models;
+﻿using QuanlyPhongKham.Controllers;
+using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Repository;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,17 @@ namespace QuanlyPhongKham.Views.Receptionist
         private User user;
         private Form currentForm = null;
 
-        private readonly AppointmentRepository _appointmentRepo = new();
+        private readonly AppointmentRepository _appointmentRepo;
+        private AppointmentController _appointmentControllers;
         private readonly UserRepository _userRepo = new();
 
         public AppointmentFrm(User user)
         {
             this.user = user;
             InitializeComponent();
+            _appointmentControllers = new AppointmentController();
+
+
             this.StartPosition = FormStartPosition.CenterScreen;
 
 
@@ -64,6 +69,11 @@ namespace QuanlyPhongKham.Views.Receptionist
                 };
                 currentForm.Show();
             }
+
+        }
+
+        private void Searchbtn_Click(object sender, EventArgs e)
+        {
 
         }
     }

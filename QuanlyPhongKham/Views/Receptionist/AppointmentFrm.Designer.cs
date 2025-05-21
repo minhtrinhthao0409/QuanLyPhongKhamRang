@@ -303,6 +303,7 @@
             Searchbtn.TabIndex = 8;
             Searchbtn.Text = "Search";
             Searchbtn.UseVisualStyleBackColor = true;
+            Searchbtn.Click += Searchbtn_Click;
             // 
             // dateTimePicker2
             // 
