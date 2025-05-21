@@ -91,11 +91,11 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 if (!string.IsNullOrWhiteSpace(guardianName))
                 {
-    
-                    
+
+                    guardianId = Guid.NewGuid();
                     result = await _patientService.CreatePatientAsync(
-                        patientId, name, gender, phoneNo, email, dob, guardianId ?? Guid.NewGuid());
-                    int result_guardian = await _patientService.CreateGuardianAsync(guardianId ?? Guid.NewGuid(), guardianName, phoneNo, email);
+                        patientId, name, gender, phoneNo, email, dob, guardianId);
+                    int result_guardian = await _patientService.CreateGuardianAsync(guardianId.Value, guardianName, phoneNo, email);
                 }
                 else
                 {
