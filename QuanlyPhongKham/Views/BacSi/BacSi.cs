@@ -18,34 +18,30 @@ namespace QuanlyPhongKham.Views
         AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
         private Dictionary<string, string> patientMap;
+        private User user;
         private string currentDoctorId;
         private string currentDoctorName;
-        private User user;
 
         public BacSi(User user)
         {
             InitializeComponent();
             this.user = user;
         }
+
         private async void BacSi_Load(object sender, EventArgs e)
         {
-            appointmentController = new AppointmentController();
             currentDoctorId = user.Id;
             currentDoctorName = user.UserName;
 
             await LoadPatientsAsync();
             await LoadAppointmentsAsync();
-
-            dgvAppointments.Columns["NgayHen"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dgvAppointments.Columns["GioBatDau"].DefaultCellStyle.Format = "HH:mm:ss";
-            dgvAppointments.Columns["GioKetThuc"].DefaultCellStyle.Format = "HH:mm:ss";
         }
-        private async Task LoadPatientsAsync() //Tải danh sách bệnh nhân
+
+        private async Task LoadPatientsAsync()
         {
             try
             {
-                var patients = await patientController.GetAllPatientsAsync(); // Sử dụng GetAllPatientsAsync
-                Console.WriteLine($"Số bệnh nhân: {patients?.Count ?? 0}"); // Log để gỡ lỗi
+                var patients = await patientController.GetAllPatientsAsync();
                 if (patients == null || patients.Count == 0)
                 {
                     MessageBox.Show("Không tìm thấy bệnh nhân nào!");
@@ -54,13 +50,13 @@ namespace QuanlyPhongKham.Views
                     return;
                 }
 
-                // Làm mới DataSource
                 cbPatientId.DataSource = null;
                 cbPatientName.DataSource = null;
 
                 cbPatientId.DataSource = patients;
                 cbPatientId.DisplayMember = "PatientId";
                 cbPatientId.ValueMember = "PatientId";
+                cbPatientId.Refresh();
 
                 cbPatientName.DataSource = patients.ToList();
                 cbPatientName.DisplayMember = "Name";
@@ -72,8 +68,9 @@ namespace QuanlyPhongKham.Views
             }
         }
 
-        private async Task LoadAppointmentsAsync() //Tải danh sách lịch hẹn của bác sĩ
+        private async Task LoadAppointmentsAsync()
         {
+            dgvAppointments.Columns["AppointmentDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
             try
             {
                 var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
@@ -90,11 +87,21 @@ namespace QuanlyPhongKham.Views
                 MessageBox.Show($"Lỗi khi tải lịch hẹn: {ex.Message}");
             }
         }
+
         private async void btnLoadAppointments_Click(object sender, EventArgs e)
         {
+            string startTimeText = mtbStartTime.Text;
+            string endTimeText = mtbEndTime.Text;
+            mtbAppointmentDate.ValidatingType = typeof(System.DateTime);
+            if (!TimeSpan.TryParseExact(startTimeText, "hh\\:mm", null, out TimeSpan startTime) ||
+                !TimeSpan.TryParseExact(endTimeText, "hh\\:mm", null, out TimeSpan endTime))
+            {
+                MessageBox.Show("Thời gian không hợp lệ! Vui lòng nhập theo định dạng HH:mm.");
+                return;
+            }
+
             try
             {
-                // Lấy danh sách lịch hẹn của bác sĩ hiện tại
                 var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
 
                 if (appointments == null || appointments.Count == 0)
@@ -104,13 +111,7 @@ namespace QuanlyPhongKham.Views
                     return;
                 }
 
-                // Hiển thị danh sách lên DataGridView
                 dgvAppointments.DataSource = appointments;
-
-                // Định dạng các cột ngày và giờ (nếu chưa được định dạng trong BacSi_Load)
-                dgvAppointments.Columns["NgayHen"].DefaultCellStyle.Format = "dd/MM/yyyy";
-                dgvAppointments.Columns["GioBatDau"].DefaultCellStyle.Format = "HH:mm:ss";
-                dgvAppointments.Columns["GioKetThuc"].DefaultCellStyle.Format = "HH:mm:ss";
             }
             catch (Exception ex)
             {
@@ -138,17 +139,30 @@ namespace QuanlyPhongKham.Views
                 return;
             }
 
-            if (dtpAppointmentDate == null || string.IsNullOrEmpty(mtbStartTime.Text) || string.IsNullOrEmpty(mtbEndTime.Text))
+            if (string.IsNullOrEmpty(mtbAppointmentDate.Text) ||
+                string.IsNullOrEmpty(mtbStartTime.Text) ||
+                string.IsNullOrEmpty(mtbEndTime.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin lịch hẹn!");
                 return;
             }
 
-            DateTime appointmentDate = dtpAppointmentDate.Value;
-            if (!TimeSpan.TryParse(mtbStartTime.Text, out TimeSpan startTime) ||
-                !TimeSpan.TryParse(mtbEndTime.Text, out TimeSpan endTime))
+            if (!DateTime.TryParseExact(mtbAppointmentDate.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime appointmentDate))
             {
-                MessageBox.Show("Thời gian không hợp lệ!");
+                MessageBox.Show("Ngày không hợp lệ! Vui lòng nhập theo định dạng dd/MM/yyyy.");
+                return;
+            }
+
+            if (!TimeSpan.TryParseExact(mtbStartTime.Text, "hh\\:mm", null, out TimeSpan startTime) ||
+                !TimeSpan.TryParseExact(mtbEndTime.Text, "hh\\:mm", null, out TimeSpan endTime))
+            {
+                MessageBox.Show("Thời gian không hợp lệ! Vui lòng nhập theo định dạng HH:mm.");
+                return;
+            }
+
+            if (startTime >= endTime)
+            {
+                MessageBox.Show("Giờ bắt đầu phải nhỏ hơn giờ kết thúc!");
                 return;
             }
 
@@ -171,24 +185,10 @@ namespace QuanlyPhongKham.Views
             }
         }
 
-        private void btnSaveRecord_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSaveInvoice_Click(object sender, EventArgs e)
-        {
-        }
+        private void btnSaveRecord_Click(object sender, EventArgs e) { }
+        private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void btnSaveInvoice_Click(object sender, EventArgs e) { }
 
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
         {

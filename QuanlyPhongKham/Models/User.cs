@@ -31,6 +31,7 @@ namespace QuanlyPhongKham.Models
 
         public User(string userName, string password, string email, UserRole role)
         {
+            Id = Guid.NewGuid().ToString();
             UserName = userName;
             Password = password;
             Email = email;

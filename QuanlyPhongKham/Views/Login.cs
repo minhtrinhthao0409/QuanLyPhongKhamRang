@@ -70,22 +70,15 @@ namespace QuanlyPhongKham
 
                 if (user.Role == UserRole.Admin)
                 {
-
                     form = new AdminMain(user);
-                    //form.ShowDialog();
-
-                    
-
                 }
                 else if (user.Role == UserRole.Doctor)
                 {
                     form = new BacSi(user);
-                    //form.ShowDialog();
                 }
                 else if (user.Role == UserRole.Receptionist)
                 {
                     form = new ReceptionistMainFrm(user);
-                    //form.ShowDialog();
                 }
                 else
                 {
