@@ -34,5 +34,10 @@ namespace QuanlyPhongKham.Services
         {
             return await _repository.AddAppointmentAsync_v2(doctorName, patientName, doctorPhoneNo, patientPhoneNo, date, start, end);
         }
+
+        public async Task<List<Appointment>> GetDoctorAppointmentsAsync_v2(DateTime startDate, DateTime? endDate, string doctorName = null, string patientPhone = null)
+        {
+            return await _repository.GetDoctorAppointmentsAsync_v2(startDate,  endDate, doctorName, patientPhone);
+        }
     }
 }

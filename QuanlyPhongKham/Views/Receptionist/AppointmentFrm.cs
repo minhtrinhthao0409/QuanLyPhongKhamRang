@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
@@ -73,9 +75,24 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         }
 
-        private void Searchbtn_Click(object sender, EventArgs e)
+        private async void Searchbtn_Click(object sender, EventArgs e)
         {
+            string doctorName = doctorNameTextbox.Text.Trim();
+            string patientPhoneNo = patientPhoneNoTextbox.Text.Trim();
+            DateTime startDate = StartDatePicker.Value.Date;
+            DateTime endDate = EndDatePicker.Value.Date;
 
+            try
+            {
+                List<Appointment> result = await _appointmentControllers.GetDoctorAppointmentsAsync_v2(startDate, endDate, doctorName, patientPhoneNo);
+
+                // Gán kết quả vào DataGridView
+                SearchAppointmentGridView.DataSource = result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private async void AddScheduleBtn_Click(object sender, EventArgs e)

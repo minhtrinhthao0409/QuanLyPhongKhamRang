@@ -50,14 +50,15 @@
             AddScheduleBtn = new System.Windows.Forms.Button();
             doctorlbl = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
+            SearchAppointmentGridView = new System.Windows.Forms.DataGridView();
             panel1 = new System.Windows.Forms.Panel();
             Searchlbl = new System.Windows.Forms.Label();
             Searchbtn = new System.Windows.Forms.Button();
-            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            StartDatePicker = new System.Windows.Forms.DateTimePicker();
             SearchDatelbl = new System.Windows.Forms.Label();
-            textBox2 = new System.Windows.Forms.TextBox();
+            patientPhoneNoTextbox = new System.Windows.Forms.TextBox();
             SearchPatientNameLbl = new System.Windows.Forms.Label();
-            textBox1 = new System.Windows.Forms.TextBox();
+            doctorNameTextbox = new System.Windows.Forms.TextBox();
             SearchDoctorNamelbl = new System.Windows.Forms.Label();
             panel2 = new System.Windows.Forms.Panel();
             Homelbl = new System.Windows.Forms.Label();
@@ -66,10 +67,13 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
+            EndDatePicker = new System.Windows.Forms.DateTimePicker();
+            label4 = new System.Windows.Forms.Label();
             AppointmentTab.SuspendLayout();
             tabPage1.SuspendLayout();
             CrudPanel.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SearchAppointmentGridView).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -284,6 +288,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(SearchAppointmentGridView);
             tabPage2.Controls.Add(panel1);
             tabPage2.Location = new System.Drawing.Point(4, 24);
             tabPage2.Name = "tabPage2";
@@ -293,19 +298,29 @@
             tabPage2.Text = "Search Appointment";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // SearchAppointmentGridView
+            // 
+            SearchAppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SearchAppointmentGridView.Location = new System.Drawing.Point(2, 229);
+            SearchAppointmentGridView.Name = "SearchAppointmentGridView";
+            SearchAppointmentGridView.Size = new System.Drawing.Size(796, 411);
+            SearchAppointmentGridView.TabIndex = 6;
+            // 
             // panel1
             // 
+            panel1.Controls.Add(EndDatePicker);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(Searchlbl);
             panel1.Controls.Add(Searchbtn);
-            panel1.Controls.Add(dateTimePicker2);
+            panel1.Controls.Add(StartDatePicker);
             panel1.Controls.Add(SearchDatelbl);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(patientPhoneNoTextbox);
             panel1.Controls.Add(SearchPatientNameLbl);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(doctorNameTextbox);
             panel1.Controls.Add(SearchDoctorNamelbl);
             panel1.Location = new System.Drawing.Point(0, 6);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(804, 177);
+            panel1.Size = new System.Drawing.Size(804, 226);
             panel1.TabIndex = 5;
             // 
             // Searchlbl
@@ -321,7 +336,7 @@
             // Searchbtn
             // 
             Searchbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            Searchbtn.Location = new System.Drawing.Point(492, 124);
+            Searchbtn.Location = new System.Drawing.Point(492, 167);
             Searchbtn.Name = "Searchbtn";
             Searchbtn.Size = new System.Drawing.Size(93, 50);
             Searchbtn.TabIndex = 8;
@@ -329,12 +344,12 @@
             Searchbtn.UseVisualStyleBackColor = true;
             Searchbtn.Click += Searchbtn_Click;
             // 
-            // dateTimePicker2
+            // StartDatePicker
             // 
-            dateTimePicker2.Location = new System.Drawing.Point(492, 68);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new System.Drawing.Size(211, 23);
-            dateTimePicker2.TabIndex = 13;
+            StartDatePicker.Location = new System.Drawing.Point(492, 68);
+            StartDatePicker.Name = "StartDatePicker";
+            StartDatePicker.Size = new System.Drawing.Size(211, 23);
+            StartDatePicker.TabIndex = 13;
             // 
             // SearchDatelbl
             // 
@@ -342,16 +357,16 @@
             SearchDatelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             SearchDatelbl.Location = new System.Drawing.Point(449, 72);
             SearchDatelbl.Name = "SearchDatelbl";
-            SearchDatelbl.Size = new System.Drawing.Size(37, 17);
+            SearchDatelbl.Size = new System.Drawing.Size(40, 17);
             SearchDatelbl.TabIndex = 12;
-            SearchDatelbl.Text = "Date";
+            SearchDatelbl.Text = "From";
             // 
-            // textBox2
+            // patientPhoneNoTextbox
             // 
-            textBox2.Location = new System.Drawing.Point(200, 108);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(211, 23);
-            textBox2.TabIndex = 11;
+            patientPhoneNoTextbox.Location = new System.Drawing.Point(200, 108);
+            patientPhoneNoTextbox.Name = "patientPhoneNoTextbox";
+            patientPhoneNoTextbox.Size = new System.Drawing.Size(211, 23);
+            patientPhoneNoTextbox.TabIndex = 11;
             // 
             // SearchPatientNameLbl
             // 
@@ -363,12 +378,12 @@
             SearchPatientNameLbl.TabIndex = 10;
             SearchPatientNameLbl.Text = "Patient Phone No";
             // 
-            // textBox1
+            // doctorNameTextbox
             // 
-            textBox1.Location = new System.Drawing.Point(199, 66);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(211, 23);
-            textBox1.TabIndex = 9;
+            doctorNameTextbox.Location = new System.Drawing.Point(199, 66);
+            doctorNameTextbox.Name = "doctorNameTextbox";
+            doctorNameTextbox.Size = new System.Drawing.Size(211, 23);
+            doctorNameTextbox.TabIndex = 9;
             // 
             // SearchDoctorNamelbl
             // 
@@ -470,6 +485,23 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // EndDatePicker
+            // 
+            EndDatePicker.Location = new System.Drawing.Point(492, 114);
+            EndDatePicker.Name = "EndDatePicker";
+            EndDatePicker.Size = new System.Drawing.Size(211, 23);
+            EndDatePicker.TabIndex = 16;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new System.Drawing.Point(449, 118);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(23, 17);
+            label4.TabIndex = 15;
+            label4.Text = "To";
+            // 
             // AppointmentFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -484,6 +516,7 @@
             CrudPanel.ResumeLayout(false);
             CrudPanel.PerformLayout();
             tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SearchAppointmentGridView).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -513,11 +546,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Searchlbl;
         private System.Windows.Forms.Button Searchbtn;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker StartDatePicker;
         private System.Windows.Forms.Label SearchDatelbl;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox patientPhoneNoTextbox;
         private System.Windows.Forms.Label SearchPatientNameLbl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox doctorNameTextbox;
         private System.Windows.Forms.Label SearchDoctorNamelbl;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Homelbl;
@@ -530,5 +563,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox startTimeTxt;
         private System.Windows.Forms.Label startTime;
+        private System.Windows.Forms.DataGridView SearchAppointmentGridView;
+        private System.Windows.Forms.DateTimePicker EndDatePicker;
+        private System.Windows.Forms.Label label4;
     }
 }

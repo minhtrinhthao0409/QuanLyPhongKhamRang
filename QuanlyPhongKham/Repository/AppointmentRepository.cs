@@ -228,6 +228,91 @@ namespace QuanlyPhongKham.Repository
                 }
             }
         }
+
+
+        public async Task<List<Appointment>> GetDoctorAppointmentsAsync_v2(DateTime startDate, DateTime? endDate = null, string doctorName = null, string patientPhone = null)
+        {
+            var list = new List<Appointment>();
+
+            try
+            {
+                using var conn = await GetConnectionAsync();
+
+                var cmd = new SQLiteCommand(conn);
+                var whereClauses = new List<string>();
+
+                string baseQuery = @"
+                                        SELECT a.AppointmentId, a.DoctorId, a.PatientId, p.FullName AS PatientName, 
+                                               a.AppointmentDate, a.StartTime, a.EndTime
+                                        FROM Appointments a
+                                        JOIN Patients p ON a.PatientId = p.PatientId
+                                        JOIN Users d ON a.DoctorId = d.Id
+                                        WHERE ";
+
+                
+                if (endDate.HasValue)
+                {
+                    whereClauses.Add("DATE(a.AppointmentDate) BETWEEN DATE(@StartDate) AND DATE(@EndDate)");
+                    cmd.Parameters.AddWithValue("@EndDate", endDate.Value.Date);
+                }
+                else
+                {
+                    whereClauses.Add("DATE(a.AppointmentDate) = DATE(@StartDate)");
+                }
+
+                cmd.Parameters.AddWithValue("@StartDate", startDate.Date);
+
+                
+                if (!string.IsNullOrWhiteSpace(doctorName))
+                {
+                    whereClauses.Add("d.FullName LIKE @DoctorName");
+                    cmd.Parameters.AddWithValue("@DoctorName", $"%{doctorName}%");
+                }
+
+                // Điều kiện số điện thoại bệnh nhân
+                if (!string.IsNullOrWhiteSpace(patientPhone))
+                {
+                    whereClauses.Add("p.PhoneNumber = @PatientPhone");
+                    cmd.Parameters.AddWithValue("@PatientPhone", patientPhone);
+                }
+
+                // Ghép câu truy vấn đầy đủ
+                baseQuery += string.Join(" AND ", whereClauses);
+                cmd.CommandText = baseQuery;
+
+                using var reader = await cmd.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    list.Add(new Appointment
+                    {
+                        AppointmentId = reader["AppointmentId"]?.ToString() ?? string.Empty,
+                        DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
+                        PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
+                        PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
+                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                        StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
+                        EndTime = Convert.ToDateTime(reader["EndTime"]).TimeOfDay,
+                    });
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách lịch hẹn: " + ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                throw new Exception("Lỗi định dạng ngày hoặc thời gian: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi không xác định: " + ex.Message);
+            }
+
+            return list;
+        }
+
+
+
     }
 }
 
