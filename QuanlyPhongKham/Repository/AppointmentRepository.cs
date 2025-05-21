@@ -24,9 +24,9 @@ namespace QuanlyPhongKham.Repository
 
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
-                cmd.Parameters.AddWithValue("@Date", date.Date);
-                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm\:ss"));
-                cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm\:ss"));
+                cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd")); 
+                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm")); 
+                cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm"));
 
                 long count = Convert.ToInt64(await cmd.ExecuteScalarAsync());
                 return count > 0;
@@ -49,15 +49,15 @@ namespace QuanlyPhongKham.Repository
 
                 string query = @"
                     INSERT INTO Appointments (AppointmentId, DoctorId, PatientId, AppointmentDate, StartTime, EndTime)
-                    VALUES (@AppointmentId, @DoctorId, @PatientId, @Date, @StartTime, @EndTime)";
+                    VALUES (@AppointmentId, @DoctorId, @PatientId, @AppointmentDate, @StartTime, @EndTime)";
 
                 await using var cmd = new SQLiteCommand(query, conn, transaction);
                 cmd.Parameters.AddWithValue("@AppointmentId", Guid.NewGuid().ToString());
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
-                cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd")); // ISO format
-                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm"));
-                cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm"));
+                cmd.Parameters.AddWithValue("@AppointmentDate", date);
+                cmd.Parameters.AddWithValue("@StartTime", start);
+                cmd.Parameters.AddWithValue("@EndTime", end);
 
                 int affectedRows = await cmd.ExecuteNonQueryAsync();
                 await transaction.CommitAsync();
@@ -115,13 +115,9 @@ namespace QuanlyPhongKham.Repository
                         DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
                         PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
                         PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
-                        AppointmentDate = DateTime.ParseExact(reader["AppointmentDate"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture),
-                        StartTime = reader["StartTime"] != DBNull.Value
-                            ? TimeSpan.ParseExact(reader["StartTime"].ToString(), "hh\\:mm", CultureInfo.InvariantCulture)
-                            : TimeSpan.Zero,
-                        EndTime = reader["EndTime"] != DBNull.Value
-                            ? TimeSpan.ParseExact(reader["EndTime"].ToString(), "hh\\:mm", CultureInfo.InvariantCulture)
-                            : TimeSpan.Zero
+                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                        StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
+                        EndTime = Convert.ToDateTime(reader["EndTime"]).TimeOfDay,
                     });
                 }
             }
@@ -131,7 +127,7 @@ namespace QuanlyPhongKham.Repository
             }
             catch (FormatException ex)
             {
-                throw new Exception("Lỗi định dạng ngày hoặc thời gian: " + ex.Message + ". Vui lòng kiểm tra dữ liệu trong cột StartTime hoặc EndTime.");
+                throw new Exception("Lỗi định dạng ngày hoặc thời gian: " + ex.Message);
             }
             catch (Exception ex)
             {
