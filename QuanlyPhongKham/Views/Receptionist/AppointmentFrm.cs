@@ -1,6 +1,7 @@
 ﻿using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Repository;
+using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -76,5 +77,47 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
 
         }
+
+        private async void AddScheduleBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string patientName = PatientNameTxt.Text.Trim();
+                string patientPhoneNo = PatientPhoneNoTxt.Text.Trim();
+                string doctorName = PatientNameTxt.Text.Trim();
+                string doctorId = DoctorIdTxt.Text.Trim();
+                DateTime date = startTimePicker.Value;
+                TimeSpan startTime = TimeSpan.Parse(startTimeTxt.Text.Trim());
+                TimeSpan endTime = TimeSpan.Parse(endTimeTxt.Text.Trim());
+
+
+
+
+                bool result = await _appointmentControllers.AddAppointmentAsync(doctorId, patientPhoneNo, date, startTime, endTime);
+
+
+                
+
+
+                if (result)
+                {
+                    MessageBox.Show("Thêm lịch hẹn thành công!");
+                    //ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm lịch hẹn thất bại.");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message +
+                                "\nChi tiết: " + ex.InnerException?.Message +
+                                "\nToàn bộ: " + ex.ToString());
+            }
+
+        }
     }
-}
+ }
+

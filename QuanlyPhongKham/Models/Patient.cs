@@ -16,7 +16,8 @@ namespace QuanlyPhongKham.Models
         public string Email { get; set; } = null!;
 
         public Guid? GuardianId { get; set; }         
-        public Guardian? Guardian { get; set; }       
+        //public Guardian? Guardian { get; set; }
+        public string GuardianName { get; set; }
 
         public Patient()
         {

@@ -31,10 +31,12 @@
             AppointmentTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             CrudPanel = new System.Windows.Forms.Panel();
+            endTimeTxt = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            startTimeTxt = new System.Windows.Forms.TextBox();
+            startTime = new System.Windows.Forms.Label();
             DoctorIdTxt = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            endTimelbl = new System.Windows.Forms.Label();
             DoctorNameTxT = new System.Windows.Forms.TextBox();
             start_time_lbl = new System.Windows.Forms.Label();
             PatientPhoneNoTxt = new System.Windows.Forms.TextBox();
@@ -95,10 +97,12 @@
             // 
             // CrudPanel
             // 
+            CrudPanel.Controls.Add(endTimeTxt);
+            CrudPanel.Controls.Add(label3);
+            CrudPanel.Controls.Add(startTimeTxt);
+            CrudPanel.Controls.Add(startTime);
             CrudPanel.Controls.Add(DoctorIdTxt);
             CrudPanel.Controls.Add(label2);
-            CrudPanel.Controls.Add(dateTimePicker1);
-            CrudPanel.Controls.Add(endTimelbl);
             CrudPanel.Controls.Add(DoctorNameTxT);
             CrudPanel.Controls.Add(start_time_lbl);
             CrudPanel.Controls.Add(PatientPhoneNoTxt);
@@ -113,8 +117,44 @@
             CrudPanel.Controls.Add(doctorlbl);
             CrudPanel.Location = new System.Drawing.Point(0, 0);
             CrudPanel.Name = "CrudPanel";
-            CrudPanel.Size = new System.Drawing.Size(797, 272);
+            CrudPanel.Size = new System.Drawing.Size(797, 319);
             CrudPanel.TabIndex = 4;
+            // 
+            // endTimeTxt
+            // 
+            endTimeTxt.Location = new System.Drawing.Point(696, 143);
+            endTimeTxt.Name = "endTimeTxt";
+            endTimeTxt.Size = new System.Drawing.Size(46, 23);
+            endTimeTxt.TabIndex = 25;
+            endTimeTxt.Text = "___:____";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Location = new System.Drawing.Point(577, 147);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(66, 17);
+            label3.TabIndex = 24;
+            label3.Text = "End Time";
+            // 
+            // startTimeTxt
+            // 
+            startTimeTxt.Location = new System.Drawing.Point(492, 144);
+            startTimeTxt.Name = "startTimeTxt";
+            startTimeTxt.Size = new System.Drawing.Size(46, 23);
+            startTimeTxt.TabIndex = 23;
+            startTimeTxt.Text = "___:____";
+            // 
+            // startTime
+            // 
+            startTime.AutoSize = true;
+            startTime.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            startTime.Location = new System.Drawing.Point(373, 148);
+            startTime.Name = "startTime";
+            startTime.Size = new System.Drawing.Size(72, 17);
+            startTime.TabIndex = 22;
+            startTime.Text = "Start Time";
             // 
             // DoctorIdTxt
             // 
@@ -133,23 +173,6 @@
             label2.TabIndex = 20;
             label2.Text = "Doctor Id";
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new System.Drawing.Point(492, 144);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(210, 23);
-            dateTimePicker1.TabIndex = 4;
-            // 
-            // endTimelbl
-            // 
-            endTimelbl.AutoSize = true;
-            endTimelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            endTimelbl.Location = new System.Drawing.Point(373, 144);
-            endTimelbl.Name = "endTimelbl";
-            endTimelbl.Size = new System.Drawing.Size(99, 17);
-            endTimelbl.TabIndex = 3;
-            endTimelbl.Text = "End Date Time";
-            // 
             // DoctorNameTxT
             // 
             DoctorNameTxT.Location = new System.Drawing.Point(138, 48);
@@ -163,9 +186,9 @@
             start_time_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             start_time_lbl.Location = new System.Drawing.Point(16, 144);
             start_time_lbl.Name = "start_time_lbl";
-            start_time_lbl.Size = new System.Drawing.Size(105, 17);
+            start_time_lbl.Size = new System.Drawing.Size(37, 17);
             start_time_lbl.TabIndex = 1;
-            start_time_lbl.Text = "Start Date Time";
+            start_time_lbl.Text = "Date";
             // 
             // PatientPhoneNoTxt
             // 
@@ -221,7 +244,7 @@
             // ViewInvoiceBtn
             // 
             ViewInvoiceBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ViewInvoiceBtn.Location = new System.Drawing.Point(492, 201);
+            ViewInvoiceBtn.Location = new System.Drawing.Point(492, 252);
             ViewInvoiceBtn.Name = "ViewInvoiceBtn";
             ViewInvoiceBtn.Size = new System.Drawing.Size(93, 50);
             ViewInvoiceBtn.TabIndex = 7;
@@ -231,7 +254,7 @@
             // UpdateBtn
             // 
             UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdateBtn.Location = new System.Drawing.Point(317, 201);
+            UpdateBtn.Location = new System.Drawing.Point(317, 252);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new System.Drawing.Size(93, 50);
             UpdateBtn.TabIndex = 6;
@@ -241,12 +264,13 @@
             // AddScheduleBtn
             // 
             AddScheduleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddScheduleBtn.Location = new System.Drawing.Point(126, 201);
+            AddScheduleBtn.Location = new System.Drawing.Point(126, 252);
             AddScheduleBtn.Name = "AddScheduleBtn";
             AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
             AddScheduleBtn.TabIndex = 5;
             AddScheduleBtn.Text = "Add";
             AddScheduleBtn.UseVisualStyleBackColor = true;
+            AddScheduleBtn.Click += AddScheduleBtn_Click;
             // 
             // doctorlbl
             // 
@@ -473,8 +497,6 @@
         private System.Windows.Forms.Panel CrudPanel;
         private System.Windows.Forms.TextBox DoctorIdTxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label endTimelbl;
         private System.Windows.Forms.TextBox DoctorNameTxT;
         private System.Windows.Forms.Label start_time_lbl;
         private System.Windows.Forms.TextBox PatientPhoneNoTxt;
@@ -504,5 +526,9 @@
         private System.Windows.Forms.Label Schedulelbl;
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
+        private System.Windows.Forms.TextBox endTimeTxt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox startTimeTxt;
+        private System.Windows.Forms.Label startTime;
     }
 }
