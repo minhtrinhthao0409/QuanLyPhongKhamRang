@@ -293,7 +293,6 @@
             SearchPatientBtn.TabIndex = 5;
             SearchPatientBtn.Text = "Search";
             SearchPatientBtn.UseVisualStyleBackColor = true;
-            //SearchPatientBtn.Click += SearchPatientBtn_Click;
             // 
             // tabPage2
             // 
@@ -374,6 +373,7 @@
             // 
             // listBox2
             // 
+            listBox2.AllowDrop = true;
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
             listBox2.Items.AddRange(new object[] { "Male", "Female" });
@@ -462,6 +462,7 @@
             ResetBtn.TabIndex = 7;
             ResetBtn.Text = "Reset";
             ResetBtn.UseVisualStyleBackColor = true;
+            ResetBtn.Click += ResetBtn_Click;
             // 
             // UpdatePatientBtn
             // 
@@ -493,6 +494,7 @@
             Controls.Add(panel2);
             Name = "PatientFrm";
             Text = "PatientForm";
+            Load += PatientFrm_Load;
             panel2.ResumeLayout(false);
             PatientTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

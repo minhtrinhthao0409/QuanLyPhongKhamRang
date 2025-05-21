@@ -86,8 +86,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 Guid? guardianId = null;
 
                 int result;
-
-
+                
 
                 if (!string.IsNullOrWhiteSpace(guardianName))
                 {
@@ -124,7 +123,21 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         }
 
+        private void PatientFrm_Load(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            listBox2.Items.Add("Male");
+            listBox2.Items.Add("Female");
+        }
 
-
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            PatientName.Text = "";
+            PatientPhoneNo.Text = "";
+            Guardian.Text = "";
+            PatientEmail.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
+            //listBox2.SelectedItem = "Male";
+         }
     }
 }
