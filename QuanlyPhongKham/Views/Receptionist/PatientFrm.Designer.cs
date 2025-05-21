@@ -37,7 +37,7 @@
             SignOutlbl = new System.Windows.Forms.Label();
             PatientTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            SearchPatientResultView = new System.Windows.Forms.DataGridView();
             CrudPanel = new System.Windows.Forms.Panel();
             ResetSearchPatientbtn = new System.Windows.Forms.Button();
             patientEmailTxt = new System.Windows.Forms.TextBox();
@@ -70,7 +70,7 @@
             panel2.SuspendLayout();
             PatientTab.SuspendLayout();
             tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SearchPatientResultView).BeginInit();
             CrudPanel.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -179,7 +179,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Controls.Add(SearchPatientResultView);
             tabPage1.Controls.Add(CrudPanel);
             tabPage1.Location = new System.Drawing.Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -189,13 +189,13 @@
             tabPage1.Text = "Search Patient";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // SearchPatientResultView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(2, 237);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(795, 400);
-            dataGridView1.TabIndex = 8;
+            SearchPatientResultView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SearchPatientResultView.Location = new System.Drawing.Point(2, 237);
+            SearchPatientResultView.Name = "SearchPatientResultView";
+            SearchPatientResultView.Size = new System.Drawing.Size(795, 400);
+            SearchPatientResultView.TabIndex = 8;
             // 
             // CrudPanel
             // 
@@ -222,6 +222,7 @@
             ResetSearchPatientbtn.TabIndex = 23;
             ResetSearchPatientbtn.Text = "Reset";
             ResetSearchPatientbtn.UseVisualStyleBackColor = true;
+            ResetSearchPatientbtn.Click += ResetSearchPatientbtn_Click;
             // 
             // patientEmailTxt
             // 
@@ -293,6 +294,7 @@
             SearchPatientBtn.TabIndex = 5;
             SearchPatientBtn.Text = "Search";
             SearchPatientBtn.UseVisualStyleBackColor = true;
+            SearchPatientBtn.Click += SearchPatientBtn_Click;
             // 
             // tabPage2
             // 
@@ -498,7 +500,7 @@
             panel2.ResumeLayout(false);
             PatientTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SearchPatientResultView).EndInit();
             CrudPanel.ResumeLayout(false);
             CrudPanel.PerformLayout();
             tabPage2.ResumeLayout(false);
@@ -519,7 +521,7 @@
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.TabControl PatientTab;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView SearchPatientResultView;
         private System.Windows.Forms.Panel CrudPanel;
         private System.Windows.Forms.Button ResetSearchPatientbtn;
         private System.Windows.Forms.TextBox patientEmailTxt;
