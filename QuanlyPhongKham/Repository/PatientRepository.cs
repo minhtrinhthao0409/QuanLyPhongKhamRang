@@ -88,17 +88,27 @@ namespace QuanlyPhongKham.Repository
             using var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
+                Guid? guardianId = null;
+
+                // Xử lý GuardianId an toàn với TryParse
+                if (reader["GuardianId"] != DBNull.Value)
+                {
+                    string rawGuardianId = reader["GuardianId"].ToString();
+                    if (!string.IsNullOrWhiteSpace(rawGuardianId) && Guid.TryParse(rawGuardianId, out var parsedGuid))
+                    {
+                        guardianId = parsedGuid;
+                    }
+                }
+
                 var patient = new Patient
                 {
-                    PatientId = reader["PatientId"].ToString(),
+                    //PatientId = reader["PatientId"].ToString(),
                     Name = reader["FullName"].ToString()!,
                     PhoneNumber = reader["PhoneNumber"].ToString()!,
                     Email = reader["Email"].ToString()!,
                     Gender = Convert.ToBoolean(reader["Gender"]),
                     DOB = Convert.ToDateTime(reader["Dob"]),
-                    GuardianId = reader["GuardianId"] == DBNull.Value
-                        ? null
-                        : Guid.Parse(reader["GuardianId"].ToString()!)
+                    GuardianId = guardianId
                 };
 
                 patients.Add(patient);
