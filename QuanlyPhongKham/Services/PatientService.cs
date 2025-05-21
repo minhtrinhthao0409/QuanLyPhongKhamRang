@@ -17,9 +17,6 @@ namespace QuanlyPhongKham.Services
             _patientRepository = new PatientRepository();
         }
 
-        
-
-
         public Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
             return _patientRepository.CreatePatientAsync(patientId, name, gender, phoneNumber, email, dob, guardianId);
@@ -33,9 +30,9 @@ namespace QuanlyPhongKham.Services
         {
             return _patientRepository.UpdatePatientAsync(patientId, name, gender, phoneNumber, email, dob, guardianId);
         }
-        public List<Patient> GetAllPatients()
+        public async Task<List<Patient>> GetAllPatientsAsync()
         {
-            return _patientRepository.GetAllPatients();
+            return await _patientRepository.GetAllPatientsAsync();
         }
     }
 }

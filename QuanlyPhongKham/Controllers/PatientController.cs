@@ -35,13 +35,10 @@ namespace QuanlyPhongKham.Controllers
             return _patientService.SearchPatientsAsync(name, phone, email);
         }
 
-        public List<Patient> GetAllPatients()
+        public async Task<List<Patient>> GetAllPatientsAsync()
         {
-            return _patientService.GetAllPatients();
+            return await _patientService.GetAllPatientsAsync();
         }
-        public Task<List<Patient>> GetAllPatientsAsync()
-        {
-            return Task.FromResult(_patientService.GetAllPatients());
-        }
+
     }
 }

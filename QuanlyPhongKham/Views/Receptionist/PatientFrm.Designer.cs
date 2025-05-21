@@ -293,7 +293,7 @@
             SearchPatientBtn.TabIndex = 5;
             SearchPatientBtn.Text = "Search";
             SearchPatientBtn.UseVisualStyleBackColor = true;
-            SearchPatientBtn.Click += SearchPatientBtn_Click;
+            //SearchPatientBtn.Click += SearchPatientBtn_Click;
             // 
             // tabPage2
             // 

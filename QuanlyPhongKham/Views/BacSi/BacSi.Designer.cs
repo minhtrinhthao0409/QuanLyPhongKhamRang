@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             GhiBenhAn = new System.Windows.Forms.TabPage();
             btnSaveRecord = new System.Windows.Forms.Button();
             dtpExaminationDate = new System.Windows.Forms.DateTimePicker();
@@ -52,6 +52,7 @@
             lbdtpAppointmentDate = new System.Windows.Forms.Label();
             lbPatientID = new System.Windows.Forms.Label();
             XemLichHen = new System.Windows.Forms.TabPage();
+            btnLoadAppointments = new System.Windows.Forms.Button();
             dgvAppointments = new System.Windows.Forms.DataGridView();
             BenhNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             NgayHen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -294,6 +295,7 @@
             // 
             // XemLichHen
             // 
+            XemLichHen.Controls.Add(btnLoadAppointments);
             XemLichHen.Controls.Add(dgvAppointments);
             XemLichHen.Location = new System.Drawing.Point(4, 29);
             XemLichHen.Name = "XemLichHen";
@@ -303,23 +305,33 @@
             XemLichHen.Text = "Xem Lịch Hẹn";
             XemLichHen.UseVisualStyleBackColor = true;
             // 
+            // btnLoadAppointments
+            // 
+            btnLoadAppointments.AutoSize = true;
+            btnLoadAppointments.Location = new System.Drawing.Point(339, 471);
+            btnLoadAppointments.Name = "btnLoadAppointments";
+            btnLoadAppointments.Size = new System.Drawing.Size(94, 30);
+            btnLoadAppointments.TabIndex = 1;
+            btnLoadAppointments.Text = "Tải lịch hẹn";
+            btnLoadAppointments.UseVisualStyleBackColor = true;
+            btnLoadAppointments.Click += btnLoadAppointments_Click;
+            // 
             // dgvAppointments
             // 
-            dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAppointments.ColumnHeadersHeight = 29;
             dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { BenhNhan, NgayHen, GioBatDau, GioKetThuc });
             dgvAppointments.Location = new System.Drawing.Point(3, 3);
             dgvAppointments.Name = "dgvAppointments";
             dgvAppointments.RowHeadersWidth = 51;
-            dgvAppointments.Size = new System.Drawing.Size(767, 518);
+            dgvAppointments.Size = new System.Drawing.Size(767, 451);
             dgvAppointments.TabIndex = 0;
             // 
             // BenhNhan
@@ -327,24 +339,28 @@
             BenhNhan.HeaderText = "Tên bệnh nhân";
             BenhNhan.MinimumWidth = 6;
             BenhNhan.Name = "BenhNhan";
+            BenhNhan.Width = 179;
             // 
             // NgayHen
             // 
             NgayHen.HeaderText = "Ngày hẹn";
             NgayHen.MinimumWidth = 6;
             NgayHen.Name = "NgayHen";
+            NgayHen.Width = 178;
             // 
             // GioBatDau
             // 
             GioBatDau.HeaderText = "Giờ bắt đầu";
             GioBatDau.MinimumWidth = 6;
             GioBatDau.Name = "GioBatDau";
+            GioBatDau.Width = 179;
             // 
             // GioKetThuc
             // 
             GioKetThuc.HeaderText = "Giờ kết thúc";
             GioKetThuc.MinimumWidth = 6;
             GioKetThuc.Name = "GioKetThuc";
+            GioKetThuc.Width = 178;
             // 
             // TapBacSi
             // 
@@ -417,27 +433,27 @@
             // 
             dgvInvoiceServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvInvoiceServices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvInvoiceServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvInvoiceServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInvoiceServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { ServiceName, Price, Quantity, Subtotal });
             dgvInvoiceServices.Location = new System.Drawing.Point(0, 195);
             dgvInvoiceServices.Name = "dgvInvoiceServices";
             dgvInvoiceServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvInvoiceServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvInvoiceServices.Size = new System.Drawing.Size(770, 188);
             dgvInvoiceServices.TabIndex = 10;
@@ -610,6 +626,7 @@
             LenLichHen.ResumeLayout(false);
             LenLichHen.PerformLayout();
             XemLichHen.ResumeLayout(false);
+            XemLichHen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).EndInit();
             TapBacSi.ResumeLayout(false);
             XemBenhAn.ResumeLayout(false);
@@ -678,5 +695,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbPatientId;
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
+        private System.Windows.Forms.Button btnLoadAppointments;
     }
 }
