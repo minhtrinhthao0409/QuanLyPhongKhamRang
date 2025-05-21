@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             GhiBenhAn = new System.Windows.Forms.TabPage();
             btnSaveRecord = new System.Windows.Forms.Button();
-            dtpExaminationDate = new System.Windows.Forms.DateTimePicker();
             txtDetails = new System.Windows.Forms.TextBox();
             txtMedicalPatientID = new System.Windows.Forms.TextBox();
             label3 = new System.Windows.Forms.Label();
@@ -42,11 +41,8 @@
             LenLichHen = new System.Windows.Forms.TabPage();
             cbPatientId = new System.Windows.Forms.ComboBox();
             label7 = new System.Windows.Forms.Label();
-            mtbEndTime = new System.Windows.Forms.MaskedTextBox();
-            mtbStartTime = new System.Windows.Forms.MaskedTextBox();
             btnSchedule = new System.Windows.Forms.Button();
             cbPatientName = new System.Windows.Forms.ComboBox();
-            dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
             lbEndTime = new System.Windows.Forms.Label();
             lbStartTime = new System.Windows.Forms.Label();
             lbdtpAppointmentDate = new System.Windows.Forms.Label();
@@ -54,10 +50,10 @@
             XemLichHen = new System.Windows.Forms.TabPage();
             btnLoadAppointments = new System.Windows.Forms.Button();
             dgvAppointments = new System.Windows.Forms.DataGridView();
-            BenhNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            NgayHen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            GioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            GioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            AppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             TapBacSi = new System.Windows.Forms.TabControl();
             XemBenhAn = new System.Windows.Forms.TabPage();
             dgvXemBenhAn = new System.Windows.Forms.DataGridView();
@@ -83,6 +79,10 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            mtbAppointmentDate = new System.Windows.Forms.MaskedTextBox();
+            mtbStartTime = new System.Windows.Forms.MaskedTextBox();
+            mtbEndTime = new System.Windows.Forms.MaskedTextBox();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
@@ -99,8 +99,8 @@
             // 
             // GhiBenhAn
             // 
+            GhiBenhAn.Controls.Add(maskedTextBox1);
             GhiBenhAn.Controls.Add(btnSaveRecord);
-            GhiBenhAn.Controls.Add(dtpExaminationDate);
             GhiBenhAn.Controls.Add(txtDetails);
             GhiBenhAn.Controls.Add(txtMedicalPatientID);
             GhiBenhAn.Controls.Add(label3);
@@ -122,13 +122,6 @@
             btnSaveRecord.Text = "Lưu Bệnh Án";
             btnSaveRecord.UseVisualStyleBackColor = true;
             btnSaveRecord.Click += btnSaveRecord_Click;
-            // 
-            // dtpExaminationDate
-            // 
-            dtpExaminationDate.Location = new System.Drawing.Point(246, 265);
-            dtpExaminationDate.Name = "dtpExaminationDate";
-            dtpExaminationDate.Size = new System.Drawing.Size(250, 27);
-            dtpExaminationDate.TabIndex = 2;
             // 
             // txtDetails
             // 
@@ -174,13 +167,13 @@
             // LenLichHen
             // 
             LenLichHen.BackColor = System.Drawing.Color.Transparent;
-            LenLichHen.Controls.Add(cbPatientId);
-            LenLichHen.Controls.Add(label7);
             LenLichHen.Controls.Add(mtbEndTime);
             LenLichHen.Controls.Add(mtbStartTime);
+            LenLichHen.Controls.Add(mtbAppointmentDate);
+            LenLichHen.Controls.Add(cbPatientId);
+            LenLichHen.Controls.Add(label7);
             LenLichHen.Controls.Add(btnSchedule);
             LenLichHen.Controls.Add(cbPatientName);
-            LenLichHen.Controls.Add(dtpAppointmentDate);
             LenLichHen.Controls.Add(lbEndTime);
             LenLichHen.Controls.Add(lbStartTime);
             LenLichHen.Controls.Add(lbdtpAppointmentDate);
@@ -210,26 +203,6 @@
             label7.TabIndex = 6;
             label7.Text = "ID bệnh nhân:";
             // 
-            // mtbEndTime
-            // 
-            mtbEndTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            mtbEndTime.Location = new System.Drawing.Point(273, 247);
-            mtbEndTime.Mask = "00:00";
-            mtbEndTime.Name = "mtbEndTime";
-            mtbEndTime.PromptChar = ' ';
-            mtbEndTime.Size = new System.Drawing.Size(125, 27);
-            mtbEndTime.TabIndex = 4;
-            // 
-            // mtbStartTime
-            // 
-            mtbStartTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            mtbStartTime.Location = new System.Drawing.Point(273, 204);
-            mtbStartTime.Mask = "00:00";
-            mtbStartTime.Name = "mtbStartTime";
-            mtbStartTime.PromptChar = ' ';
-            mtbStartTime.Size = new System.Drawing.Size(125, 27);
-            mtbStartTime.TabIndex = 3;
-            // 
             // btnSchedule
             // 
             btnSchedule.AutoSize = true;
@@ -248,14 +221,6 @@
             cbPatientName.Name = "cbPatientName";
             cbPatientName.Size = new System.Drawing.Size(340, 28);
             cbPatientName.TabIndex = 1;
-            // 
-            // dtpAppointmentDate
-            // 
-            dtpAppointmentDate.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            dtpAppointmentDate.Location = new System.Drawing.Point(271, 159);
-            dtpAppointmentDate.Name = "dtpAppointmentDate";
-            dtpAppointmentDate.Size = new System.Drawing.Size(250, 27);
-            dtpAppointmentDate.TabIndex = 2;
             // 
             // lbEndTime
             // 
@@ -318,49 +283,50 @@
             // 
             // dgvAppointments
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvAppointments.ColumnHeadersHeight = 29;
-            dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { BenhNhan, NgayHen, GioBatDau, GioKetThuc });
+            dgvAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { PatientName, AppointmentDate, StartTime, EndTime });
             dgvAppointments.Location = new System.Drawing.Point(3, 3);
             dgvAppointments.Name = "dgvAppointments";
             dgvAppointments.RowHeadersWidth = 51;
             dgvAppointments.Size = new System.Drawing.Size(767, 451);
             dgvAppointments.TabIndex = 0;
             // 
-            // BenhNhan
+            // PatientName
             // 
-            BenhNhan.HeaderText = "Tên bệnh nhân";
-            BenhNhan.MinimumWidth = 6;
-            BenhNhan.Name = "BenhNhan";
-            BenhNhan.Width = 179;
+            PatientName.HeaderText = "Tên bệnh nhân";
+            PatientName.MinimumWidth = 6;
+            PatientName.Name = "PatientName";
+            PatientName.ReadOnly = true;
             // 
-            // NgayHen
+            // AppointmentDate
             // 
-            NgayHen.HeaderText = "Ngày hẹn";
-            NgayHen.MinimumWidth = 6;
-            NgayHen.Name = "NgayHen";
-            NgayHen.Width = 178;
+            AppointmentDate.HeaderText = "Ngày hẹn";
+            AppointmentDate.MinimumWidth = 6;
+            AppointmentDate.Name = "AppointmentDate";
+            AppointmentDate.ReadOnly = true;
             // 
-            // GioBatDau
+            // StartTime
             // 
-            GioBatDau.HeaderText = "Giờ bắt đầu";
-            GioBatDau.MinimumWidth = 6;
-            GioBatDau.Name = "GioBatDau";
-            GioBatDau.Width = 179;
+            StartTime.HeaderText = "Giờ bắt đầu";
+            StartTime.MinimumWidth = 6;
+            StartTime.Name = "StartTime";
+            StartTime.ReadOnly = true;
             // 
-            // GioKetThuc
+            // EndTime
             // 
-            GioKetThuc.HeaderText = "Giờ kết thúc";
-            GioKetThuc.MinimumWidth = 6;
-            GioKetThuc.Name = "GioKetThuc";
-            GioKetThuc.Width = 178;
+            EndTime.HeaderText = "Giờ kết thúc";
+            EndTime.MinimumWidth = 6;
+            EndTime.Name = "EndTime";
+            EndTime.ReadOnly = true;
             // 
             // TapBacSi
             // 
@@ -433,27 +399,27 @@
             // 
             dgvInvoiceServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvInvoiceServices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvInvoiceServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvInvoiceServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInvoiceServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { ServiceName, Price, Quantity, Subtotal });
             dgvInvoiceServices.Location = new System.Drawing.Point(0, 195);
             dgvInvoiceServices.Name = "dgvInvoiceServices";
             dgvInvoiceServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvInvoiceServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvInvoiceServices.Size = new System.Drawing.Size(770, 188);
             dgvInvoiceServices.TabIndex = 10;
@@ -611,6 +577,42 @@
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Location = new System.Drawing.Point(246, 265);
+            maskedTextBox1.Mask = "00/00/0000";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new System.Drawing.Size(125, 27);
+            maskedTextBox1.TabIndex = 7;
+            maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
+            // mtbAppointmentDate
+            // 
+            mtbAppointmentDate.Location = new System.Drawing.Point(273, 164);
+            mtbAppointmentDate.Mask = "00/00/0000";
+            mtbAppointmentDate.Name = "mtbAppointmentDate";
+            mtbAppointmentDate.Size = new System.Drawing.Size(125, 27);
+            mtbAppointmentDate.TabIndex = 11;
+            mtbAppointmentDate.ValidatingType = typeof(System.DateTime);
+            // 
+            // mtbStartTime
+            // 
+            mtbStartTime.Location = new System.Drawing.Point(273, 211);
+            mtbStartTime.Mask = "00:00";
+            mtbStartTime.Name = "mtbStartTime";
+            mtbStartTime.Size = new System.Drawing.Size(125, 27);
+            mtbStartTime.TabIndex = 12;
+            mtbStartTime.ValidatingType = typeof(System.DateTime);
+            // 
+            // mtbEndTime
+            // 
+            mtbEndTime.Location = new System.Drawing.Point(273, 254);
+            mtbEndTime.Mask = "00:00";
+            mtbEndTime.Name = "mtbEndTime";
+            mtbEndTime.Size = new System.Drawing.Size(125, 27);
+            mtbEndTime.TabIndex = 13;
+            mtbEndTime.ValidatingType = typeof(System.DateTime);
+            // 
             // BacSi
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -621,6 +623,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Bác Sĩ";
             FormClosing += BacSi_FormClosing;
+            Load += BacSi_Load;
             GhiBenhAn.ResumeLayout(false);
             GhiBenhAn.PerformLayout();
             LenLichHen.ResumeLayout(false);
@@ -646,14 +649,12 @@
 
         private System.Windows.Forms.TabPage GhiBenhAn;
         private System.Windows.Forms.Button btnSaveRecord;
-        private System.Windows.Forms.DateTimePicker dtpExaminationDate;
         private System.Windows.Forms.TextBox txtDetails;
         private System.Windows.Forms.TextBox txtMedicalPatientID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage LenLichHen;
-        private System.Windows.Forms.DateTimePicker dtpAppointmentDate;
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.Label lbEndTime;
         private System.Windows.Forms.Label lbStartTime;
@@ -686,15 +687,17 @@
         private System.Windows.Forms.Label lblInvoiceTotalAmount;
         private System.Windows.Forms.TabPage XemBenhAn;
         private System.Windows.Forms.DataGridView dgvXemBenhAn;
-        private System.Windows.Forms.MaskedTextBox mtbEndTime;
-        private System.Windows.Forms.MaskedTextBox mtbStartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BenhNhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayHen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GioBatDau;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GioKetThuc;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbPatientId;
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private System.Windows.Forms.Button btnLoadAppointments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtbEndTime;
+        private System.Windows.Forms.MaskedTextBox mtbStartTime;
+        private System.Windows.Forms.MaskedTextBox mtbAppointmentDate;
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Repository
@@ -39,50 +40,45 @@ namespace QuanlyPhongKham.Repository
         public async Task<bool> AddAppointmentAsync(string doctorId, string patientId, DateTime date, TimeSpan start, TimeSpan end)
         {
             SQLiteConnection conn = null;
-            SQLiteTransaction transaction = null; // Khai báo transaction ngoài khối try
+            SQLiteTransaction transaction = null;
 
             try
             {
                 conn = await GetConnectionAsync();
-                transaction = conn.BeginTransaction(); // Khởi tạo transaction
+                transaction = conn.BeginTransaction();
 
                 string query = @"
-                INSERT INTO Appointments (AppointmentId, DoctorId, PatientId, AppointmentDate, StartTime, EndTime)
-                VALUES (@AppointmentId, @DoctorId, @PatientId, @Date, @StartTime, @EndTime)";
+                    INSERT INTO Appointments (AppointmentId, DoctorId, PatientId, AppointmentDate, StartTime, EndTime)
+                    VALUES (@AppointmentId, @DoctorId, @PatientId, @Date, @StartTime, @EndTime)";
 
-                using var cmd = new SQLiteCommand(query, conn);
+                await using var cmd = new SQLiteCommand(query, conn, transaction);
                 cmd.Parameters.AddWithValue("@AppointmentId", Guid.NewGuid().ToString());
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
-                cmd.Parameters.AddWithValue("@Date", date.Date);
-                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm\:ss"));
-                cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm\:ss"));
+                cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd")); // ISO format
+                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm"));
+                cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm"));
 
                 int affectedRows = await cmd.ExecuteNonQueryAsync();
-                transaction.Commit(); // Commit giao dịch
+                await transaction.CommitAsync();
 
                 return affectedRows > 0;
             }
             catch (SQLiteException ex)
             {
-                // Rollback nếu có lỗi
                 if (transaction != null)
                 {
-                    transaction.Rollback();
+                    await transaction.RollbackAsync();
                 }
                 throw new Exception("Lỗi khi thêm lịch hẹn: " + ex.Message);
             }
             finally
             {
-                // Đóng kết nối và giải phóng tài nguyên
-                if (transaction != null)
-                {
-                    transaction.Dispose();
-                }
+                if (transaction != null) await transaction.DisposeAsync();
                 if (conn != null)
                 {
-                    conn.Close();
-                    conn.Dispose();
+                    await conn.CloseAsync();
+                    await conn.DisposeAsync();
                 }
             }
         }
@@ -93,12 +89,19 @@ namespace QuanlyPhongKham.Repository
 
             try
             {
+                if (string.IsNullOrEmpty(doctorId))
+                {
+                    throw new ArgumentException("DoctorId không được rỗng.", nameof(doctorId));
+                }
+
                 using var conn = await GetConnectionAsync();
                 string query = @"
-                    SELECT a.AppointmentId, a.DoctorUserId, a.PatientId, p.FullName AS PatientName, a.AppointmentDate, a.StartTime, a.EndTime
+                    SELECT a.AppointmentId, a.DoctorId, a.PatientId, p.FullName AS PatientName, 
+                           a.AppointmentDate, a.StartTime, a.EndTime
                     FROM Appointments a
                     JOIN Patients p ON a.PatientId = p.PatientId
-                    WHERE a.DoctorUserId = @DoctorId AND a.AppointmentDate >= @CurrentDate";
+                    WHERE a.DoctorId = @DoctorId AND a.AppointmentDate >= @CurrentDate";
+
                 using var cmd = new SQLiteCommand(query, conn);
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@CurrentDate", DateTime.Today);
@@ -108,13 +111,17 @@ namespace QuanlyPhongKham.Repository
                 {
                     list.Add(new Appointment
                     {
-                        AppointmentId = reader["AppointmentId"].ToString(),
-                        DoctorUserId = reader["DoctorId"].ToString(),
-                        PatientId = reader["PatientId"].ToString(),
-                        PatientName = reader["PatientName"].ToString(),
-                        AppointmentDate = DateTime.Parse(reader["AppointmentDate"].ToString()),
-                        StartTime = TimeSpan.Parse(reader["StartTime"].ToString()),
-                        EndTime = TimeSpan.Parse(reader["EndTime"].ToString())
+                        AppointmentId = reader["AppointmentId"]?.ToString() ?? string.Empty,
+                        DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
+                        PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
+                        PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
+                        AppointmentDate = DateTime.ParseExact(reader["AppointmentDate"].ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                        StartTime = reader["StartTime"] != DBNull.Value
+                            ? TimeSpan.ParseExact(reader["StartTime"].ToString(), "hh\\:mm", CultureInfo.InvariantCulture)
+                            : TimeSpan.Zero,
+                        EndTime = reader["EndTime"] != DBNull.Value
+                            ? TimeSpan.ParseExact(reader["EndTime"].ToString(), "hh\\:mm", CultureInfo.InvariantCulture)
+                            : TimeSpan.Zero
                     });
                 }
             }
@@ -122,6 +129,15 @@ namespace QuanlyPhongKham.Repository
             {
                 throw new Exception("Lỗi khi lấy danh sách lịch hẹn: " + ex.Message);
             }
+            catch (FormatException ex)
+            {
+                throw new Exception("Lỗi định dạng ngày hoặc thời gian: " + ex.Message + ". Vui lòng kiểm tra dữ liệu trong cột StartTime hoặc EndTime.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi không xác định: " + ex.Message);
+            }
+
             return list;
         }
     }
