@@ -144,7 +144,7 @@ namespace QuanlyPhongKham.Repository
                     {
                         list.Add(new Patient
                         {
-                            PatientId = Guid.Parse(reader["PatientId"].ToString()),
+                            PatientId = reader["PatientId"].ToString(),
                             Name = reader["Name"].ToString()
                         });
                     }
