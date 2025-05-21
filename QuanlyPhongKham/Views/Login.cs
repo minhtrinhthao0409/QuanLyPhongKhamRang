@@ -48,7 +48,7 @@ namespace QuanlyPhongKham
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             string userName = txtTendangnhap.Text;
-            string password = txtMatKhau.Text;
+            string password = PasswordHasher.HashPassword(txtMatKhau.Text);
             if (userName.Trim() == "")
             {
                 MessageBox.Show("Vui lòng nhập tên tài khoản!");
