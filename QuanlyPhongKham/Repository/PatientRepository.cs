@@ -41,7 +41,7 @@ namespace QuanlyPhongKham.Repository
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                         cmd.Parameters.AddWithValue("@Dob", dob);
-                        cmd.Parameters.AddWithValue("@GuardianId", guardianId as object ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@GuardianId", guardianId.ToString() as object ?? DBNull.Value);
 
                         affectedRows = await cmd.ExecuteNonQueryAsync();
                     }
@@ -190,5 +190,51 @@ namespace QuanlyPhongKham.Repository
 
             return patients;
         }
+
+        public async Task<int> CreateGuardianAsync(Guid guardianId, string name, string phoneNumber, string email)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Tên người giám hộ không được rỗng.", nameof(name));
+            if (string.IsNullOrWhiteSpace(phoneNumber))
+                throw new ArgumentException("Số điện thoại người giám hộ không được rỗng.", nameof(phoneNumber));
+
+            int affectedRows = 0;
+
+            using (var connection = await GetConnectionAsync())
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    string insertSql = @"
+                INSERT INTO Guardians 
+                (GuardianId, FullName, PhoneNumber, Email)
+                VALUES 
+                (@GuardianId, @FullName, @PhoneNumber, @Email)";
+
+                    using (var cmd = new SQLiteCommand(insertSql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@GuardianId",guardianId.ToString());
+                        cmd.Parameters.AddWithValue("@FullName", name);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                        cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
+
+                        affectedRows = await cmd.ExecuteNonQueryAsync();
+                    }
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception("Lỗi khi tạo người giám hộ.", ex);
+                }
+            }
+
+            return affectedRows;
+        }
+
+
+
+
     }
 }

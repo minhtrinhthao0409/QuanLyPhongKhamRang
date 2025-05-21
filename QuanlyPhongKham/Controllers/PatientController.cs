@@ -43,5 +43,7 @@ namespace QuanlyPhongKham.Controllers
         {
             return Task.FromResult(_patientService.GetAllPatients());
         }
+
+        
     }
 }

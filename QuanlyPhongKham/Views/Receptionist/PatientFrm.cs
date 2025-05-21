@@ -77,7 +77,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             {
                 string name = PatientName.Text.Trim();
                 string phoneNo = PatientPhoneNo.Text.Trim();
-                string? guardian = Guardian.Text.Trim();
+                string? guardianName = Guardian.Text.Trim();
                 string email = PatientEmail.Text.Trim();
                 DateTime dob = dateTimePicker1.Value;
                 bool gender = listBox2.Text.Trim() == "Male";
@@ -85,9 +85,24 @@ namespace QuanlyPhongKham.Views.Receptionist
                 Guid patientId = Guid.NewGuid();
                 Guid? guardianId = null;
 
+                int result;
 
-                int result = await _patientService.CreatePatientAsync(
-                patientId, name, gender, phoneNo, email, dob, guardianId);
+
+
+                if (!string.IsNullOrWhiteSpace(guardianName))
+                {
+    
+                    
+                    result = await _patientService.CreatePatientAsync(
+                        patientId, name, gender, phoneNo, email, dob, guardianId ?? Guid.NewGuid());
+                    int result_guardian = await _patientService.CreateGuardianAsync(guardianId ?? Guid.NewGuid(), guardianName, phoneNo, email);
+                }
+                else
+                {
+                    result = await _patientService.CreatePatientAsync(
+                        patientId, name, gender, phoneNo, email, dob);
+                }
+
 
                 if (result > 0)
                 {

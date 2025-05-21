@@ -37,5 +37,12 @@ namespace QuanlyPhongKham.Services
         {
             return _patientRepository.GetAllPatients();
         }
+
+        public Task<int> CreateGuardianAsync(Guid guardianId, string name, string phoneNumber, string email)
+        {
+            return _patientRepository.CreateGuardianAsync(guardianId, name, phoneNumber, email);
+        }
+
+        
     }
 }
