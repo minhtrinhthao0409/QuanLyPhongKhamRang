@@ -27,19 +27,21 @@ namespace QuanlyPhongKham.Repository
                 {
                     string insertSql = @"
                                         INSERT INTO Patients 
-                                        (PatientId, Name, Email, Gender, PhoneNumber, DOB, GuardianId) 
+                                        (PatientId, FullName, Email, Gender, PhoneNumber, DOB, GuardianId) 
                                         VALUES 
-                                        (@PatientId, @Name, @Email, @Gender, @PhoneNumber, @DOB, @GuardianId)";
+                                        (@PatientId, @FullName, @Email, @Gender, @PhoneNumber, @DOB, @GuardianId)";
 
                     using (var cmd = new SQLiteCommand(insertSql, connection))
                     {
-                        cmd.Parameters.AddWithValue("@PatientId", patientId);
-                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@PatientId", patientId.ToString());
+                        cmd.Parameters.AddWithValue("@FullName", name);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+
                         cmd.Parameters.AddWithValue("@DOB", dob);
-                        cmd.Parameters.AddWithValue("@GuardianId", guardianId as object ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@GuardianId", guardianId.ToString() as object ?? DBNull.Value);
+
 
                         affectedRows = await cmd.ExecuteNonQueryAsync();
                     }
@@ -64,7 +66,7 @@ namespace QuanlyPhongKham.Repository
             var query = new StringBuilder("SELECT * FROM Patients WHERE 1=1");
 
             if (!string.IsNullOrWhiteSpace(name))
-                query.Append(" AND Name LIKE @Name");
+                query.Append(" AND FullName LIKE @FullName");
 
             if (!string.IsNullOrWhiteSpace(phone))
                 query.Append(" AND PhoneNumber = @PhoneNumber");
@@ -75,7 +77,7 @@ namespace QuanlyPhongKham.Repository
             using var command = new SQLiteCommand(query.ToString(), connection);
 
             if (!string.IsNullOrWhiteSpace(name))
-                command.Parameters.AddWithValue("@Name", $"%{name}%");
+                command.Parameters.AddWithValue("@FullName", $"%{name}%");
 
             if (!string.IsNullOrWhiteSpace(phone))
                 command.Parameters.AddWithValue("@PhoneNumber", phone);
@@ -89,7 +91,7 @@ namespace QuanlyPhongKham.Repository
                 var patient = new Patient
                 {
                     PatientId = reader["PatientId"].ToString(),
-                    Name = reader["Name"].ToString()!,
+                    Name = reader["FullName"].ToString()!,
                     PhoneNumber = reader["PhoneNumber"].ToString()!,
                     Email = reader["Email"].ToString()!,
                     Gender = Convert.ToBoolean(reader["Gender"]),
@@ -122,7 +124,7 @@ namespace QuanlyPhongKham.Repository
                     string updateSql = @"
                                         UPDATE Patients 
                                         SET 
-                                            Name = @Name,
+                                            FullName = @FullName,
                                             Email = @Email,
                                             Gender = @Gender,
                                             PhoneNumber = @PhoneNumber,
@@ -132,7 +134,7 @@ namespace QuanlyPhongKham.Repository
 
                     using (var cmd = new SQLiteCommand(updateSql, connection))
                     {
-                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@FullName", name);
                         cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
@@ -186,5 +188,51 @@ namespace QuanlyPhongKham.Repository
 
             return patients;
         }
+
+        public async Task<int> CreateGuardianAsync(Guid guardianId, string name, string phoneNumber, string email)
+        {
+            //if (string.IsNullOrWhiteSpace(name))
+            //    throw new ArgumentException("Tên người giám hộ không được rỗng.", nameof(name));
+            //if (string.IsNullOrWhiteSpace(phoneNumber))
+            //    throw new ArgumentException("Số điện thoại người giám hộ không được rỗng.", nameof(phoneNumber));
+
+            int affectedRows = 0;
+
+            using (var connection = await GetConnectionAsync())
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    string insertSql = @"
+                INSERT INTO Guardians 
+                (GuardianId, FullName, PhoneNumber, Email)
+                VALUES 
+                (@GuardianId, @FullName, @PhoneNumber, @Email)";
+
+                    using (var cmd = new SQLiteCommand(insertSql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@GuardianId",guardianId.ToString());
+                        cmd.Parameters.AddWithValue("@FullName", name);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                        cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
+
+                        affectedRows = await cmd.ExecuteNonQueryAsync();
+                    }
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    throw new Exception("Lỗi khi tạo người giám hộ.", ex);
+                }
+            }
+
+            return affectedRows;
+        }
+
+
+
+
     }
 }

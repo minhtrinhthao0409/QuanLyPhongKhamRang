@@ -40,5 +40,6 @@ namespace QuanlyPhongKham.Controllers
             return await _patientService.GetAllPatientsAsync();
         }
 
+        
     }
 }
