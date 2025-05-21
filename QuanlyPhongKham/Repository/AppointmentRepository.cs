@@ -311,6 +311,48 @@ namespace QuanlyPhongKham.Repository
             return list;
         }
 
+        public async Task<List<Appointment>> GetAllAppointmentsAsync()
+        {
+            var list = new List<Appointment>();
+
+            try
+            {
+                using var conn = await GetConnectionAsync();
+
+                string query = @"
+                                SELECT a.AppointmentId, a.DoctorId, a.PatientId, p.FullName AS PatientName,
+                                       a.AppointmentDate, a.StartTime, a.EndTime
+                                FROM Appointments a
+                                JOIN Patients p ON a.PatientId = p.PatientId
+                                WHERE DATE(a.AppointmentDate) >= DATE(@Today)
+                                ORDER BY a.AppointmentDate ASC
+                                LIMIT 10";
+
+                using var cmd = new SQLiteCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Today", DateTime.Today);
+
+                using var reader = await cmd.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    list.Add(new Appointment
+                    {
+                        AppointmentId = reader["AppointmentId"]?.ToString() ?? string.Empty,
+                        DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
+                        PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
+                        PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
+                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                        StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
+                        EndTime = Convert.ToDateTime(reader["EndTime"]).TimeOfDay,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy lịch hẹn: " + ex.Message);
+            }
+
+            return list;
+        }
 
 
     }

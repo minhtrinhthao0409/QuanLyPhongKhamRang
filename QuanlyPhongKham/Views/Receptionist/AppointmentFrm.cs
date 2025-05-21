@@ -86,8 +86,14 @@ namespace QuanlyPhongKham.Views.Receptionist
             {
                 List<Appointment> result = await _appointmentControllers.GetDoctorAppointmentsAsync_v2(startDate, endDate, doctorName, patientPhoneNo);
 
-                // Gán kết quả vào DataGridView
+                
                 SearchAppointmentGridView.DataSource = result;
+
+
+                SearchAppointmentGridView.Columns["DoctorId"].Visible = false;
+                SearchAppointmentGridView.Columns["PatientId"].Visible = false;
+                SearchAppointmentGridView.Columns["AppointmentId"].Visible = false;
+                //SearchAppointmentGridView.Columns["Appointments"].Visible = false;
             }
             catch (Exception ex)
             {

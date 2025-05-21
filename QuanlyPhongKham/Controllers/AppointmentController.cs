@@ -36,5 +36,10 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _service.GetDoctorAppointmentsAsync_v2(startDate, endDate, doctorName, patientPhone);
         }
+
+        public async Task<List<Appointment>> GetAllAppointmentsAsync()
+        {
+            return await _service.GetAllAppointmentsAsync();
+        }
     }
 }

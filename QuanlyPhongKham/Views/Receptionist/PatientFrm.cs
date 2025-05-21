@@ -159,6 +159,12 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 // Gán kết quả vào DataGridView
                 SearchPatientResultView.DataSource = result;
+
+
+                SearchPatientResultView.Columns["PatientId"].Visible = false;
+                SearchPatientResultView.Columns["GuardianId"].Visible = false;
+                SearchPatientResultView.Columns["MedRec"].Visible = false;
+                SearchPatientResultView.Columns["Appoinments"].Visible = false;
             }
             catch (Exception ex)
             {
