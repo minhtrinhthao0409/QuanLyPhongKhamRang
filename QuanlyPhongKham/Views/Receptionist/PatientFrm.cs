@@ -173,5 +173,10 @@ namespace QuanlyPhongKham.Views.Receptionist
 
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
