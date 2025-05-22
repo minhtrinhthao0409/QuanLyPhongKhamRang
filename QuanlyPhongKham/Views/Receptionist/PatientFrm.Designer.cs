@@ -70,6 +70,7 @@
             tabPage3 = new System.Windows.Forms.TabPage();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             panel4 = new System.Windows.Forms.Panel();
+            ResetInfoBtn = new System.Windows.Forms.Button();
             updatedGuardianTxt = new System.Windows.Forms.TextBox();
             label16 = new System.Windows.Forms.Label();
             updatedEmailTxt = new System.Windows.Forms.TextBox();
@@ -77,7 +78,6 @@
             updatedPhoneNoTxt = new System.Windows.Forms.TextBox();
             label19 = new System.Windows.Forms.Label();
             label21 = new System.Windows.Forms.Label();
-            button3 = new System.Windows.Forms.Button();
             UpdateInfoBtn = new System.Windows.Forms.Button();
             panel3 = new System.Windows.Forms.Panel();
             dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -93,7 +93,6 @@
             currentNameTxt = new System.Windows.Forms.TextBox();
             label13 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
-            ResetInfoBtn = new System.Windows.Forms.Button();
             panel2.SuspendLayout();
             PatientTab.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -550,12 +549,22 @@
             panel4.Controls.Add(updatedPhoneNoTxt);
             panel4.Controls.Add(label19);
             panel4.Controls.Add(label21);
-            panel4.Controls.Add(button3);
             panel4.Controls.Add(UpdateInfoBtn);
             panel4.Location = new System.Drawing.Point(0, 221);
             panel4.Name = "panel4";
             panel4.Size = new System.Drawing.Size(796, 285);
             panel4.TabIndex = 27;
+            // 
+            // ResetInfoBtn
+            // 
+            ResetInfoBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            ResetInfoBtn.Location = new System.Drawing.Point(397, 215);
+            ResetInfoBtn.Name = "ResetInfoBtn";
+            ResetInfoBtn.Size = new System.Drawing.Size(93, 50);
+            ResetInfoBtn.TabIndex = 26;
+            ResetInfoBtn.Text = "Reset";
+            ResetInfoBtn.UseVisualStyleBackColor = true;
+            ResetInfoBtn.Click += ResetInfoBtn_Click;
             // 
             // updatedGuardianTxt
             // 
@@ -618,13 +627,6 @@
             label21.TabIndex = 15;
             label21.Text = "Updated Infomation";
             // 
-            // button3
-            // 
-            button3.Location = new System.Drawing.Point(0, 0);
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(75, 23);
-            button3.TabIndex = 25;
-            // 
             // UpdateInfoBtn
             // 
             UpdateInfoBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -634,6 +636,7 @@
             UpdateInfoBtn.TabIndex = 6;
             UpdateInfoBtn.Text = "Update";
             UpdateInfoBtn.UseVisualStyleBackColor = true;
+            UpdateInfoBtn.Click += UpdateInfoBtn_Click;
             // 
             // panel3
             // 
@@ -771,16 +774,6 @@
             label14.TabIndex = 15;
             label14.Text = "Current Infomation";
             // 
-            // ResetInfoBtn
-            // 
-            ResetInfoBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ResetInfoBtn.Location = new System.Drawing.Point(397, 215);
-            ResetInfoBtn.Name = "ResetInfoBtn";
-            ResetInfoBtn.Size = new System.Drawing.Size(93, 50);
-            ResetInfoBtn.TabIndex = 26;
-            ResetInfoBtn.Text = "Reset";
-            ResetInfoBtn.UseVisualStyleBackColor = true;
-            // 
             // PatientFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -861,7 +854,6 @@
         private System.Windows.Forms.TextBox updatedPhoneNoTxt;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
