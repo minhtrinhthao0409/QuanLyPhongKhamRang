@@ -17,8 +17,10 @@ namespace QuanlyPhongKham.Views
     public partial class BacSi : Form
     {
         AppointmentController appointmentController = new AppointmentController();
-        private PatientController patientController = new PatientController();
-        private MedicalRecordController medicalRecordController = new MedicalRecordController();
+        PatientController patientController = new PatientController();
+        MedicalRecordController medicalRecordController = new MedicalRecordController();
+        InvoiceController _invoiceController = new InvoiceController();
+        private readonly MedicalServiceController _medicalServiceController = new MedicalServiceController();
         private Dictionary<string, string> patientMap;
         private User user;
         private string currentDoctorId;
@@ -233,11 +235,15 @@ namespace QuanlyPhongKham.Views
             }
         }
         
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (TapBacSi.SelectedTab.Text == "Xem Bệnh Án")
             {
                 btnLoadMedicalRecords_Click(null, null);
+            }
+            else if (TapBacSi.SelectedTab.Text == "Quản Lý Hóa Đơn")
+            {
+                await LoadServicesToComboBoxAsync();
             }
         }
         private async void btnLoadMedicalRecords_Click(object sender, EventArgs e)
@@ -288,14 +294,91 @@ namespace QuanlyPhongKham.Views
         {
             cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
         }
+        private void btnThemDichVu_Click(object sender, EventArgs e)
+        {
+            string tenDichVu = cbChonDichVu.Text;
+            int soLuong = (int)nuChonSoLuong.Value;
 
-        private void btnSaveInvoice_Click(object sender, EventArgs e) { }
+            if (string.IsNullOrWhiteSpace(tenDichVu) || soLuong <= 0)
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ và hợp lệ.");
+                return;
+            }
 
+            var gia = _medicalServiceController.LayGiaDichVu(tenDichVu);
+
+            if (gia == null)
+            {
+                MessageBox.Show("Không tìm thấy giá dịch vụ.");
+                return;
+            }
+
+            dgvChiTiet.Rows.Add(tenDichVu, soLuong, gia.Value);
+        }
+        
+        private async Task LoadServicesToComboBoxAsync()
+        {
+            var repo = new InvoiceRepository(); // hoặc dùng DI nếu có
+            var services = await repo.GetActiveServicesAsync();
+
+            cbChonDichVu.DisplayMember = "ServicesName";
+            cbChonDichVu.ValueMember = "CurrentPrice"; // hoặc ServicesId tùy mục đích
+            cbChonDichVu.DataSource = services;
+        }
+        private async void btnSaveInvoice_Click(object sender, EventArgs e) 
+        {
+            var invoice = new Invoice
+            {
+                PatientId = cboPatientId.SelectedItem.ToString(),
+                PatientName = cboPatientName.Text,
+                CreatedAt = dtpNgayIn.Value,
+                TotalAmount = decimal.Parse(txtTongTien.Text),
+                PaidAmount = 0, // hoặc lấy từ input nếu có
+                Status = "Chưa thanh toán",
+                Details = new List<InvoiceDetail>()
+            };
+            foreach (DataGridViewRow row in dgvChiTiet.Rows)
+            {
+                if (row.Cells["TenDichVu"].Value != null)
+                {
+                    invoice.Details.Add(new InvoiceDetail
+                    {
+                        ServiceName = row.Cells["TenDichVu"].Value.ToString(),
+                        UnitPrice = Convert.ToDecimal(row.Cells["Gia"].Value),
+                        Quantity = Convert.ToInt32(row.Cells["SoLuong"].Value)
+                    });
+                }
+            }
+
+            await _invoiceController.CreateInvoiceAsync(invoice);
+            MessageBox.Show("Lưu hóa đơn thành công");
+        }
+        private void dgvChiTiet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvChiTiet.Columns["SoLuong"].Index ||
+                e.ColumnIndex == dgvChiTiet.Columns["Gia"].Index)
+            {
+                foreach (DataGridViewRow row in dgvChiTiet.Rows)
+                {
+                    if (row.Cells["Gia"].Value != null && row.Cells["SoLuong"].Value != null)
+                    {
+                        decimal gia = Convert.ToDecimal(row.Cells["Gia"].Value);
+                        int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+                        row.Cells["Tong"].Value = gia * soLuong;
+                    }
+                }
+
+                decimal tongTien = dgvChiTiet.Rows
+                    .Cast<DataGridViewRow>()
+                    .Where(r => r.Cells["Tong"].Value != null)
+                    .Sum(r => Convert.ToDecimal(r.Cells["Tong"].Value));
+
+                txtTongTien.Text = tongTien.ToString("N0");
+            }
+        }
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
-
-        
     }
 }
