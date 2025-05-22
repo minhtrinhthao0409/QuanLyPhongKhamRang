@@ -242,11 +242,13 @@ namespace QuanlyPhongKham.Repository
                 var whereClauses = new List<string>();
 
                 string baseQuery = @"
-                                        SELECT a.AppointmentId, a.DoctorId, a.PatientId, p.FullName AS PatientName, 
-                                               a.AppointmentDate, a.StartTime, a.EndTime
+                                        SELECT  a.AppointmentId, 
+                                                a.DoctorId, u.FullName AS DoctorName, 
+                                                a.PatientId, p.FullName AS PatientName,
+                                                a.AppointmentDate, a.StartTime, a.EndTime
                                         FROM Appointments a
                                         JOIN Patients p ON a.PatientId = p.PatientId
-                                        JOIN Users d ON a.DoctorId = d.Id
+                                        JOIN Users u ON a.DoctorId = u.Id
                                         WHERE ";
 
                 
@@ -265,7 +267,7 @@ namespace QuanlyPhongKham.Repository
                 
                 if (!string.IsNullOrWhiteSpace(doctorName))
                 {
-                    whereClauses.Add("d.FullName LIKE @DoctorName");
+                    whereClauses.Add("u.FullName LIKE @DoctorName");
                     cmd.Parameters.AddWithValue("@DoctorName", $"%{doctorName}%");
                 }
 
@@ -289,7 +291,8 @@ namespace QuanlyPhongKham.Repository
                         DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
                         PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
                         PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
-                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]).Date,
+                        DoctorName = reader["DoctorName"].ToString() ?? string.Empty,
                         StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
                         EndTime = Convert.ToDateTime(reader["EndTime"]).TimeOfDay,
                     });
@@ -320,13 +323,17 @@ namespace QuanlyPhongKham.Repository
                 using var conn = await GetConnectionAsync();
 
                 string query = @"
-                                SELECT a.AppointmentId, a.DoctorId, a.PatientId, p.FullName AS PatientName,
-                                       a.AppointmentDate, a.StartTime, a.EndTime
+                                SELECT  a.AppointmentId, 
+                                        a.DoctorId, u.FullName AS DoctorName, 
+                                        a.PatientId, p.FullName AS PatientName,
+                                        a.AppointmentDate, a.StartTime, a.EndTime
                                 FROM Appointments a
                                 JOIN Patients p ON a.PatientId = p.PatientId
+                                JOIN Users u ON a.DoctorId = u.Id
                                 WHERE DATE(a.AppointmentDate) >= DATE(@Today)
                                 ORDER BY a.AppointmentDate ASC
-                                LIMIT 10";
+                                LIMIT 10;"
+;
 
                 using var cmd = new SQLiteCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Today", DateTime.Today);
@@ -340,7 +347,8 @@ namespace QuanlyPhongKham.Repository
                         DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
                         PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
                         PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
-                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                        AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]).Date,
+                        DoctorName = reader["DoctorName"].ToString() ?? string.Empty,
                         StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
                         EndTime = Convert.ToDateTime(reader["EndTime"]).TimeOfDay,
                     });
