@@ -17,6 +17,8 @@ namespace QuanlyPhongKham.Models
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
 
+        public string DoctorName { get; set; }
+
         public int PaymentStatus { get; set; }
 
         public Appointment() 
