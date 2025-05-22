@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanlyPhongKham.Repository
@@ -39,7 +40,7 @@ namespace QuanlyPhongKham.Repository
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
 
-                        cmd.Parameters.AddWithValue("@DOB", dob);
+                        cmd.Parameters.AddWithValue("@DOB", dob.Date);
                         cmd.Parameters.AddWithValue("@GuardianId", guardianId.ToString() as object ?? DBNull.Value);
 
 
@@ -146,9 +147,9 @@ namespace QuanlyPhongKham.Repository
                     {
                         cmd.Parameters.AddWithValue("@FullName", name);
                         cmd.Parameters.AddWithValue("@Email", email ?? (object)DBNull.Value);
-                        cmd.Parameters.AddWithValue("@Gender", gender);
+                        cmd.Parameters.AddWithValue("@Gender", gender ? 1 : 0);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                        cmd.Parameters.AddWithValue("@DOB", dob);
+                        cmd.Parameters.AddWithValue("@DOB", dob.Date);
                         cmd.Parameters.AddWithValue("@GuardianId", guardianId as object ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@PatientId", patientId);
 
@@ -242,7 +243,76 @@ namespace QuanlyPhongKham.Repository
         }
 
 
+        public async Task<bool> UpdatePatientFromInputAsync(string name, string phone, string? email, string? newPhone, string? newEmail, string? newGuardianName)
+        {
+            var foundPatients = await SearchPatientsAsync(name, phone, email);
+
+            if (foundPatients.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy bệnh nhân phù hợp.");
+                return false;
+            }
+
+            if (foundPatients.Count > 1)
+            {
+                MessageBox.Show("Tìm thấy nhiều hơn 1 bệnh nhân. Vui lòng xác định rõ.");
+                return false;
+            }
+
+            var patient = foundPatients[0];
+
+           
+            if ((newPhone ?? patient.PhoneNumber) == patient.PhoneNumber &&
+                (newEmail ?? patient.Email) == patient.Email &&
+                string.IsNullOrWhiteSpace(newGuardianName))
+            {
+                MessageBox.Show("Không có thay đổi nào để cập nhật.");
+                return false;
+            }
+
+            
+            if (!string.IsNullOrWhiteSpace(newGuardianName) && patient.GuardianId.HasValue)
+            {
+                await UpdateGuardianNameAsync(patient.GuardianId.Value, newGuardianName);
+            }
+
+            
+            int updatedRows = await UpdatePatientAsync(
+                patientId: Guid.Parse(patient.PatientId),
+                name: patient.Name,
+                gender: patient.Gender,
+                phoneNumber: newPhone ?? patient.PhoneNumber,
+                email: newEmail ?? patient.Email,
+                dob: patient.DOB,
+                guardianId: patient.GuardianId
+            );
+
+            return updatedRows > 0;
+        }
+
+
+        public async Task<bool> UpdateGuardianNameAsync(Guid guardianId, string newName)
+        {
+            using var conn = await GetConnectionAsync();
+            using var cmd = new SQLiteCommand(
+                "UPDATE Users SET FullName = @FullName WHERE Id = @Id", conn);
+
+            cmd.Parameters.AddWithValue("@FullName", newName);
+            cmd.Parameters.AddWithValue("@Id", guardianId.ToString());
+
+            int affected = await cmd.ExecuteNonQueryAsync();
+            return affected > 0;
+        }
+
+
+
 
 
     }
+
+
+
+
+
 }
+
