@@ -67,6 +67,32 @@
             ResetBtn = new System.Windows.Forms.Button();
             UpdatePatientBtn = new System.Windows.Forms.Button();
             AddPatientbtn = new System.Windows.Forms.Button();
+            tabPage3 = new System.Windows.Forms.TabPage();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            panel4 = new System.Windows.Forms.Panel();
+            ResetInfoBtn = new System.Windows.Forms.Button();
+            updatedGuardianTxt = new System.Windows.Forms.TextBox();
+            label16 = new System.Windows.Forms.Label();
+            updatedEmailTxt = new System.Windows.Forms.TextBox();
+            label18 = new System.Windows.Forms.Label();
+            updatedPhoneNoTxt = new System.Windows.Forms.TextBox();
+            label19 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
+            UpdateInfoBtn = new System.Windows.Forms.Button();
+            panel3 = new System.Windows.Forms.Panel();
+            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            label8 = new System.Windows.Forms.Label();
+            currentGuardianTxt = new System.Windows.Forms.TextBox();
+            label9 = new System.Windows.Forms.Label();
+            listBox1 = new System.Windows.Forms.ListBox();
+            label10 = new System.Windows.Forms.Label();
+            currentEmailTxt = new System.Windows.Forms.TextBox();
+            label11 = new System.Windows.Forms.Label();
+            currentPhoneNoTxt = new System.Windows.Forms.TextBox();
+            label12 = new System.Windows.Forms.Label();
+            currentNameTxt = new System.Windows.Forms.TextBox();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
             panel2.SuspendLayout();
             PatientTab.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -75,6 +101,10 @@
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel1.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -171,6 +201,7 @@
             // 
             PatientTab.Controls.Add(tabPage1);
             PatientTab.Controls.Add(tabPage2);
+            PatientTab.Controls.Add(tabPage3);
             PatientTab.Location = new System.Drawing.Point(194, 4);
             PatientTab.Name = "PatientTab";
             PatientTab.SelectedIndex = 0;
@@ -487,6 +518,262 @@
             AddPatientbtn.UseVisualStyleBackColor = true;
             AddPatientbtn.Click += AddPatientbtn_Click;
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(dataGridView1);
+            tabPage3.Controls.Add(panel4);
+            tabPage3.Controls.Add(panel3);
+            tabPage3.Location = new System.Drawing.Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            tabPage3.Size = new System.Drawing.Size(799, 637);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Update Infomation";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(2, 507);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new System.Drawing.Size(796, 127);
+            dataGridView1.TabIndex = 28;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(ResetInfoBtn);
+            panel4.Controls.Add(updatedGuardianTxt);
+            panel4.Controls.Add(label16);
+            panel4.Controls.Add(updatedEmailTxt);
+            panel4.Controls.Add(label18);
+            panel4.Controls.Add(updatedPhoneNoTxt);
+            panel4.Controls.Add(label19);
+            panel4.Controls.Add(label21);
+            panel4.Controls.Add(UpdateInfoBtn);
+            panel4.Location = new System.Drawing.Point(0, 221);
+            panel4.Name = "panel4";
+            panel4.Size = new System.Drawing.Size(796, 285);
+            panel4.TabIndex = 27;
+            // 
+            // ResetInfoBtn
+            // 
+            ResetInfoBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            ResetInfoBtn.Location = new System.Drawing.Point(397, 215);
+            ResetInfoBtn.Name = "ResetInfoBtn";
+            ResetInfoBtn.Size = new System.Drawing.Size(93, 50);
+            ResetInfoBtn.TabIndex = 26;
+            ResetInfoBtn.Text = "Reset";
+            ResetInfoBtn.UseVisualStyleBackColor = true;
+            ResetInfoBtn.Click += ResetInfoBtn_Click;
+            // 
+            // updatedGuardianTxt
+            // 
+            updatedGuardianTxt.Location = new System.Drawing.Point(143, 162);
+            updatedGuardianTxt.Name = "updatedGuardianTxt";
+            updatedGuardianTxt.Size = new System.Drawing.Size(591, 23);
+            updatedGuardianTxt.TabIndex = 24;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label16.Location = new System.Drawing.Point(24, 163);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(64, 17);
+            label16.TabIndex = 23;
+            label16.Text = "Guardian";
+            // 
+            // updatedEmailTxt
+            // 
+            updatedEmailTxt.Location = new System.Drawing.Point(143, 109);
+            updatedEmailTxt.Name = "updatedEmailTxt";
+            updatedEmailTxt.Size = new System.Drawing.Size(591, 23);
+            updatedEmailTxt.TabIndex = 20;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label18.Location = new System.Drawing.Point(24, 109);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(42, 17);
+            label18.TabIndex = 19;
+            label18.Text = "Email";
+            // 
+            // updatedPhoneNoTxt
+            // 
+            updatedPhoneNoTxt.Location = new System.Drawing.Point(143, 63);
+            updatedPhoneNoTxt.Name = "updatedPhoneNoTxt";
+            updatedPhoneNoTxt.Size = new System.Drawing.Size(591, 23);
+            updatedPhoneNoTxt.TabIndex = 18;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label19.Location = new System.Drawing.Point(20, 63);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(101, 17);
+            label19.TabIndex = 17;
+            label19.Text = "Phone Number";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label21.Location = new System.Drawing.Point(269, 11);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(194, 25);
+            label21.TabIndex = 15;
+            label21.Text = "Updated Infomation";
+            // 
+            // UpdateInfoBtn
+            // 
+            UpdateInfoBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            UpdateInfoBtn.Location = new System.Drawing.Point(261, 215);
+            UpdateInfoBtn.Name = "UpdateInfoBtn";
+            UpdateInfoBtn.Size = new System.Drawing.Size(93, 50);
+            UpdateInfoBtn.TabIndex = 6;
+            UpdateInfoBtn.Text = "Update";
+            UpdateInfoBtn.UseVisualStyleBackColor = true;
+            UpdateInfoBtn.Click += UpdateInfoBtn_Click;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(dateTimePicker2);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(currentGuardianTxt);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(listBox1);
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(currentEmailTxt);
+            panel3.Controls.Add(label11);
+            panel3.Controls.Add(currentPhoneNoTxt);
+            panel3.Controls.Add(label12);
+            panel3.Controls.Add(currentNameTxt);
+            panel3.Controls.Add(label13);
+            panel3.Controls.Add(label14);
+            panel3.Location = new System.Drawing.Point(0, 6);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(796, 209);
+            panel3.TabIndex = 5;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new System.Drawing.Point(143, 88);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new System.Drawing.Size(211, 23);
+            dateTimePicker2.TabIndex = 26;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label8.Location = new System.Drawing.Point(20, 92);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(36, 17);
+            label8.TabIndex = 25;
+            label8.Text = "DOB";
+            // 
+            // currentGuardianTxt
+            // 
+            currentGuardianTxt.Location = new System.Drawing.Point(143, 162);
+            currentGuardianTxt.Name = "currentGuardianTxt";
+            currentGuardianTxt.Size = new System.Drawing.Size(211, 23);
+            currentGuardianTxt.TabIndex = 24;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label9.Location = new System.Drawing.Point(24, 163);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(64, 17);
+            label9.TabIndex = 23;
+            label9.Text = "Guardian";
+            // 
+            // listBox1
+            // 
+            listBox1.AllowDrop = true;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Items.AddRange(new object[] { "Male", "Female" });
+            listBox1.Location = new System.Drawing.Point(466, 92);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new System.Drawing.Size(54, 19);
+            listBox1.TabIndex = 22;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label10.Location = new System.Drawing.Point(397, 92);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(52, 17);
+            label10.TabIndex = 21;
+            label10.Text = "Gender";
+            // 
+            // currentEmailTxt
+            // 
+            currentEmailTxt.Location = new System.Drawing.Point(466, 130);
+            currentEmailTxt.Name = "currentEmailTxt";
+            currentEmailTxt.Size = new System.Drawing.Size(268, 23);
+            currentEmailTxt.TabIndex = 20;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label11.Location = new System.Drawing.Point(397, 135);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(42, 17);
+            label11.TabIndex = 19;
+            label11.Text = "Email";
+            // 
+            // currentPhoneNoTxt
+            // 
+            currentPhoneNoTxt.Location = new System.Drawing.Point(143, 129);
+            currentPhoneNoTxt.Name = "currentPhoneNoTxt";
+            currentPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
+            currentPhoneNoTxt.TabIndex = 18;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label12.Location = new System.Drawing.Point(20, 130);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(101, 17);
+            label12.TabIndex = 17;
+            label12.Text = "Phone Number";
+            // 
+            // currentNameTxt
+            // 
+            currentNameTxt.Location = new System.Drawing.Point(143, 48);
+            currentNameTxt.Name = "currentNameTxt";
+            currentNameTxt.Size = new System.Drawing.Size(591, 23);
+            currentNameTxt.TabIndex = 16;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label13.Location = new System.Drawing.Point(20, 50);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(92, 17);
+            label13.TabIndex = 15;
+            label13.Text = "Patient Name";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label14.Location = new System.Drawing.Point(269, 11);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(186, 25);
+            label14.TabIndex = 15;
+            label14.Text = "Current Infomation";
+            // 
             // PatientFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -507,6 +794,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -551,5 +844,31 @@
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Button UpdatePatientBtn;
         private System.Windows.Forms.Button AddPatientbtn;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox updatedGuardianTxt;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox updatedEmailTxt;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox updatedPhoneNoTxt;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button UpdateInfoBtn;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox currentGuardianTxt;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox currentEmailTxt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox currentPhoneNoTxt;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox currentNameTxt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button ResetInfoBtn;
     }
 }

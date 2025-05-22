@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
@@ -164,13 +166,65 @@ namespace QuanlyPhongKham.Views.Receptionist
                 SearchPatientResultView.Columns["PatientId"].Visible = false;
                 SearchPatientResultView.Columns["GuardianId"].Visible = false;
                 SearchPatientResultView.Columns["MedRec"].Visible = false;
-                SearchPatientResultView.Columns["Appoinments"].Visible = false;
+                //SearchPatientResultView.Columns["Appoinments"].Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetInfoBtn_Click(object sender, EventArgs e)
+        {
+            currentNameTxt.Text = "";
+            currentPhoneNoTxt.Text = "";
+            currentEmailTxt.Text = "";
+
+            updatedPhoneNoTxt.Text = "";
+            updatedEmailTxt.Text = "";
+            updatedGuardianTxt.Text = "";
+        }
+
+        private async void UpdateInfoBtn_Click(object sender, EventArgs e)
+        {
+            string currentName = currentNameTxt.Text.Trim();
+            string currentPhoneNo = currentPhoneNoTxt.Text.Trim();
+            string currentEmail = currentEmailTxt.Text.Trim();
+            string updatedPhoneNo = updatedPhoneNoTxt.Text.Trim();
+            string updatedGuardian = updatedGuardianTxt.Text.Trim();
+            string updatedEmail = updatedEmailTxt.Text.Trim();
+
+            try
+            {
+                bool result = await _patientService.UpdatePatientFromInputAsync(
+                    currentName,
+                    currentPhoneNo,
+                    currentEmail,
+                    string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
+                    string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail,
+                    string.IsNullOrWhiteSpace(updatedGuardian) ? null : updatedGuardian
+                );
+
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không có thay đổi nào được thực hiện.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

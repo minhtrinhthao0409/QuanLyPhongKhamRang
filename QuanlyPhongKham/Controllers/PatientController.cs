@@ -40,6 +40,11 @@ namespace QuanlyPhongKham.Controllers
             return await _patientService.GetAllPatientsAsync();
         }
 
-        
+        public async Task<bool> UpdatePatientFromInputAsync(string name, string phone, string? email, string? newPhone, string? newEmail, string newGuardianName)
+        {
+            return await _patientService.UpdatePatientFromInputAsync(name, phone, email, newPhone, newEmail, newGuardianName);
+        }
+
+
     }
 }
