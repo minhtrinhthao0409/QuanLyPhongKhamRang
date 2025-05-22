@@ -79,14 +79,13 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string phoneNo = PatientPhoneNo.Text.Trim();
                 string? guardianName = Guardian.Text.Trim();
                 string email = PatientEmail.Text.Trim();
-                DateTime dob = dateTimePicker1.Value;
+                DateTime dob = dateTimePicker1.Value.Date;
                 bool gender = listBox2.Text.Trim() == "Male";
 
                 Guid patientId = Guid.NewGuid();
                 Guid? guardianId = null;
 
                 int result;
-
 
 
                 if (!string.IsNullOrWhiteSpace(guardianName))
@@ -124,7 +123,55 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         }
 
+        private void PatientFrm_Load(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            listBox2.Items.Add("Male");
+            listBox2.Items.Add("Female");
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            PatientName.Text = "";
+            PatientPhoneNo.Text = "";
+            Guardian.Text = "";
+            PatientEmail.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
+            //listBox2.SelectedItem = "Male";
+        }
+
+        private void ResetSearchPatientbtn_Click(object sender, EventArgs e)
+        {
+            PatientNameTxt.Text = "";
+            PatientPhoneNoTxt.Text = "";
+            patientEmailTxt.Text = "";
+        }
+
+        private async void SearchPatientBtn_Click(object sender, EventArgs e)
+        {
+            string name = PatientNameTxt.Text.Trim();
+            string phoneNo = PatientPhoneNoTxt.Text.Trim();
+            string email = patientEmailTxt.Text.Trim();
+
+            try
+            {
+                List<Patient> result = await _patientService.SearchPatientsAsync(name, phoneNo, email);
+
+                // Gán kết quả vào DataGridView
+                SearchPatientResultView.DataSource = result;
 
 
+                SearchPatientResultView.Columns["PatientId"].Visible = false;
+                SearchPatientResultView.Columns["GuardianId"].Visible = false;
+                SearchPatientResultView.Columns["MedRec"].Visible = false;
+                SearchPatientResultView.Columns["Appoinments"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
     }
 }

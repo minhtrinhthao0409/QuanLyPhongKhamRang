@@ -11,12 +11,13 @@ namespace QuanlyPhongKham.Models
         public string PatientId { get; set; }
         public string Name { get; set; }
         public DateTime DOB { get; set; }
-        public bool Gender { get; set; }
+        public bool Gender { get; set; } = false;
         public string PhoneNumber { get; set; }
         public string Email { get; set; } = null!;
 
         public Guid? GuardianId { get; set; }         
-        public Guardian? Guardian { get; set; }       
+        //public Guardian? Guardian { get; set; }
+        public string GuardianName { get; set; }
 
         public Patient()
         {

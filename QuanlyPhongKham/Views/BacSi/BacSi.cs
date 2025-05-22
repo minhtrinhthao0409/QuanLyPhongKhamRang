@@ -10,6 +10,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using QuanlyPhongKham.Repository;
+using QuanlyPhongKham.Services;
 
 namespace QuanlyPhongKham.Views
 {
@@ -32,6 +33,7 @@ namespace QuanlyPhongKham.Views
         {
             currentDoctorId = user.Id;
             currentDoctorName = user.UserName;
+            var appointmentDate = dtpAppointmentDate.Value.Date;
 
             await LoadPatientsAsync();
             await LoadAppointmentsAsync();
@@ -70,57 +72,39 @@ namespace QuanlyPhongKham.Views
 
         private async Task LoadAppointmentsAsync()
         {
-            dgvAppointments.Columns["AppointmentDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            try
+            var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
+
+            var displayList = appointments.Select(a => new
             {
-                var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
-                if (appointments == null || appointments.Count == 0)
-                {
-                    MessageBox.Show("Không có lịch hẹn nào để hiển thị!");
-                    dgvAppointments.DataSource = null;
-                    return;
-                }
-                dgvAppointments.DataSource = appointments;
-            }
-            catch (Exception ex)
+                TenBenhNhan = a.PatientName,
+                NgayHen = a.AppointmentDate.ToString("dd/MM/yyyy"),
+                GioBatDau = a.StartTime.ToString(@"hh\:mm"),
+                GioKetThuc = a.EndTime.ToString(@"hh\:mm")
+            }).ToList();
+
+            dgvAppointments.DataSource = displayList;
+
+            dgvAppointments.Columns["TenBenhNhan"].HeaderText = "Tên Bệnh Nhân";
+            dgvAppointments.Columns["NgayHen"].HeaderText = "Ngày Hẹn";
+            dgvAppointments.Columns["GioBatDau"].HeaderText = "Giờ Bắt Đầu";
+            dgvAppointments.Columns["GioKetThuc"].HeaderText = "Giờ Kết Thúc";
+
+            foreach (DataGridViewColumn col in dgvAppointments.Columns)
             {
-                MessageBox.Show($"Lỗi khi tải lịch hẹn: {ex.Message}");
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
         private async void btnLoadAppointments_Click(object sender, EventArgs e)
         {
-            string startTimeText = mtbStartTime.Text;
-            string endTimeText = mtbEndTime.Text;
-            mtbAppointmentDate.ValidatingType = typeof(System.DateTime);
-            if (!TimeSpan.TryParseExact(startTimeText, "hh\\:mm", null, out TimeSpan startTime) ||
-                !TimeSpan.TryParseExact(endTimeText, "hh\\:mm", null, out TimeSpan endTime))
-            {
-                MessageBox.Show("Thời gian không hợp lệ! Vui lòng nhập theo định dạng HH:mm.");
-                return;
-            }
-
-            try
-            {
-                var appointments = await appointmentController.GetDoctorAppointmentsAsync(currentDoctorId);
-
-                if (appointments == null || appointments.Count == 0)
-                {
-                    MessageBox.Show("Không có lịch hẹn nào để hiển thị!");
-                    dgvAppointments.DataSource = null;
-                    return;
-                }
-
-                dgvAppointments.DataSource = appointments;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải lịch hẹn: {ex.Message}");
-            }
+            await LoadAppointmentsAsync();
         }
 
         private async void btnSchedule_Click(object sender, EventArgs e)
         {
+
             if (appointmentController == null)
             {
                 MessageBox.Show("Lỗi: AppointmentController chưa được khởi tạo!");
@@ -139,19 +123,13 @@ namespace QuanlyPhongKham.Views
                 return;
             }
 
-            if (string.IsNullOrEmpty(mtbAppointmentDate.Text) ||
-                string.IsNullOrEmpty(mtbStartTime.Text) ||
-                string.IsNullOrEmpty(mtbEndTime.Text))
+            if (string.IsNullOrEmpty(mtbStartTime.Text) || string.IsNullOrEmpty(mtbEndTime.Text))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin lịch hẹn!");
+                MessageBox.Show("Vui lòng nhập đầy đủ giờ hẹn!");
                 return;
             }
 
-            if (!DateTime.TryParseExact(mtbAppointmentDate.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime appointmentDate))
-            {
-                MessageBox.Show("Ngày không hợp lệ! Vui lòng nhập theo định dạng dd/MM/yyyy.");
-                return;
-            }
+            DateTime appointmentDate = dtpAppointmentDate.Value.Date;
 
             if (!TimeSpan.TryParseExact(mtbStartTime.Text, "hh\\:mm", null, out TimeSpan startTime) ||
                 !TimeSpan.TryParseExact(mtbEndTime.Text, "hh\\:mm", null, out TimeSpan endTime))
@@ -167,6 +145,7 @@ namespace QuanlyPhongKham.Views
             }
 
             string patientId = cbPatientId.SelectedValue.ToString();
+
             if (await appointmentController.HasScheduleConflictAsync(currentDoctorId, patientId, appointmentDate, startTime, endTime))
             {
                 MessageBox.Show("Lịch hẹn bị trùng! Vui lòng chọn thời gian khác.");
@@ -177,13 +156,14 @@ namespace QuanlyPhongKham.Views
             if (success)
             {
                 MessageBox.Show("Thêm lịch hẹn thành công!");
-                await LoadAppointmentsAsync(); // Làm mới danh sách
+                await LoadAppointmentsAsync();
             }
             else
             {
                 MessageBox.Show("Lỗi khi thêm lịch hẹn!");
             }
         }
+
 
         private void btnSaveRecord_Click(object sender, EventArgs e) { }
         private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e) { }
@@ -193,6 +173,16 @@ namespace QuanlyPhongKham.Views
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void LenLichHen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mtbStartTime_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

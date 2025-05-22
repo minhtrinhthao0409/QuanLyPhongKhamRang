@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Models;
+﻿using QuanlyPhongKham.Controllers;
+using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,14 @@ namespace QuanlyPhongKham.Views.Receptionist
         private Form currentForm = null;
 
         private readonly AppointmentRepository _appointmentRepo = new();
+        private readonly AppointmentController _appointmentController;
         private readonly UserRepository _userRepo = new();
 
         public ReceptionistMainFrm(User user)
         {
             this.user = user;
             InitializeComponent();
+            _appointmentController = new AppointmentController();
             this.StartPosition = FormStartPosition.CenterScreen;
 
             Appointmentlbl.Click += menulbl_click;
@@ -67,6 +70,35 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm.Show();
             }
 
+        }
+
+        private  void UpcomingAppointmentView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private async void ReceptionistMainFrm_Load(object sender, EventArgs e)
+        {
+            DateTime Date = DateTime.Now.Date;
+            //DateTime endDate = EndDatePicker.Value.Date;
+
+            try
+            {
+                List<Appointment> result = await _appointmentController.GetAllAppointmentsAsync();
+
+
+                UpcomingAppointmentView.DataSource = result;
+
+
+                UpcomingAppointmentView.Columns["DoctorId"].Visible = false;
+                UpcomingAppointmentView.Columns["PatientId"].Visible = false;
+                UpcomingAppointmentView.Columns["AppointmentId"].Visible = false;
+                //SearchAppointmentGridView.Columns["Appointments"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

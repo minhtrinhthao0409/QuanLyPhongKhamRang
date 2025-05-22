@@ -17,7 +17,11 @@ namespace QuanlyPhongKham.Models
     {
         public string Id { get; set; }
         public string UserName { get; set; }
-        public string Password { get; set; }
+        private string password;
+        public string Password {
+            get => password;
+            set => password = PasswordHasher.HashPassword(value);
+        }
         public string Email { get; set; }
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }

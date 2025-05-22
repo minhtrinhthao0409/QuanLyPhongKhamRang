@@ -1,5 +1,7 @@
-﻿using QuanlyPhongKham.Models;
+﻿using QuanlyPhongKham.Controllers;
+using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Repository;
+using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
@@ -17,13 +21,17 @@ namespace QuanlyPhongKham.Views.Receptionist
         private User user;
         private Form currentForm = null;
 
-        private readonly AppointmentRepository _appointmentRepo = new();
+        private readonly AppointmentRepository _appointmentRepo;
+        private AppointmentController _appointmentControllers;
         private readonly UserRepository _userRepo = new();
 
         public AppointmentFrm(User user)
         {
             this.user = user;
             InitializeComponent();
+            _appointmentControllers = new AppointmentController();
+
+
             this.StartPosition = FormStartPosition.CenterScreen;
 
 
@@ -66,5 +74,70 @@ namespace QuanlyPhongKham.Views.Receptionist
             }
 
         }
+
+        private async void Searchbtn_Click(object sender, EventArgs e)
+        {
+            string doctorName = doctorNameTextbox.Text.Trim();
+            string patientPhoneNo = patientPhoneNoTextbox.Text.Trim();
+            DateTime startDate = StartDatePicker.Value.Date;
+            DateTime endDate = EndDatePicker.Value.Date;
+
+            try
+            {
+                List<Appointment> result = await _appointmentControllers.GetDoctorAppointmentsAsync_v2(startDate, endDate, doctorName, patientPhoneNo);
+
+                
+                SearchAppointmentGridView.DataSource = result;
+
+
+                SearchAppointmentGridView.Columns["DoctorId"].Visible = false;
+                SearchAppointmentGridView.Columns["PatientId"].Visible = false;
+                SearchAppointmentGridView.Columns["AppointmentId"].Visible = false;
+                //SearchAppointmentGridView.Columns["Appointments"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void AddScheduleBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string patientName = PatientNameTxt.Text.Trim();
+                string patientPhoneNo = PatientPhoneNoTxt.Text.Trim();
+
+                string doctorName = DoctorNameTxT.Text.Trim();
+                string doctorPhoneNo = DoctorPhoneNoTxt.Text.Trim();
+
+                DateTime date = startTimePicker.Value;
+                TimeSpan startTime = TimeSpan.Parse(startTimeTxt.Text.Trim());
+                TimeSpan endTime = TimeSpan.Parse(endTimeTxt.Text.Trim());
+
+
+                bool result = await _appointmentControllers.AddAppointmentAsync_v2(doctorName, patientName, doctorPhoneNo, patientPhoneNo, date, startTime, endTime);
+
+
+                if (result)
+                {
+                    MessageBox.Show("Thêm lịch hẹn thành công!");
+                    //ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm lịch hẹn thất bại.");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message +
+                                "\nChi tiết: " + ex.InnerException?.Message +
+                                "\nToàn bộ: " + ex.ToString());
+            }
+
+        }
     }
-}
+ }
+

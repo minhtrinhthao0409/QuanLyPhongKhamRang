@@ -35,7 +35,7 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            UpcomingAppointmentView = new System.Windows.Forms.DataGridView();
             label1 = new System.Windows.Forms.Label();
             Editbtn = new System.Windows.Forms.Button();
             Usernamelbl = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             Welcomelbl = new System.Windows.Forms.Label();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)UpcomingAppointmentView).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -136,13 +136,14 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // UpcomingAppointmentView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(250, 301);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(675, 357);
-            dataGridView1.TabIndex = 18;
+            UpcomingAppointmentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            UpcomingAppointmentView.Location = new System.Drawing.Point(250, 301);
+            UpcomingAppointmentView.Name = "UpcomingAppointmentView";
+            UpcomingAppointmentView.Size = new System.Drawing.Size(675, 357);
+            UpcomingAppointmentView.TabIndex = 18;
+            UpcomingAppointmentView.CellContentClick += UpcomingAppointmentView_CellContentClick;
             // 
             // label1
             // 
@@ -202,7 +203,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
-            Controls.Add(dataGridView1);
+            Controls.Add(UpcomingAppointmentView);
             Controls.Add(label1);
             Controls.Add(Editbtn);
             Controls.Add(Usernamelbl);
@@ -212,8 +213,9 @@
             Controls.Add(panel2);
             Name = "ReceptionistMainFrm";
             Text = "ReceptionistMainFrm";
+            Load += ReceptionistMainFrm_Load;
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)UpcomingAppointmentView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -227,7 +229,7 @@
         private System.Windows.Forms.Label Schedulelbl;
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView UpcomingAppointmentView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Editbtn;
         private System.Windows.Forms.Label Usernamelbl;
