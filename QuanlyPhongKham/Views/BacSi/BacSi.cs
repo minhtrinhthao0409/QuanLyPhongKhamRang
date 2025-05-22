@@ -18,10 +18,12 @@ namespace QuanlyPhongKham.Views
     {
         AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
+        private MedicalRecordController medicalRecordController = new MedicalRecordController();
         private Dictionary<string, string> patientMap;
         private User user;
         private string currentDoctorId;
         private string currentDoctorName;
+        private List<Patient> allPatients;
 
         public BacSi(User user)
         {
@@ -35,15 +37,18 @@ namespace QuanlyPhongKham.Views
             currentDoctorName = user.UserName;
             var appointmentDate = dtpAppointmentDate.Value.Date;
 
+            await LoadPatientsToComboBoxes();
             await LoadPatientsAsync();
             await LoadAppointmentsAsync();
         }
 
         private async Task LoadPatientsAsync()
         {
+
             try
             {
                 var patients = await patientController.GetAllPatientsAsync();
+                allPatients = patients.ToList();
                 if (patients == null || patients.Count == 0)
                 {
                     MessageBox.Show("Không tìm thấy bệnh nhân nào!");
@@ -96,7 +101,19 @@ namespace QuanlyPhongKham.Views
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
+        private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPatientId.SelectedValue == null || allPatients == null) return;
 
+            string selectedId = cbPatientId.SelectedValue.ToString();
+
+            var selectedPatient = allPatients.FirstOrDefault(p => p.PatientId == selectedId);
+
+            if (selectedPatient != null)
+            {
+                cbPatientName.SelectedValue = selectedPatient.PatientId;
+            }
+        }
         private async void btnLoadAppointments_Click(object sender, EventArgs e)
         {
             await LoadAppointmentsAsync();
@@ -163,11 +180,115 @@ namespace QuanlyPhongKham.Views
                 MessageBox.Show("Lỗi khi thêm lịch hẹn!");
             }
         }
+        private async Task LoadPatientsToComboBoxes()
+        {
+            var patients = await patientController.GetAllPatientsAsync();
 
+            cbIdPatientRecord.DataSource = patients;
+            cbIdPatientRecord.DisplayMember = "PatientId";
+            cbIdPatientRecord.ValueMember = "PatientId";
 
-        private void btnSaveRecord_Click(object sender, EventArgs e) { }
-        private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) { }
+            cbNamePatientRecord.DataSource = new List<Patient>(patients);
+            cbNamePatientRecord.DisplayMember = "Name";
+            cbNamePatientRecord.ValueMember = "PatientId";
+        }
+        private async void btnSaveRecord_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string patientId = cbIdPatientRecord.SelectedValue?.ToString();
+                string patientName = cbNamePatientRecord.Text;
+                string symptoms = txtSymptom.Text.Trim();
+                string diagnosis = txtDiagnosis.Text.Trim();
+                string treatmentPlan = txtTreatmentPlan.Text.Trim();
+                DateTime recordDate = dtpRecordDate.Value;
+
+                if (string.IsNullOrWhiteSpace(patientId) || string.IsNullOrWhiteSpace(patientName))
+                {
+                    MessageBox.Show("Vui lòng chọn ID và tên bệnh nhân.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(symptoms))
+                {
+                    MessageBox.Show("Vui lòng nhập triệu chứng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int result = await medicalRecordController.CreateMedicalRecordAsync(
+                    patientId, currentDoctorId, symptoms, diagnosis, treatmentPlan);
+
+                if (result > 0)
+                {
+                    MessageBox.Show("Lưu bệnh án thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không thể lưu bệnh án.", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lưu bệnh án: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TapBacSi.SelectedTab.Text == "Xem Bệnh Án")
+            {
+                btnLoadMedicalRecords_Click(null, null);
+            }
+        }
+        private async void btnLoadMedicalRecords_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var medicalRecordRepository = new MedicalRecordRepository();
+                var records = await medicalRecordRepository.GetMedicalRecordsByDoctorAsync(currentDoctorId);
+
+                if (records == null || records.Count == 0)
+                {
+                    MessageBox.Show("Không có hồ sơ bệnh án nào để hiển thị!");
+                    dgvMedicalRecordView.DataSource = null;
+                    return;
+                }
+
+                // Chuyển đổi danh sách MedicalRecord thành danh sách có thuộc tính FullName trực tiếp
+                var displayRecords = records.Select(r => new
+                {
+                    PatientName = r.Patient.Name, // Lấy FullName từ Patient
+                    Symptoms = r.Symptoms,
+                    Diagnosis = r.Diagnosis,
+                    RecordDate = r.RecordDate
+                }).ToList();
+
+                dgvMedicalRecordView.DataSource = displayRecords;
+
+                dgvMedicalRecordView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
+                dgvMedicalRecordView.Columns["Symptoms"].HeaderText = "Triệu chứng";
+                dgvMedicalRecordView.Columns["Diagnosis"].HeaderText = "Chẩn đoán";
+                dgvMedicalRecordView.Columns["RecordDate"].HeaderText = "Ngày ghi nhận";
+
+                dgvMedicalRecordView.Columns["RecordDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+                foreach (DataGridViewColumn column in dgvMedicalRecordView.Columns)
+                {
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                dgvMedicalRecordView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải hồ sơ bệnh án: {ex.Message}");
+            }
+        }
+        private void cbIdPatientRecord_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
+        }
+
         private void btnSaveInvoice_Click(object sender, EventArgs e) { }
 
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
@@ -175,14 +296,6 @@ namespace QuanlyPhongKham.Views
             Application.Exit();
         }
 
-        private void LenLichHen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mtbStartTime_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
+        
     }
 }

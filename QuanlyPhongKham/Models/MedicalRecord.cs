@@ -10,27 +10,19 @@ namespace QuanlyPhongKham.Models
     public class MedicalRecord
     {
 
-        public int MedRecId { get; set; }
-
-        //public Guid PatientId { get; set; }
+        public string MedRecId { get; set; }
         public string PatientId { get; set; }
-        public string PatientName => Patient?.Name ?? string.Empty;
-
         public Patient Patient { get; set; }
         public string Symptoms { get; set; }
-
         public string Diagnosis { get; set; }
-
         public string TreatmentPlan { get; set; }
-
         public DateTime RecordDate { get; set; }
-
+        public string DoctorId { get; set; }
 
         public MedicalRecord(Patient patient)
         {
             Patient = patient;
             PatientId = patient.PatientId;
-            //PatientName = patient.Name;
         }
 
         public MedicalRecord()
