@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             GhiBenhAn = new System.Windows.Forms.TabPage();
             txtTreatmentPlan = new System.Windows.Forms.TextBox();
             label10 = new System.Windows.Forms.Label();
@@ -66,26 +68,25 @@
             dgvMedicalRecordView = new System.Windows.Forms.DataGridView();
             QLHoaDon = new System.Windows.Forms.TabPage();
             btnSaveInvoice = new System.Windows.Forms.Button();
-            dgvInvoiceServices = new System.Windows.Forms.DataGridView();
-            ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            btnAddvice = new System.Windows.Forms.Button();
-            nudInvoiceQuantity = new System.Windows.Forms.NumericUpDown();
-            cbInvoiceService = new System.Windows.Forms.ComboBox();
-            dtpInvoiceIssueDate = new System.Windows.Forms.DateTimePicker();
-            txtInvoicePatientName = new System.Windows.Forms.TextBox();
-            label4 = new System.Windows.Forms.Label();
+            dgvChiTiet = new System.Windows.Forms.DataGridView();
+            TenDichVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            btnThemDichVu = new System.Windows.Forms.Button();
+            nuChonSoLuong = new System.Windows.Forms.NumericUpDown();
+            cbChonDichVu = new System.Windows.Forms.ComboBox();
+            dtpNgayIn = new System.Windows.Forms.DateTimePicker();
             label5 = new System.Windows.Forms.Label();
             groupBox1 = new System.Windows.Forms.GroupBox();
-            txtInvoicePatientId = new System.Windows.Forms.TextBox();
+            cboPatientId = new System.Windows.Forms.ComboBox();
             label6 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             groupBox2 = new System.Windows.Forms.GroupBox();
-            txtInvoiceTotalAmount = new System.Windows.Forms.TextBox();
+            txtTongTien = new System.Windows.Forms.TextBox();
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            txtPatientName = new System.Windows.Forms.TextBox();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
@@ -94,8 +95,8 @@
             XemBenhAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMedicalRecordView).BeginInit();
             QLHoaDon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInvoiceServices).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudInvoiceQuantity).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvChiTiet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nuChonSoLuong).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -382,14 +383,14 @@
             // dgvAppointments
             // 
             dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAppointments.ColumnHeadersHeight = 29;
             dgvAppointments.Location = new System.Drawing.Point(3, 3);
             dgvAppointments.Name = "dgvAppointments";
@@ -448,13 +449,11 @@
             // QLHoaDon
             // 
             QLHoaDon.Controls.Add(btnSaveInvoice);
-            QLHoaDon.Controls.Add(dgvInvoiceServices);
-            QLHoaDon.Controls.Add(btnAddvice);
-            QLHoaDon.Controls.Add(nudInvoiceQuantity);
-            QLHoaDon.Controls.Add(cbInvoiceService);
-            QLHoaDon.Controls.Add(dtpInvoiceIssueDate);
-            QLHoaDon.Controls.Add(txtInvoicePatientName);
-            QLHoaDon.Controls.Add(label4);
+            QLHoaDon.Controls.Add(dgvChiTiet);
+            QLHoaDon.Controls.Add(btnThemDichVu);
+            QLHoaDon.Controls.Add(nuChonSoLuong);
+            QLHoaDon.Controls.Add(cbChonDichVu);
+            QLHoaDon.Controls.Add(dtpNgayIn);
             QLHoaDon.Controls.Add(label5);
             QLHoaDon.Controls.Add(groupBox1);
             QLHoaDon.Controls.Add(groupBox2);
@@ -469,7 +468,7 @@
             // btnSaveInvoice
             // 
             btnSaveInvoice.AutoSize = true;
-            btnSaveInvoice.Location = new System.Drawing.Point(335, 486);
+            btnSaveInvoice.Location = new System.Drawing.Point(326, 477);
             btnSaveInvoice.Name = "btnSaveInvoice";
             btnSaveInvoice.Size = new System.Drawing.Size(102, 30);
             btnSaveInvoice.TabIndex = 12;
@@ -477,10 +476,33 @@
             btnSaveInvoice.UseVisualStyleBackColor = true;
             btnSaveInvoice.Click += btnSaveInvoice_Click;
             // 
-            // dgvInvoiceServices
+            // dgvChiTiet
             // 
-            dgvInvoiceServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvInvoiceServices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dgvChiTiet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvChiTiet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvChiTiet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { TenDichVu, SoLuong, Gia });
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dgvChiTiet.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvChiTiet.Location = new System.Drawing.Point(0, 195);
+            dgvChiTiet.Name = "dgvChiTiet";
+            dgvChiTiet.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -488,96 +510,62 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dgvInvoiceServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInvoiceServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { ServiceName, Price, Quantity, Subtotal });
-            dgvInvoiceServices.Location = new System.Drawing.Point(0, 195);
-            dgvInvoiceServices.Name = "dgvInvoiceServices";
-            dgvInvoiceServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvInvoiceServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dgvInvoiceServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgvInvoiceServices.Size = new System.Drawing.Size(770, 188);
-            dgvInvoiceServices.TabIndex = 10;
+            dgvChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dgvChiTiet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgvChiTiet.Size = new System.Drawing.Size(770, 188);
+            dgvChiTiet.TabIndex = 10;
             // 
-            // ServiceName
+            // TenDichVu
             // 
-            ServiceName.HeaderText = "Tên dịch vụ";
-            ServiceName.MinimumWidth = 6;
-            ServiceName.Name = "ServiceName";
+            TenDichVu.HeaderText = "Tên dịch vụ";
+            TenDichVu.MinimumWidth = 6;
+            TenDichVu.Name = "TenDichVu";
             // 
-            // Price
+            // SoLuong
             // 
-            Price.HeaderText = "Giá";
-            Price.MinimumWidth = 6;
-            Price.Name = "Price";
+            SoLuong.HeaderText = "Số lượng";
+            SoLuong.MinimumWidth = 6;
+            SoLuong.Name = "SoLuong";
             // 
-            // Quantity
+            // Gia
             // 
-            Quantity.HeaderText = "Số lượng";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
+            Gia.HeaderText = "Giá";
+            Gia.MinimumWidth = 6;
+            Gia.Name = "Gia";
             // 
-            // Subtotal
+            // btnThemDichVu
             // 
-            Subtotal.HeaderText = "Tổng";
-            Subtotal.MinimumWidth = 6;
-            Subtotal.Name = "Subtotal";
+            btnThemDichVu.AutoSize = true;
+            btnThemDichVu.Location = new System.Drawing.Point(581, 144);
+            btnThemDichVu.Name = "btnThemDichVu";
+            btnThemDichVu.Size = new System.Drawing.Size(107, 30);
+            btnThemDichVu.TabIndex = 9;
+            btnThemDichVu.Text = "Thêm dịch vụ";
+            btnThemDichVu.UseVisualStyleBackColor = true;
+            btnThemDichVu.Click += btnThemDichVu_Click;
             // 
-            // btnAddvice
+            // nuChonSoLuong
             // 
-            btnAddvice.AutoSize = true;
-            btnAddvice.Location = new System.Drawing.Point(581, 144);
-            btnAddvice.Name = "btnAddvice";
-            btnAddvice.Size = new System.Drawing.Size(107, 30);
-            btnAddvice.TabIndex = 9;
-            btnAddvice.Text = "Thêm dịch vụ";
-            btnAddvice.UseVisualStyleBackColor = true;
+            nuChonSoLuong.Location = new System.Drawing.Point(381, 146);
+            nuChonSoLuong.Name = "nuChonSoLuong";
+            nuChonSoLuong.Size = new System.Drawing.Size(108, 27);
+            nuChonSoLuong.TabIndex = 8;
             // 
-            // nudInvoiceQuantity
+            // cbChonDichVu
             // 
-            nudInvoiceQuantity.Location = new System.Drawing.Point(381, 146);
-            nudInvoiceQuantity.Name = "nudInvoiceQuantity";
-            nudInvoiceQuantity.Size = new System.Drawing.Size(108, 27);
-            nudInvoiceQuantity.TabIndex = 8;
+            cbChonDichVu.FormattingEnabled = true;
+            cbChonDichVu.Location = new System.Drawing.Point(82, 145);
+            cbChonDichVu.Name = "cbChonDichVu";
+            cbChonDichVu.Size = new System.Drawing.Size(207, 28);
+            cbChonDichVu.TabIndex = 7;
             // 
-            // cbInvoiceService
+            // dtpNgayIn
             // 
-            cbInvoiceService.FormattingEnabled = true;
-            cbInvoiceService.Location = new System.Drawing.Point(82, 145);
-            cbInvoiceService.Name = "cbInvoiceService";
-            cbInvoiceService.Size = new System.Drawing.Size(207, 28);
-            cbInvoiceService.TabIndex = 7;
-            // 
-            // dtpInvoiceIssueDate
-            // 
-            dtpInvoiceIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpInvoiceIssueDate.Location = new System.Drawing.Point(239, 103);
-            dtpInvoiceIssueDate.Name = "dtpInvoiceIssueDate";
-            dtpInvoiceIssueDate.Size = new System.Drawing.Size(250, 27);
-            dtpInvoiceIssueDate.TabIndex = 6;
-            // 
-            // txtInvoicePatientName
-            // 
-            txtInvoicePatientName.Location = new System.Drawing.Point(239, 60);
-            txtInvoicePatientName.Name = "txtInvoicePatientName";
-            txtInvoicePatientName.Size = new System.Drawing.Size(403, 27);
-            txtInvoicePatientName.TabIndex = 5;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(133, 63);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(81, 20);
-            label4.TabIndex = 3;
-            label4.Text = "Bệnh nhân:";
+            dtpNgayIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            dtpNgayIn.Location = new System.Drawing.Point(239, 103);
+            dtpNgayIn.Name = "dtpNgayIn";
+            dtpNgayIn.Size = new System.Drawing.Size(250, 27);
+            dtpNgayIn.TabIndex = 6;
             // 
             // label5
             // 
@@ -590,21 +578,23 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtInvoicePatientId);
+            groupBox1.Controls.Add(txtPatientName);
+            groupBox1.Controls.Add(cboPatientId);
             groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label4);
             groupBox1.Location = new System.Drawing.Point(0, 6);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(770, 186);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             // 
-            // txtInvoicePatientId
+            // cboPatientId
             // 
-            txtInvoicePatientId.Location = new System.Drawing.Point(239, 21);
-            txtInvoicePatientId.Name = "txtInvoicePatientId";
-            txtInvoicePatientId.ReadOnly = true;
-            txtInvoicePatientId.Size = new System.Drawing.Size(97, 27);
-            txtInvoicePatientId.TabIndex = 16;
+            cboPatientId.FormattingEnabled = true;
+            cboPatientId.Location = new System.Drawing.Point(239, 16);
+            cboPatientId.Name = "cboPatientId";
+            cboPatientId.Size = new System.Drawing.Size(340, 28);
+            cboPatientId.TabIndex = 17;
             // 
             // label6
             // 
@@ -615,9 +605,18 @@
             label6.TabIndex = 16;
             label6.Text = "ID bệnh nhân:";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(133, 57);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(81, 20);
+            label4.TabIndex = 3;
+            label4.Text = "Bệnh nhân:";
+            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtInvoiceTotalAmount);
+            groupBox2.Controls.Add(txtTongTien);
             groupBox2.Controls.Add(btnCalculateTotal);
             groupBox2.Controls.Add(lblInvoiceTotalAmount);
             groupBox2.Location = new System.Drawing.Point(6, 389);
@@ -626,12 +625,12 @@
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             // 
-            // txtInvoiceTotalAmount
+            // txtTongTien
             // 
-            txtInvoiceTotalAmount.Location = new System.Drawing.Point(471, 26);
-            txtInvoiceTotalAmount.Name = "txtInvoiceTotalAmount";
-            txtInvoiceTotalAmount.Size = new System.Drawing.Size(217, 27);
-            txtInvoiceTotalAmount.TabIndex = 14;
+            txtTongTien.Location = new System.Drawing.Point(471, 26);
+            txtTongTien.Name = "txtTongTien";
+            txtTongTien.Size = new System.Drawing.Size(217, 27);
+            txtTongTien.TabIndex = 14;
             // 
             // btnCalculateTotal
             // 
@@ -642,6 +641,7 @@
             btnCalculateTotal.TabIndex = 11;
             btnCalculateTotal.Text = "Tính tiền";
             btnCalculateTotal.UseVisualStyleBackColor = true;
+            btnCalculateTotal.Click += btnCalculateTotal_Click;
             // 
             // lblInvoiceTotalAmount
             // 
@@ -658,6 +658,13 @@
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
+            // txtPatientName
+            // 
+            txtPatientName.Location = new System.Drawing.Point(239, 54);
+            txtPatientName.Name = "txtPatientName";
+            txtPatientName.Size = new System.Drawing.Size(340, 27);
+            txtPatientName.TabIndex = 18;
             // 
             // BacSi
             // 
@@ -683,8 +690,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvMedicalRecordView).EndInit();
             QLHoaDon.ResumeLayout(false);
             QLHoaDon.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInvoiceServices).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudInvoiceQuantity).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvChiTiet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nuChonSoLuong).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -710,25 +717,18 @@
         private System.Windows.Forms.DataGridView dgvAppointments;
         private System.Windows.Forms.TabControl TapBacSi;
         private System.Windows.Forms.TabPage QLHoaDon;
-        private System.Windows.Forms.DateTimePicker dtpInvoiceIssueDate;
-        private System.Windows.Forms.TextBox txtInvoicePatientName;
+        private System.Windows.Forms.DateTimePicker dtpNgayIn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnAddvice;
-        private System.Windows.Forms.NumericUpDown nudInvoiceQuantity;
-        private System.Windows.Forms.ComboBox cbInvoiceService;
-        private System.Windows.Forms.DataGridView dgvInvoiceServices;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.Button btnThemDichVu;
+        private System.Windows.Forms.NumericUpDown nuChonSoLuong;
+        private System.Windows.Forms.ComboBox cbChonDichVu;
         private System.Windows.Forms.Button btnSaveInvoice;
         private System.Windows.Forms.ComboBox cbPatientName;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtInvoicePatientId;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtInvoiceTotalAmount;
+        private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Button btnCalculateTotal;
         private System.Windows.Forms.Label lblInvoiceTotalAmount;
         private System.Windows.Forms.Label label7;
@@ -749,5 +749,11 @@
         private System.Windows.Forms.TabPage XemBenhAn;
         private System.Windows.Forms.DataGridView dgvMedicalRecordView;
         private System.Windows.Forms.Button btnLoadMedicalRecords;
+        private System.Windows.Forms.DataGridView dgvChiTiet;
+        private System.Windows.Forms.ComboBox cboPatientId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDichVu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
+        private System.Windows.Forms.TextBox txtPatientName;
     }
 }
