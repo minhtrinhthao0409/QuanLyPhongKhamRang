@@ -11,12 +11,14 @@ using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
 
 
+
 namespace QuanlyPhongKham.Views.Admin
 {
     public partial class AdminMain : Form
     {
         private User Admin { get; set; }
         private UserControllers _userControllers;
+        private MedicalServiceController _medicalServiceController;
 
         public AdminMain(User user)
         {
@@ -26,14 +28,19 @@ namespace QuanlyPhongKham.Views.Admin
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
             LoadUserDataAsync();
+            LoadServiceDataasync();
+            AdminQLTKUpdatebtn.Enabled = false;
+            AdminQLTKDeletebtn.Enabled = false;
+            AdminQLDVbtn.Enabled = false;
+            AdminQLDVDelbtn.Enabled = false;
+            AdminQLDVNameTb.Enabled = false;
         }
-
-
-        #region QLKH
         private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
+        #region QLKH
+
         private async void LoadUserDataAsync()
         {
             AdminQLTKdata.DataSource = await _userControllers.GetAllUser();
@@ -49,7 +56,10 @@ namespace QuanlyPhongKham.Views.Admin
                 AdminQLTKEmailtbx.Text = selectedRow.Cells["Email"].Value.ToString();
                 AdminQLTKPasstbx.Text = selectedRow.Cells["Password"].Value.ToString();
                 AdminQLTKRolecb.Text = selectedRow.Cells["Role"].Value.ToString() == "Admin" ? "Admin" : selectedRow.Cells["Role"].Value.ToString() == "Doctor" ? "Doctor" : "Receptionist";
+                AdminQLTKUpdatebtn.Enabled = true;
+                AdminQLTKDeletebtn.Enabled = true;
             }
+
         }
 
         private async void AdminQLTKAddbtn_Click(object sender, EventArgs e)
@@ -60,7 +70,7 @@ namespace QuanlyPhongKham.Views.Admin
             string fullName = AdminQLTKFullNametbx.Text.Trim();
             string phone = AdminQLTKPhonetbx.Text.Trim();
             string rolestring = AdminQLTKRolecb.Text.Trim();
-            if(rolestring == "Admin" || rolestring == "Null")
+            if (rolestring == "Admin" || rolestring == "Null")
             {
                 MessageBox.Show("Vui lòng chọn vai trò khác ngoài Admin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -101,7 +111,10 @@ namespace QuanlyPhongKham.Views.Admin
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void AdminQLTKUpdatebtn_Click(object sender, EventArgs e)
+        {
 
+        }
         private void tabPage2_Click(object sender, EventArgs e)
         {
             AdminQLTKUserNametbx.Text = null;
@@ -112,5 +125,104 @@ namespace QuanlyPhongKham.Views.Admin
             AdminQLTKRolecb.SelectedIndex = 3;
         }
         #endregion QLKH
+        #region QLDV
+        private async void LoadServiceDataasync()
+        {
+            AdminQLDVdata.DataSource = await _medicalServiceController.GetAllService();
+        }
+
+
+        private void AdminQLDVdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = AdminQLDVdata.Rows[e.RowIndex];
+                AdminQLDVNameTb.Text = selectedRow.Cells["ServiceName"].Value.ToString();
+                AdminQLDVPricetbx.Text = selectedRow.Cells["Price"].Value.ToString();
+                AdminQLDVbtn.Enabled = true;
+                AdminQLDVDelbtn.Enabled = true;
+            }
+        }
+        private async void AdminQLDVAddButton_Click(object sender, EventArgs e)
+        {
+            string serviceName = AdminQLDVNameTb.Text.Trim();
+            string priceText = AdminQLDVPricetbx.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(serviceName) || string.IsNullOrWhiteSpace(priceText))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!decimal.TryParse(priceText, out decimal price))
+            {
+                MessageBox.Show("Giá dịch vụ không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (price <= 0)
+            {
+                MessageBox.Show("Giá dịch vụ phải lớn hơn 0.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                bool success = await _medicalServiceController.AddService(serviceName, price);
+                if (success)
+                {
+                    MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadServiceDataasync();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm dịch vụ không thành công.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void AdminQLDVDelbtn_Click(object sender, EventArgs e)
+        {
+            string serviceName = AdminQLDVNameTb.Text.Trim();
+            _medicalServiceController.DeleteService(serviceName);
+        }
+
+        private void AdminQLDVbtn_Click(object sender, EventArgs e)
+        {
+            decimal price = AdminQLDVPricetbx.Text == "" ? 0 : decimal.Parse(AdminQLDVPricetbx.Text);
+            string serviceName = AdminQLDVNameTb.Text.Trim();
+            if (string.IsNullOrWhiteSpace(serviceName) || price <= 0)
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                bool success = _medicalServiceController.UpdateServicePrice(serviceName, price).Result;
+                if (success)
+                {
+                    MessageBox.Show("Cập nhật dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadServiceDataasync();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật dịch vụ không thành công.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AdminQbtnLDVRabtn_Click(object sender, EventArgs e)
+        {
+            AdminQLDVdata.DataSource = _medicalServiceController.SortServiceByCount().Result;
+        }
+
+        #endregion QLDV
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using QuanlyPhongKham.Repository;
+using QuanlyPhongKham.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,42 @@ namespace QuanlyPhongKham.Services
         {
             return _repository.LayGiaDichVuTheoTen(tenDichVu);
         }
+
+        public async Task<List<MedicalService>> GetAllService()
+        {
+            List<MedicalService> services = new List<MedicalService>();
+            foreach(var service in await _repository.GetAllService())
+            {
+                if(service.ServiceActive == 1)
+                {
+                    services.Add(service);
+                }
+            }
+            return services;
+        }
+
+        public async Task<bool> AddService(string servicename, decimal serviceprice)
+        {
+            if (await _repository.CheckServiceExists(servicename))
+            {
+                return false; // Dịch vụ đã tồn tại
+            }
+            return await _repository.AddService(servicename, serviceprice);
+        }
+
+        public async Task<bool> DeleteService(string serviceId)
+        {
+            return await _repository.DeleteService(serviceId);
+        }
+        public async Task<bool> UpdateServicePrice(string serviceName, decimal servicePrice)
+        {
+            return await _repository.UpdateServicePrice(serviceName, servicePrice);
+        }
+
+        public async Task<List<MedicalService>> SortServiceByCount()
+        {
+            return await _repository.SortServiceByCount();
+        }
     }
+        
 }

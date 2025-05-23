@@ -51,8 +51,8 @@
             AdminQLTKPasstbx = new System.Windows.Forms.TextBox();
             AdminQLTKUserNametbx = new System.Windows.Forms.TextBox();
             AdminQLTKAddbtn = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
+            AdminQLTKDeletebtn = new System.Windows.Forms.Button();
+            AdminQLTKUpdatebtn = new System.Windows.Forms.Button();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -61,10 +61,11 @@
             label2 = new System.Windows.Forms.Label();
             AdminQLTKdata = new System.Windows.Forms.DataGridView();
             AdminQLDV = new System.Windows.Forms.TabPage();
-            dataGridView3 = new System.Windows.Forms.DataGridView();
-            button3 = new System.Windows.Forms.Button();
-            AdminQLDVXbtn = new System.Windows.Forms.Button();
-            AdminQbtnLDVCx = new System.Windows.Forms.Button();
+            AdminQbtnLDVRabtn = new System.Windows.Forms.Button();
+            AdminQLDVdata = new System.Windows.Forms.DataGridView();
+            AdminQLDVAddButton = new System.Windows.Forms.Button();
+            AdminQLDVDelbtn = new System.Windows.Forms.Button();
+            AdminQLDVbtn = new System.Windows.Forms.Button();
             label8 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             AdminQLDVPricetbx = new System.Windows.Forms.TextBox();
@@ -76,7 +77,7 @@
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).BeginInit();
             AdminQLDV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -232,8 +233,8 @@
             tabPage2.Controls.Add(AdminQLTKPasstbx);
             tabPage2.Controls.Add(AdminQLTKUserNametbx);
             tabPage2.Controls.Add(AdminQLTKAddbtn);
-            tabPage2.Controls.Add(button2);
-            tabPage2.Controls.Add(button1);
+            tabPage2.Controls.Add(AdminQLTKDeletebtn);
+            tabPage2.Controls.Add(AdminQLTKUpdatebtn);
             tabPage2.Controls.Add(label7);
             tabPage2.Controls.Add(label6);
             tabPage2.Controls.Add(label4);
@@ -304,23 +305,24 @@
             AdminQLTKAddbtn.UseVisualStyleBackColor = true;
             AdminQLTKAddbtn.Click += AdminQLTKAddbtn_Click;
             // 
-            // button2
+            // AdminQLTKDeletebtn
             // 
-            button2.Location = new System.Drawing.Point(767, 90);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(94, 29);
-            button2.TabIndex = 9;
-            button2.Text = "Xóa";
-            button2.UseVisualStyleBackColor = true;
+            AdminQLTKDeletebtn.Location = new System.Drawing.Point(767, 90);
+            AdminQLTKDeletebtn.Name = "AdminQLTKDeletebtn";
+            AdminQLTKDeletebtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKDeletebtn.TabIndex = 9;
+            AdminQLTKDeletebtn.Text = "Xóa";
+            AdminQLTKDeletebtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // AdminQLTKUpdatebtn
             // 
-            button1.Location = new System.Drawing.Point(767, 49);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(94, 29);
-            button1.TabIndex = 8;
-            button1.Text = "Cập nhật";
-            button1.UseVisualStyleBackColor = true;
+            AdminQLTKUpdatebtn.Location = new System.Drawing.Point(767, 49);
+            AdminQLTKUpdatebtn.Name = "AdminQLTKUpdatebtn";
+            AdminQLTKUpdatebtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKUpdatebtn.TabIndex = 8;
+            AdminQLTKUpdatebtn.Text = "Cập nhật";
+            AdminQLTKUpdatebtn.UseVisualStyleBackColor = true;
+            AdminQLTKUpdatebtn.Click += AdminQLTKUpdatebtn_Click;
             // 
             // label7
             // 
@@ -388,10 +390,11 @@
             // 
             // AdminQLDV
             // 
-            AdminQLDV.Controls.Add(dataGridView3);
-            AdminQLDV.Controls.Add(button3);
-            AdminQLDV.Controls.Add(AdminQLDVXbtn);
-            AdminQLDV.Controls.Add(AdminQbtnLDVCx);
+            AdminQLDV.Controls.Add(AdminQbtnLDVRabtn);
+            AdminQLDV.Controls.Add(AdminQLDVdata);
+            AdminQLDV.Controls.Add(AdminQLDVAddButton);
+            AdminQLDV.Controls.Add(AdminQLDVDelbtn);
+            AdminQLDV.Controls.Add(AdminQLDVbtn);
             AdminQLDV.Controls.Add(label8);
             AdminQLDV.Controls.Add(label9);
             AdminQLDV.Controls.Add(AdminQLDVPricetbx);
@@ -404,44 +407,59 @@
             AdminQLDV.Text = "QLDV";
             AdminQLDV.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // AdminQbtnLDVRabtn
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new System.Drawing.Point(6, 127);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.Size = new System.Drawing.Size(853, 532);
-            dataGridView3.TabIndex = 15;
+            AdminQbtnLDVRabtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQbtnLDVRabtn.Location = new System.Drawing.Point(686, 81);
+            AdminQbtnLDVRabtn.Name = "AdminQbtnLDVRabtn";
+            AdminQbtnLDVRabtn.Size = new System.Drawing.Size(94, 29);
+            AdminQbtnLDVRabtn.TabIndex = 16;
+            AdminQbtnLDVRabtn.Text = "Sắp xếp";
+            AdminQbtnLDVRabtn.UseVisualStyleBackColor = true;
+            AdminQbtnLDVRabtn.Click += AdminQbtnLDVRabtn_Click;
             // 
-            // button3
+            // AdminQLDVdata
             // 
-            button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            button3.Location = new System.Drawing.Point(558, 21);
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(94, 29);
-            button3.TabIndex = 14;
-            button3.Text = "Thêm";
-            button3.UseVisualStyleBackColor = true;
+            AdminQLDVdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdminQLDVdata.Location = new System.Drawing.Point(6, 127);
+            AdminQLDVdata.Name = "AdminQLDVdata";
+            AdminQLDVdata.RowHeadersWidth = 51;
+            AdminQLDVdata.Size = new System.Drawing.Size(853, 532);
+            AdminQLDVdata.TabIndex = 15;
+            AdminQLDVdata.CellContentClick += AdminQLDVdata_CellContentClick;
             // 
-            // AdminQLDVXbtn
+            // AdminQLDVAddButton
             // 
-            AdminQLDVXbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVXbtn.Location = new System.Drawing.Point(558, 81);
-            AdminQLDVXbtn.Name = "AdminQLDVXbtn";
-            AdminQLDVXbtn.Size = new System.Drawing.Size(94, 29);
-            AdminQLDVXbtn.TabIndex = 13;
-            AdminQLDVXbtn.Text = "Xóa";
-            AdminQLDVXbtn.UseVisualStyleBackColor = true;
+            AdminQLDVAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVAddButton.Location = new System.Drawing.Point(558, 21);
+            AdminQLDVAddButton.Name = "AdminQLDVAddButton";
+            AdminQLDVAddButton.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVAddButton.TabIndex = 14;
+            AdminQLDVAddButton.Text = "Thêm";
+            AdminQLDVAddButton.UseVisualStyleBackColor = true;
+            AdminQLDVAddButton.Click += AdminQLDVAddButton_Click;
             // 
-            // AdminQbtnLDVCx
+            // AdminQLDVDelbtn
             // 
-            AdminQbtnLDVCx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQbtnLDVCx.Location = new System.Drawing.Point(686, 21);
-            AdminQbtnLDVCx.Name = "AdminQbtnLDVCx";
-            AdminQbtnLDVCx.Size = new System.Drawing.Size(94, 29);
-            AdminQbtnLDVCx.TabIndex = 12;
-            AdminQbtnLDVCx.Text = "Sửa";
-            AdminQbtnLDVCx.UseVisualStyleBackColor = true;
+            AdminQLDVDelbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVDelbtn.Location = new System.Drawing.Point(558, 81);
+            AdminQLDVDelbtn.Name = "AdminQLDVDelbtn";
+            AdminQLDVDelbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVDelbtn.TabIndex = 13;
+            AdminQLDVDelbtn.Text = "Xóa";
+            AdminQLDVDelbtn.UseVisualStyleBackColor = true;
+            AdminQLDVDelbtn.Click += AdminQLDVDelbtn_Click;
+            // 
+            // AdminQLDVbtn
+            // 
+            AdminQLDVbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVbtn.Location = new System.Drawing.Point(686, 21);
+            AdminQLDVbtn.Name = "AdminQLDVbtn";
+            AdminQLDVbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVbtn.TabIndex = 12;
+            AdminQLDVbtn.Text = "Sửa giá";
+            AdminQLDVbtn.UseVisualStyleBackColor = true;
+            AdminQLDVbtn.Click += AdminQLDVbtn_Click;
             // 
             // label8
             // 
@@ -499,7 +517,7 @@
             ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).EndInit();
             AdminQLDV.ResumeLayout(false);
             AdminQLDV.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).EndInit();
             ResumeLayout(false);
         }
 
@@ -528,17 +546,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AdminQLTKDeletebtn;
+        private System.Windows.Forms.Button AdminQLTKUpdatebtn;
         private System.Windows.Forms.TabPage AdminQLDV;
-        private System.Windows.Forms.Button AdminQLDVXbtn;
-        private System.Windows.Forms.Button AdminQbtnLDVCx;
+        private System.Windows.Forms.Button AdminQLDVDelbtn;
+        private System.Windows.Forms.Button AdminQLDVbtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox AdminQLDVPricetbx;
         private System.Windows.Forms.TextBox AdminQLDVNameTb;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView AdminQLDVdata;
+        private System.Windows.Forms.Button AdminQLDVAddButton;
         private System.Windows.Forms.Button AdminQLTKAddbtn;
         private System.Windows.Forms.TextBox AdminQLTKPhonetbx;
         private System.Windows.Forms.TextBox AdminQLTKFullNametbx;
@@ -546,5 +564,6 @@
         private System.Windows.Forms.TextBox AdminQLTKPasstbx;
         private System.Windows.Forms.TextBox AdminQLTKUserNametbx;
         private System.Windows.Forms.ComboBox AdminQLTKRolecb;
+        private System.Windows.Forms.Button AdminQbtnLDVRabtn;
     }
 }
