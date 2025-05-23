@@ -197,19 +197,22 @@ namespace QuanlyPhongKham.Views.Receptionist
             string currentName = currentNameTxt.Text.Trim();
             string currentPhoneNo = currentPhoneNoTxt.Text.Trim();
             string currentEmail = currentEmailTxt.Text.Trim();
+
             string updatedPhoneNo = updatedPhoneNoTxt.Text.Trim();
-            string updatedGuardian = updatedGuardianTxt.Text.Trim();
+            string updatedGuardianName = updatedGuardianTxt.Text.Trim();
             string updatedEmail = updatedEmailTxt.Text.Trim();
 
             try
             {
                 bool result = await _patientService.UpdatePatientFromInputAsync(
-                    currentName,
-                    currentPhoneNo,
-                    currentEmail,
-                    string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
-                    string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail,
-                    string.IsNullOrWhiteSpace(updatedGuardian) ? null : updatedGuardian
+                    name: currentName,
+                    phone: currentPhoneNo,
+                    email: currentEmail,
+                    newPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
+                    newEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail,
+                    newGuardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName,
+                    newGuardianPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
+                    newGuardianEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail
                 );
 
                 if (result)

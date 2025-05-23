@@ -40,9 +40,10 @@ namespace QuanlyPhongKham.Services
             return _patientRepository.CreateGuardianAsync(guardianId, name, phoneNumber, email);
         }
 
-        public async Task<bool> UpdatePatientFromInputAsync(string name, string phone, string? email, string? newPhone, string? newEmail, string newGuardianName)
+        public async Task<bool> UpdatePatientFromInputAsync(string name, string phone, string? email, string? newPhone, string? newEmail,
+                                                            string? newGuardianName, string? newGuardianPhone, string? newGuardianEmail)
         {
-            return await _patientRepository.UpdatePatientFromInputAsync(name, phone, email, newPhone, newEmail, newGuardianName);
+            return await _patientRepository.UpdatePatientFromInputAsync(name, phone, email, newPhone, newEmail, newGuardianName, newGuardianPhone, newGuardianEmail);
         }
 
 

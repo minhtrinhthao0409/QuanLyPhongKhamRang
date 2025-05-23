@@ -31,9 +31,9 @@
             AppointmentTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             CrudPanel = new System.Windows.Forms.Panel();
-            endTimeTxt = new System.Windows.Forms.TextBox();
+            startTimeMask = new System.Windows.Forms.MaskedTextBox();
+            endTimeMask = new System.Windows.Forms.MaskedTextBox();
             label3 = new System.Windows.Forms.Label();
-            startTimeTxt = new System.Windows.Forms.TextBox();
             startTime = new System.Windows.Forms.Label();
             DoctorPhoneNoTxt = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
@@ -68,8 +68,6 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
-            endTimeMask = new System.Windows.Forms.MaskedTextBox();
-            startTimeMask = new System.Windows.Forms.MaskedTextBox();
             AppointmentTab.SuspendLayout();
             tabPage1.SuspendLayout();
             CrudPanel.SuspendLayout();
@@ -104,9 +102,7 @@
             // 
             CrudPanel.Controls.Add(startTimeMask);
             CrudPanel.Controls.Add(endTimeMask);
-            CrudPanel.Controls.Add(endTimeTxt);
             CrudPanel.Controls.Add(label3);
-            CrudPanel.Controls.Add(startTimeTxt);
             CrudPanel.Controls.Add(startTime);
             CrudPanel.Controls.Add(DoctorPhoneNoTxt);
             CrudPanel.Controls.Add(label2);
@@ -126,13 +122,25 @@
             CrudPanel.Size = new System.Drawing.Size(797, 302);
             CrudPanel.TabIndex = 4;
             // 
-            // endTimeTxt
+            // startTimeMask
             // 
-            endTimeTxt.Location = new System.Drawing.Point(634, 175);
-            endTimeTxt.Name = "endTimeTxt";
-            endTimeTxt.Size = new System.Drawing.Size(46, 23);
-            endTimeTxt.TabIndex = 25;
-            endTimeTxt.Text = "___:____";
+            startTimeMask.Location = new System.Drawing.Point(492, 148);
+            startTimeMask.Mask = "00:00";
+            startTimeMask.Name = "startTimeMask";
+            startTimeMask.Size = new System.Drawing.Size(49, 23);
+            startTimeMask.TabIndex = 28;
+            startTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            startTimeMask.ValidatingType = typeof(System.DateTime);
+            // 
+            // endTimeMask
+            // 
+            endTimeMask.Location = new System.Drawing.Point(654, 146);
+            endTimeMask.Mask = "00:00";
+            endTimeMask.Name = "endTimeMask";
+            endTimeMask.Size = new System.Drawing.Size(49, 23);
+            endTimeMask.TabIndex = 27;
+            endTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            endTimeMask.ValidatingType = typeof(System.DateTime);
             // 
             // label3
             // 
@@ -143,14 +151,6 @@
             label3.Size = new System.Drawing.Size(66, 17);
             label3.TabIndex = 24;
             label3.Text = "End Time";
-            // 
-            // startTimeTxt
-            // 
-            startTimeTxt.Location = new System.Drawing.Point(438, 175);
-            startTimeTxt.Name = "startTimeTxt";
-            startTimeTxt.Size = new System.Drawing.Size(46, 23);
-            startTimeTxt.TabIndex = 23;
-            startTimeTxt.Text = "___:____";
             // 
             // startTime
             // 
@@ -494,26 +494,6 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // endTimeMask
-            // 
-            endTimeMask.Location = new System.Drawing.Point(654, 146);
-            endTimeMask.Mask = "00:00";
-            endTimeMask.Name = "endTimeMask";
-            endTimeMask.Size = new System.Drawing.Size(49, 23);
-            endTimeMask.TabIndex = 27;
-            endTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            endTimeMask.ValidatingType = typeof(System.DateTime);
-            // 
-            // startTimeMask
-            // 
-            startTimeMask.Location = new System.Drawing.Point(492, 148);
-            startTimeMask.Mask = "00:00";
-            startTimeMask.Name = "startTimeMask";
-            startTimeMask.Size = new System.Drawing.Size(49, 23);
-            startTimeMask.TabIndex = 28;
-            startTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            startTimeMask.ValidatingType = typeof(System.DateTime);
-            // 
             // AppointmentFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -570,9 +550,7 @@
         private System.Windows.Forms.Label Schedulelbl;
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
-        private System.Windows.Forms.TextBox endTimeTxt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox startTimeTxt;
         private System.Windows.Forms.Label startTime;
         private System.Windows.Forms.DataGridView SearchAppointmentGridView;
         private System.Windows.Forms.DateTimePicker EndDatePicker;

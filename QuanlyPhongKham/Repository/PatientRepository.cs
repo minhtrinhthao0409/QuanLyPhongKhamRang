@@ -243,7 +243,8 @@ namespace QuanlyPhongKham.Repository
         }
 
 
-        public async Task<bool> UpdatePatientFromInputAsync(string name, string phone, string? email, string? newPhone, string? newEmail, string? newGuardianName)
+        public async Task<bool> UpdatePatientFromInputAsync(string name, string phone, string? email, string? newPhone, string? newEmail,
+                                                            string? newGuardianName, string? newGuardianPhone, string? newGuardianEmail)
         {
             var foundPatients = await SearchPatientsAsync(name, phone, email);
 
@@ -261,22 +262,28 @@ namespace QuanlyPhongKham.Repository
 
             var patient = foundPatients[0];
 
-           
-            if ((newPhone ?? patient.PhoneNumber) == patient.PhoneNumber &&
-                (newEmail ?? patient.Email) == patient.Email &&
-                string.IsNullOrWhiteSpace(newGuardianName))
+            bool patientChanged =
+                (newPhone ?? patient.PhoneNumber) != patient.PhoneNumber ||
+                (newEmail ?? patient.Email) != patient.Email;
+
+            bool guardianChanged = !string.IsNullOrWhiteSpace(newGuardianName)
+                                || !string.IsNullOrWhiteSpace(newGuardianPhone)
+                                || !string.IsNullOrWhiteSpace(newGuardianEmail);
+
+            // Nếu có GuardianId thì cập nhật guardian
+            if (guardianChanged && patient.GuardianId.HasValue)
+            {
+                await UpdateGuardianInfoAsync(patient.GuardianId.Value, newGuardianName, newGuardianPhone, newGuardianEmail);
+            }
+
+            // Nếu không có GuardianId nhưng người dùng nhập thông tin mới của guardian ⇒ bỏ qua cập nhật guardian, vẫn tiếp tục update bệnh nhân
+            // Nếu không có thay đổi gì thì bỏ qua toàn bộ
+            if (!patientChanged && (!patient.GuardianId.HasValue || !guardianChanged))
             {
                 MessageBox.Show("Không có thay đổi nào để cập nhật.");
                 return false;
             }
 
-            
-            if (!string.IsNullOrWhiteSpace(newGuardianName) && patient.GuardianId.HasValue)
-            {
-                await UpdateGuardianNameAsync(patient.GuardianId.Value, newGuardianName);
-            }
-
-            
             int updatedRows = await UpdatePatientAsync(
                 patientId: Guid.Parse(patient.PatientId),
                 name: patient.Name,
@@ -284,25 +291,58 @@ namespace QuanlyPhongKham.Repository
                 phoneNumber: newPhone ?? patient.PhoneNumber,
                 email: newEmail ?? patient.Email,
                 dob: patient.DOB,
-                guardianId: patient.GuardianId
+                guardianId: patient.GuardianId // vẫn giữ nguyên ID hiện có (có thể null)
             );
 
             return updatedRows > 0;
         }
 
 
-        public async Task<bool> UpdateGuardianNameAsync(Guid guardianId, string newName)
+
+
+        public async Task<bool> UpdateGuardianInfoAsync(Guid guardianId, string? newName, string? newPhone, string? newEmail)
         {
             using var conn = await GetConnectionAsync();
-            using var cmd = new SQLiteCommand(
-                "UPDATE Users SET FullName = @FullName WHERE Id = @Id", conn);
 
-            cmd.Parameters.AddWithValue("@FullName", newName);
-            cmd.Parameters.AddWithValue("@Id", guardianId.ToString());
+            var query = new StringBuilder();
+            var parameters = new List<SQLiteParameter>();
+            var setClauses = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(newName))
+            {
+                setClauses.Add("FullName = @FullName");
+                parameters.Add(new SQLiteParameter("@FullName", newName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(newPhone))
+            {
+                setClauses.Add("PhoneNumber = @PhoneNumber");
+                parameters.Add(new SQLiteParameter("@PhoneNumber", newPhone));
+            }
+
+            if (!string.IsNullOrWhiteSpace(newEmail))
+            {
+                setClauses.Add("Email = @Email");
+                parameters.Add(new SQLiteParameter("@Email", newEmail));
+            }
+
+            if (!setClauses.Any())
+                return false; 
+
+            query.Append("UPDATE Guardians SET ");
+            query.Append(string.Join(", ", setClauses));
+            query.Append(" WHERE GuardianId = @GuardianId");
+            parameters.Add(new SQLiteParameter("@GuardianId", guardianId.ToString()));
+
+            using var cmd = new SQLiteCommand(query.ToString(), conn);
+            cmd.Parameters.AddRange(parameters.ToArray());
 
             int affected = await cmd.ExecuteNonQueryAsync();
             return affected > 0;
         }
+
+
+
 
 
 
