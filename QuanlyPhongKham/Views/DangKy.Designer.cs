@@ -46,6 +46,7 @@
             label6 = new System.Windows.Forms.Label();
             txtSDT = new System.Windows.Forms.TextBox();
             btnQuaylai = new System.Windows.Forms.Button();
+            rbAdmin = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -241,11 +242,23 @@
             btnQuaylai.UseVisualStyleBackColor = false;
             btnQuaylai.Click += btnQuaylai_Click;
             // 
+            // rbAdmin
+            // 
+            rbAdmin.AutoSize = true;
+            rbAdmin.Location = new System.Drawing.Point(29, 592);
+            rbAdmin.Name = "rbAdmin";
+            rbAdmin.Size = new System.Drawing.Size(74, 24);
+            rbAdmin.TabIndex = 16;
+            rbAdmin.TabStop = true;
+            rbAdmin.Text = "Admin";
+            rbAdmin.UseVisualStyleBackColor = true;
+            // 
             // DangKy
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(523, 732);
+            Controls.Add(rbAdmin);
             Controls.Add(btnQuaylai);
             Controls.Add(label6);
             Controls.Add(txtSDT);
@@ -296,5 +309,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Button btnQuaylai;
+        private System.Windows.Forms.RadioButton rbAdmin;
     }
 }

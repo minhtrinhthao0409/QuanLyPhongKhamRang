@@ -28,17 +28,16 @@ namespace QuanlyPhongKham.Views.Admin
             LoadUserDataAsync();
         }
 
-        private async void LoadUserDataAsync()
-        {
-            AdminQLTKdata.DataSource = await _userControllers.GetAllUser();
-        }
 
-
+        #region QLKH
         private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
-
+        private async void LoadUserDataAsync()
+        {
+            AdminQLTKdata.DataSource = await _userControllers.GetAllUser();
+        }
         private void AdminQLTKdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -112,5 +111,6 @@ namespace QuanlyPhongKham.Views.Admin
             AdminQLTKPasstbx.Text = null;
             AdminQLTKRolecb.SelectedIndex = 3;
         }
+        #endregion QLKH
     }
 }
