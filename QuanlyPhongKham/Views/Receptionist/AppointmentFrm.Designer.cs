@@ -206,9 +206,12 @@
             // startTimePicker
             // 
             startTimePicker.Location = new System.Drawing.Point(138, 144);
+            startTimePicker.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            startTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             startTimePicker.Name = "startTimePicker";
             startTimePicker.Size = new System.Drawing.Size(211, 23);
             startTimePicker.TabIndex = 2;
+            startTimePicker.Value = new System.DateTime(2025, 5, 23, 0, 0, 0, 0);
             // 
             // PatientPhoneNolbl
             // 
