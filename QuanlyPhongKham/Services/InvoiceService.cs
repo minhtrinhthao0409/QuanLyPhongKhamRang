@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Repository;
+﻿using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,5 +29,11 @@ namespace QuanlyPhongKham.Services
         {
             return await _invoiceRepository.SearchInvoicesAsync(phoneNo, startDate, endDate);
         }
+
+        public async Task<List<InvoiceDetail>> GetInvoiceDetailsAsync(int invoiceId)
+        {
+            return await _invoiceRepository.GetInvoiceDetailsAsync(invoiceId);
+        }
+
     }
 }

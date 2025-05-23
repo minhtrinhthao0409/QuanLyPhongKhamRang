@@ -135,6 +135,42 @@ namespace QuanlyPhongKham.Repository
             return invoices;
         }
 
+        public async Task<List<InvoiceDetail>> GetInvoiceDetailsAsync(int invoiceId)
+        {
+            var details = new List<InvoiceDetail>();
+
+            using (var conn = await GetConnectionAsync())
+            {
+                string query = @"
+                                    SELECT InvoiceDetailId, InvoiceId, ServiceName, UnitPrice, Quantity
+                                    FROM InvoiceDetail
+                                    WHERE InvoiceId = @InvoiceId";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@InvoiceId", invoiceId);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            details.Add(new InvoiceDetail
+                            {
+                                InvoiceDetailId = Convert.ToInt32(reader["InvoiceDetailId"]),
+                                InvoiceId = Convert.ToInt32(reader["InvoiceId"]),
+                                ServiceName = reader["ServiceName"].ToString(),
+                                UnitPrice = Convert.ToDecimal(reader["UnitPrice"]),
+                                Quantity = Convert.ToInt32(reader["Quantity"]),
+                            });
+                        }
+                    }
+                }
+            }
+
+            return details;
+        }
+
+
     }
 
 }

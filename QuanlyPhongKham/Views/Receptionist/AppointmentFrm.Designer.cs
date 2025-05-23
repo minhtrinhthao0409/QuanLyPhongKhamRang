@@ -45,13 +45,14 @@
             PatientNameTxt = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             CrudAppointment = new System.Windows.Forms.Label();
-            ViewInvoiceBtn = new System.Windows.Forms.Button();
             UpdateBtn = new System.Windows.Forms.Button();
             AddScheduleBtn = new System.Windows.Forms.Button();
             doctorlbl = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             SearchAppointmentGridView = new System.Windows.Forms.DataGridView();
             panel1 = new System.Windows.Forms.Panel();
+            EndDatePicker = new System.Windows.Forms.DateTimePicker();
+            label4 = new System.Windows.Forms.Label();
             Searchlbl = new System.Windows.Forms.Label();
             Searchbtn = new System.Windows.Forms.Button();
             StartDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -67,8 +68,6 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
-            EndDatePicker = new System.Windows.Forms.DateTimePicker();
-            label4 = new System.Windows.Forms.Label();
             AppointmentTab.SuspendLayout();
             tabPage1.SuspendLayout();
             CrudPanel.SuspendLayout();
@@ -115,13 +114,12 @@
             CrudPanel.Controls.Add(PatientNameTxt);
             CrudPanel.Controls.Add(label1);
             CrudPanel.Controls.Add(CrudAppointment);
-            CrudPanel.Controls.Add(ViewInvoiceBtn);
             CrudPanel.Controls.Add(UpdateBtn);
             CrudPanel.Controls.Add(AddScheduleBtn);
             CrudPanel.Controls.Add(doctorlbl);
             CrudPanel.Location = new System.Drawing.Point(0, 0);
             CrudPanel.Name = "CrudPanel";
-            CrudPanel.Size = new System.Drawing.Size(797, 319);
+            CrudPanel.Size = new System.Drawing.Size(797, 302);
             CrudPanel.TabIndex = 4;
             // 
             // endTimeTxt
@@ -245,20 +243,10 @@
             CrudAppointment.TabIndex = 15;
             CrudAppointment.Text = "Manage Appointment";
             // 
-            // ViewInvoiceBtn
-            // 
-            ViewInvoiceBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ViewInvoiceBtn.Location = new System.Drawing.Point(492, 252);
-            ViewInvoiceBtn.Name = "ViewInvoiceBtn";
-            ViewInvoiceBtn.Size = new System.Drawing.Size(93, 50);
-            ViewInvoiceBtn.TabIndex = 7;
-            ViewInvoiceBtn.Text = "View Invoice";
-            ViewInvoiceBtn.UseVisualStyleBackColor = true;
-            // 
             // UpdateBtn
             // 
             UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdateBtn.Location = new System.Drawing.Point(317, 252);
+            UpdateBtn.Location = new System.Drawing.Point(445, 228);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new System.Drawing.Size(93, 50);
             UpdateBtn.TabIndex = 6;
@@ -268,7 +256,7 @@
             // AddScheduleBtn
             // 
             AddScheduleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddScheduleBtn.Location = new System.Drawing.Point(126, 252);
+            AddScheduleBtn.Location = new System.Drawing.Point(301, 228);
             AddScheduleBtn.Name = "AddScheduleBtn";
             AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
             AddScheduleBtn.TabIndex = 5;
@@ -322,6 +310,23 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(804, 226);
             panel1.TabIndex = 5;
+            // 
+            // EndDatePicker
+            // 
+            EndDatePicker.Location = new System.Drawing.Point(492, 114);
+            EndDatePicker.Name = "EndDatePicker";
+            EndDatePicker.Size = new System.Drawing.Size(211, 23);
+            EndDatePicker.TabIndex = 16;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new System.Drawing.Point(449, 118);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(23, 17);
+            label4.TabIndex = 15;
+            label4.Text = "To";
             // 
             // Searchlbl
             // 
@@ -485,23 +490,6 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // EndDatePicker
-            // 
-            EndDatePicker.Location = new System.Drawing.Point(492, 114);
-            EndDatePicker.Name = "EndDatePicker";
-            EndDatePicker.Size = new System.Drawing.Size(211, 23);
-            EndDatePicker.TabIndex = 16;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label4.Location = new System.Drawing.Point(449, 118);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(23, 17);
-            label4.TabIndex = 15;
-            label4.Text = "To";
-            // 
             // AppointmentFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -538,7 +526,6 @@
         private System.Windows.Forms.TextBox PatientNameTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CrudAppointment;
-        private System.Windows.Forms.Button ViewInvoiceBtn;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button AddScheduleBtn;
         private System.Windows.Forms.Label doctorlbl;

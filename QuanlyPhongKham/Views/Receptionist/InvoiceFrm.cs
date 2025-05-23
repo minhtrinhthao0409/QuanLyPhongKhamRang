@@ -30,6 +30,9 @@ namespace QuanlyPhongKham.Views.Receptionist
             Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
+
+            InvoiceGridView.CellClick += InvoiceGridView_CellClick;
+
         }
 
         private void menulbl_click(object sender, EventArgs e)
@@ -74,13 +77,29 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 var result = await _invoiceService.SearchInvoicesAsync(patientPhoneNo, startDate, endDate);
 
-                
+
                 InvoiceGridView.DataSource = result;
                 InvoiceGridView.Columns["PatientId"].Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi tìm kiếm hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void InvoiceGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && InvoiceGridView.Rows[e.RowIndex].DataBoundItem is Invoice selectedInvoice)
+            {
+                try
+                {
+                    var details = await _invoiceService.GetInvoiceDetailsAsync(selectedInvoice.InvoiceId);
+                    InvoiceDetailGridView.DataSource = details;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể tải chi tiết hóa đơn: " + ex.Message);
+                }
             }
         }
     }

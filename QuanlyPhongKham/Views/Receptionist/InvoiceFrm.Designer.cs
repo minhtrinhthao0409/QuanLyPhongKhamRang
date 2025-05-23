@@ -44,9 +44,12 @@
             start_time_lbl = new System.Windows.Forms.Label();
             startTimePicker = new System.Windows.Forms.DateTimePicker();
             InvoiceGridView = new System.Windows.Forms.DataGridView();
+            InvoiceDetailGridView = new System.Windows.Forms.DataGridView();
+            CrudPatient = new System.Windows.Forms.Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)InvoiceGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)InvoiceDetailGridView).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -220,14 +223,35 @@
             InvoiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InvoiceGridView.Location = new System.Drawing.Point(208, 244);
             InvoiceGridView.Name = "InvoiceGridView";
-            InvoiceGridView.Size = new System.Drawing.Size(787, 424);
+            InvoiceGridView.Size = new System.Drawing.Size(787, 183);
             InvoiceGridView.TabIndex = 12;
+            InvoiceGridView.CellClick += InvoiceGridView_CellClick;
+            // 
+            // InvoiceDetailGridView
+            // 
+            InvoiceDetailGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            InvoiceDetailGridView.Location = new System.Drawing.Point(205, 486);
+            InvoiceDetailGridView.Name = "InvoiceDetailGridView";
+            InvoiceDetailGridView.Size = new System.Drawing.Size(787, 183);
+            InvoiceDetailGridView.TabIndex = 13;
+            // 
+            // CrudPatient
+            // 
+            CrudPatient.AutoSize = true;
+            CrudPatient.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            CrudPatient.Location = new System.Drawing.Point(463, 442);
+            CrudPatient.Name = "CrudPatient";
+            CrudPatient.Size = new System.Drawing.Size(132, 25);
+            CrudPatient.TabIndex = 16;
+            CrudPatient.Text = "Invoice Detail";
             // 
             // InvoiceFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
+            Controls.Add(CrudPatient);
+            Controls.Add(InvoiceDetailGridView);
             Controls.Add(InvoiceGridView);
             Controls.Add(panel1);
             Controls.Add(panel2);
@@ -237,7 +261,9 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)InvoiceGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)InvoiceDetailGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -258,5 +284,7 @@
         private System.Windows.Forms.Label start_time_lbl;
         private System.Windows.Forms.DateTimePicker startTimePicker;
         private System.Windows.Forms.DataGridView InvoiceGridView;
+        private System.Windows.Forms.DataGridView InvoiceDetailGridView;
+        private System.Windows.Forms.Label CrudPatient;
     }
 }
