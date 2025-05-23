@@ -89,5 +89,53 @@ namespace QuanlyPhongKham.Repository
 
             return services;
         }
+
+        public async Task<List<Invoice>> SearchInvoicesAsync(string phoneNo, DateTime startDate, DateTime endDate)
+        {
+            var invoices = new List<Invoice>();
+
+            using (var conn = await GetConnectionAsync())
+            {
+                var query = new StringBuilder(@"
+                                SELECT i.InvoiceId, i.PatientId, i.PatientName, i.CreatedAt, i.TotalAmount, i.PaidAmount, i.Status
+                                FROM Invoice i
+                                JOIN Patients p ON i.PatientId = p.PatientId
+                                WHERE i.CreatedAt >= @StartDate AND i.CreatedAt <= @EndDate");
+
+                if (!string.IsNullOrWhiteSpace(phoneNo))
+                    query.Append(" AND p.PhoneNumber LIKE @PhoneNo");
+
+                using (var cmd = new SQLiteCommand(query.ToString(), conn))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate.Date);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate.Date.AddDays(1).AddTicks(-1)); // lấy đến cuối ngày
+
+                    if (!string.IsNullOrWhiteSpace(phoneNo))
+                        cmd.Parameters.AddWithValue("@PhoneNo", $"%{phoneNo}%");
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            invoices.Add(new Invoice
+                            {
+                                InvoiceId = Convert.ToInt32(reader["InvoiceId"]),
+                                PatientId = reader["PatientId"].ToString(),
+                                PatientName = reader["PatientName"].ToString(),
+                                CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                                TotalAmount = Convert.ToDecimal(reader["TotalAmount"]),
+                                PaidAmount = Convert.ToDecimal(reader["PaidAmount"]),
+                                Status = reader["Status"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+
+            return invoices;
+        }
+
     }
+
 }
+

@@ -24,5 +24,9 @@ namespace QuanlyPhongKham.Services
 
             await _invoiceRepository.CreateInvoiceAsync(invoice);
         }
+        public async Task<List<Invoice>> SearchInvoicesAsync(string phoneNo, DateTime startDate, DateTime endDate)
+        {
+            return await _invoiceRepository.SearchInvoicesAsync(phoneNo, startDate, endDate);
+        }
     }
 }

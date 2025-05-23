@@ -37,14 +37,16 @@
             SignOutlbl = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
             Searchbtn = new System.Windows.Forms.Button();
-            textBox2 = new System.Windows.Forms.TextBox();
+            patientPhoneNoTxt = new System.Windows.Forms.TextBox();
             label5 = new System.Windows.Forms.Label();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            endTimePicker = new System.Windows.Forms.DateTimePicker();
             endTimelbl = new System.Windows.Forms.Label();
             start_time_lbl = new System.Windows.Forms.Label();
             startTimePicker = new System.Windows.Forms.DateTimePicker();
+            InvoiceGridView = new System.Windows.Forms.DataGridView();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)InvoiceGridView).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -140,9 +142,9 @@
             // panel1
             // 
             panel1.Controls.Add(Searchbtn);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(patientPhoneNoTxt);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(endTimePicker);
             panel1.Controls.Add(endTimelbl);
             panel1.Controls.Add(start_time_lbl);
             panel1.Controls.Add(startTimePicker);
@@ -160,13 +162,14 @@
             Searchbtn.TabIndex = 21;
             Searchbtn.Text = "Search";
             Searchbtn.UseVisualStyleBackColor = true;
+            Searchbtn.Click += Searchbtn_Click;
             // 
-            // textBox2
+            // patientPhoneNoTxt
             // 
-            textBox2.Location = new System.Drawing.Point(169, 117);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new System.Drawing.Size(211, 23);
-            textBox2.TabIndex = 20;
+            patientPhoneNoTxt.Location = new System.Drawing.Point(169, 117);
+            patientPhoneNoTxt.Name = "patientPhoneNoTxt";
+            patientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
+            patientPhoneNoTxt.TabIndex = 20;
             // 
             // label5
             // 
@@ -178,12 +181,12 @@
             label5.TabIndex = 19;
             label5.Text = "Phone Number";
             // 
-            // dateTimePicker1
+            // endTimePicker
             // 
-            dateTimePicker1.Location = new System.Drawing.Point(522, 51);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(210, 23);
-            dateTimePicker1.TabIndex = 8;
+            endTimePicker.Location = new System.Drawing.Point(522, 51);
+            endTimePicker.Name = "endTimePicker";
+            endTimePicker.Size = new System.Drawing.Size(210, 23);
+            endTimePicker.TabIndex = 8;
             // 
             // endTimelbl
             // 
@@ -212,18 +215,28 @@
             startTimePicker.Size = new System.Drawing.Size(211, 23);
             startTimePicker.TabIndex = 6;
             // 
-            // InvoiceForm
+            // InvoiceGridView
+            // 
+            InvoiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            InvoiceGridView.Location = new System.Drawing.Point(208, 244);
+            InvoiceGridView.Name = "InvoiceGridView";
+            InvoiceGridView.Size = new System.Drawing.Size(787, 424);
+            InvoiceGridView.TabIndex = 12;
+            // 
+            // InvoiceFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
+            Controls.Add(InvoiceGridView);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Name = "InvoiceForm";
+            Name = "InvoiceFrm";
             Text = "InvoiceForm";
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)InvoiceGridView).EndInit();
             ResumeLayout(false);
         }
 
@@ -238,11 +251,12 @@
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Searchbtn;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox patientPhoneNoTxt;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker endTimePicker;
         private System.Windows.Forms.Label endTimelbl;
         private System.Windows.Forms.Label start_time_lbl;
         private System.Windows.Forms.DateTimePicker startTimePicker;
+        private System.Windows.Forms.DataGridView InvoiceGridView;
     }
 }

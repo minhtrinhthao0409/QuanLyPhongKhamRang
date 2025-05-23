@@ -1,4 +1,5 @@
 ﻿using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,14 @@ namespace QuanlyPhongKham.Views.Receptionist
     {
         private User user;
         private Form currentForm = null;
+        private readonly InvoiceService _invoiceService;
 
         public InvoiceFrm(User user)
         {
             this.user = user;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            _invoiceService = new InvoiceService();
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
@@ -59,6 +62,26 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm.Show();
             }
 
+        }
+
+        private async void Searchbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime startDate = startTimePicker.Value.Date;
+                DateTime endDate = endTimePicker.Value.Date;
+                string patientPhoneNo = patientPhoneNoTxt.Text.Trim();
+
+                var result = await _invoiceService.SearchInvoicesAsync(patientPhoneNo, startDate, endDate);
+
+                
+                InvoiceGridView.DataSource = result;
+                InvoiceGridView.Columns["PatientId"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
