@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using QuanlyPhongKham.Models;
 using System.Data.SQLite;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.Net.Mail;
+using System.Net;
+using System.Security.Cryptography;
 
 namespace QuanlyPhongKham.Repository
 {
@@ -130,6 +133,40 @@ namespace QuanlyPhongKham.Repository
                 });
             }
             return users;
+        }
+       
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            using var conn = new SQLiteConnection(connection);
+            await conn.OpenAsync();
+            var query = "SELECT * FROM Users WHERE Email = @Email";
+
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                return new User
+                {
+                    Id = reader["Id"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    UserName = reader["UserName"].ToString()
+                    // thêm các field cần thiết
+                };
+            }
+            return null;
+        }
+        public async Task UpdatePasswordAsync(string userId, string hashedPassword)
+        {
+            using var conn = new SQLiteConnection(connection);
+            await conn.OpenAsync();
+            var query = "UPDATE Users SET Password = @Password WHERE Id = @Id";
+
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Password", hashedPassword);
+            cmd.Parameters.AddWithValue("@Id", userId);
+            await cmd.ExecuteNonQueryAsync();
         }
     }
 }
