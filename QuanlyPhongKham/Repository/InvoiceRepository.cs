@@ -20,7 +20,7 @@ namespace QuanlyPhongKham.Repository
                 try
                 {
                     string insertInvoiceSql = @"
-                    INSERT INTO Invoices (PatientId, PatientName, CreatedAt, TotalAmount, PaidAmount, Status)
+                    INSERT INTO Invoice (PatientId, PatientName, CreatedAt, TotalAmount, PaidAmount, Status)
                     VALUES (@PatientId, @PatientName, @CreatedAt, @TotalAmount, @PaidAmount, @Status);
                     SELECT last_insert_rowid();";
 
@@ -40,8 +40,8 @@ namespace QuanlyPhongKham.Repository
                     foreach (var detail in invoice.Details)
                     {
                         string insertDetailSql = @"
-                        INSERT INTO InvoiceDetails (InvoiceId, ServiceName, UnitPrice, Quantity)
-                        VALUES (@InvoiceId, @ServiceName, @UnitPrice, @Quantity)";
+                        INSERT INTO InvoiceDetail (InvoiceId, ServiceName, UnitPrice, Quantity, TotalPrice)
+                        VALUES (@InvoiceId, @ServiceName, @UnitPrice, @Quantity, @TotalPrice)";
 
                         using (var detailCmd = new SQLiteCommand(insertDetailSql, connection))
                         {
@@ -49,6 +49,7 @@ namespace QuanlyPhongKham.Repository
                             detailCmd.Parameters.AddWithValue("@ServiceName", detail.ServiceName);
                             detailCmd.Parameters.AddWithValue("@UnitPrice", detail.UnitPrice);
                             detailCmd.Parameters.AddWithValue("@Quantity", detail.Quantity);
+                            detailCmd.Parameters.AddWithValue("@TotalPrice", detail.UnitPrice * detail.Quantity);
 
                             await detailCmd.ExecuteNonQueryAsync();
                         }

@@ -38,6 +38,7 @@ namespace QuanlyPhongKham.Views
             currentDoctorId = user.Id;
             currentDoctorName = user.UserName;
             var appointmentDate = dtpAppointmentDate.Value.Date;
+            cboPatientId.SelectedIndexChanged += cboPatientId_SelectedIndexChanged;
 
             await LoadPatientsToComboBoxes();
             await LoadPatientsAsync();
@@ -234,7 +235,7 @@ namespace QuanlyPhongKham.Views
                 MessageBox.Show("Lỗi khi lưu bệnh án: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (TapBacSi.SelectedTab.Text == "Xem Bệnh Án")
@@ -244,6 +245,7 @@ namespace QuanlyPhongKham.Views
             else if (TapBacSi.SelectedTab.Text == "Quản Lý Hóa Đơn")
             {
                 await LoadServicesToComboBoxAsync();
+                await LoadPatientsToComboBoxAsync();
             }
         }
         private async void btnLoadMedicalRecords_Click(object sender, EventArgs e)
@@ -314,26 +316,35 @@ namespace QuanlyPhongKham.Views
             }
 
             dgvChiTiet.Rows.Add(tenDichVu, soLuong, gia.Value);
+            btnCalculateTotal.PerformClick();
         }
-        
+
         private async Task LoadServicesToComboBoxAsync()
         {
             var repo = new InvoiceRepository(); // hoặc dùng DI nếu có
             var services = await repo.GetActiveServicesAsync();
 
             cbChonDichVu.DisplayMember = "ServicesName";
-            cbChonDichVu.ValueMember = "CurrentPrice"; // hoặc ServicesId tùy mục đích
+            cbChonDichVu.ValueMember = "CurrentPrice";
             cbChonDichVu.DataSource = services;
         }
-        private async void btnSaveInvoice_Click(object sender, EventArgs e) 
+        private async void btnSaveInvoice_Click(object sender, EventArgs e)
         {
+            string rawTotal = txtTongTien.Text.Replace("VNĐ", "").Replace(".", "").Trim();
+
+            if (!decimal.TryParse(rawTotal, out decimal totalAmount))
+            {
+                MessageBox.Show("Tổng tiền không hợp lệ. Vui lòng kiểm tra lại.");
+                return;
+            }
+
             var invoice = new Invoice
             {
-                PatientId = cboPatientId.SelectedItem.ToString(),
-                PatientName = cboPatientName.Text,
+                PatientId = cboPatientId.SelectedValue?.ToString(),
+                PatientName = txtPatientName.Text,
                 CreatedAt = dtpNgayIn.Value,
-                TotalAmount = decimal.Parse(txtTongTien.Text),
-                PaidAmount = 0, // hoặc lấy từ input nếu có
+                TotalAmount = totalAmount,
+                PaidAmount = 0,
                 Status = "Chưa thanh toán",
                 Details = new List<InvoiceDetail>()
             };
@@ -341,10 +352,19 @@ namespace QuanlyPhongKham.Views
             {
                 if (row.Cells["TenDichVu"].Value != null)
                 {
+                    // Làm sạch giá (phòng trường hợp bạn hiển thị giá có định dạng VNĐ trong DataGridView)
+                    string rawGia = row.Cells["Gia"].Value?.ToString().Replace("VNĐ", "").Replace(".", "").Trim() ?? "0";
+
+                    if (!decimal.TryParse(rawGia, out decimal unitPrice))
+                    {
+                        MessageBox.Show("Giá dịch vụ không hợp lệ ở một dòng.");
+                        return;
+                    }
+
                     invoice.Details.Add(new InvoiceDetail
                     {
                         ServiceName = row.Cells["TenDichVu"].Value.ToString(),
-                        UnitPrice = Convert.ToDecimal(row.Cells["Gia"].Value),
+                        UnitPrice = unitPrice,
                         Quantity = Convert.ToInt32(row.Cells["SoLuong"].Value)
                     });
                 }
@@ -353,32 +373,63 @@ namespace QuanlyPhongKham.Views
             await _invoiceController.CreateInvoiceAsync(invoice);
             MessageBox.Show("Lưu hóa đơn thành công");
         }
-        private void dgvChiTiet_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvChiTiet.Columns["SoLuong"].Index ||
-                e.ColumnIndex == dgvChiTiet.Columns["Gia"].Index)
-            {
-                foreach (DataGridViewRow row in dgvChiTiet.Rows)
-                {
-                    if (row.Cells["Gia"].Value != null && row.Cells["SoLuong"].Value != null)
-                    {
-                        decimal gia = Convert.ToDecimal(row.Cells["Gia"].Value);
-                        int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
-                        row.Cells["Tong"].Value = gia * soLuong;
-                    }
-                }
-
-                decimal tongTien = dgvChiTiet.Rows
-                    .Cast<DataGridViewRow>()
-                    .Where(r => r.Cells["Tong"].Value != null)
-                    .Sum(r => Convert.ToDecimal(r.Cells["Tong"].Value));
-
-                txtTongTien.Text = tongTien.ToString("N0");
-            }
-        }
+        
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnCalculateTotal_Click(object sender, EventArgs e)
+        {
+            decimal tongTien = 0;
+
+            // Duyệt qua tất cả các dòng trong DataGridView
+            foreach (DataGridViewRow row in dgvChiTiet.Rows)
+            {
+                // Bỏ qua dòng trống mới nếu có (thường là dòng cuối trong DataGridView)
+                if (row.IsNewRow) continue;
+
+                try
+                {
+                    int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+                    decimal gia = Convert.ToDecimal(row.Cells["Gia"].Value);
+                    tongTien += soLuong * gia;
+                }
+                catch
+                {
+                    MessageBox.Show("Lỗi khi tính tổng tiền. Vui lòng kiểm tra dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // Hiển thị tổng tiền vào TextBox
+            txtTongTien.Text = tongTien.ToString("N0") + " VNĐ";
+        }
+        private void cboPatientId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPatientId.SelectedValue == null || allPatients == null) return;
+
+            string selectedId = cboPatientId.SelectedValue.ToString();
+            var selectedPatient = allPatients.FirstOrDefault(p => p.PatientId == selectedId);
+
+            if (selectedPatient != null)
+            {
+                txtPatientName.Text = selectedPatient.Name;
+            }
+        }
+        private async Task LoadPatientsToComboBoxAsync()
+        {
+            try
+            {
+                allPatients = await patientController.GetAllPatientsAsync();
+                cboPatientId.DataSource = allPatients;
+                cboPatientId.DisplayMember = "PatientId";
+                cboPatientId.ValueMember = "PatientId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách bệnh nhân: " + ex.Message);
+            }
         }
     }
 }

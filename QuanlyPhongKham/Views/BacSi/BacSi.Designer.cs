@@ -78,7 +78,6 @@
             dtpNgayIn = new System.Windows.Forms.DateTimePicker();
             label5 = new System.Windows.Forms.Label();
             groupBox1 = new System.Windows.Forms.GroupBox();
-            cboPatientName = new System.Windows.Forms.ComboBox();
             cboPatientId = new System.Windows.Forms.ComboBox();
             label6 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -87,6 +86,7 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            txtPatientName = new System.Windows.Forms.TextBox();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
@@ -578,7 +578,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(cboPatientName);
+            groupBox1.Controls.Add(txtPatientName);
             groupBox1.Controls.Add(cboPatientId);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label4);
@@ -587,14 +587,6 @@
             groupBox1.Size = new System.Drawing.Size(770, 186);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
-            // 
-            // cboPatientName
-            // 
-            cboPatientName.FormattingEnabled = true;
-            cboPatientName.Location = new System.Drawing.Point(239, 54);
-            cboPatientName.Name = "cboPatientName";
-            cboPatientName.Size = new System.Drawing.Size(340, 28);
-            cboPatientName.TabIndex = 18;
             // 
             // cboPatientId
             // 
@@ -649,6 +641,7 @@
             btnCalculateTotal.TabIndex = 11;
             btnCalculateTotal.Text = "Tính tiền";
             btnCalculateTotal.UseVisualStyleBackColor = true;
+            btnCalculateTotal.Click += btnCalculateTotal_Click;
             // 
             // lblInvoiceTotalAmount
             // 
@@ -665,6 +658,13 @@
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
+            // txtPatientName
+            // 
+            txtPatientName.Location = new System.Drawing.Point(239, 54);
+            txtPatientName.Name = "txtPatientName";
+            txtPatientName.Size = new System.Drawing.Size(340, 27);
+            txtPatientName.TabIndex = 18;
             // 
             // BacSi
             // 
@@ -750,10 +750,10 @@
         private System.Windows.Forms.DataGridView dgvMedicalRecordView;
         private System.Windows.Forms.Button btnLoadMedicalRecords;
         private System.Windows.Forms.DataGridView dgvChiTiet;
-        private System.Windows.Forms.ComboBox cboPatientName;
         private System.Windows.Forms.ComboBox cboPatientId;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenDichVu;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
+        private System.Windows.Forms.TextBox txtPatientName;
     }
 }
