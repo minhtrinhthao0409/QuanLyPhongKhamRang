@@ -111,9 +111,9 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string doctorName = DoctorNameTxT.Text.Trim();
                 string doctorPhoneNo = DoctorPhoneNoTxt.Text.Trim();
 
-                DateTime date = startTimePicker.Value;
-                TimeSpan startTime = TimeSpan.Parse(startTimeTxt.Text.Trim());
-                TimeSpan endTime = TimeSpan.Parse(endTimeTxt.Text.Trim());
+                DateTime date = startTimePicker.Value.Date;
+                TimeSpan startTime = TimeSpan.Parse(startTimeMask.Text.Trim());
+                TimeSpan endTime = TimeSpan.Parse(endTimeMask.Text.Trim());
 
 
                 bool result = await _appointmentControllers.AddAppointmentAsync_v2(doctorName, patientName, doctorPhoneNo, patientPhoneNo, date, startTime, endTime);

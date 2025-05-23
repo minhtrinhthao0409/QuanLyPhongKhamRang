@@ -68,6 +68,8 @@
             Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
+            endTimeMask = new System.Windows.Forms.MaskedTextBox();
+            startTimeMask = new System.Windows.Forms.MaskedTextBox();
             AppointmentTab.SuspendLayout();
             tabPage1.SuspendLayout();
             CrudPanel.SuspendLayout();
@@ -100,6 +102,8 @@
             // 
             // CrudPanel
             // 
+            CrudPanel.Controls.Add(startTimeMask);
+            CrudPanel.Controls.Add(endTimeMask);
             CrudPanel.Controls.Add(endTimeTxt);
             CrudPanel.Controls.Add(label3);
             CrudPanel.Controls.Add(startTimeTxt);
@@ -124,7 +128,7 @@
             // 
             // endTimeTxt
             // 
-            endTimeTxt.Location = new System.Drawing.Point(696, 143);
+            endTimeTxt.Location = new System.Drawing.Point(634, 175);
             endTimeTxt.Name = "endTimeTxt";
             endTimeTxt.Size = new System.Drawing.Size(46, 23);
             endTimeTxt.TabIndex = 25;
@@ -142,7 +146,7 @@
             // 
             // startTimeTxt
             // 
-            startTimeTxt.Location = new System.Drawing.Point(492, 144);
+            startTimeTxt.Location = new System.Drawing.Point(438, 175);
             startTimeTxt.Name = "startTimeTxt";
             startTimeTxt.Size = new System.Drawing.Size(46, 23);
             startTimeTxt.TabIndex = 23;
@@ -490,6 +494,26 @@
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // endTimeMask
+            // 
+            endTimeMask.Location = new System.Drawing.Point(654, 146);
+            endTimeMask.Mask = "00:00";
+            endTimeMask.Name = "endTimeMask";
+            endTimeMask.Size = new System.Drawing.Size(49, 23);
+            endTimeMask.TabIndex = 27;
+            endTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            endTimeMask.ValidatingType = typeof(System.DateTime);
+            // 
+            // startTimeMask
+            // 
+            startTimeMask.Location = new System.Drawing.Point(492, 148);
+            startTimeMask.Mask = "00:00";
+            startTimeMask.Name = "startTimeMask";
+            startTimeMask.Size = new System.Drawing.Size(49, 23);
+            startTimeMask.TabIndex = 28;
+            startTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            startTimeMask.ValidatingType = typeof(System.DateTime);
+            // 
             // AppointmentFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -553,5 +577,7 @@
         private System.Windows.Forms.DataGridView SearchAppointmentGridView;
         private System.Windows.Forms.DateTimePicker EndDatePicker;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.MaskedTextBox endTimeMask;
+        private System.Windows.Forms.MaskedTextBox startTimeMask;
     }
 }
