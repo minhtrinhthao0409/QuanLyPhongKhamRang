@@ -138,7 +138,7 @@ namespace QuanlyPhongKham.Repository
         }
 
 
-        public async Task<bool> AddAppointmentAsync_v2(string doctorName, string patientName, string doctorPhoneNo, string patientPhoneNo, DateTime date, TimeSpan start, TimeSpan end)
+        public async Task<bool> AddAppointmentAsync_v2(string doctorName, string patientName, string doctorEmail, string patientPhoneNo, DateTime date, TimeSpan start, TimeSpan end)
         {
             SQLiteConnection conn = null;
             SQLiteTransaction transaction = null;
@@ -160,12 +160,12 @@ namespace QuanlyPhongKham.Repository
                 Guid patientId;
                 
 
-                string getDoctorIdQuery = "SELECT Id FROM Users WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber AND Role = @Role";
+                string getDoctorIdQuery = "SELECT Id FROM Users WHERE FullName = @FullName AND Email = @Email AND Role = @Role";
                 await using (var getDoctorCmd = new SQLiteCommand(getDoctorIdQuery, conn, transaction))
                 {
                     int role = 2;
                     getDoctorCmd.Parameters.AddWithValue("@FullName", doctorName);
-                    getDoctorCmd.Parameters.AddWithValue("@PhoneNumber", doctorPhoneNo);
+                    getDoctorCmd.Parameters.AddWithValue("@Email", doctorEmail);
                     getDoctorCmd.Parameters.AddWithValue("@Role", role);
                     var result = await getDoctorCmd.ExecuteScalarAsync();
 

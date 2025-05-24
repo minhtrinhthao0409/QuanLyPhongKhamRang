@@ -30,9 +30,9 @@ namespace QuanlyPhongKham.Services
         public async Task<List<Appointment>> GetDoctorAppointmentsAsync(string doctorId)
             => await _repository.GetDoctorAppointmentsAsync(doctorId);
 
-        public async Task<bool> AddAppointmentAsync_v2(string doctorName, string patientName, string doctorPhoneNo, string patientPhoneNo, DateTime date, TimeSpan start, TimeSpan end)
+        public async Task<bool> AddAppointmentAsync_v2(string doctorName, string patientName,string doctorEmail, string patientPhoneNo, DateTime date, TimeSpan start, TimeSpan end)
         {
-            return await _repository.AddAppointmentAsync_v2(doctorName, patientName, doctorPhoneNo, patientPhoneNo, date, start, end);
+            return await _repository.AddAppointmentAsync_v2(doctorName, patientName, doctorEmail, patientPhoneNo, date, start, end);
         }
 
         public async Task<List<Appointment>> GetDoctorAppointmentsAsync_v2(DateTime startDate, DateTime? endDate, string doctorName = null, string patientPhone = null)
