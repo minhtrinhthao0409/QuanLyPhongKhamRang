@@ -128,7 +128,7 @@
             startTimeMask.Mask = "00:00";
             startTimeMask.Name = "startTimeMask";
             startTimeMask.Size = new System.Drawing.Size(49, 23);
-            startTimeMask.TabIndex = 28;
+            startTimeMask.TabIndex = 4;
             startTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             startTimeMask.ValidatingType = typeof(System.DateTime);
             // 
@@ -138,7 +138,7 @@
             endTimeMask.Mask = "00:00";
             endTimeMask.Name = "endTimeMask";
             endTimeMask.Size = new System.Drawing.Size(49, 23);
-            endTimeMask.TabIndex = 27;
+            endTimeMask.TabIndex = 5;
             endTimeMask.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             endTimeMask.ValidatingType = typeof(System.DateTime);
             // 
@@ -167,7 +167,7 @@
             DoctorEmailTxt.Location = new System.Drawing.Point(492, 51);
             DoctorEmailTxt.Name = "DoctorEmailTxt";
             DoctorEmailTxt.Size = new System.Drawing.Size(211, 23);
-            DoctorEmailTxt.TabIndex = 21;
+            DoctorEmailTxt.TabIndex = 1;
             // 
             // label2
             // 
@@ -184,7 +184,7 @@
             DoctorNameTxT.Location = new System.Drawing.Point(138, 48);
             DoctorNameTxT.Name = "DoctorNameTxT";
             DoctorNameTxT.Size = new System.Drawing.Size(211, 23);
-            DoctorNameTxT.TabIndex = 19;
+            DoctorNameTxT.TabIndex = 0;
             // 
             // start_time_lbl
             // 
@@ -201,7 +201,7 @@
             PatientPhoneNoTxt.Location = new System.Drawing.Point(492, 94);
             PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
             PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
-            PatientPhoneNoTxt.TabIndex = 18;
+            PatientPhoneNoTxt.TabIndex = 3;
             // 
             // startTimePicker
             // 
@@ -228,7 +228,7 @@
             PatientNameTxt.Location = new System.Drawing.Point(138, 89);
             PatientNameTxt.Name = "PatientNameTxt";
             PatientNameTxt.Size = new System.Drawing.Size(211, 23);
-            PatientNameTxt.TabIndex = 16;
+            PatientNameTxt.TabIndex = 2;
             // 
             // label1
             // 
@@ -256,7 +256,7 @@
             UpdateBtn.Location = new System.Drawing.Point(445, 228);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new System.Drawing.Size(93, 50);
-            UpdateBtn.TabIndex = 6;
+            UpdateBtn.TabIndex = 7;
             UpdateBtn.Text = "Update";
             UpdateBtn.UseVisualStyleBackColor = true;
             // 
@@ -266,7 +266,7 @@
             AddScheduleBtn.Location = new System.Drawing.Point(301, 228);
             AddScheduleBtn.Name = "AddScheduleBtn";
             AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
-            AddScheduleBtn.TabIndex = 5;
+            AddScheduleBtn.TabIndex = 6;
             AddScheduleBtn.Text = "Add";
             AddScheduleBtn.UseVisualStyleBackColor = true;
             AddScheduleBtn.Click += AddScheduleBtn_Click;
@@ -351,7 +351,7 @@
             Searchbtn.Location = new System.Drawing.Point(492, 167);
             Searchbtn.Name = "Searchbtn";
             Searchbtn.Size = new System.Drawing.Size(93, 50);
-            Searchbtn.TabIndex = 8;
+            Searchbtn.TabIndex = 3;
             Searchbtn.Text = "Search";
             Searchbtn.UseVisualStyleBackColor = true;
             Searchbtn.Click += Searchbtn_Click;
@@ -378,7 +378,7 @@
             patientPhoneNoTextbox.Location = new System.Drawing.Point(200, 108);
             patientPhoneNoTextbox.Name = "patientPhoneNoTextbox";
             patientPhoneNoTextbox.Size = new System.Drawing.Size(211, 23);
-            patientPhoneNoTextbox.TabIndex = 11;
+            patientPhoneNoTextbox.TabIndex = 2;
             // 
             // SearchPatientNameLbl
             // 
@@ -395,7 +395,7 @@
             doctorNameTextbox.Location = new System.Drawing.Point(199, 66);
             doctorNameTextbox.Name = "doctorNameTextbox";
             doctorNameTextbox.Size = new System.Drawing.Size(211, 23);
-            doctorNameTextbox.TabIndex = 9;
+            doctorNameTextbox.TabIndex = 1;
             // 
             // SearchDoctorNamelbl
             // 

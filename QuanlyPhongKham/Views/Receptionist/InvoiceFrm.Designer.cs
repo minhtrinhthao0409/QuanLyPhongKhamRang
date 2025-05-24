@@ -172,7 +172,7 @@
             patientPhoneNoTxt.Location = new System.Drawing.Point(169, 117);
             patientPhoneNoTxt.Name = "patientPhoneNoTxt";
             patientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
-            patientPhoneNoTxt.TabIndex = 20;
+            patientPhoneNoTxt.TabIndex = 1;
             // 
             // label5
             // 
@@ -239,7 +239,7 @@
             // 
             CrudPatient.AutoSize = true;
             CrudPatient.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            CrudPatient.Location = new System.Drawing.Point(463, 442);
+            CrudPatient.Location = new System.Drawing.Point(575, 442);
             CrudPatient.Name = "CrudPatient";
             CrudPatient.Size = new System.Drawing.Size(132, 25);
             CrudPatient.TabIndex = 16;

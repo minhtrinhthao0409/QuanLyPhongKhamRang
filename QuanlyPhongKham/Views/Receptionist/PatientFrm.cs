@@ -202,32 +202,33 @@ namespace QuanlyPhongKham.Views.Receptionist
             string updatedGuardianName = updatedGuardianTxt.Text.Trim();
             string updatedEmail = updatedEmailTxt.Text.Trim();
 
-            try
-            {
-                bool result = await _patientService.UpdatePatientFromInputAsync(
-                    name: currentName,
-                    phone: currentPhoneNo,
-                    email: currentEmail,
-                    newPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
-                    newEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail,
-                    newGuardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName,
-                    newGuardianPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
-                    newGuardianEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail
-                );
+            //try
+            //{
+            //    //bool result = await _patientService.UpdatePatientAsync(
+            //    //    name: currentName,
+            //    //    phoneNumber: currentPhoneNo,
+            //    //    email: currentEmail
+            //        //newPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
+            //        //newEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail,
+            //        //newGuardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName,
+            //        //newGuardianPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
+            //        //newGuardianEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail
+            //    );
 
-                if (result)
-                {
-                    MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Không có thay đổi nào được thực hiện.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            //    if (result)
+            //    {
+            //        MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Không có thay đổi nào được thực hiện.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
     }
