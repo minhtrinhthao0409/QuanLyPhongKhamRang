@@ -322,7 +322,6 @@
             AdminQLTKUpdatebtn.TabIndex = 8;
             AdminQLTKUpdatebtn.Text = "Cập nhật";
             AdminQLTKUpdatebtn.UseVisualStyleBackColor = true;
-            AdminQLTKUpdatebtn.Click += AdminQLTKUpdatebtn_Click;
             // 
             // label7
             // 
@@ -406,6 +405,7 @@
             AdminQLDV.TabIndex = 3;
             AdminQLDV.Text = "QLDV";
             AdminQLDV.UseVisualStyleBackColor = true;
+            AdminQLDV.Click += AdminQLDV_Click;
             // 
             // AdminQbtnLDVRabtn
             // 

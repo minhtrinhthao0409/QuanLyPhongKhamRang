@@ -24,15 +24,7 @@ namespace QuanlyPhongKham.Services
 
         public async Task<List<MedicalService>> GetAllService()
         {
-            List<MedicalService> services = new List<MedicalService>();
-            foreach(var service in await _repository.GetAllService())
-            {
-                if(service.ServiceActive == 1)
-                {
-                    services.Add(service);
-                }
-            }
-            return services;
+           return await _repository.GetAllService();
         }
 
         public async Task<bool> AddService(string servicename, decimal serviceprice)

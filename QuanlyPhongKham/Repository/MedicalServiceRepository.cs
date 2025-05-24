@@ -45,7 +45,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("SELECT * FROM Services", connection);
+                var cmd = new SQLiteCommand("SELECT ServicesID, ServicesName, CurrentPrice from \"services\"", connection);
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
                     var services = new List<MedicalService>();

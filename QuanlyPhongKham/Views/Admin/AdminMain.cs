@@ -34,7 +34,7 @@ namespace QuanlyPhongKham.Views.Admin
             AdminQLTKDeletebtn.Enabled = false;
             AdminQLDVbtn.Enabled = false;
             AdminQLDVDelbtn.Enabled = false;
-            AdminQLDVNameTb.Enabled = false;
+            //  AdminQLDVNameTb.Enabled = false;
         }
         private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -112,10 +112,7 @@ namespace QuanlyPhongKham.Views.Admin
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void AdminQLTKUpdatebtn_Click(object sender, EventArgs e)
-        {
 
-        }
         private void tabPage2_Click(object sender, EventArgs e)
         {
             AdminQLTKUserNametbx.Text = null;
@@ -142,6 +139,7 @@ namespace QuanlyPhongKham.Views.Admin
                 AdminQLDVPricetbx.Text = selectedRow.Cells["CurrentPrice"].Value.ToString();
                 AdminQLDVbtn.Enabled = true;
                 AdminQLDVDelbtn.Enabled = true;
+                AdminQLDVNameTb.Enabled = false;
             }
         }
         private async void AdminQLDVAddButton_Click(object sender, EventArgs e)
@@ -183,10 +181,18 @@ namespace QuanlyPhongKham.Views.Admin
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void AdminQLDVDelbtn_Click(object sender, EventArgs e)
+        private async void AdminQLDVDelbtn_Click(object sender, EventArgs e)
         {
             string serviceName = AdminQLDVNameTb.Text.Trim();
-            _medicalServiceController.DeleteService(serviceName);
+            if (await _medicalServiceController.DeleteService(serviceName))
+            {
+                MessageBox.Show("Xóa dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadServiceDataasync();
+            }
+            else
+            {
+                MessageBox.Show("Xóa dịch vụ không thành công.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AdminQLDVbtn_Click(object sender, EventArgs e)
@@ -225,5 +231,10 @@ namespace QuanlyPhongKham.Views.Admin
         #endregion QLDV
 
 
+        private void AdminQLDV_Click(object sender, EventArgs e)
+        {
+            AdminQLDVNameTb.Text = null;
+            AdminQLDVPricetbx.Text = null;
+        }
     }
 }
