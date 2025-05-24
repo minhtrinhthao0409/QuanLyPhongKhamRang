@@ -25,6 +25,7 @@ namespace QuanlyPhongKham.Views.Admin
             InitializeComponent();
             this.Admin = user;
             this._userControllers = new UserControllers();
+            this._medicalServiceController = new MedicalServiceController();
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
             LoadUserDataAsync();
@@ -137,8 +138,8 @@ namespace QuanlyPhongKham.Views.Admin
             if (e.RowIndex >= 0)
             {
                 var selectedRow = AdminQLDVdata.Rows[e.RowIndex];
-                AdminQLDVNameTb.Text = selectedRow.Cells["ServiceName"].Value.ToString();
-                AdminQLDVPricetbx.Text = selectedRow.Cells["Price"].Value.ToString();
+                AdminQLDVNameTb.Text = selectedRow.Cells["ServicesName"].Value.ToString();
+                AdminQLDVPricetbx.Text = selectedRow.Cells["CurrentPrice"].Value.ToString();
                 AdminQLDVbtn.Enabled = true;
                 AdminQLDVDelbtn.Enabled = true;
             }
