@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             GhiBenhAn = new System.Windows.Forms.TabPage();
             txtTreatmentPlan = new System.Windows.Forms.TextBox();
             label10 = new System.Windows.Forms.Label();
@@ -78,6 +78,7 @@
             dtpNgayIn = new System.Windows.Forms.DateTimePicker();
             label5 = new System.Windows.Forms.Label();
             groupBox1 = new System.Windows.Forms.GroupBox();
+            txtPatientName = new System.Windows.Forms.TextBox();
             cboPatientId = new System.Windows.Forms.ComboBox();
             label6 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -86,7 +87,6 @@
             btnCalculateTotal = new System.Windows.Forms.Button();
             lblInvoiceTotalAmount = new System.Windows.Forms.Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
-            txtPatientName = new System.Windows.Forms.TextBox();
             GhiBenhAn.SuspendLayout();
             LenLichHen.SuspendLayout();
             XemLichHen.SuspendLayout();
@@ -175,11 +175,11 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(123, 69);
+            label8.Location = new System.Drawing.Point(123, 74);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(100, 20);
+            label8.Size = new System.Drawing.Size(112, 20);
             label8.TabIndex = 17;
-            label8.Text = "ID bệnh nhân:";
+            label8.Text = "SĐT bệnh nhân:";
             // 
             // dtpRecordDate
             // 
@@ -296,11 +296,11 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(159, 73);
+            label7.Location = new System.Drawing.Point(159, 68);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(100, 20);
+            label7.Size = new System.Drawing.Size(112, 20);
             label7.TabIndex = 6;
-            label7.Text = "ID bệnh nhân:";
+            label7.Text = "SĐT bệnh nhân:";
             // 
             // btnSchedule
             // 
@@ -324,7 +324,7 @@
             // lbEndTime
             // 
             lbEndTime.AutoSize = true;
-            lbEndTime.Location = new System.Drawing.Point(159, 254);
+            lbEndTime.Location = new System.Drawing.Point(159, 257);
             lbEndTime.Name = "lbEndTime";
             lbEndTime.Size = new System.Drawing.Size(91, 20);
             lbEndTime.TabIndex = 10;
@@ -333,7 +333,7 @@
             // lbStartTime
             // 
             lbStartTime.AutoSize = true;
-            lbStartTime.Location = new System.Drawing.Point(159, 211);
+            lbStartTime.Location = new System.Drawing.Point(159, 214);
             lbStartTime.Name = "lbStartTime";
             lbStartTime.Size = new System.Drawing.Size(90, 20);
             lbStartTime.TabIndex = 9;
@@ -342,7 +342,7 @@
             // lbdtpAppointmentDate
             // 
             lbdtpAppointmentDate.AutoSize = true;
-            lbdtpAppointmentDate.Location = new System.Drawing.Point(159, 164);
+            lbdtpAppointmentDate.Location = new System.Drawing.Point(159, 169);
             lbdtpAppointmentDate.Name = "lbdtpAppointmentDate";
             lbdtpAppointmentDate.Size = new System.Drawing.Size(75, 20);
             lbdtpAppointmentDate.TabIndex = 8;
@@ -351,7 +351,7 @@
             // lbPatientID
             // 
             lbPatientID.AutoSize = true;
-            lbPatientID.Location = new System.Drawing.Point(159, 124);
+            lbPatientID.Location = new System.Drawing.Point(159, 119);
             lbPatientID.Name = "lbPatientID";
             lbPatientID.Size = new System.Drawing.Size(108, 20);
             lbPatientID.TabIndex = 7;
@@ -383,14 +383,14 @@
             // dgvAppointments
             // 
             dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvAppointments.ColumnHeadersHeight = 29;
             dgvAppointments.Location = new System.Drawing.Point(3, 3);
             dgvAppointments.Name = "dgvAppointments";
@@ -478,39 +478,39 @@
             // 
             // dgvChiTiet
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dgvChiTiet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dgvChiTiet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dgvChiTiet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvChiTiet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChiTiet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { TenDichVu, SoLuong, Gia });
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dgvChiTiet.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dgvChiTiet.DefaultCellStyle = dataGridViewCellStyle9;
             dgvChiTiet.Location = new System.Drawing.Point(0, 195);
             dgvChiTiet.Name = "dgvChiTiet";
             dgvChiTiet.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgvChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dgvChiTiet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvChiTiet.Size = new System.Drawing.Size(770, 188);
             dgvChiTiet.TabIndex = 10;
@@ -588,6 +588,13 @@
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             // 
+            // txtPatientName
+            // 
+            txtPatientName.Location = new System.Drawing.Point(239, 54);
+            txtPatientName.Name = "txtPatientName";
+            txtPatientName.Size = new System.Drawing.Size(340, 27);
+            txtPatientName.TabIndex = 18;
+            // 
             // cboPatientId
             // 
             cboPatientId.FormattingEnabled = true;
@@ -658,13 +665,6 @@
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
-            // 
-            // txtPatientName
-            // 
-            txtPatientName.Location = new System.Drawing.Point(239, 54);
-            txtPatientName.Name = "txtPatientName";
-            txtPatientName.Size = new System.Drawing.Size(340, 27);
-            txtPatientName.TabIndex = 18;
             // 
             // BacSi
             // 

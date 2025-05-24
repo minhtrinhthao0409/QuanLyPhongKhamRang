@@ -175,18 +175,18 @@ namespace QuanlyPhongKham.Repository
             try
             {
                 using var connection = await GetConnectionAsync();
-                string query = "SELECT PatientId, FullName FROM Patients";
+                string query = "SELECT PhoneNumber, FullName FROM Patients";
 
                 using var cmd = new SQLiteCommand(query, connection);
                 using var reader = await cmd.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())
                 {
-                    if (reader["PatientId"] != DBNull.Value && reader["FullName"] != DBNull.Value)
+                    if (reader["PhoneNumber"] != DBNull.Value && reader["FullName"] != DBNull.Value)
                     {
                         patients.Add(new Patient
                         {
-                            PatientId = reader["PatientId"].ToString(),
+                            PhoneNumber = reader["PhoneNumber"].ToString(),
                             Name = reader["FullName"].ToString()
                         });
                     }

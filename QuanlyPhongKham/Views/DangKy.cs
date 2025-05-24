@@ -23,12 +23,6 @@ namespace QuanlyPhongKham
 
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private async void btnDangKy_Click(object sender, EventArgs e)
         {
             /*
@@ -103,7 +97,12 @@ namespace QuanlyPhongKham
                 if (success)
                 {
                     MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    this.Hide();
+                    using (Login login = new Login())
+                    {
+                        login.ShowDialog();
+                    }
+                    this.Show();
                 }
                 else
                 {
@@ -116,22 +115,23 @@ namespace QuanlyPhongKham
             }
         }
 
-        private void DangKy_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void DangKy_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 btnDangKy.PerformClick();
             }
+             
         }
 
         private void btnQuaylai_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            using (Login login = new Login()) 
+            {
+                login.ShowDialog();
+            }
+            this.Show();
         }
 
         private void DangKy_FormClosing(object sender, FormClosingEventArgs e)
