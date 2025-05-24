@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Repository
@@ -19,14 +20,14 @@ namespace QuanlyPhongKham.Repository
                 using var cmd = new SQLiteCommand(@"
                     SELECT COUNT(*) FROM Appointments
                     WHERE (DoctorId = @DoctorId OR PatientId = @PatientId)
-                    AND AppointmentDate = @Date
-                    AND (StartTime < @EndTime AND EndTime > @StartTime)", conn);
+                    AND AppointmentDate = @Date AND (StartTime < @EndTime AND EndTime > @StartTime)
+                    OR (PatientId = @PatientId AND AppointmentDate = @Date) ", conn);
 
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
-                cmd.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("@StartTime", start.ToString(@"hh\:mm"));
-                cmd.Parameters.AddWithValue("@EndTime", end.ToString(@"hh\:mm"));
+                cmd.Parameters.AddWithValue("@Date", date.Date);
+                cmd.Parameters.AddWithValue("@StartTime", start);
+                cmd.Parameters.AddWithValue("@EndTime", end);
 
                 long count = Convert.ToInt64(await cmd.ExecuteScalarAsync());
                 return count > 0;
@@ -158,24 +159,50 @@ namespace QuanlyPhongKham.Repository
 
                 Guid doctorId;
                 Guid patientId;
-                
 
-                string getDoctorIdQuery = "SELECT Id FROM Users WHERE FullName = @FullName AND Email = @Email AND Role = @Role";
-                await using (var getDoctorCmd = new SQLiteCommand(getDoctorIdQuery, conn, transaction))
+                string getDoctorsQuery = "SELECT Id, Email FROM Users WHERE FullName = @FullName AND Role = @Role";
+                List<(Guid Id, string Email)> matchedDoctors = new();
+
+                await using (var getDoctorsCmd = new SQLiteCommand(getDoctorsQuery, conn, transaction))
                 {
                     int role = 2;
-                    getDoctorCmd.Parameters.AddWithValue("@FullName", doctorName);
-                    getDoctorCmd.Parameters.AddWithValue("@Email", doctorEmail);
-                    getDoctorCmd.Parameters.AddWithValue("@Role", role);
-                    var result = await getDoctorCmd.ExecuteScalarAsync();
+                    getDoctorsCmd.Parameters.AddWithValue("@FullName", doctorName);
+                    getDoctorsCmd.Parameters.AddWithValue("@Role", role);
 
-                    if (result == null)
+                    using var reader = await getDoctorsCmd.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
-                        throw new Exception("Thông tin bác sĩ không chính xác. Vui lòng kiểm tra lại thông tin bác sĩ.");
+                        matchedDoctors.Add((
+                            Guid.Parse(reader["Id"].ToString()),
+                            reader["Email"].ToString()
+                        ));
+                    }
+                }
+
+                if (matchedDoctors.Count == 0)
+                {
+                    throw new Exception("Không tìm thấy bác sĩ có tên này.");
+                }
+                else if (matchedDoctors.Count == 1)
+                {
+                    doctorId = matchedDoctors[0].Id;
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(doctorEmail))
+                    {
+                        throw new Exception("Có nhiều bác sĩ trùng tên. Vui lòng nhập thêm email để xác định.");
                     }
 
-                    doctorId = Guid.Parse(result.ToString());
+                    var matched = matchedDoctors.FirstOrDefault(d => d.Email.Equals(doctorEmail, StringComparison.OrdinalIgnoreCase));
+                    if (matched == default)
+                    {
+                        throw new Exception("Không tìm thấy bác sĩ trùng tên và email.");
+                    }
+
+                    doctorId = matched.Id;
                 }
+
 
                 string getPatientIdQuery = "SELECT PatientId FROM Patients WHERE FullName = @FullName AND PhoneNumber = @PhoneNumber";
                 await using (var getPatientCmd = new SQLiteCommand(getPatientIdQuery, conn, transaction))
@@ -191,6 +218,11 @@ namespace QuanlyPhongKham.Repository
                     }
                     patientId = Guid.Parse(result.ToString());
 
+                    if (await HasScheduleConflictAsync(doctorId.ToString(), patientId.ToString(), date, start, end))
+                    {
+                        throw new Exception("Đã có xung đột lịch hẹn cho bác sĩ hoặc bệnh nhân. Vui lòng chọn thời gian khác.");
+                    }
+
 
                     string insertQuery = @"
                                             INSERT INTO Appointments (AppointmentId, DoctorId, PatientId, AppointmentDate, StartTime, EndTime)
@@ -200,7 +232,7 @@ namespace QuanlyPhongKham.Repository
                     cmd.Parameters.AddWithValue("@AppointmentId", Guid.NewGuid().ToString());
                     cmd.Parameters.AddWithValue("@DoctorId", doctorId.ToString());
                     cmd.Parameters.AddWithValue("@PatientId", patientId.ToString());
-                    cmd.Parameters.AddWithValue("@AppointmentDate", date);
+                    cmd.Parameters.AddWithValue("@AppointmentDate", date.Date);
                     cmd.Parameters.AddWithValue("@StartTime", start);
                     cmd.Parameters.AddWithValue("@EndTime", end);
 
