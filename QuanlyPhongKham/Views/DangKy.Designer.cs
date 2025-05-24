@@ -98,7 +98,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new System.Drawing.Size(275, 29);
             txtEmail.TabIndex = 5;
-            txtEmail.TextChanged += textBox4_TextChanged;
             // 
             // label1
             // 

@@ -227,14 +227,15 @@ namespace QuanlyPhongKham.Views.Admin
         {
             AdminQLDVdata.DataSource = _medicalServiceController.SortServiceByCount().Result;
         }
-
-        #endregion QLDV
-
-
         private void AdminQLDV_Click(object sender, EventArgs e)
         {
             AdminQLDVNameTb.Text = null;
             AdminQLDVPricetbx.Text = null;
+            AdminQLDVNameTb.Enabled = true;
         }
+        #endregion QLDV
+
+
+
     }
 }

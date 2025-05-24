@@ -64,8 +64,8 @@ namespace QuanlyPhongKham.Views
                 cbPatientName.DataSource = null;
 
                 cbPatientId.DataSource = patients;
-                cbPatientId.DisplayMember = "PatientId";
-                cbPatientId.ValueMember = "PatientId";
+                cbPatientId.DisplayMember = "PhoneNumber";
+                cbPatientId.ValueMember = "PhoneNumber";
                 cbPatientId.Refresh();
 
                 cbPatientName.DataSource = patients.ToList();
@@ -188,8 +188,8 @@ namespace QuanlyPhongKham.Views
             var patients = await patientController.GetAllPatientsAsync();
 
             cbIdPatientRecord.DataSource = patients;
-            cbIdPatientRecord.DisplayMember = "PatientId";
-            cbIdPatientRecord.ValueMember = "PatientId";
+            cbIdPatientRecord.DisplayMember = "PhoneNumber";
+            cbIdPatientRecord.ValueMember = "PhoneNumber";
 
             cbNamePatientRecord.DataSource = new List<Patient>(patients);
             cbNamePatientRecord.DisplayMember = "Name";
@@ -423,8 +423,8 @@ namespace QuanlyPhongKham.Views
             {
                 allPatients = await patientController.GetAllPatientsAsync();
                 cboPatientId.DataSource = allPatients;
-                cboPatientId.DisplayMember = "PatientId";
-                cboPatientId.ValueMember = "PatientId";
+                cboPatientId.DisplayMember = "PhoneNumber";
+                cboPatientId.ValueMember = "PhoneNumber";
             }
             catch (Exception ex)
             {
