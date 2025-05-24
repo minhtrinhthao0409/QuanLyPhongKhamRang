@@ -5,6 +5,7 @@ using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data.SQLite;
+using QuanlyPhongKham.config;
 
 namespace QuanlyPhongKham
 {
@@ -75,6 +76,11 @@ namespace QuanlyPhongKham
             string fullName = txtHoten.Text.Trim();
             string phone = txtSDT.Text.Trim();
 
+            ValidInput validCheck = new ValidInput();
+            bool isValidPassword = validCheck.IsStrongPassword(password);
+            bool isValidPhoneNo = validCheck.IsValidPhoneNumber(phone);
+            bool isValidEmail = validCheck.IsValidEmail(email);
+
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) ||
                 string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(fullName) ||
                 (!rbAdmin.Checked && !rbDoctor.Checked && !rbCashier.Checked))
@@ -89,8 +95,35 @@ namespace QuanlyPhongKham
                 return;
             }
 
-            int role = rbAdmin.Checked ? 1 : (rbDoctor.Checked ? 2 : 3);
+            if (!isValidPassword)
+            {
+                MessageBox.Show("Vui lòng đặt mật khẩu có nhiều hơn 8 ký tự, bao gồm cả chữ hoa, chữ thường và ký tự đặc biệt");
+                return;
+            }
 
+            if (!isValidPhoneNo)
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ. XIn vui lòng nhập lại");
+                return;
+            }
+
+            if (!isValidEmail)
+            {
+                MessageBox.Show("Email không hợp lệ. XIn vui lòng nhập lại");
+                return;
+            }
+
+
+            int role = rbAdmin.Checked ? 1 : (rbDoctor.Checked ? 2 : 3);
+            
+            bool checkUsername = await userController.CheckUsernameExists(username);
+
+            if (checkUsername)
+            {
+                MessageBox.Show("Tên người dùng đã tồn tại. Vui lòng chọn tên khác.");
+                return;
+            }
+            
             try
             {
                 bool success = await userController.CreateAccount(username, password, email, fullName, phone, role);
