@@ -64,8 +64,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 this.Hide();
                 currentForm.FormClosed += (s, args) =>
                 {
-                    this.Show();
-                    currentForm = null;
+                    Application.Exit();
                 };
                 currentForm.Show();
             }
