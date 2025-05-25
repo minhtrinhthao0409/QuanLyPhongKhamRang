@@ -1,0 +1,18 @@
+﻿ALTER TABLE services
+ADD ServiceActive INT NOT NULL DEFAULT 1;
+
+CREATE TRIGGER update_id_on_service_inactive
+BEFORE UPDATE OF ServiceActive ON services
+FOR EACH ROW
+WHEN NEW.ServiceActive = 0 AND OLD.ServiceActive != 0
+BEGIN
+    UPDATE services SET ID = OLD.ID + 1000000 WHERE rowid = OLD.rowid;
+END;
+
+CREATE TRIGGER update_id_on_user_inactive
+BEFORE UPDATE OF Active ON users
+FOR EACH ROW
+WHEN NEW.Active = 0 AND OLD.Active != 0
+BEGIN
+    UPDATE users SET Id = OLD.Id + 1000000 WHERE rowid = OLD.rowid;
+END;

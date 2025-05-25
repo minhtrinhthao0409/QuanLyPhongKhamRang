@@ -37,12 +37,14 @@
             AdminMainIDlbl = new System.Windows.Forms.Label();
             AdminMainNamelbl = new System.Windows.Forms.Label();
             AdminBCTC = new System.Windows.Forms.TabPage();
+            AdminBCTCRevtbx = new System.Windows.Forms.TextBox();
+            label10 = new System.Windows.Forms.Label();
             AdminBCTCXuatbtn = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             AdminBCTCFromlbl = new System.Windows.Forms.Label();
-            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            AdminBCTCFToTP = new System.Windows.Forms.DateTimePicker();
+            AdminBCTCFromTP = new System.Windows.Forms.DateTimePicker();
+            AdminBCTCdgv = new System.Windows.Forms.DataGridView();
             tabPage2 = new System.Windows.Forms.TabPage();
             AdminQLTKRolecb = new System.Windows.Forms.ComboBox();
             AdminQLTKPhonetbx = new System.Windows.Forms.TextBox();
@@ -73,7 +75,7 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             AdminBCTC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).BeginInit();
             AdminQLDV.SuspendLayout();
@@ -158,12 +160,14 @@
             // 
             // AdminBCTC
             // 
+            AdminBCTC.Controls.Add(AdminBCTCRevtbx);
+            AdminBCTC.Controls.Add(label10);
             AdminBCTC.Controls.Add(AdminBCTCXuatbtn);
             AdminBCTC.Controls.Add(label1);
             AdminBCTC.Controls.Add(AdminBCTCFromlbl);
-            AdminBCTC.Controls.Add(dateTimePicker2);
-            AdminBCTC.Controls.Add(dateTimePicker1);
-            AdminBCTC.Controls.Add(dataGridView1);
+            AdminBCTC.Controls.Add(AdminBCTCFToTP);
+            AdminBCTC.Controls.Add(AdminBCTCFromTP);
+            AdminBCTC.Controls.Add(AdminBCTCdgv);
             AdminBCTC.Location = new System.Drawing.Point(4, 29);
             AdminBCTC.Name = "AdminBCTC";
             AdminBCTC.Padding = new System.Windows.Forms.Padding(3);
@@ -172,14 +176,31 @@
             AdminBCTC.Text = "BCTC";
             AdminBCTC.UseVisualStyleBackColor = true;
             // 
+            // AdminBCTCRevtbx
+            // 
+            AdminBCTCRevtbx.Location = new System.Drawing.Point(688, 20);
+            AdminBCTCRevtbx.Name = "AdminBCTCRevtbx";
+            AdminBCTCRevtbx.Size = new System.Drawing.Size(155, 27);
+            AdminBCTCRevtbx.TabIndex = 10;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(563, 27);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(119, 20);
+            label10.TabIndex = 9;
+            label10.Text = "Tổng Doanh Thu";
+            // 
             // AdminBCTCXuatbtn
             // 
-            AdminBCTCXuatbtn.Location = new System.Drawing.Point(726, 71);
+            AdminBCTCXuatbtn.Location = new System.Drawing.Point(731, 71);
             AdminBCTCXuatbtn.Name = "AdminBCTCXuatbtn";
             AdminBCTCXuatbtn.Size = new System.Drawing.Size(112, 29);
             AdminBCTCXuatbtn.TabIndex = 8;
-            AdminBCTCXuatbtn.Text = "Xuất báo cáo";
+            AdminBCTCXuatbtn.Text = "Tính tổng";
             AdminBCTCXuatbtn.UseVisualStyleBackColor = true;
+            AdminBCTCXuatbtn.Click += AdminBCTCXuatbtn_ClickAsync;
             // 
             // label1
             // 
@@ -201,28 +222,30 @@
             AdminBCTCFromlbl.TabIndex = 6;
             AdminBCTCFromlbl.Text = "Từ ngày";
             // 
-            // dateTimePicker2
+            // AdminBCTCFToTP
             // 
-            dateTimePicker2.Location = new System.Drawing.Point(129, 67);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new System.Drawing.Size(250, 27);
-            dateTimePicker2.TabIndex = 5;
+            AdminBCTCFToTP.Location = new System.Drawing.Point(129, 67);
+            AdminBCTCFToTP.Name = "AdminBCTCFToTP";
+            AdminBCTCFToTP.Size = new System.Drawing.Size(250, 27);
+            AdminBCTCFToTP.TabIndex = 5;
+            AdminBCTCFToTP.ValueChanged += AdminBCTCFToTP_ValueChanged;
             // 
-            // dateTimePicker1
+            // AdminBCTCFromTP
             // 
-            dateTimePicker1.Location = new System.Drawing.Point(129, 27);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(250, 27);
-            dateTimePicker1.TabIndex = 4;
+            AdminBCTCFromTP.Location = new System.Drawing.Point(129, 27);
+            AdminBCTCFromTP.Name = "AdminBCTCFromTP";
+            AdminBCTCFromTP.Size = new System.Drawing.Size(250, 27);
+            AdminBCTCFromTP.TabIndex = 4;
+            AdminBCTCFromTP.ValueChanged += AdminBCTCFromTP_ValueChanged;
             // 
-            // dataGridView1
+            // AdminBCTCdgv
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(8, 125);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new System.Drawing.Size(853, 532);
-            dataGridView1.TabIndex = 0;
+            AdminBCTCdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdminBCTCdgv.Location = new System.Drawing.Point(8, 125);
+            AdminBCTCdgv.Name = "AdminBCTCdgv";
+            AdminBCTCdgv.RowHeadersWidth = 51;
+            AdminBCTCdgv.Size = new System.Drawing.Size(853, 532);
+            AdminBCTCdgv.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -313,6 +336,7 @@
             AdminQLTKDeletebtn.TabIndex = 9;
             AdminQLTKDeletebtn.Text = "Xóa";
             AdminQLTKDeletebtn.UseVisualStyleBackColor = true;
+            AdminQLTKDeletebtn.Click += AdminQLTKDeletebtn_Click;
             // 
             // AdminQLTKUpdatebtn
             // 
@@ -322,6 +346,7 @@
             AdminQLTKUpdatebtn.TabIndex = 8;
             AdminQLTKUpdatebtn.Text = "Cập nhật";
             AdminQLTKUpdatebtn.UseVisualStyleBackColor = true;
+            AdminQLTKUpdatebtn.Click += AdminQLTKUpdatebtn_Click;
             // 
             // label7
             // 
@@ -511,7 +536,7 @@
             tabPage1.PerformLayout();
             AdminBCTC.ResumeLayout(false);
             AdminBCTC.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).EndInit();
@@ -532,7 +557,7 @@
         private System.Windows.Forms.TextBox AdminIDtb;
         private System.Windows.Forms.TextBox AdminNametb;
         private System.Windows.Forms.Button AdminMainDXbtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView AdminBCTCdgv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label AdminBCTCFromlbl;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
@@ -565,5 +590,10 @@
         private System.Windows.Forms.TextBox AdminQLTKUserNametbx;
         private System.Windows.Forms.ComboBox AdminQLTKRolecb;
         private System.Windows.Forms.Button AdminQbtnLDVRabtn;
+        private System.Windows.Forms.DateTimePicker AdminBCTCFromTP;
+        private System.Windows.Forms.DateTimePicker AdminBCTCFToTP;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox AdminBCTCRevtbx;
     }
 }

@@ -46,5 +46,14 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _userService.CheckUsernameExists(username);
         }
+        public async Task<bool> UpdateUserAsync(string userName, string password, string fullName, string email, string phoneNumber)
+        {
+            return await _userService.UpdateUserAsync(userName, password, fullName, email, phoneNumber);
+        }
+
+        public async Task<bool> DeleteUserAsync(string userName)
+        {
+            return await _userService.DeleteUserAsync(userName);
+        }
     }
 }

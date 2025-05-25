@@ -46,6 +46,7 @@ namespace QuanlyPhongKham.Repository
             using (var connection = GetConnection())
             {
                 var cmd = new SQLiteCommand("SELECT ServicesID, ServicesName, CurrentPrice from \"services\"", connection);
+                //var cmd = new SQLiteCommand("Select ServicesId, ServicesName, CurrentPrice from Services where ServiceActive = 1", connection);
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
                     var services = new List<MedicalService>();
@@ -89,7 +90,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("UPDATE Services SET ServiceActive = 0 WHERE ServicesName = @name", connection);
+                var cmd = new SQLiteCommand("UPDATE services SET ServiceActive = 0 WHERE ServicesName = @name", connection);
                 // đã dùng trigger + 100000 cho update < 0
                 cmd.Parameters.AddWithValue("@name", serviceName);
                 return await cmd.ExecuteNonQueryAsync() > 0;
