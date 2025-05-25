@@ -18,7 +18,7 @@ namespace QuanlyPhongKham.Views.Receptionist
     {
         private User user;
         private Form currentForm = null;
-
+        private object selectedGender;
         private readonly PatientService _patientService;
 
 
@@ -81,7 +81,9 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string? guardianName = Guardian.Text.Trim();
                 string email = PatientEmail.Text.Trim();
                 DateTime dob = dateTimePicker1.Value.Date;
-                bool gender = listBox2.Text.Trim() == "Male";
+                
+                string selectedGender = cbGender.SelectedItem?.ToString()?.Trim() ?? "";
+                bool gender = selectedGender == "Male";
 
                 Guid patientId = Guid.NewGuid();
                 Guid? guardianId = null;
@@ -126,9 +128,9 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         private void PatientFrm_Load(object sender, EventArgs e)
         {
-            listBox2.Items.Clear();
-            listBox2.Items.Add("Male");
-            listBox2.Items.Add("Female");
+            //listBox2.Items.Clear();
+            //listBox2.Items.Add("Male");
+            //listBox2.Items.Add("Female");
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -229,6 +231,11 @@ namespace QuanlyPhongKham.Views.Receptionist
             //    MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
 
+        }
+
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedGender = cbGender.SelectedItem.ToString();
         }
     }
 }

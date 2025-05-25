@@ -31,13 +31,13 @@
             AppointmentTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             CrudPanel = new System.Windows.Forms.Panel();
+            cbDoctorEmail = new System.Windows.Forms.ComboBox();
+            cbDoctorName = new System.Windows.Forms.ComboBox();
             startTimeMask = new System.Windows.Forms.MaskedTextBox();
             endTimeMask = new System.Windows.Forms.MaskedTextBox();
             label3 = new System.Windows.Forms.Label();
             startTime = new System.Windows.Forms.Label();
-            DoctorEmailTxt = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
-            DoctorNameTxT = new System.Windows.Forms.TextBox();
             start_time_lbl = new System.Windows.Forms.Label();
             PatientPhoneNoTxt = new System.Windows.Forms.TextBox();
             startTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -100,13 +100,13 @@
             // 
             // CrudPanel
             // 
+            CrudPanel.Controls.Add(cbDoctorEmail);
+            CrudPanel.Controls.Add(cbDoctorName);
             CrudPanel.Controls.Add(startTimeMask);
             CrudPanel.Controls.Add(endTimeMask);
             CrudPanel.Controls.Add(label3);
             CrudPanel.Controls.Add(startTime);
-            CrudPanel.Controls.Add(DoctorEmailTxt);
             CrudPanel.Controls.Add(label2);
-            CrudPanel.Controls.Add(DoctorNameTxT);
             CrudPanel.Controls.Add(start_time_lbl);
             CrudPanel.Controls.Add(PatientPhoneNoTxt);
             CrudPanel.Controls.Add(startTimePicker);
@@ -121,6 +121,23 @@
             CrudPanel.Name = "CrudPanel";
             CrudPanel.Size = new System.Drawing.Size(797, 302);
             CrudPanel.TabIndex = 4;
+            // 
+            // cbDoctorEmail
+            // 
+            cbDoctorEmail.FormattingEnabled = true;
+            cbDoctorEmail.Location = new System.Drawing.Point(492, 54);
+            cbDoctorEmail.Name = "cbDoctorEmail";
+            cbDoctorEmail.Size = new System.Drawing.Size(211, 23);
+            cbDoctorEmail.TabIndex = 26;
+            cbDoctorEmail.SelectedIndexChanged += cbDoctorEmail_SelectedIndexChanged;
+            // 
+            // cbDoctorName
+            // 
+            cbDoctorName.FormattingEnabled = true;
+            cbDoctorName.Location = new System.Drawing.Point(138, 53);
+            cbDoctorName.Name = "cbDoctorName";
+            cbDoctorName.Size = new System.Drawing.Size(211, 23);
+            cbDoctorName.TabIndex = 25;
             // 
             // startTimeMask
             // 
@@ -162,13 +179,6 @@
             startTime.TabIndex = 22;
             startTime.Text = "Start Time";
             // 
-            // DoctorEmailTxt
-            // 
-            DoctorEmailTxt.Location = new System.Drawing.Point(492, 51);
-            DoctorEmailTxt.Name = "DoctorEmailTxt";
-            DoctorEmailTxt.Size = new System.Drawing.Size(211, 23);
-            DoctorEmailTxt.TabIndex = 1;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -178,13 +188,6 @@
             label2.Size = new System.Drawing.Size(88, 17);
             label2.TabIndex = 20;
             label2.Text = "Doctor Email";
-            // 
-            // DoctorNameTxT
-            // 
-            DoctorNameTxT.Location = new System.Drawing.Point(138, 48);
-            DoctorNameTxT.Name = "DoctorNameTxT";
-            DoctorNameTxT.Size = new System.Drawing.Size(211, 23);
-            DoctorNameTxT.TabIndex = 0;
             // 
             // start_time_lbl
             // 
@@ -523,9 +526,7 @@
         private System.Windows.Forms.TabControl AppointmentTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel CrudPanel;
-        private System.Windows.Forms.TextBox DoctorEmailTxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox DoctorNameTxT;
         private System.Windows.Forms.Label start_time_lbl;
         private System.Windows.Forms.TextBox PatientPhoneNoTxt;
         private System.Windows.Forms.DateTimePicker startTimePicker;
@@ -560,5 +561,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox endTimeMask;
         private System.Windows.Forms.MaskedTextBox startTimeMask;
+        private System.Windows.Forms.ComboBox cbDoctorName;
+        private System.Windows.Forms.ComboBox cbDoctorEmail;
     }
 }

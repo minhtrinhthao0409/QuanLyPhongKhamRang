@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Controllers;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Repository;
 using QuanlyPhongKham.Services;
@@ -12,24 +13,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using User = QuanlyPhongKham.Models.User;
 
 namespace QuanlyPhongKham.Views.Receptionist
 {
     public partial class AppointmentFrm : Form
     {
-        private User user;
+        private Models.User user;
+        private List<User> doctors;
         private Form currentForm = null;
 
         private readonly AppointmentRepository _appointmentRepo;
         private AppointmentController _appointmentControllers;
-        private readonly UserRepository _userRepo = new();
+        private UserControllers _userController;
 
         public AppointmentFrm(User user)
         {
             this.user = user;
             InitializeComponent();
             _appointmentControllers = new AppointmentController();
+            _userController = new UserControllers();
 
 
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -40,8 +43,16 @@ namespace QuanlyPhongKham.Views.Receptionist
             Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
+            cbDoctorName.SelectedIndexChanged += cbDoctorName_SelectedIndexChanged;
+            cbDoctorEmail.SelectedIndexChanged += cbDoctorEmail_SelectedIndexChanged;
+
+
+            //LoadDoctorNameComboBox();
+            this.Load += AppointmentFrm_Load;
 
         }
+
+
 
         private void menulbl_click(object sender, EventArgs e)
         {
@@ -73,6 +84,31 @@ namespace QuanlyPhongKham.Views.Receptionist
             }
 
         }
+        private async void LoadDoctorNameComboBox()
+        {
+
+
+            var doctorList = doctors
+                .Where(u => u.Role == UserRole.Doctor)
+                .ToList();
+
+            cbDoctorName.DataSource = null;
+            cbDoctorName.Items.Clear();
+
+            cbDoctorName.DisplayMember = "FullName";
+            cbDoctorName.ValueMember = "Id";
+            cbDoctorName.DataSource = doctorList;
+
+            cbDoctorEmail.DataSource = null;
+            cbDoctorEmail.Items.Clear();
+
+            cbDoctorEmail.DisplayMember = "Email";
+            cbDoctorEmail.ValueMember = "Id";
+            cbDoctorEmail.DataSource = doctorList;
+        }
+
+
+
 
         private async void Searchbtn_Click(object sender, EventArgs e)
         {
@@ -85,7 +121,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             {
                 List<Appointment> result = await _appointmentControllers.GetDoctorAppointmentsAsync_v2(startDate, endDate, doctorName, patientPhoneNo);
 
-                
+
                 SearchAppointmentGridView.DataSource = result;
 
 
@@ -107,12 +143,22 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string patientName = PatientNameTxt.Text.Trim();
                 string patientPhoneNo = PatientPhoneNoTxt.Text.Trim();
 
-                string doctorName = DoctorNameTxT.Text.Trim();
-                string doctorEmail = DoctorEmailTxt.Text.Trim();
+                string doctorName = cbDoctorName.SelectedValue.ToString();
+                string doctorEmail = cbDoctorEmail.SelectedValue.ToString();
 
                 DateTime date = startTimePicker.Value.Date;
                 TimeSpan startTime = TimeSpan.Parse(startTimeMask.Text.Trim());
                 TimeSpan endTime = TimeSpan.Parse(endTimeMask.Text.Trim());
+
+                if (cbDoctorName.SelectedItem is User selectedDoctor)
+                {
+                    doctorName = selectedDoctor.FullName;   
+                           
+                }
+                if (cbDoctorEmail.SelectedItem is User selectedEmail)
+                {
+                    doctorEmail = selectedEmail.Email; 
+                }
 
 
                 bool result = await _appointmentControllers.AddAppointmentAsync_v2(doctorName, patientName, doctorEmail, patientPhoneNo, date, startTime, endTime);
@@ -137,6 +183,58 @@ namespace QuanlyPhongKham.Views.Receptionist
             }
 
         }
+
+        private void cbDoctorName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDoctorName.SelectedValue == null || doctors == null) return;
+
+            string selectedName = cbDoctorName.SelectedValue.ToString();
+
+            var selectedDoctor = doctors.FirstOrDefault(p => p.FullName == selectedName && p.Role == UserRole.Doctor);
+
+            if (selectedDoctor != null)
+            {
+                cbDoctorName.SelectedValue = selectedDoctor.FullName;
+            }
+        }
+
+        private async void tabPage1_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private async void AppointmentFrm_Load(object sender, EventArgs e)
+        {
+
+            doctors = await _userController.GetAllUser();
+
+
+            if (doctors == null || doctors.Count == 0)
+            {
+                MessageBox.Show("⚠ Không có dữ liệu người dùng.");
+                return;
+            }
+
+            LoadDoctorNameComboBox();
+
+        }
+
+        private void cbDoctorEmail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDoctorEmail.SelectedValue == null || doctors == null) return;
+
+            string email = cbDoctorEmail.SelectedValue.ToString();
+            string doctorName = cbDoctorName.SelectedValue.ToString();
+
+            var selectedEmail = doctors.FirstOrDefault(p => p.Email == email && p.Role == UserRole.Doctor && p.FullName == doctorName);
+
+            if (selectedEmail != null)
+            {
+                cbDoctorName.SelectedValue = selectedEmail.Email;
+            }
+        }
     }
- }
+}
+
 

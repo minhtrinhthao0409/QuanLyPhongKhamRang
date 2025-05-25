@@ -51,11 +51,11 @@
             tabPage2 = new System.Windows.Forms.TabPage();
             dataGridView2 = new System.Windows.Forms.DataGridView();
             panel1 = new System.Windows.Forms.Panel();
+            cbGender = new System.Windows.Forms.ComboBox();
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             Doblbl = new System.Windows.Forms.Label();
             Guardian = new System.Windows.Forms.TextBox();
             Guardianlbl = new System.Windows.Forms.Label();
-            listBox2 = new System.Windows.Forms.ListBox();
             label3 = new System.Windows.Forms.Label();
             PatientEmail = new System.Windows.Forms.TextBox();
             label4 = new System.Windows.Forms.Label();
@@ -349,11 +349,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(cbGender);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(Doblbl);
             panel1.Controls.Add(Guardian);
             panel1.Controls.Add(Guardianlbl);
-            panel1.Controls.Add(listBox2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(PatientEmail);
             panel1.Controls.Add(label4);
@@ -369,6 +369,16 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(796, 296);
             panel1.TabIndex = 4;
+            // 
+            // cbGender
+            // 
+            cbGender.FormattingEnabled = true;
+            cbGender.Items.AddRange(new object[] { "Male", "Female" });
+            cbGender.Location = new System.Drawing.Point(466, 91);
+            cbGender.Name = "cbGender";
+            cbGender.Size = new System.Drawing.Size(51, 23);
+            cbGender.TabIndex = 27;
+            cbGender.SelectedIndexChanged += cbGender_SelectedIndexChanged;
             // 
             // dateTimePicker1
             // 
@@ -403,17 +413,6 @@
             Guardianlbl.Size = new System.Drawing.Size(64, 17);
             Guardianlbl.TabIndex = 23;
             Guardianlbl.Text = "Guardian";
-            // 
-            // listBox2
-            // 
-            listBox2.AllowDrop = true;
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Items.AddRange(new object[] { "Male", "Female" });
-            listBox2.Location = new System.Drawing.Point(466, 92);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new System.Drawing.Size(54, 19);
-            listBox2.TabIndex = 22;
             // 
             // label3
             // 
@@ -832,7 +831,6 @@
         private System.Windows.Forms.Label Doblbl;
         private System.Windows.Forms.TextBox Guardian;
         private System.Windows.Forms.Label Guardianlbl;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox PatientEmail;
         private System.Windows.Forms.Label label4;
@@ -870,5 +868,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button ResetInfoBtn;
+        private System.Windows.Forms.ComboBox cbGender;
     }
 }
