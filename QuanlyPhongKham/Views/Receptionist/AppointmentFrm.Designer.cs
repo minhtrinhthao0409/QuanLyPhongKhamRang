@@ -46,7 +46,6 @@
             PatientNameTxt = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             CrudAppointment = new System.Windows.Forms.Label();
-            UpdateBtn = new System.Windows.Forms.Button();
             AddScheduleBtn = new System.Windows.Forms.Button();
             doctorlbl = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
@@ -116,20 +115,19 @@
             CrudPanel.Controls.Add(PatientNameTxt);
             CrudPanel.Controls.Add(label1);
             CrudPanel.Controls.Add(CrudAppointment);
-            CrudPanel.Controls.Add(UpdateBtn);
             CrudPanel.Controls.Add(AddScheduleBtn);
             CrudPanel.Controls.Add(doctorlbl);
             CrudPanel.Location = new System.Drawing.Point(0, 0);
             CrudPanel.Name = "CrudPanel";
-            CrudPanel.Size = new System.Drawing.Size(797, 302);
+            CrudPanel.Size = new System.Drawing.Size(797, 290);
             CrudPanel.TabIndex = 4;
             // 
             // searchPatientbtn
             // 
             searchPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            searchPatientbtn.Location = new System.Drawing.Point(138, 210);
+            searchPatientbtn.Location = new System.Drawing.Point(204, 118);
             searchPatientbtn.Name = "searchPatientbtn";
-            searchPatientbtn.Size = new System.Drawing.Size(145, 50);
+            searchPatientbtn.Size = new System.Drawing.Size(145, 24);
             searchPatientbtn.TabIndex = 27;
             searchPatientbtn.Text = "Search Patient Info";
             searchPatientbtn.UseVisualStyleBackColor = true;
@@ -155,7 +153,7 @@
             // 
             // startTimeMask
             // 
-            startTimeMask.Location = new System.Drawing.Point(492, 148);
+            startTimeMask.Location = new System.Drawing.Point(492, 168);
             startTimeMask.Mask = "00:00";
             startTimeMask.Name = "startTimeMask";
             startTimeMask.Size = new System.Drawing.Size(49, 23);
@@ -165,7 +163,7 @@
             // 
             // endTimeMask
             // 
-            endTimeMask.Location = new System.Drawing.Point(654, 146);
+            endTimeMask.Location = new System.Drawing.Point(654, 166);
             endTimeMask.Mask = "00:00";
             endTimeMask.Name = "endTimeMask";
             endTimeMask.Size = new System.Drawing.Size(49, 23);
@@ -177,7 +175,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(577, 147);
+            label3.Location = new System.Drawing.Point(577, 167);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(66, 17);
             label3.TabIndex = 24;
@@ -187,7 +185,7 @@
             // 
             startTime.AutoSize = true;
             startTime.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            startTime.Location = new System.Drawing.Point(373, 148);
+            startTime.Location = new System.Drawing.Point(373, 168);
             startTime.Name = "startTime";
             startTime.Size = new System.Drawing.Size(72, 17);
             startTime.TabIndex = 22;
@@ -207,7 +205,7 @@
             // 
             start_time_lbl.AutoSize = true;
             start_time_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            start_time_lbl.Location = new System.Drawing.Point(16, 144);
+            start_time_lbl.Location = new System.Drawing.Point(16, 164);
             start_time_lbl.Name = "start_time_lbl";
             start_time_lbl.Size = new System.Drawing.Size(37, 17);
             start_time_lbl.TabIndex = 1;
@@ -223,7 +221,7 @@
             // 
             // startTimePicker
             // 
-            startTimePicker.Location = new System.Drawing.Point(138, 144);
+            startTimePicker.Location = new System.Drawing.Point(138, 164);
             startTimePicker.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             startTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             startTimePicker.Name = "startTimePicker";
@@ -269,20 +267,10 @@
             CrudAppointment.TabIndex = 15;
             CrudAppointment.Text = "Manage Appointment";
             // 
-            // UpdateBtn
-            // 
-            UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdateBtn.Location = new System.Drawing.Point(470, 210);
-            UpdateBtn.Name = "UpdateBtn";
-            UpdateBtn.Size = new System.Drawing.Size(93, 50);
-            UpdateBtn.TabIndex = 7;
-            UpdateBtn.Text = "Update";
-            UpdateBtn.UseVisualStyleBackColor = true;
-            // 
             // AddScheduleBtn
             // 
             AddScheduleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddScheduleBtn.Location = new System.Drawing.Point(326, 210);
+            AddScheduleBtn.Location = new System.Drawing.Point(326, 226);
             AddScheduleBtn.Name = "AddScheduleBtn";
             AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
             AddScheduleBtn.TabIndex = 6;
@@ -552,7 +540,6 @@
         private System.Windows.Forms.TextBox PatientNameTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CrudAppointment;
-        private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button AddScheduleBtn;
         private System.Windows.Forms.Label doctorlbl;
         private System.Windows.Forms.TabPage tabPage2;
