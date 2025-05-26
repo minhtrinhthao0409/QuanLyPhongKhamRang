@@ -39,7 +39,7 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
-            Schedulelbl.Click += menulbl_click;
+            //Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
 
@@ -59,8 +59,8 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm = new AppointmentFrm(user);
             else if (sender == Patientlbl)
                 currentForm = new PatientFrm(user);
-            else if (sender == Schedulelbl)
-                currentForm = new ScheduleFrm(user);
+            //else if (sender == Schedulelbl)
+            //    currentForm = new ScheduleFrm(user);
             else if (sender == Invoicelbl)
                 currentForm = new InvoiceFrm(user);
 
@@ -256,11 +256,16 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string name = selectedRow.Cells["Name"].Value.ToString();
                 string phone = selectedRow.Cells["PhoneNumber"].Value.ToString();
 
-                
+
                 OnPatientSelected?.Invoke(name, phone);
 
-                this.Close(); 
+                this.Close();
             }
+        }
+
+        private void SignOutlbl_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

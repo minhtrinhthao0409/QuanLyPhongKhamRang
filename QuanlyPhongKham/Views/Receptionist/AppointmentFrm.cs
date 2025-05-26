@@ -44,7 +44,7 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
-            Schedulelbl.Click += menulbl_click;
+            //Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
             cbDoctorName.SelectedIndexChanged += cbDoctorName_SelectedIndexChanged;
@@ -72,8 +72,8 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm = new AppointmentFrm(user);
             else if (sender == Patientlbl)
                 currentForm = new PatientFrm(user);
-            else if (sender == Schedulelbl)
-                currentForm = new ScheduleFrm(user);
+            //else if (sender == Schedulelbl)
+            //    currentForm = new ScheduleFrm(user);
             else if (sender == Invoicelbl)
                 currentForm = new InvoiceFrm(user);
 
@@ -243,7 +243,7 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             var searchForm = new PatientFrm(user);
 
-            
+
             searchForm.OnPatientSelected += (name, phone) =>
             {
                 PatientNameTxt.Text = name;
@@ -255,7 +255,14 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         private void SearchAppointmentGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void SignOutlbl_Click(object sender, EventArgs e)
+        {
             
+            
+            Application.Exit();
         }
     }
 }
