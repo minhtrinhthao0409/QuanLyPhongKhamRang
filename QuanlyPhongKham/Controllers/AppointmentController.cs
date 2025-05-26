@@ -41,5 +41,10 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _service.GetAllAppointmentsAsync();
         }
+
+        public async Task<bool> UpdateAppointment(Appointment appointment)
+        {
+            return await _service.UpdateAppointment(appointment);
+        }
     }
 }

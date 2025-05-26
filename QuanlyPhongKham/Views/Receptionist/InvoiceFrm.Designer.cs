@@ -220,6 +220,7 @@
             // 
             // InvoiceGridView
             // 
+            InvoiceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             InvoiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InvoiceGridView.Location = new System.Drawing.Point(208, 244);
             InvoiceGridView.Name = "InvoiceGridView";
@@ -229,6 +230,7 @@
             // 
             // InvoiceDetailGridView
             // 
+            InvoiceDetailGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             InvoiceDetailGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InvoiceDetailGridView.Location = new System.Drawing.Point(205, 486);
             InvoiceDetailGridView.Name = "InvoiceDetailGridView";

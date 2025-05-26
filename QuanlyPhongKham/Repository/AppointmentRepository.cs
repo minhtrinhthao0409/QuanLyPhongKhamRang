@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanlyPhongKham.Repository
 {
@@ -392,6 +393,44 @@ namespace QuanlyPhongKham.Repository
             }
 
             return list;
+        }
+
+        public async Task<bool> UpdateAppointment(Appointment appointment)
+        {
+            try
+            {
+                using var conn = await GetConnectionAsync();
+                await conn.OpenAsync();
+
+                string query = @"
+                                    UPDATE Appointments
+                                    SET 
+                                        DoctorId = @DoctorId,
+                                        PatientId = @PatientId,
+                                        AppointmentDate = @Date,
+                                        StartTime = @StartTime,
+                                        EndTime = @EndTime
+                                    WHERE 
+                                        AppointmentId = @AppointmentId";
+
+                using var cmd = new SQLiteCommand(query, conn);
+                cmd.Parameters.AddWithValue("@DoctorId", appointment.DoctorId);
+                cmd.Parameters.AddWithValue("@PatientId", appointment.PatientId);
+                cmd.Parameters.AddWithValue("@Date", appointment.AppointmentDate.Date);
+                cmd.Parameters.AddWithValue("@StartTime", appointment.StartTime);
+                cmd.Parameters.AddWithValue("@EndTime", appointment.EndTime);
+                cmd.Parameters.AddWithValue("@AppointmentId", appointment.AppointmentId);
+
+                int affectedRows = await cmd.ExecuteNonQueryAsync();
+
+                return affectedRows > 0;
+            }
+            catch (Exception ex)
+            {
+               
+                MessageBox.Show("Lỗi cập nhật lịch hẹn: " + ex.Message);
+                return false;
+            }
         }
 
 
