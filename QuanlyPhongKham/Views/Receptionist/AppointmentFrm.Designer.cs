@@ -320,6 +320,7 @@
             SearchAppointmentGridView.Name = "SearchAppointmentGridView";
             SearchAppointmentGridView.Size = new System.Drawing.Size(796, 411);
             SearchAppointmentGridView.TabIndex = 6;
+            SearchAppointmentGridView.CellClick += SearchAppointmentGridView_CellClick;
             // 
             // panel1
             // 

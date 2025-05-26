@@ -27,6 +27,10 @@ namespace QuanlyPhongKham.Views.Receptionist
         private AppointmentController _appointmentControllers;
         private UserControllers _userController;
 
+        public delegate void AppointmentSelectedHandler(string name, string phone);
+        public event AppointmentSelectedHandler OnAppointmentSelected;
+
+
         public AppointmentFrm(User user)
         {
             this.user = user;
@@ -239,7 +243,7 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             var searchForm = new PatientFrm(user);
 
-            // Lắng nghe sự kiện khi chọn bệnh nhân
+            
             searchForm.OnPatientSelected += (name, phone) =>
             {
                 PatientNameTxt.Text = name;
@@ -247,6 +251,11 @@ namespace QuanlyPhongKham.Views.Receptionist
             };
 
             searchForm.ShowDialog(); // modal
+        }
+
+        private void SearchAppointmentGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

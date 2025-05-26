@@ -277,7 +277,7 @@ namespace QuanlyPhongKham.Repository
                 string baseQuery = @"
                                         SELECT  a.AppointmentId, 
                                                 a.DoctorId, u.FullName AS DoctorName, 
-                                                a.PatientId, p.FullName AS PatientName,
+                                                a.PatientId, p.FullName AS PatientName, p.PhoneNumber,
                                                 a.AppointmentDate, a.StartTime, a.EndTime
                                         FROM Appointments a
                                         JOIN Patients p ON a.PatientId = p.PatientId
@@ -324,6 +324,7 @@ namespace QuanlyPhongKham.Repository
                         DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
                         PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
                         PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
+                        PhoneNumber = reader["PhoneNumber"].ToString(),
                         AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]).Date,
                         DoctorName = reader["DoctorName"].ToString() ?? string.Empty,
                         StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
@@ -358,7 +359,7 @@ namespace QuanlyPhongKham.Repository
                 string query = @"
                                 SELECT  a.AppointmentId, 
                                         a.DoctorId, u.FullName AS DoctorName, 
-                                        a.PatientId, p.FullName AS PatientName,
+                                        a.PatientId, p.FullName AS PatientName, p.PhoneNumber,
                                         a.AppointmentDate, a.StartTime, a.EndTime
                                 FROM Appointments a
                                 JOIN Patients p ON a.PatientId = p.PatientId
@@ -380,6 +381,7 @@ namespace QuanlyPhongKham.Repository
                         DoctorId = reader["DoctorId"]?.ToString() ?? string.Empty,
                         PatientId = reader["PatientId"]?.ToString() ?? string.Empty,
                         PatientName = reader["PatientName"]?.ToString() ?? string.Empty,
+                        PhoneNumber = reader["PhoneNumber"].ToString(),
                         AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]).Date,
                         DoctorName = reader["DoctorName"].ToString() ?? string.Empty,
                         StartTime = Convert.ToDateTime(reader["StartTime"]).TimeOfDay,
