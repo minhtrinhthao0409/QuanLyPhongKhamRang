@@ -44,5 +44,10 @@ namespace QuanlyPhongKham.Services
         {
             return await _repository.GetAllAppointmentsAsync();
         }
+
+        public async Task<bool> UpdateAppointment(Appointment appointment)
+        {
+            return await _repository.UpdateAppointment(appointment);
+        }
     }
 }

@@ -32,7 +32,6 @@
             Homelbl = new System.Windows.Forms.Label();
             Invoicelbl = new System.Windows.Forms.Label();
             Patientlbl = new System.Windows.Forms.Label();
-            Schedulelbl = new System.Windows.Forms.Label();
             Appointmentlbl = new System.Windows.Forms.Label();
             SignOutlbl = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
@@ -57,7 +56,6 @@
             panel2.Controls.Add(Homelbl);
             panel2.Controls.Add(Invoicelbl);
             panel2.Controls.Add(Patientlbl);
-            panel2.Controls.Add(Schedulelbl);
             panel2.Controls.Add(Appointmentlbl);
             panel2.Controls.Add(SignOutlbl);
             panel2.Location = new System.Drawing.Point(12, 31);
@@ -83,7 +81,7 @@
             Invoicelbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Invoicelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Invoicelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Invoicelbl.Location = new System.Drawing.Point(3, 390);
+            Invoicelbl.Location = new System.Drawing.Point(3, 354);
             Invoicelbl.Name = "Invoicelbl";
             Invoicelbl.Size = new System.Drawing.Size(170, 46);
             Invoicelbl.TabIndex = 6;
@@ -96,26 +94,13 @@
             Patientlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Patientlbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Patientlbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Patientlbl.Location = new System.Drawing.Point(3, 344);
+            Patientlbl.Location = new System.Drawing.Point(3, 308);
             Patientlbl.Name = "Patientlbl";
             Patientlbl.Size = new System.Drawing.Size(170, 46);
             Patientlbl.TabIndex = 5;
             Patientlbl.Text = "Patient";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Patientlbl.Click += menulbl_click;
-            // 
-            // Schedulelbl
-            // 
-            Schedulelbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            Schedulelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            Schedulelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
-            Schedulelbl.Location = new System.Drawing.Point(3, 298);
-            Schedulelbl.Name = "Schedulelbl";
-            Schedulelbl.Size = new System.Drawing.Size(170, 46);
-            Schedulelbl.TabIndex = 5;
-            Schedulelbl.Text = "Schedule";
-            Schedulelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            Schedulelbl.Click += menulbl_click;
             // 
             // Appointmentlbl
             // 
@@ -141,6 +126,7 @@
             SignOutlbl.TabIndex = 4;
             SignOutlbl.Text = "Sign Out";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            SignOutlbl.Click += SignOutlbl_Click;
             // 
             // panel1
             // 
@@ -220,6 +206,7 @@
             // 
             // InvoiceGridView
             // 
+            InvoiceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             InvoiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InvoiceGridView.Location = new System.Drawing.Point(208, 244);
             InvoiceGridView.Name = "InvoiceGridView";
@@ -229,6 +216,7 @@
             // 
             // InvoiceDetailGridView
             // 
+            InvoiceDetailGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             InvoiceDetailGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InvoiceDetailGridView.Location = new System.Drawing.Point(205, 486);
             InvoiceDetailGridView.Name = "InvoiceDetailGridView";
@@ -272,7 +260,6 @@
         private System.Windows.Forms.Label Homelbl;
         private System.Windows.Forms.Label Invoicelbl;
         private System.Windows.Forms.Label Patientlbl;
-        private System.Windows.Forms.Label Schedulelbl;
         private System.Windows.Forms.Label Appointmentlbl;
         private System.Windows.Forms.Label SignOutlbl;
         private System.Windows.Forms.Panel panel1;

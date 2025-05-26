@@ -31,7 +31,7 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
-            Schedulelbl.Click += menulbl_click;
+            //Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
 
@@ -54,8 +54,8 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm = new AppointmentFrm(user);
             else if (sender == Patientlbl)
                 currentForm = new PatientFrm(user);
-            else if (sender == Schedulelbl)
-                currentForm = new ScheduleFrm(user);
+            //else if (sender == Schedulelbl)
+            //    currentForm = new ScheduleFrm(user);
             else if (sender == Invoicelbl)
                 currentForm = new InvoiceFrm(user);
 
@@ -71,9 +71,9 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         }
 
-        private  void UpcomingAppointmentView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UpcomingAppointmentView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private async void ReceptionistMainFrm_Load(object sender, EventArgs e)
@@ -98,6 +98,16 @@ namespace QuanlyPhongKham.Views.Receptionist
             {
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SignOutlbl_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Editbtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Vui lòng liên hệ admin để chỉnh sửa thông tin!");
         }
     }
 }

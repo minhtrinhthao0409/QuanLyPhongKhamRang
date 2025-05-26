@@ -27,7 +27,7 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
-            Schedulelbl.Click += menulbl_click;
+            //Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
 
@@ -49,8 +49,8 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm = new AppointmentFrm(user);
             else if (sender == Patientlbl)
                 currentForm = new PatientFrm(user);
-            else if (sender == Schedulelbl)
-                currentForm = new ScheduleFrm(user);
+            //else if (sender == Schedulelbl)
+            //    currentForm = new ScheduleFrm(user);
             else if (sender == Invoicelbl)
                 currentForm = new InvoiceFrm(user);
 
@@ -100,6 +100,11 @@ namespace QuanlyPhongKham.Views.Receptionist
                     MessageBox.Show("Không thể tải chi tiết hóa đơn: " + ex.Message);
                 }
             }
+        }
+
+        private void SignOutlbl_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

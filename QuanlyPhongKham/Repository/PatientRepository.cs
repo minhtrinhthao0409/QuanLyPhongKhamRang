@@ -64,18 +64,23 @@ namespace QuanlyPhongKham.Repository
 
             using var connection = await GetConnectionAsync();
 
-            var query = new StringBuilder("SELECT * FROM Patients WHERE 1=1");
+            var query = new StringBuilder(@"
+                                            SELECT p.*,  g.FullName AS GuardianName
+                                            FROM Patients p
+                                            LEFT JOIN Guardians g ON p.GuardianId = g.GuardianId
+                                            WHERE 1=1 ");
 
             if (!string.IsNullOrWhiteSpace(name))
-                query.Append(" AND FullName LIKE @FullName");
+                query.Append(" AND p.FullName LIKE @FullName");
 
             if (!string.IsNullOrWhiteSpace(phone))
-                query.Append(" AND PhoneNumber = @PhoneNumber");
+                query.Append(" AND p.PhoneNumber = @PhoneNumber");
 
             if (!string.IsNullOrWhiteSpace(email))
-                query.Append(" AND Email LIKE @Email");
+                query.Append(" AND p.Email LIKE @Email");
 
             using var command = new SQLiteCommand(query.ToString(), connection);
+
 
             if (!string.IsNullOrWhiteSpace(name))
                 command.Parameters.AddWithValue("@FullName", $"%{name}%");
@@ -109,7 +114,10 @@ namespace QuanlyPhongKham.Repository
                     Email = reader["Email"].ToString()!,
                     Gender = Convert.ToBoolean(reader["Gender"]),
                     DOB = Convert.ToDateTime(reader["Dob"]).Date,
-                    GuardianId = guardianId
+                    GuardianId = guardianId,
+                    GuardianName = reader["GuardianName"] == DBNull.Value
+                   ? null
+                   : reader["GuardianName"].ToString()
                 };
 
                 patients.Add(patient);
@@ -151,7 +159,7 @@ namespace QuanlyPhongKham.Repository
             return patients;
         }
 
-        public async Task<int> UpdatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
+        public async Task<bool> UpdatePatientAsync(string patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, string? guardianId = null)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Tên bệnh nhân không được rỗng.", nameof(name));
@@ -161,44 +169,41 @@ namespace QuanlyPhongKham.Repository
             int affectedRows = 0;
 
             using var connection = await GetConnectionAsync();
-            using var transaction = connection.BeginTransaction();
+
+            // Ép kiểu transaction về đúng SQLiteTransaction
+            using var transaction = (SQLiteTransaction)await connection.BeginTransactionAsync();
 
             try
             {
                 string updateSql = @"
-                                    UPDATE Patients 
-                                    SET 
-                                        FullName = @FullName,
-                                        Email = @Email,
-                                        Gender = @Gender,
-                                        PhoneNumber = @PhoneNumber,
-                                        DOB = @DOB,
-                                        GuardianId = @GuardianId
-                                    WHERE PatientId = @PatientId";
+                                        UPDATE Patients 
+                                        SET 
+                                            FullName = @FullName,
+                                            Email = @Email,
+                                            Gender = @Gender,
+                                            PhoneNumber = @PhoneNumber,
+                                            DOB = @DOB,
+                                            GuardianId = @GuardianId
+                                        WHERE PatientId = @PatientId";
 
                 using var cmd = new SQLiteCommand(updateSql, connection, transaction);
+
                 cmd.Parameters.AddWithValue("@FullName", name);
                 cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(email) ? DBNull.Value : email);
                 cmd.Parameters.AddWithValue("@Gender", gender ? 1 : 0);
                 cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                 cmd.Parameters.AddWithValue("@DOB", dob.Date);
-                cmd.Parameters.AddWithValue("@GuardianId", guardianId.HasValue ? guardianId.Value.ToString() : DBNull.Value);
-                cmd.Parameters.AddWithValue("@PatientId", patientId.ToString());
+                cmd.Parameters.AddWithValue("@GuardianId", string.IsNullOrWhiteSpace(guardianId) ? DBNull.Value : guardianId);
+                cmd.Parameters.AddWithValue("@PatientId", patientId);
 
-                
                 affectedRows = await cmd.ExecuteNonQueryAsync();
                 await transaction.CommitAsync();
 
-                if (affectedRows == 0)
-                {
-                    Console.WriteLine("Không có bản ghi nào được cập nhật. Dữ liệu có thể không thay đổi.");
-                }
-                else
-                {
-                    Console.WriteLine("Cập nhật thành công.");
-                }
+                Console.WriteLine(affectedRows == 0
+                    ? "Không có bản ghi nào được cập nhật. Dữ liệu có thể không thay đổi."
+                    : "Cập nhật thành công.");
 
-                return affectedRows;
+                return affectedRows > 0;
             }
             catch (Exception ex)
             {
@@ -207,8 +212,6 @@ namespace QuanlyPhongKham.Repository
                 throw new Exception("Lỗi khi cập nhật thông tin bệnh nhân.", ex);
             }
         }
-
-
 
 
         public async Task<int> CreateGuardianAsync(Guid guardianId, string name, string phoneNumber, string email)

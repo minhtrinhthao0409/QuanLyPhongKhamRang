@@ -27,6 +27,10 @@ namespace QuanlyPhongKham.Views.Receptionist
         private AppointmentController _appointmentControllers;
         private UserControllers _userController;
 
+        public delegate void AppointmentSelectedHandler(string name, string phone);
+        public event AppointmentSelectedHandler OnAppointmentSelected;
+
+
         public AppointmentFrm(User user)
         {
             this.user = user;
@@ -40,7 +44,7 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
-            Schedulelbl.Click += menulbl_click;
+            //Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
             cbDoctorName.SelectedIndexChanged += cbDoctorName_SelectedIndexChanged;
@@ -68,8 +72,8 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm = new AppointmentFrm(user);
             else if (sender == Patientlbl)
                 currentForm = new PatientFrm(user);
-            else if (sender == Schedulelbl)
-                currentForm = new ScheduleFrm(user);
+            //else if (sender == Schedulelbl)
+            //    currentForm = new ScheduleFrm(user);
             else if (sender == Invoicelbl)
                 currentForm = new InvoiceFrm(user);
 
@@ -152,12 +156,12 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 if (cbDoctorName.SelectedItem is User selectedDoctor)
                 {
-                    doctorName = selectedDoctor.FullName;   
-                           
+                    doctorName = selectedDoctor.FullName;
+
                 }
                 if (cbDoctorEmail.SelectedItem is User selectedEmail)
                 {
-                    doctorEmail = selectedEmail.Email; 
+                    doctorEmail = selectedEmail.Email;
                 }
 
 
@@ -233,6 +237,32 @@ namespace QuanlyPhongKham.Views.Receptionist
             {
                 cbDoctorName.SelectedValue = selectedEmail.Email;
             }
+        }
+
+        private void searchPatientbtn_Click(object sender, EventArgs e)
+        {
+            var searchForm = new PatientFrm(user);
+
+
+            searchForm.OnPatientSelected += (name, phone) =>
+            {
+                PatientNameTxt.Text = name;
+                PatientPhoneNoTxt.Text = phone;
+            };
+
+            searchForm.ShowDialog(); // modal
+        }
+
+        private void SearchAppointmentGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void SignOutlbl_Click(object sender, EventArgs e)
+        {
+            
+            
+            Application.Exit();
         }
     }
 }
