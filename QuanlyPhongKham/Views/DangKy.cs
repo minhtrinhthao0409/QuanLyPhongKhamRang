@@ -159,17 +159,18 @@ namespace QuanlyPhongKham
 
         private void btnQuaylai_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            using (Login login = new Login()) 
-            {
-                login.ShowDialog();
-            }
-            this.Show();
+            //this.Hide();
+            //using (Login login = new Login()) 
+            //{
+            //    login.ShowDialog();
+            //}
+            //this.Show();
+            this.Close();
         }
 
         private void DangKy_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }
