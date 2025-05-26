@@ -133,7 +133,7 @@ namespace QuanlyPhongKham.Repository
             try
             {
                 using var connection = await GetConnectionAsync();
-                string query = "SELECT PhoneNumber, FullName FROM Patients";
+                string query = "SELECT PatientId, PhoneNumber, FullName FROM Patients";
 
                 using var cmd = new SQLiteCommand(query, connection);
                 using var reader = await cmd.ExecuteReaderAsync();
@@ -144,6 +144,7 @@ namespace QuanlyPhongKham.Repository
                     {
                         patients.Add(new Patient
                         {
+                            PatientId = reader["PatientId"].ToString(),
                             PhoneNumber = reader["PhoneNumber"].ToString(),
                             Name = reader["FullName"].ToString()
                         });

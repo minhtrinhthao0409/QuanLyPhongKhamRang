@@ -51,26 +51,25 @@ namespace QuanlyPhongKham.Views
             try
             {
                 var patients = await patientController.GetAllPatientsAsync();
-                allPatients = patients.ToList();
-                if (patients == null || patients.Count == 0)
-                {
-                    MessageBox.Show("Không tìm thấy bệnh nhân nào!");
-                    cbPatientId.DataSource = null;
-                    cbPatientName.DataSource = null;
-                    return;
-                }
+                allPatients = patients;
 
-                cbPatientId.DataSource = null;
-                cbPatientName.DataSource = null;
-
-                cbPatientId.DataSource = patients;
+                cbPatientId.DataSource = new BindingSource(patients, null);
                 cbPatientId.DisplayMember = "PhoneNumber";
-                cbPatientId.ValueMember = "PhoneNumber";
-                cbPatientId.Refresh();
+                cbPatientId.ValueMember = "PatientId";
 
-                cbPatientName.DataSource = patients.ToList();
+                cbPatientName.DataSource = new BindingSource(patients, null);
                 cbPatientName.DisplayMember = "Name";
                 cbPatientName.ValueMember = "PatientId";
+
+                // Gắn sự kiện đồng bộ
+                cbPatientId.SelectedIndexChanged += (s, e) =>
+                {
+                    cbPatientName.SelectedIndex = cbPatientId.SelectedIndex;
+                };
+                cbPatientName.SelectedIndexChanged += (s, e) =>
+                {
+                    cbPatientId.SelectedIndex = cbPatientName.SelectedIndex;
+                };
             }
             catch (Exception ex)
             {
@@ -164,7 +163,7 @@ namespace QuanlyPhongKham.Views
                 return;
             }
 
-            string patientId = cbPatientId.SelectedValue.ToString();
+            string patientId = cbPatientId.SelectedValue?.ToString();
 
             if (await appointmentController.HasScheduleConflictAsync(currentDoctorId, patientId, appointmentDate, startTime, endTime))
             {
@@ -189,7 +188,7 @@ namespace QuanlyPhongKham.Views
 
             cbIdPatientRecord.DataSource = patients;
             cbIdPatientRecord.DisplayMember = "PhoneNumber";
-            cbIdPatientRecord.ValueMember = "PhoneNumber";
+            cbIdPatientRecord.ValueMember = "PatientId";
 
             cbNamePatientRecord.DataSource = new List<Patient>(patients);
             cbNamePatientRecord.DisplayMember = "Name";
@@ -295,6 +294,10 @@ namespace QuanlyPhongKham.Views
         private void cbIdPatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
+        }
+        private void cbNamePatientRecord_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbIdPatientRecord.SelectedIndex = cbNamePatientRecord.SelectedIndex;
         }
         private void btnThemDichVu_Click(object sender, EventArgs e)
         {
