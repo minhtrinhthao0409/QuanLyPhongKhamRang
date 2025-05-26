@@ -138,7 +138,6 @@ namespace QuanlyPhongKham.Repository
             return list;
         }
 
-
         public async Task<bool> AddAppointmentAsync_v2(string doctorName, string patientName, string doctorEmail, string patientPhoneNo, DateTime date, TimeSpan start, TimeSpan end)
         {
             SQLiteConnection conn = null;
