@@ -104,5 +104,10 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             Application.Exit();
         }
+
+        private void Editbtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Vui lòng liên hệ admin để chỉnh sửa thông tin!");
+        }
     }
 }

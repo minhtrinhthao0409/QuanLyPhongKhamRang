@@ -79,12 +79,8 @@
             label21 = new System.Windows.Forms.Label();
             UpdateInfoBtn = new System.Windows.Forms.Button();
             panel3 = new System.Windows.Forms.Panel();
-            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            label8 = new System.Windows.Forms.Label();
             currentGuardianTxt = new System.Windows.Forms.TextBox();
             label9 = new System.Windows.Forms.Label();
-            listBox1 = new System.Windows.Forms.ListBox();
-            label10 = new System.Windows.Forms.Label();
             currentEmailTxt = new System.Windows.Forms.TextBox();
             label11 = new System.Windows.Forms.Label();
             currentPhoneNoTxt = new System.Windows.Forms.TextBox();
@@ -627,12 +623,8 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(dateTimePicker2);
-            panel3.Controls.Add(label8);
             panel3.Controls.Add(currentGuardianTxt);
             panel3.Controls.Add(label9);
-            panel3.Controls.Add(listBox1);
-            panel3.Controls.Add(label10);
             panel3.Controls.Add(currentEmailTxt);
             panel3.Controls.Add(label11);
             panel3.Controls.Add(currentPhoneNoTxt);
@@ -645,26 +637,9 @@
             panel3.Size = new System.Drawing.Size(796, 209);
             panel3.TabIndex = 5;
             // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new System.Drawing.Point(143, 88);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new System.Drawing.Size(211, 23);
-            dateTimePicker2.TabIndex = 26;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label8.Location = new System.Drawing.Point(20, 92);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(36, 17);
-            label8.TabIndex = 25;
-            label8.Text = "DOB";
-            // 
             // currentGuardianTxt
             // 
-            currentGuardianTxt.Location = new System.Drawing.Point(143, 162);
+            currentGuardianTxt.Location = new System.Drawing.Point(143, 126);
             currentGuardianTxt.Name = "currentGuardianTxt";
             currentGuardianTxt.Size = new System.Drawing.Size(211, 23);
             currentGuardianTxt.TabIndex = 24;
@@ -673,36 +648,15 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label9.Location = new System.Drawing.Point(24, 163);
+            label9.Location = new System.Drawing.Point(24, 127);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(64, 17);
             label9.TabIndex = 23;
             label9.Text = "Guardian";
             // 
-            // listBox1
-            // 
-            listBox1.AllowDrop = true;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Items.AddRange(new object[] { "Male", "Female" });
-            listBox1.Location = new System.Drawing.Point(466, 92);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new System.Drawing.Size(54, 19);
-            listBox1.TabIndex = 22;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label10.Location = new System.Drawing.Point(397, 92);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(52, 17);
-            label10.TabIndex = 21;
-            label10.Text = "Gender";
-            // 
             // currentEmailTxt
             // 
-            currentEmailTxt.Location = new System.Drawing.Point(466, 130);
+            currentEmailTxt.Location = new System.Drawing.Point(466, 94);
             currentEmailTxt.Name = "currentEmailTxt";
             currentEmailTxt.Size = new System.Drawing.Size(268, 23);
             currentEmailTxt.TabIndex = 20;
@@ -711,7 +665,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label11.Location = new System.Drawing.Point(397, 135);
+            label11.Location = new System.Drawing.Point(397, 99);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(42, 17);
             label11.TabIndex = 19;
@@ -719,7 +673,7 @@
             // 
             // currentPhoneNoTxt
             // 
-            currentPhoneNoTxt.Location = new System.Drawing.Point(143, 129);
+            currentPhoneNoTxt.Location = new System.Drawing.Point(143, 93);
             currentPhoneNoTxt.Name = "currentPhoneNoTxt";
             currentPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
             currentPhoneNoTxt.TabIndex = 18;
@@ -728,7 +682,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label12.Location = new System.Drawing.Point(20, 130);
+            label12.Location = new System.Drawing.Point(20, 94);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(101, 17);
             label12.TabIndex = 17;
@@ -841,12 +795,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox currentGuardianTxt;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox currentEmailTxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox currentPhoneNoTxt;

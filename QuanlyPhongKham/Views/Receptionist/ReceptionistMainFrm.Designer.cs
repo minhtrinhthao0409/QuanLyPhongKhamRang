@@ -151,6 +151,7 @@
             Editbtn.TabIndex = 16;
             Editbtn.Text = "Edit";
             Editbtn.UseVisualStyleBackColor = true;
+            Editbtn.Click += Editbtn_Click;
             // 
             // Usernamelbl
             // 

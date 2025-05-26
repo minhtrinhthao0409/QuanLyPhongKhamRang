@@ -213,33 +213,57 @@ namespace QuanlyPhongKham.Views.Receptionist
             string updatedGuardianName = updatedGuardianTxt.Text.Trim();
             string updatedEmail = updatedEmailTxt.Text.Trim();
 
-            //try
-            //{
-            //    //bool result = await _patientService.UpdatePatientAsync(
-            //    //    name: currentName,
-            //    //    phoneNumber: currentPhoneNo,
-            //    //    email: currentEmail
-            //        //newPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
-            //        //newEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail,
-            //        //newGuardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName,
-            //        //newGuardianPhone: string.IsNullOrWhiteSpace(updatedPhoneNo) ? null : updatedPhoneNo,
-            //        //newGuardianEmail: string.IsNullOrWhiteSpace(updatedEmail) ? null : updatedEmail
-            //    );
 
+            if (string.IsNullOrWhiteSpace(currentName) ||
+               string.IsNullOrWhiteSpace(currentPhoneNo) &&
+               string.IsNullOrWhiteSpace(currentEmail))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ tên, số điện thoại hoặc email để xác định bệnh nhân.", 
+                                "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //    if (result)
-            //    {
-            //        MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Không có thay đổi nào được thực hiện.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            try
+            {
+                var patients = await _patientService.SearchPatientsAsync(currentName, currentPhoneNo, currentEmail);
+
+                if (patients.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy bệnh nhân phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (patients.Count > 1)
+                {
+                    MessageBox.Show("Tìm thấy nhiều hơn một bệnh nhân. Vui lòng nhập rõ hơn thông tin để xác định duy nhất.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var patient = patients[0];
+
+                bool result = await _patientService.UpdatePatientAsync(
+                    patientId: patient.PatientId,
+                    name: currentName,
+                    gender: patient.Gender,
+                    phoneNumber: updatedPhoneNo,
+                    email: updatedEmail,
+                    dob: patient.DOB,
+                    guardianId: patient.GuardianId?.ToString()
+                );
+
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không có thay đổi nào được thực hiện.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
