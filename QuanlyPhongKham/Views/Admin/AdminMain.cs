@@ -33,9 +33,9 @@ namespace QuanlyPhongKham.Views.Admin
             this._loggingController = new LoggingController();
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
-            LoadUserDataAsync();
-            LoadServiceDataasync();
-            LoadLogDataAsync();
+            //LoadUserDataAsync();
+            //LoadServiceDataasync();
+            //LoadLogDataAsync();
             AdminQLTKUpdatebtn.Enabled = false;
             AdminQLTKDeletebtn.Enabled = false;
             AdminQLTKPasstbx.Enabled = false;
@@ -396,25 +396,142 @@ namespace QuanlyPhongKham.Views.Admin
         }
 
         #endregion BCTC
-        #region Logging
+        //#region Logging
+        //private async void LoadLogDataAsync()
+        //{
+        //    try
+        //    {
+        //        // Gọi phương thức từ controller để lấy danh sách log
+        //        var logs = await _loggingController.GetAllLoggingsAsync();
+        //        // Hiển thị danh sách log trong DataGridView
+        //        LoggingData.DataSource = logs;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        //private void AdminLoggingbtn_Click(object sender, EventArgs e)
+        //{
+        //    LoadLogDataAsync();
+        //}
+        //#endregion Logging
+        
+
         private async void LoadLogDataAsync()
         {
+            
+           
+
+            
             try
             {
-                // Gọi phương thức từ controller để lấy danh sách log
+                Console.WriteLine("Đang lấy dữ liệu log...");
                 var logs = await _loggingController.GetAllLoggingsAsync();
-                // Hiển thị danh sách log trong DataGridView
-                LoggingData.DataSource = logs;
+                Console.WriteLine($"Đã lấy được {logs?.Count ?? 0} log.");
+
+                if (logs == null || !logs.Any())
+                {
+                    if (!this.IsDisposed)
+                    {
+                        MessageBox.Show("Không có dữ liệu log để hiển thị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    return;
+                }
+
+                if (this.IsDisposed || LoggingData.IsDisposed)
+                {
+                    Console.WriteLine("Form hoặc DataGridView đã bị hủy. Thoát.");
+                    return;
+                }
+
+                Console.WriteLine("Đang cập nhật DataGridView...");
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new MethodInvoker(() =>
+                    {
+                        // Tạo danh sách hiển thị với các thuộc tính được định dạng
+                        var displayList = logs.Select(l => new
+                        {
+                            MaLog = l.LoggingID,
+                            MaNguoiDung = l.UserID,
+                            TenNguoiDung = l.UserName,
+                            NoiDung = l.Content,
+                            ThoiGian = l.DateTime // Đã là chuỗi, không cần định dạng lại
+                        }).ToList();
+
+                        // Gắn dữ liệu vào DataGridView
+                        LoggingData.DataSource = displayList;
+
+                        // Đặt tiêu đề cho từng cột
+                        LoggingData.Columns["MaLog"].HeaderText = "Mã Log";
+                        LoggingData.Columns["MaNguoiDung"].HeaderText = "Mã Người Dùng";
+                        LoggingData.Columns["TenNguoiDung"].HeaderText = "Tên Người Dùng";
+                        LoggingData.Columns["NoiDung"].HeaderText = "Nội Dung";
+                        LoggingData.Columns["ThoiGian"].HeaderText = "Thời Gian";
+
+                        // Căn giữa nội dung và tiêu đề, tự động điều chỉnh kích thước cột
+                        foreach (DataGridViewColumn col in LoggingData.Columns)
+                        {
+                            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        }
+
+                        LoggingData.Refresh();
+                        Console.WriteLine("DataGridView đã được cập nhật.");
+                    }));
+                }
+                else
+                {
+                    Console.WriteLine("Đang đặt DataSource trên luồng UI (trực tiếp)...");
+
+                    var displayList = logs.Select(l => new
+                    {
+                        MaLog = l.LoggingID,
+                        MaNguoiDung = l.UserID,
+                        TenNguoiDung = l.UserName,
+                        NoiDung = l.Content,
+                        ThoiGian = l.DateTime
+                    }).ToList();
+
+                    LoggingData.DataSource = displayList;
+
+                    LoggingData.Columns["MaLog"].HeaderText = "Mã Log";
+                    LoggingData.Columns["MaNguoiDung"].HeaderText = "Mã Người Dùng";
+                    LoggingData.Columns["TenNguoiDung"].HeaderText = "Tên Người Dùng";
+                    LoggingData.Columns["NoiDung"].HeaderText = "Nội Dung";
+                    LoggingData.Columns["ThoiGian"].HeaderText = "Thời Gian";
+
+                    foreach (DataGridViewColumn col in LoggingData.Columns)
+                    {
+                        col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+
+                    LoggingData.Refresh();
+                    Console.WriteLine("DataGridView đã được cập nhật.");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"Lỗi trong LoadLogDataAsync: {ex.Message}\nStack Trace: {ex.StackTrace}");
+                if (!this.IsDisposed)
+                {
+                    MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+               
+                Console.WriteLine("LoadLogDataAsync hoàn tất.");
             }
         }
+
         private void AdminLoggingbtn_Click(object sender, EventArgs e)
         {
             LoadLogDataAsync();
         }
-        #endregion Logging
     }
 }
