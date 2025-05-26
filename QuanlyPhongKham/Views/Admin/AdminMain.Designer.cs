@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new System.Windows.Forms.TabControl();
+            AdminMainTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             AdminMainDXbtn = new System.Windows.Forms.Button();
             monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -72,7 +72,11 @@
             label9 = new System.Windows.Forms.Label();
             AdminQLDVPricetbx = new System.Windows.Forms.TextBox();
             AdminQLDVNameTb = new System.Windows.Forms.TextBox();
-            tabControl1.SuspendLayout();
+            AdminLogging = new System.Windows.Forms.TabPage();
+            label11 = new System.Windows.Forms.Label();
+            LoggingData = new System.Windows.Forms.DataGridView();
+            AdminLoggingbtn = new System.Windows.Forms.Button();
+            AdminMainTab.SuspendLayout();
             tabPage1.SuspendLayout();
             AdminBCTC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).BeginInit();
@@ -80,20 +84,23 @@
             ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).BeginInit();
             AdminQLDV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).BeginInit();
+            AdminLogging.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LoggingData).BeginInit();
             SuspendLayout();
             // 
-            // tabControl1
+            // AdminMainTab
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(AdminBCTC);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(AdminQLDV);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabControl1.Location = new System.Drawing.Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(877, 698);
-            tabControl1.TabIndex = 0;
+            AdminMainTab.Controls.Add(tabPage1);
+            AdminMainTab.Controls.Add(AdminBCTC);
+            AdminMainTab.Controls.Add(tabPage2);
+            AdminMainTab.Controls.Add(AdminQLDV);
+            AdminMainTab.Controls.Add(AdminLogging);
+            AdminMainTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            AdminMainTab.Location = new System.Drawing.Point(0, 0);
+            AdminMainTab.Name = "AdminMainTab";
+            AdminMainTab.SelectedIndex = 0;
+            AdminMainTab.Size = new System.Drawing.Size(877, 698);
+            AdminMainTab.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -522,16 +529,58 @@
             AdminQLDVNameTb.Size = new System.Drawing.Size(327, 29);
             AdminQLDVNameTb.TabIndex = 8;
             // 
+            // AdminLogging
+            // 
+            AdminLogging.Controls.Add(AdminLoggingbtn);
+            AdminLogging.Controls.Add(label11);
+            AdminLogging.Controls.Add(LoggingData);
+            AdminLogging.Location = new System.Drawing.Point(4, 29);
+            AdminLogging.Name = "AdminLogging";
+            AdminLogging.Padding = new System.Windows.Forms.Padding(3);
+            AdminLogging.Size = new System.Drawing.Size(869, 665);
+            AdminLogging.TabIndex = 4;
+            AdminLogging.Text = "Logging";
+            AdminLogging.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label11.Location = new System.Drawing.Point(28, 18);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(228, 38);
+            label11.TabIndex = 1;
+            label11.Text = "Tracking Logging";
+            // 
+            // LoggingData
+            // 
+            LoggingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            LoggingData.Location = new System.Drawing.Point(28, 105);
+            LoggingData.Name = "LoggingData";
+            LoggingData.RowHeadersWidth = 51;
+            LoggingData.Size = new System.Drawing.Size(813, 532);
+            LoggingData.TabIndex = 0;
+            // 
+            // AdminLoggingbtn
+            // 
+            AdminLoggingbtn.Location = new System.Drawing.Point(747, 41);
+            AdminLoggingbtn.Name = "AdminLoggingbtn";
+            AdminLoggingbtn.Size = new System.Drawing.Size(94, 29);
+            AdminLoggingbtn.TabIndex = 2;
+            AdminLoggingbtn.Text = "Tải lại";
+            AdminLoggingbtn.UseVisualStyleBackColor = true;
+            AdminLoggingbtn.Click += AdminLoggingbtn_Click;
+            // 
             // AdminMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(877, 698);
-            Controls.Add(tabControl1);
+            Controls.Add(AdminMainTab);
             Name = "AdminMain";
             Text = "AdminMain";
             FormClosing += AdminMain_FormClosing;
-            tabControl1.ResumeLayout(false);
+            AdminMainTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             AdminBCTC.ResumeLayout(false);
@@ -543,12 +592,15 @@
             AdminQLDV.ResumeLayout(false);
             AdminQLDV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).EndInit();
+            AdminLogging.ResumeLayout(false);
+            AdminLogging.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)LoggingData).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl AdminMainTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label AdminMainNamelbl;
         private System.Windows.Forms.TabPage AdminBCTC;
@@ -595,5 +647,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox AdminBCTCRevtbx;
+        private System.Windows.Forms.TabPage AdminLogging;
+        private System.Windows.Forms.DataGridView LoggingData;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button AdminLoggingbtn;
     }
 }

@@ -21,6 +21,7 @@ namespace QuanlyPhongKham.Views.Admin
         private UserControllers _userControllers;
         private MedicalServiceController _medicalServiceController;
         private InvoiceController _invoiceController;
+        private LoggingController _loggingController;
 
         public AdminMain(User user)
         {
@@ -29,10 +30,12 @@ namespace QuanlyPhongKham.Views.Admin
             this._userControllers = new UserControllers();
             this._medicalServiceController = new MedicalServiceController();
             this._invoiceController = new InvoiceController();
+            this._loggingController = new LoggingController();
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
             LoadUserDataAsync();
             LoadServiceDataasync();
+            LoadLogDataAsync();
             AdminQLTKUpdatebtn.Enabled = false;
             AdminQLTKDeletebtn.Enabled = false;
             AdminQLTKPasstbx.Enabled = false;
@@ -40,7 +43,7 @@ namespace QuanlyPhongKham.Views.Admin
             AdminQLTKRolecb.Enabled = false;
             AdminQLDVbtn.Enabled = false;
             AdminQLDVDelbtn.Enabled = false;
-
+            _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, "Đăng nhập vào hệ thống quản lý phòng khám");
         }
         private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -261,6 +264,7 @@ namespace QuanlyPhongKham.Views.Admin
                 {
                     MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadServiceDataasync();
+                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName ,$"Đã thêm dịch vụ: {serviceName} với giá {price}").Wait();
                 }
                 else
                 {
@@ -379,7 +383,7 @@ namespace QuanlyPhongKham.Views.Admin
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
+
 
         private void AdminBCTCFromTP_ValueChanged(object sender, EventArgs e)
         {
@@ -392,5 +396,25 @@ namespace QuanlyPhongKham.Views.Admin
         }
 
         #endregion BCTC
+        #region Logging
+        private async void LoadLogDataAsync()
+        {
+            try
+            {
+                // Gọi phương thức từ controller để lấy danh sách log
+                var logs = await _loggingController.GetAllLoggingsAsync();
+                // Hiển thị danh sách log trong DataGridView
+                LoggingData.DataSource = logs;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void AdminLoggingbtn_Click(object sender, EventArgs e)
+        {
+            LoadLogDataAsync();
+        }
+        #endregion Logging
     }
 }
