@@ -50,7 +50,18 @@ namespace QuanlyPhongKham.Views.Admin
 
         private async void LoadUserDataAsync()
         {
-            AdminQLTKdata.DataSource = await _userControllers.GetAllUser();
+            var users = await _userControllers.GetAllUser();
+            var loadusers = users.Select(u => new
+            {
+                u.Id,
+                u.UserName,
+                u.Password,
+                u.Email,
+                u.FullName,
+                u.PhoneNumber,
+                u.Role
+            }).ToList();
+            AdminQLTKdata.DataSource = loadusers;
         }
         private void AdminQLTKdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -199,7 +210,14 @@ namespace QuanlyPhongKham.Views.Admin
         #region QLDV
         private async void LoadServiceDataasync()
         {
-            AdminQLDVdata.DataSource = await _medicalServiceController.GetAllService();
+            var services = _medicalServiceController.GetAllService();
+            var loadservices = services.Result.Select(s => new
+            {
+                s.ServicesId,
+                s.ServicesName,
+                s.CurrentPrice
+            }).ToList();
+            AdminQLDVdata.DataSource = loadservices;
         }
 
 

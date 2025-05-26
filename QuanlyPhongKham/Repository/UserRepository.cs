@@ -21,7 +21,7 @@ namespace QuanlyPhongKham.Repository
         public async Task<bool> CheckUsernameExistsAsync(string username)
         {
             using var connection = await GetConnectionAsync();
-            using var command = new SQLiteCommand("SELECT 1 FROM Users WHERE username = @username", connection);
+            using var command = new SQLiteCommand("SELECT 1 FROM Users WHERE username = @username AND Active = 1", connection);
             command.Parameters.AddWithValue("@username", username);
             var result = await command.ExecuteScalarAsync();
             return result != null;
@@ -54,7 +54,7 @@ namespace QuanlyPhongKham.Repository
         public async Task<User> GetUserByUsernameAsync(string username)
         {
             using var connection = await GetConnectionAsync();
-            using var cmd = new SQLiteCommand("SELECT * FROM Users WHERE UserName = @UserName", connection);
+            using var cmd = new SQLiteCommand("SELECT * FROM Users WHERE UserName = @UserName AND Active = 1", connection);
             cmd.Parameters.AddWithValue("@UserName", username);
 
             using var reader = await cmd.ExecuteReaderAsync();
@@ -78,7 +78,7 @@ namespace QuanlyPhongKham.Repository
         {
             using var conn = await GetConnectionAsync();
 
-            string query = @"SELECT * FROM Users WHERE UserName = @username AND Password = @password";
+            string query = @"SELECT * FROM Users WHERE UserName = @username AND Password = @password AND Active = 1";
             using var cmd = new SQLiteCommand(query, conn);
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
@@ -104,7 +104,7 @@ namespace QuanlyPhongKham.Repository
         public async Task<string> GetPasswordByEmailAsync(string email)
         {
             using var conn = await GetConnectionAsync();
-            var cmd = new SQLiteCommand("SELECT Password FROM Users WHERE Email = @Email", conn);
+            var cmd = new SQLiteCommand("SELECT Password FROM Users WHERE Email = @Email AND Active = 1", conn);
             cmd.Parameters.AddWithValue("@Email", email);
             var result = await cmd.ExecuteScalarAsync();
             return result?.ToString();
@@ -115,7 +115,7 @@ namespace QuanlyPhongKham.Repository
         {
             List<User> users = new List<User>();
             using var conn = await GetConnectionAsync();
-            var cmd = new SQLiteCommand("Select Id, UserName, Password, FullName, Email, PhoneNumber, Role from Users where Active = 1", conn);
+            var cmd = new SQLiteCommand("Select * from Users where Active = 1", conn);
             using var reader = await cmd.ExecuteReaderAsync();
             while (true)
             {
@@ -129,7 +129,8 @@ namespace QuanlyPhongKham.Repository
                     Email = reader["Email"].ToString(),
                     FullName = reader["FullName"].ToString(),
                     PhoneNumber = reader["PhoneNumber"].ToString(),
-                    Role = (UserRole)Convert.ToInt32(reader["Role"])
+                    Role = (UserRole)Convert.ToInt32(reader["Role"]),
+                    active = Convert.ToInt32(reader["Active"])
                 });
             }
             return users;
@@ -139,7 +140,7 @@ namespace QuanlyPhongKham.Repository
         {
             using var conn = new SQLiteConnection(connection);
             await conn.OpenAsync();
-            var query = "SELECT * FROM Users WHERE Email = @Email";
+            var query = "SELECT * FROM Users WHERE Email = @Email AND Active = 1";
 
             using var cmd = new SQLiteCommand(query, conn);
             cmd.Parameters.AddWithValue("@Email", email);
@@ -161,7 +162,7 @@ namespace QuanlyPhongKham.Repository
         {
             using var conn = new SQLiteConnection(connection);
             await conn.OpenAsync();
-            var query = "UPDATE Users SET Password = @Password WHERE Id = @Id";
+            var query = "UPDATE Users SET Password = @Password WHERE Id = @Id AND Active = 1";
 
             using var cmd = new SQLiteCommand(query, conn);
             cmd.Parameters.AddWithValue("@Password", hashedPassword);
@@ -173,7 +174,7 @@ namespace QuanlyPhongKham.Repository
         {
             using var conn = new SQLiteConnection(connection);
             await conn.OpenAsync();
-            var query = "UPDATE users SET Password = @Password, FullName = @FullName, Email = @Email, PhoneNumber = @PhoneNumber WHERE UserName = @UserName";
+            var query = "UPDATE users SET Password = @Password, FullName = @FullName, Email = @Email, PhoneNumber = @PhoneNumber WHERE UserName = @UserName AND Active = 1";
 
             using var cmd = new SQLiteCommand(query, conn);
             cmd.Parameters.AddWithValue("@UserName", UserName);

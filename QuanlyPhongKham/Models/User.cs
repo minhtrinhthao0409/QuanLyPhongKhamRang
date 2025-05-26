@@ -41,5 +41,15 @@ namespace QuanlyPhongKham.Models
             Email = email;
             Role = role;
         }
+
+        public User(string Id, string UserName, string Password, string Email, string FullName, string PhoneNumber, UserRole role, int active)
+        {
+            this.Id = Id;
+            this.UserName = UserName;
+            this.Password = Password;
+            this.Email = Email;
+            this.Role = role;
+            this.active = active;
+        }
     }
 }

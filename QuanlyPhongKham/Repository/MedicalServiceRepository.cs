@@ -17,7 +17,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Services WHERE ServicesName = @name", connection);
+                var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Services WHERE ServicesName = @name and ServiceActive = 1", connection);
                 cmd.Parameters.AddWithValue("@name", serviceName);
                 var result = await cmd.ExecuteScalarAsync();
                 return Convert.ToInt32(result) > 0;
@@ -29,7 +29,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("SELECT CurrentPrice FROM Services WHERE ServicesName = @name", connection);
+                var cmd = new SQLiteCommand("SELECT CurrentPrice FROM Services WHERE ServicesName = @name and ServiceActive = 1", connection);
                 cmd.Parameters.AddWithValue("@name", tenDichVu);
 
                 var result = cmd.ExecuteScalar();
@@ -45,8 +45,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("SELECT ServicesID, ServicesName, CurrentPrice from \"services\"", connection);
-                //var cmd = new SQLiteCommand("Select ServicesId, ServicesName, CurrentPrice from Services where ServiceActive = 1", connection);
+                var cmd = new SQLiteCommand("Select * from Services where ServiceActive = 1", connection);
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
                     var services = new List<MedicalService>();
@@ -57,6 +56,7 @@ namespace QuanlyPhongKham.Repository
                             ServicesId = reader["ServicesId"].ToString(),
                             ServicesName = reader["ServicesName"].ToString(),
                             CurrentPrice = decimal.Parse(reader["CurrentPrice"].ToString()),
+                            ServiceActive = (int)reader["ServiceActive"]
                         };
                         services.Add(service);
                     }
@@ -90,7 +90,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("UPDATE Services SET ServiceActive = 0 WHERE ServicesName = @name", connection);
+                var cmd = new SQLiteCommand("UPDATE Services SET ServiceActive = 0 WHERE ServicesName = @name and ServiceActive = 1", connection);
                 // đã dùng trigger + 100000 cho update < 0
                 cmd.Parameters.AddWithValue("@name", serviceName);
                 return await cmd.ExecuteNonQueryAsync() > 0;
@@ -102,7 +102,7 @@ namespace QuanlyPhongKham.Repository
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("UPDATE Services SET CurrentPrice = @newPrice WHERE ServicesName = @name", connection);
+                var cmd = new SQLiteCommand("UPDATE Services SET CurrentPrice = @newPrice WHERE ServicesName = @name and ServiceActive = 1", connection);
                 cmd.Parameters.AddWithValue("@newPrice", newPrice);
                 cmd.Parameters.AddWithValue("@name", serviceName);
                 return await cmd.ExecuteNonQueryAsync() > 0;
