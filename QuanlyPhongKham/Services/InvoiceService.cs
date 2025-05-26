@@ -34,6 +34,15 @@ namespace QuanlyPhongKham.Services
         {
             return await _invoiceRepository.GetInvoiceDetailsAsync(invoiceId);
         }
+        public async Task<decimal> GetTotalRevenueAsync(DateTime startDate, DateTime endDate)
+        {
+            return await _invoiceRepository.GetTotalRevenueAsync(startDate, endDate);
+        }
 
+        public async Task<List<Invoice>> GetInvoiceByTime(DateTime startDate, DateTime endDate)
+        {
+            return await _invoiceRepository.GetInvoiceByTime(startDate, endDate);
+        }
     }
+
 }

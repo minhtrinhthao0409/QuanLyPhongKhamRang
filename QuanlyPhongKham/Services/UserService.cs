@@ -7,6 +7,7 @@ using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Repository;
 using System.Data.SQLite;
 using System.Security.Cryptography;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace QuanlyPhongKham.Services
 {
@@ -83,6 +84,16 @@ namespace QuanlyPhongKham.Services
                 }
             }
             return users;
-        } 
+        }
+
+        public async Task<bool> UpdateUserAsync(string UserName, string Password, string FullName, string Email, string PhoneNumber)
+        {
+            return await _userRepository.UpdateUserAsync(UserName, Password, FullName, Email, PhoneNumber);
+        }
+
+        public async Task<bool> DeleteUserAsync(string userName)
+        {
+            return await _userRepository.DeleteUserAsync(userName);
+        }
     }
 }

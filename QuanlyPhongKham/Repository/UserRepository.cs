@@ -115,7 +115,7 @@ namespace QuanlyPhongKham.Repository
         {
             List<User> users = new List<User>();
             using var conn = await GetConnectionAsync();
-            var cmd = new SQLiteCommand("SELECT * FROM Users", conn);
+            var cmd = new SQLiteCommand("Select Id, UserName, Password, FullName, Email, PhoneNumber, Role from Users where Active = 1", conn);
             using var reader = await cmd.ExecuteReaderAsync();
             while (true)
             {
@@ -134,7 +134,7 @@ namespace QuanlyPhongKham.Repository
             }
             return users;
         }
-       
+
         public async Task<User> GetUserByEmailAsync(string email)
         {
             using var conn = new SQLiteConnection(connection);
@@ -168,5 +168,35 @@ namespace QuanlyPhongKham.Repository
             cmd.Parameters.AddWithValue("@Id", userId);
             await cmd.ExecuteNonQueryAsync();
         }
+
+        public async Task<bool> UpdateUserAsync(string UserName, string Password, string FullName, string Email, string PhoneNumber)
+        {
+            using var conn = new SQLiteConnection(connection);
+            await conn.OpenAsync();
+            var query = "UPDATE users SET Password = @Password, FullName = @FullName, Email = @Email, PhoneNumber = @PhoneNumber WHERE UserName = @UserName";
+
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.Parameters.AddWithValue("@FullName", FullName);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber ?? (object)DBNull.Value); // Xử lý giá trị rỗng
+            //cmd.Parameters.AddWithValue("@Id", ID);
+            await cmd.ExecuteNonQueryAsync();
+            return true;
+        }
+
+        public async Task<bool> DeleteUserAsync(string userName)
+        {
+            using var conn = new SQLiteConnection(connection);
+            await conn.OpenAsync();
+            var query = "UPDATE users SET Active = 0 WHERE UserName = @UserName"; // Sửa ID thành Id và UPDATE (đúng cú pháp)
+            using var cmd = new SQLiteCommand(query, conn);
+            cmd.Parameters.AddWithValue("@UserName", userName); // Khớp với @Id
+            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+            return rowsAffected > 0;
+        }
+
+
     }
 }

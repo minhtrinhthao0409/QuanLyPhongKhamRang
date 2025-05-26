@@ -169,8 +169,69 @@ namespace QuanlyPhongKham.Repository
 
             return details;
         }
+        public async Task<decimal> GetTotalRevenueAsync(DateTime startDate, DateTime endDate)
+        {
+            decimal totalRevenue = 0;
 
+            using (var conn = await GetConnectionAsync())
+            {
+                string query = @"
+                    SELECT SUM(TotalAmount) AS TotalRevenue
+                    FROM Invoice
+                    WHERE CreatedAt BETWEEN @StartDate AND @EndDate";
 
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@EndDate", endDate.ToString("yyyy-MM-dd"));
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            totalRevenue = reader["TotalRevenue"] != DBNull.Value
+                                ? Convert.ToDecimal(reader["TotalRevenue"])
+                                : 0;
+                        }
+                    }
+                }
+            }
+
+            return totalRevenue;
+        }
+        public async Task<List<Invoice>> GetInvoiceByTime(DateTime startDate, DateTime endDate)
+        {
+            var invoices = new List<Invoice>();
+            using (var conn = await GetConnectionAsync())
+            {
+                string query = @"
+                    SELECT InvoiceId, PatientId, PatientName, CreatedAt, TotalAmount, PaidAmount, Status
+                    FROM Invoice
+                    WHERE CreatedAt BETWEEN @StartDate AND @EndDate";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            invoices.Add(new Invoice
+                            {
+                                InvoiceId = Convert.ToInt32(reader["InvoiceId"]),
+                                PatientId = reader["PatientId"].ToString(),
+                                PatientName = reader["PatientName"].ToString(),
+                                CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                                TotalAmount = Convert.ToDecimal(reader["TotalAmount"]),
+                                PaidAmount = Convert.ToDecimal(reader["PaidAmount"]),
+                                Status = reader["Status"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            return invoices;
+        }
     }
 
 }
