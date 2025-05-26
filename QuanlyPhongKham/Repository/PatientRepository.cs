@@ -159,44 +159,61 @@ namespace QuanlyPhongKham.Repository
             return patients;
         }
 
-        public async Task<bool> UpdatePatientAsync(string patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, string? guardianId = null)
+        public async Task<bool> UpdatePatientAsync(string patientId, string name, bool gender,string phoneNumber, string email, DateTime dob,
+                                                    string? guardianId = null, string? guardianName = null)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Tên bệnh nhân không được rỗng.", nameof(name));
             if (string.IsNullOrWhiteSpace(phoneNumber))
                 throw new ArgumentException("Số điện thoại không được rỗng.", nameof(phoneNumber));
 
-            int affectedRows = 0;
-
             using var connection = await GetConnectionAsync();
-
-            // Ép kiểu transaction về đúng SQLiteTransaction
             using var transaction = (SQLiteTransaction)await connection.BeginTransactionAsync();
 
             try
             {
-                string updateSql = @"
-                                        UPDATE Patients 
-                                        SET 
-                                            FullName = @FullName,
-                                            Email = @Email,
-                                            Gender = @Gender,
-                                            PhoneNumber = @PhoneNumber,
-                                            DOB = @DOB,
-                                            GuardianId = @GuardianId
-                                        WHERE PatientId = @PatientId";
+                int affectedRows = 0;
 
-                using var cmd = new SQLiteCommand(updateSql, connection, transaction);
+                // Cập nhật bệnh nhân
+                string updatePatientSql = @"
+                                            UPDATE Patients 
+                                            SET 
+                                                FullName = @FullName,
+                                                Email = @Email,
+                                                Gender = @Gender,
+                                                PhoneNumber = @PhoneNumber,
+                                                DOB = @DOB,
+                                                GuardianId = @GuardianId
+                                            WHERE PatientId = @PatientId";
 
-                cmd.Parameters.AddWithValue("@FullName", name);
-                cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(email) ? DBNull.Value : email);
-                cmd.Parameters.AddWithValue("@Gender", gender ? 1 : 0);
-                cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                cmd.Parameters.AddWithValue("@DOB", dob.Date);
-                cmd.Parameters.AddWithValue("@GuardianId", string.IsNullOrWhiteSpace(guardianId) ? DBNull.Value : guardianId);
-                cmd.Parameters.AddWithValue("@PatientId", patientId);
+                using (var patientCmd = new SQLiteCommand(updatePatientSql, connection, transaction))
+                {
+                    patientCmd.Parameters.AddWithValue("@FullName", name);
+                    patientCmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(email) ? DBNull.Value : email);
+                    patientCmd.Parameters.AddWithValue("@Gender", gender ? 1 : 0);
+                    patientCmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                    patientCmd.Parameters.AddWithValue("@DOB", dob.Date);
+                    patientCmd.Parameters.AddWithValue("@GuardianId", string.IsNullOrWhiteSpace(guardianId) ? DBNull.Value : guardianId);
+                    patientCmd.Parameters.AddWithValue("@PatientId", patientId);
 
-                affectedRows = await cmd.ExecuteNonQueryAsync();
+                    affectedRows = await patientCmd.ExecuteNonQueryAsync();
+                }
+
+                // Cập nhật tên người giám hộ nếu có guardianId và tên
+                if (!string.IsNullOrWhiteSpace(guardianId) && !string.IsNullOrWhiteSpace(guardianName))
+                {
+                    string updateGuardianSql = @"
+                                                UPDATE Guardians
+                                                SET FullName = @GuardianName
+                                                WHERE GuardianId = @GuardianId";
+
+                    using var guardianCmd = new SQLiteCommand(updateGuardianSql, connection, transaction);
+                    guardianCmd.Parameters.AddWithValue("@GuardianName", guardianName);
+                    guardianCmd.Parameters.AddWithValue("@GuardianId", guardianId);
+
+                    await guardianCmd.ExecuteNonQueryAsync();
+                }
+
                 await transaction.CommitAsync();
 
                 Console.WriteLine(affectedRows == 0
@@ -212,6 +229,7 @@ namespace QuanlyPhongKham.Repository
                 throw new Exception("Lỗi khi cập nhật thông tin bệnh nhân.", ex);
             }
         }
+
 
 
         public async Task<int> CreateGuardianAsync(Guid guardianId, string name, string phoneNumber, string email)

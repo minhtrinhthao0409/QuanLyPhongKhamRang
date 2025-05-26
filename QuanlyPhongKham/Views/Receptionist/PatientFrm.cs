@@ -201,6 +201,9 @@ namespace QuanlyPhongKham.Views.Receptionist
             updatedPhoneNoTxt.Text = "";
             updatedEmailTxt.Text = "";
             updatedGuardianTxt.Text = "";
+
+            editPatientNameTxt.Text = "";
+            
         }
 
         private async void UpdateInfoBtn_Click(object sender, EventArgs e)
@@ -208,17 +211,20 @@ namespace QuanlyPhongKham.Views.Receptionist
             string currentName = currentNameTxt.Text.Trim();
             string currentPhoneNo = currentPhoneNoTxt.Text.Trim();
             string currentEmail = currentEmailTxt.Text.Trim();
+            string currentGuardian = currentGuardianTxt.Text.Trim();
 
             string updatedPhoneNo = updatedPhoneNoTxt.Text.Trim();
             string updatedGuardianName = updatedGuardianTxt.Text.Trim();
             string updatedEmail = updatedEmailTxt.Text.Trim();
 
 
+
+
             if (string.IsNullOrWhiteSpace(currentName) ||
                string.IsNullOrWhiteSpace(currentPhoneNo) &&
                string.IsNullOrWhiteSpace(currentEmail))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ tên, số điện thoại hoặc email để xác định bệnh nhân.", 
+                MessageBox.Show("Vui lòng nhập đầy đủ tên, số điện thoại hoặc email để xác định bệnh nhân.",
                                 "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -248,7 +254,8 @@ namespace QuanlyPhongKham.Views.Receptionist
                     phoneNumber: updatedPhoneNo,
                     email: updatedEmail,
                     dob: patient.DOB,
-                    guardianId: patient.GuardianId?.ToString()
+                    guardianId: patient.GuardianId?.ToString(),
+                    guardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName
                 );
 
                 if (result)
@@ -290,6 +297,78 @@ namespace QuanlyPhongKham.Views.Receptionist
         private void SignOutlbl_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private async void SaveInfo_Click(object sender, EventArgs e)
+        {
+            string currentName = currentNameTxt.Text.Trim();
+            string currentPhoneNo = currentPhoneNoTxt.Text.Trim();
+            string currentEmail = currentEmailTxt.Text.Trim();
+
+            string editName = editPatientNameTxt.Text.Trim();
+            DateTime dob = editDoB.Value.Date;
+
+            string selectedEditGender = CbEditGender.SelectedItem?.ToString()?.Trim() ?? "";
+            bool gender = selectedEditGender == "Male";
+
+            if (string.IsNullOrWhiteSpace(currentName) ||
+               string.IsNullOrWhiteSpace(currentPhoneNo) &&
+               string.IsNullOrWhiteSpace(currentEmail))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ tên, số điện thoại hoặc email để xác định bệnh nhân.",
+                                "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                var patients = await _patientService.SearchPatientsAsync(currentName, currentPhoneNo, currentEmail);
+
+                if (patients.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy bệnh nhân phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (patients.Count > 1)
+                {
+                    MessageBox.Show("Tìm thấy nhiều hơn một bệnh nhân. Vui lòng nhập rõ hơn thông tin để xác định duy nhất.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var patient = patients[0];
+
+                bool result = await _patientService.UpdatePatientAsync(
+                    patientId: patient.PatientId,
+                    name: editName,
+                    gender: gender,
+                    phoneNumber: currentPhoneNo,
+                    email: currentEmail,
+                    dob: dob
+                //guardianId: patient.GuardianId?.ToString()
+                //guardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName
+                );
+
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không có thay đổi nào được thực hiện.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void CbEditGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedEditGender = CbEditGender.SelectedItem.ToString();
         }
     }
 }
