@@ -31,8 +31,9 @@ namespace QuanlyPhongKham
             using (QuenMatKhau quenMatKhau = new QuenMatKhau())
             {
                 quenMatKhau.ShowDialog();
+                this.Show();
             }
-            this.Show();
+           
         }
 
         private void linkDangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,8 +42,9 @@ namespace QuanlyPhongKham
             using (DangKy dangKyForm = new DangKy())
             {
                 dangKyForm.ShowDialog(); // Show modal
+                this.Show();
             }
-            this.Show();
+            
         }
 
         private async void btnDangNhap_Click(object sender, EventArgs e)

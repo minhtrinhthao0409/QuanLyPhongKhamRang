@@ -14,5 +14,12 @@ namespace QuanlyPhongKham.Services
     {
         private readonly LoggingRepository _loggingRepository;
 
+        public async Task<bool> AddLoggingAsync(string UserID, string UserName, string Content)
+        {
+            return await _loggingRepository.AddLoggingAsync(UserID, UserName, Content);
+        }
+
+
+
     }
 }

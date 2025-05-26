@@ -20,6 +20,7 @@ namespace QuanlyPhongKham.Views.Receptionist
         private Form currentForm = null;
         private object selectedGender;
         private readonly PatientService _patientService;
+        private readonly LoggingService _loggService;
 
         public delegate void PatientSelectedHandler(string fullName, string phoneNumber);
         public event PatientSelectedHandler OnPatientSelected;
@@ -32,7 +33,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             InitializeComponent();
             this.user = user;
             _patientService = new PatientService();
-
+            _loggService = new LoggingService();
 
 
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -114,6 +115,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 if (result > 0)
                 {
                     MessageBox.Show("Thêm bệnh nhân thành công!");
+                    await _loggService.AddLoggingAsync(this.user.Id, this.user.FullName, "Thêm bệnh nhân");
                     //ClearInputFields();
                 }
                 else
