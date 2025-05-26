@@ -138,6 +138,7 @@
             // 
             // UpcomingAppointmentView
             // 
+            UpcomingAppointmentView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             UpcomingAppointmentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             UpcomingAppointmentView.Location = new System.Drawing.Point(250, 301);
             UpcomingAppointmentView.Name = "UpcomingAppointmentView";

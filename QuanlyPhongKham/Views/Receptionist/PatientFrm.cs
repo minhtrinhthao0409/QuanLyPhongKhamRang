@@ -21,6 +21,11 @@ namespace QuanlyPhongKham.Views.Receptionist
         private object selectedGender;
         private readonly PatientService _patientService;
 
+        public delegate void PatientSelectedHandler(string fullName, string phoneNumber);
+        public event PatientSelectedHandler OnPatientSelected;
+
+        //SearchPatientResultView
+
 
         public PatientFrm(User user)
         {
@@ -81,7 +86,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string? guardianName = Guardian.Text.Trim();
                 string email = PatientEmail.Text.Trim();
                 DateTime dob = dateTimePicker1.Value.Date;
-                
+
                 string selectedGender = cbGender.SelectedItem?.ToString()?.Trim() ?? "";
                 bool gender = selectedGender == "Male"; // Nam 1 Nữ 0
 
@@ -168,6 +173,11 @@ namespace QuanlyPhongKham.Views.Receptionist
                 SearchPatientResultView.Columns["GuardianId"].Visible = false;
                 SearchPatientResultView.Columns["MedRec"].Visible = false;
                 //SearchPatientResultView.Columns["Appoinments"].Visible = false;
+                if (SearchPatientResultView.Columns.Contains("Appointments"))
+                {
+                    SearchPatientResultView.Columns["Appointments"].Visible = false;
+                }
+
             }
             catch (Exception ex)
             {
@@ -236,6 +246,21 @@ namespace QuanlyPhongKham.Views.Receptionist
         private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedGender = cbGender.SelectedItem.ToString();
+        }
+
+        private void SearchPatientResultView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = SearchPatientResultView.Rows[e.RowIndex];
+                string name = selectedRow.Cells["Name"].Value.ToString();
+                string phone = selectedRow.Cells["PhoneNumber"].Value.ToString();
+
+                
+                OnPatientSelected?.Invoke(name, phone);
+
+                this.Close(); 
+            }
         }
     }
 }

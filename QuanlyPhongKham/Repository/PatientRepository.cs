@@ -64,18 +64,23 @@ namespace QuanlyPhongKham.Repository
 
             using var connection = await GetConnectionAsync();
 
-            var query = new StringBuilder("SELECT * FROM Patients WHERE 1=1");
+            var query = new StringBuilder(@"
+                                            SELECT p.*,  g.FullName AS GuardianName
+                                            FROM Patients p
+                                            LEFT JOIN Guardians g ON p.GuardianId = g.GuardianId
+                                            WHERE 1=1 ");
 
             if (!string.IsNullOrWhiteSpace(name))
-                query.Append(" AND FullName LIKE @FullName");
+                query.Append(" AND p.FullName LIKE @FullName");
 
             if (!string.IsNullOrWhiteSpace(phone))
-                query.Append(" AND PhoneNumber = @PhoneNumber");
+                query.Append(" AND p.PhoneNumber = @PhoneNumber");
 
             if (!string.IsNullOrWhiteSpace(email))
-                query.Append(" AND Email LIKE @Email");
+                query.Append(" AND p.Email LIKE @Email");
 
             using var command = new SQLiteCommand(query.ToString(), connection);
+
 
             if (!string.IsNullOrWhiteSpace(name))
                 command.Parameters.AddWithValue("@FullName", $"%{name}%");
@@ -109,7 +114,10 @@ namespace QuanlyPhongKham.Repository
                     Email = reader["Email"].ToString()!,
                     Gender = Convert.ToBoolean(reader["Gender"]),
                     DOB = Convert.ToDateTime(reader["Dob"]).Date,
-                    GuardianId = guardianId
+                    GuardianId = guardianId,
+                    GuardianName = reader["GuardianName"] == DBNull.Value
+                   ? null
+                   : reader["GuardianName"].ToString()
                 };
 
                 patients.Add(patient);

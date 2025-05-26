@@ -152,12 +152,12 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 if (cbDoctorName.SelectedItem is User selectedDoctor)
                 {
-                    doctorName = selectedDoctor.FullName;   
-                           
+                    doctorName = selectedDoctor.FullName;
+
                 }
                 if (cbDoctorEmail.SelectedItem is User selectedEmail)
                 {
-                    doctorEmail = selectedEmail.Email; 
+                    doctorEmail = selectedEmail.Email;
                 }
 
 
@@ -233,6 +233,20 @@ namespace QuanlyPhongKham.Views.Receptionist
             {
                 cbDoctorName.SelectedValue = selectedEmail.Email;
             }
+        }
+
+        private void searchPatientbtn_Click(object sender, EventArgs e)
+        {
+            var searchForm = new PatientFrm(user);
+
+            // Lắng nghe sự kiện khi chọn bệnh nhân
+            searchForm.OnPatientSelected += (name, phone) =>
+            {
+                PatientNameTxt.Text = name;
+                PatientPhoneNoTxt.Text = phone;
+            };
+
+            searchForm.ShowDialog(); // modal
         }
     }
 }

@@ -222,11 +222,13 @@
             // 
             // SearchPatientResultView
             // 
+            SearchPatientResultView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             SearchPatientResultView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SearchPatientResultView.Location = new System.Drawing.Point(2, 237);
             SearchPatientResultView.Name = "SearchPatientResultView";
             SearchPatientResultView.Size = new System.Drawing.Size(795, 400);
             SearchPatientResultView.TabIndex = 8;
+            SearchPatientResultView.CellClick += SearchPatientResultView_CellClick;
             // 
             // CrudPanel
             // 

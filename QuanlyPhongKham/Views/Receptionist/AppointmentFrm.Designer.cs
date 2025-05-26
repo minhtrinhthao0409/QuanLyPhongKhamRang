@@ -31,6 +31,7 @@
             AppointmentTab = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             CrudPanel = new System.Windows.Forms.Panel();
+            searchPatientbtn = new System.Windows.Forms.Button();
             cbDoctorEmail = new System.Windows.Forms.ComboBox();
             cbDoctorName = new System.Windows.Forms.ComboBox();
             startTimeMask = new System.Windows.Forms.MaskedTextBox();
@@ -100,6 +101,7 @@
             // 
             // CrudPanel
             // 
+            CrudPanel.Controls.Add(searchPatientbtn);
             CrudPanel.Controls.Add(cbDoctorEmail);
             CrudPanel.Controls.Add(cbDoctorName);
             CrudPanel.Controls.Add(startTimeMask);
@@ -122,6 +124,17 @@
             CrudPanel.Size = new System.Drawing.Size(797, 302);
             CrudPanel.TabIndex = 4;
             // 
+            // searchPatientbtn
+            // 
+            searchPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            searchPatientbtn.Location = new System.Drawing.Point(138, 210);
+            searchPatientbtn.Name = "searchPatientbtn";
+            searchPatientbtn.Size = new System.Drawing.Size(145, 50);
+            searchPatientbtn.TabIndex = 27;
+            searchPatientbtn.Text = "Search Patient Info";
+            searchPatientbtn.UseVisualStyleBackColor = true;
+            searchPatientbtn.Click += searchPatientbtn_Click;
+            // 
             // cbDoctorEmail
             // 
             cbDoctorEmail.FormattingEnabled = true;
@@ -133,6 +146,7 @@
             // 
             // cbDoctorName
             // 
+            cbDoctorName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             cbDoctorName.FormattingEnabled = true;
             cbDoctorName.Location = new System.Drawing.Point(138, 53);
             cbDoctorName.Name = "cbDoctorName";
@@ -203,6 +217,7 @@
             // 
             PatientPhoneNoTxt.Location = new System.Drawing.Point(492, 94);
             PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
+            PatientPhoneNoTxt.ReadOnly = true;
             PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
             PatientPhoneNoTxt.TabIndex = 3;
             // 
@@ -230,6 +245,7 @@
             // 
             PatientNameTxt.Location = new System.Drawing.Point(138, 89);
             PatientNameTxt.Name = "PatientNameTxt";
+            PatientNameTxt.ReadOnly = true;
             PatientNameTxt.Size = new System.Drawing.Size(211, 23);
             PatientNameTxt.TabIndex = 2;
             // 
@@ -256,7 +272,7 @@
             // UpdateBtn
             // 
             UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdateBtn.Location = new System.Drawing.Point(445, 228);
+            UpdateBtn.Location = new System.Drawing.Point(470, 210);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new System.Drawing.Size(93, 50);
             UpdateBtn.TabIndex = 7;
@@ -266,7 +282,7 @@
             // AddScheduleBtn
             // 
             AddScheduleBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddScheduleBtn.Location = new System.Drawing.Point(301, 228);
+            AddScheduleBtn.Location = new System.Drawing.Point(326, 210);
             AddScheduleBtn.Name = "AddScheduleBtn";
             AddScheduleBtn.Size = new System.Drawing.Size(93, 50);
             AddScheduleBtn.TabIndex = 6;
@@ -298,6 +314,7 @@
             // 
             // SearchAppointmentGridView
             // 
+            SearchAppointmentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             SearchAppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SearchAppointmentGridView.Location = new System.Drawing.Point(2, 229);
             SearchAppointmentGridView.Name = "SearchAppointmentGridView";
@@ -563,5 +580,6 @@
         private System.Windows.Forms.MaskedTextBox startTimeMask;
         private System.Windows.Forms.ComboBox cbDoctorName;
         private System.Windows.Forms.ComboBox cbDoctorEmail;
+        private System.Windows.Forms.Button searchPatientbtn;
     }
 }
