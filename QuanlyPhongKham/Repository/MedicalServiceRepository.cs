@@ -65,17 +65,17 @@ namespace QuanlyPhongKham.Repository
             }
         }
         // Tạo ID cho dịch vụ
-        public async Task<int> CountActiveService()
+        public async Task<int> CountService()
         {
             using (var connection = GetConnection())
             {
-                var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Services WHERE ServiceActive = 1", connection);
+                var cmd = new SQLiteCommand("SELECT COUNT(*) FROM Services", connection);
                 return Convert.ToInt32(await cmd.ExecuteScalarAsync());
             }
         }
         public async Task<bool> AddService(string servicename, decimal serviceprice)
         {
-            int count = await CountActiveService() + 1;
+            int count = await CountService() + 1;
             using (var connection = GetConnection())
             {
                 var cmd = new SQLiteCommand("INSERT INTO Services (ServicesId, ServicesName, CurrentPrice) VALUES (@id, @name, @price)", connection);
