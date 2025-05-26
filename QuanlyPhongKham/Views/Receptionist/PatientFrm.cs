@@ -83,7 +83,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 DateTime dob = dateTimePicker1.Value.Date;
                 
                 string selectedGender = cbGender.SelectedItem?.ToString()?.Trim() ?? "";
-                bool gender = selectedGender == "Male";
+                bool gender = selectedGender == "Male"; // Nam 1 Nữ 0
 
                 Guid patientId = Guid.NewGuid();
                 Guid? guardianId = null;
