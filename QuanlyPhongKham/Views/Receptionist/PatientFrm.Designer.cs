@@ -67,11 +67,18 @@
             UpdatePatientBtn = new System.Windows.Forms.Button();
             AddPatientbtn = new System.Windows.Forms.Button();
             tabPage3 = new System.Windows.Forms.TabPage();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            SaveInfo = new System.Windows.Forms.Button();
+            CbEditGender = new System.Windows.Forms.ComboBox();
+            label15 = new System.Windows.Forms.Label();
+            editDoB = new System.Windows.Forms.DateTimePicker();
+            label10 = new System.Windows.Forms.Label();
+            editPatientNameTxt = new System.Windows.Forms.TextBox();
+            label9 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
             panel4 = new System.Windows.Forms.Panel();
             ResetInfoBtn = new System.Windows.Forms.Button();
             updatedGuardianTxt = new System.Windows.Forms.TextBox();
-            label16 = new System.Windows.Forms.Label();
+            newGuardian = new System.Windows.Forms.Label();
             updatedEmailTxt = new System.Windows.Forms.TextBox();
             label18 = new System.Windows.Forms.Label();
             updatedPhoneNoTxt = new System.Windows.Forms.TextBox();
@@ -79,8 +86,9 @@
             label21 = new System.Windows.Forms.Label();
             UpdateInfoBtn = new System.Windows.Forms.Button();
             panel3 = new System.Windows.Forms.Panel();
+            panel5 = new System.Windows.Forms.Panel();
             currentGuardianTxt = new System.Windows.Forms.TextBox();
-            label9 = new System.Windows.Forms.Label();
+            currentGuardian = new System.Windows.Forms.Label();
             currentEmailTxt = new System.Windows.Forms.TextBox();
             label11 = new System.Windows.Forms.Label();
             currentPhoneNoTxt = new System.Windows.Forms.TextBox();
@@ -97,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel1.SuspendLayout();
             tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -503,7 +510,14 @@
             // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(dataGridView1);
+            tabPage3.Controls.Add(SaveInfo);
+            tabPage3.Controls.Add(CbEditGender);
+            tabPage3.Controls.Add(label15);
+            tabPage3.Controls.Add(editDoB);
+            tabPage3.Controls.Add(label10);
+            tabPage3.Controls.Add(editPatientNameTxt);
+            tabPage3.Controls.Add(label9);
+            tabPage3.Controls.Add(label8);
             tabPage3.Controls.Add(panel4);
             tabPage3.Controls.Add(panel3);
             tabPage3.Location = new System.Drawing.Point(4, 24);
@@ -514,26 +528,93 @@
             tabPage3.Text = "Update Infomation";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // SaveInfo
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(2, 507);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(796, 127);
-            dataGridView1.TabIndex = 28;
+            SaveInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            SaveInfo.Location = new System.Drawing.Point(633, 304);
+            SaveInfo.Name = "SaveInfo";
+            SaveInfo.Size = new System.Drawing.Size(90, 31);
+            SaveInfo.TabIndex = 27;
+            SaveInfo.Text = "Save";
+            SaveInfo.UseVisualStyleBackColor = true;
+            SaveInfo.Click += SaveInfo_Click;
+            // 
+            // CbEditGender
+            // 
+            CbEditGender.FormattingEnabled = true;
+            CbEditGender.Items.AddRange(new object[] { "Male", "Female" });
+            CbEditGender.Location = new System.Drawing.Point(466, 304);
+            CbEditGender.Name = "CbEditGender";
+            CbEditGender.Size = new System.Drawing.Size(56, 23);
+            CbEditGender.TabIndex = 31;
+            CbEditGender.SelectedIndexChanged += CbEditGender_SelectedIndexChanged;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label15.Location = new System.Drawing.Point(387, 310);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(52, 17);
+            label15.TabIndex = 30;
+            label15.Text = "Gender";
+            // 
+            // editDoB
+            // 
+            editDoB.Location = new System.Drawing.Point(131, 306);
+            editDoB.Name = "editDoB";
+            editDoB.Size = new System.Drawing.Size(223, 23);
+            editDoB.TabIndex = 29;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label10.Location = new System.Drawing.Point(9, 311);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(90, 17);
+            label10.TabIndex = 28;
+            label10.Text = "Date Of Birth";
+            // 
+            // editPatientNameTxt
+            // 
+            editPatientNameTxt.Location = new System.Drawing.Point(132, 270);
+            editPatientNameTxt.Name = "editPatientNameTxt";
+            editPatientNameTxt.Size = new System.Drawing.Size(591, 23);
+            editPatientNameTxt.TabIndex = 27;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label9.Location = new System.Drawing.Point(9, 272);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(92, 17);
+            label9.TabIndex = 26;
+            label9.Text = "Patient Name";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label8.Location = new System.Drawing.Point(269, 230);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(225, 25);
+            label8.TabIndex = 27;
+            label8.Text = "Edit General Infomation";
             // 
             // panel4
             // 
             panel4.Controls.Add(ResetInfoBtn);
             panel4.Controls.Add(updatedGuardianTxt);
-            panel4.Controls.Add(label16);
+            panel4.Controls.Add(newGuardian);
             panel4.Controls.Add(updatedEmailTxt);
             panel4.Controls.Add(label18);
             panel4.Controls.Add(updatedPhoneNoTxt);
             panel4.Controls.Add(label19);
             panel4.Controls.Add(label21);
             panel4.Controls.Add(UpdateInfoBtn);
-            panel4.Location = new System.Drawing.Point(0, 221);
+            panel4.Location = new System.Drawing.Point(0, 349);
             panel4.Name = "panel4";
             panel4.Size = new System.Drawing.Size(796, 285);
             panel4.TabIndex = 27;
@@ -556,15 +637,15 @@
             updatedGuardianTxt.Size = new System.Drawing.Size(591, 23);
             updatedGuardianTxt.TabIndex = 24;
             // 
-            // label16
+            // newGuardian
             // 
-            label16.AutoSize = true;
-            label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label16.Location = new System.Drawing.Point(24, 163);
-            label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(64, 17);
-            label16.TabIndex = 23;
-            label16.Text = "Guardian";
+            newGuardian.AutoSize = true;
+            newGuardian.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            newGuardian.Location = new System.Drawing.Point(24, 163);
+            newGuardian.Name = "newGuardian";
+            newGuardian.Size = new System.Drawing.Size(64, 17);
+            newGuardian.TabIndex = 23;
+            newGuardian.Text = "Guardian";
             // 
             // updatedEmailTxt
             // 
@@ -623,8 +704,9 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(panel5);
             panel3.Controls.Add(currentGuardianTxt);
-            panel3.Controls.Add(label9);
+            panel3.Controls.Add(currentGuardian);
             panel3.Controls.Add(currentEmailTxt);
             panel3.Controls.Add(label11);
             panel3.Controls.Add(currentPhoneNoTxt);
@@ -637,22 +719,29 @@
             panel3.Size = new System.Drawing.Size(796, 209);
             panel3.TabIndex = 5;
             // 
+            // panel5
+            // 
+            panel5.Location = new System.Drawing.Point(1, 207);
+            panel5.Name = "panel5";
+            panel5.Size = new System.Drawing.Size(795, 135);
+            panel5.TabIndex = 25;
+            // 
             // currentGuardianTxt
             // 
-            currentGuardianTxt.Location = new System.Drawing.Point(143, 126);
+            currentGuardianTxt.Location = new System.Drawing.Point(143, 140);
             currentGuardianTxt.Name = "currentGuardianTxt";
-            currentGuardianTxt.Size = new System.Drawing.Size(211, 23);
+            currentGuardianTxt.Size = new System.Drawing.Size(591, 23);
             currentGuardianTxt.TabIndex = 24;
             // 
-            // label9
+            // currentGuardian
             // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label9.Location = new System.Drawing.Point(24, 127);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(64, 17);
-            label9.TabIndex = 23;
-            label9.Text = "Guardian";
+            currentGuardian.AutoSize = true;
+            currentGuardian.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            currentGuardian.Location = new System.Drawing.Point(24, 141);
+            currentGuardian.Name = "currentGuardian";
+            currentGuardian.Size = new System.Drawing.Size(64, 17);
+            currentGuardian.TabIndex = 23;
+            currentGuardian.Text = "Guardian";
             // 
             // currentEmailTxt
             // 
@@ -736,7 +825,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tabPage3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
@@ -784,10 +873,9 @@
         private System.Windows.Forms.Button UpdatePatientBtn;
         private System.Windows.Forms.Button AddPatientbtn;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox updatedGuardianTxt;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label newGuardian;
         private System.Windows.Forms.TextBox updatedEmailTxt;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox updatedPhoneNoTxt;
@@ -796,7 +884,7 @@
         private System.Windows.Forms.Button UpdateInfoBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox currentGuardianTxt;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label currentGuardian;
         private System.Windows.Forms.TextBox currentEmailTxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox currentPhoneNoTxt;
@@ -806,5 +894,14 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button ResetInfoBtn;
         private System.Windows.Forms.ComboBox cbGender;
+        private System.Windows.Forms.Button SaveInfo;
+        private System.Windows.Forms.ComboBox CbEditGender;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker editDoB;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox editPatientNameTxt;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel5;
     }
 }
