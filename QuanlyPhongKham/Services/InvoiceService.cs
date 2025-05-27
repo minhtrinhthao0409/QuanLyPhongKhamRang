@@ -19,7 +19,6 @@ namespace QuanlyPhongKham.Services
 
         public async Task CreateInvoiceAsync(Invoice invoice)
         {
-            // Optional: kiểm tra nghiệp vụ như tổng tiền hợp lệ, dịch vụ còn hoạt động,...
             if (invoice.TotalAmount <= 0)
                 throw new Exception("Tổng tiền phải lớn hơn 0.");
 
@@ -46,6 +45,10 @@ namespace QuanlyPhongKham.Services
         public async Task<List<Invoice>> GetAllAsync()
         {
             return await GetInvoiceByTime(DateTime.MinValue, DateTime.MaxValue);
+        }
+        public async Task UpdateInvoiceStatusAsync(int invoiceId)
+        {
+            await _invoiceRepository.SetInvoiceAsPaidAsync(invoiceId);
         }
     }
 

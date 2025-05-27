@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Models;
+﻿using QuanlyPhongKham.Controllers;
+using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
@@ -16,24 +17,22 @@ namespace QuanlyPhongKham.Views.Receptionist
     {
         private User user;
         private Form currentForm = null;
-        private readonly InvoiceService _invoiceService;
-
+        private readonly InvoiceService _invoiceService = new InvoiceService();
+        private readonly InvoiceController _invoiceController = new InvoiceController();
         public InvoiceFrm(User user)
         {
             this.user = user;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            _invoiceService = new InvoiceService();
-
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
-            //Schedulelbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;
             Homelbl.Click += menulbl_click;
 
             InvoiceGridView.CellClick += InvoiceGridView_CellClick;
-
+            InvoiceGridView.CellValueChanged += InvoiceGridView_CellValueChanged;
+            InvoiceGridView.CellContentClick += InvoiceGridView_CellContentClick;
         }
 
         private void menulbl_click(object sender, EventArgs e)
@@ -74,11 +73,53 @@ namespace QuanlyPhongKham.Views.Receptionist
                 DateTime endDate = endTimePicker.Value.Date;
                 string patientPhoneNo = patientPhoneNoTxt.Text.Trim();
 
-                var result = await _invoiceService.SearchInvoicesAsync(patientPhoneNo, startDate, endDate);
+                List<Invoice> result;
+                if (string.IsNullOrEmpty(patientPhoneNo))
+                {
+                    result = await _invoiceService.GetInvoiceByTime(startDate, endDate);
+                }
+                else
+                {
+                    result = await _invoiceService.SearchInvoicesAsync(patientPhoneNo, startDate, endDate);
+                }
 
+                BindingSource source = new BindingSource();
+                source.DataSource = result;
+                InvoiceGridView.DataSource = source;
 
-                InvoiceGridView.DataSource = result;
+                if (InvoiceGridView.Columns["CreatedAt"] != null)
+                {
+                    InvoiceGridView.Columns["CreatedAt"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    InvoiceGridView.Columns["CreatedAt"].HeaderText = "Ngày tạo";
+                }
+
+                if (InvoiceGridView.Columns["InvoiceId"] != null)
+                    InvoiceGridView.Columns["InvoiceId"].HeaderText = "Mã hóa đơn";
+                if (InvoiceGridView.Columns["PatientName"] != null)
+                    InvoiceGridView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
+                if (InvoiceGridView.Columns["TotalAmount"] != null)
+                {
+                    InvoiceGridView.Columns["TotalAmount"].HeaderText = "Tổng tiền";
+                    InvoiceGridView.Columns["TotalAmount"].DefaultCellStyle.Format = "N0";
+                }
+                if (InvoiceGridView.Columns["PaidAmount"] != null)
+                    InvoiceGridView.Columns["PaidAmount"].HeaderText = "Đã thanh toán";
+                if (InvoiceGridView.Columns["Status"] != null)
+                    InvoiceGridView.Columns["Status"].HeaderText = "Trạng thái";
+
                 InvoiceGridView.Columns["PatientId"].Visible = false;
+
+                // Thêm cột checkbox nếu chưa có
+                if (!InvoiceGridView.Columns.Contains("PaidCheck"))
+                {
+                    DataGridViewCheckBoxColumn paidCheckCol = new DataGridViewCheckBoxColumn
+                    {
+                        HeaderText = "Xác nhận đã thanh toán",
+                        Name = "PaidCheck",
+                        Width = 120
+                    };
+                    InvoiceGridView.Columns.Add(paidCheckCol);
+                }
             }
             catch (Exception ex)
             {
@@ -125,40 +166,37 @@ namespace QuanlyPhongKham.Views.Receptionist
                 }
             }
         }
-
+        private void InvoiceGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (InvoiceGridView.Columns[e.ColumnIndex].Name == "PaidCheck" && e.RowIndex >= 0)
+            {
+                InvoiceGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+        private async void InvoiceGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && InvoiceGridView.Columns[e.ColumnIndex].Name == "PaidCheck")
+            {
+                if (InvoiceGridView.Rows[e.RowIndex].DataBoundItem is Invoice invoice)
+                {
+                    try
+                    {
+                        await _invoiceController.UpdateInvoiceStatusAsync(invoice.InvoiceId);
+                        invoice.Status = "Đã thanh toán"; // Cập nhật status thủ công
+                        InvoiceGridView.Refresh(); // Cập nhật lại UI
+                        MessageBox.Show("Cập nhật trạng thái thành công!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi cập nhật trạng thái: " + ex.Message);
+                    }
+                }
+            }
+        }
         private void SignOutlbl_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private async void LoadInvoices()
-        {
-            var invoices = await _invoiceService.GetAllAsync();
-            InvoiceGridView.DataSource = invoices;
-
-            // Định dạng cột ngày
-            if (InvoiceGridView.Columns["CreatedAt"] != null)
-            {
-                InvoiceGridView.Columns["CreatedAt"].DefaultCellStyle.Format = "dd/MM/yyyy";
-                InvoiceGridView.Columns["CreatedAt"].HeaderText = "Ngày tạo";
-            }
-            
-            if (InvoiceGridView.Columns["InvoiceId"] != null)
-                InvoiceGridView.Columns["InvoiceId"].HeaderText = "Mã hóa đơn";
-            if (InvoiceGridView.Columns["PatientName"] != null)
-                InvoiceGridView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
-            if (InvoiceGridView.Columns["TotalAmount"] != null)
-                InvoiceGridView.Columns["TotalAmount"].HeaderText = "Tổng tiền";
-            if (InvoiceGridView.Columns["PaidAmount"] != null)
-                InvoiceGridView.Columns["PaidAmount"].HeaderText = "Đã thanh toán";
-            if (InvoiceGridView.Columns["Status"] != null)
-                InvoiceGridView.Columns["Status"].HeaderText = "Trạng thái";
-
-            InvoiceGridView.Columns["PatientId"].Visible = false;
-
-        }
-        private void InvoiceFrm_Load(object sender, EventArgs e)
-        {
-            LoadInvoices();
-        }
+        
     }
 }

@@ -44,5 +44,9 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _invoiceService.GetInvoiceByTime(startDate, endDate);
         }
+        public async Task UpdateInvoiceStatusAsync(int invoiceId)
+        {
+            await _invoiceService.UpdateInvoiceStatusAsync(invoiceId);
+        }
     }
 }
