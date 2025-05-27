@@ -8,7 +8,7 @@ using QuanlyPhongKham.Models;
 
 namespace QuanlyPhongKham.Controllers
 {
-    class LoggingController
+    public class LoggingController
     {
         LoggingService _loggingService;
         public LoggingController()

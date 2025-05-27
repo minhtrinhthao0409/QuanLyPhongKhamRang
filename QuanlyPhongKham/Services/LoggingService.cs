@@ -11,7 +11,7 @@ using System.Security.Permissions;
 
 namespace QuanlyPhongKham.Services
 {
-    class LoggingService
+    public class LoggingService
     {
         private readonly LoggingRepository _loggingRepository;
         public LoggingService()

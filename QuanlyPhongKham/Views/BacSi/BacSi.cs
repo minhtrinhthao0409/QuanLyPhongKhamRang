@@ -26,11 +26,13 @@ namespace QuanlyPhongKham.Views
         private string currentDoctorId;
         private string currentDoctorName;
         private List<Patient> allPatients;
+        private readonly LoggingService loggingService;
 
-        public BacSi(User user)
+        public BacSi(User user, LoggingService loggingService)
         {
             InitializeComponent();
             this.user = user;
+            this.loggingService = loggingService;
         }
 
         private async void BacSi_Load(object sender, EventArgs e)
@@ -39,7 +41,7 @@ namespace QuanlyPhongKham.Views
             currentDoctorName = user.UserName;
             var appointmentDate = dtpAppointmentDate.Value.Date;
             cboPatientId.SelectedIndexChanged += cboPatientId_SelectedIndexChanged;
-
+            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Đăng nhập vào giao diện bác sĩ.");
             await LoadPatientsToComboBoxes();
             await LoadPatientsAsync();
             await LoadAppointmentsAsync();
@@ -102,6 +104,7 @@ namespace QuanlyPhongKham.Views
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xem danh sách lịch hẹn.");
         }
         private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -181,6 +184,7 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show("Lỗi khi thêm lịch hẹn!");
             }
+            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xác nhận lịch hẹn với bệnh nhân.");
         }
         private async Task LoadPatientsToComboBoxes()
         {
@@ -233,6 +237,7 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show("Lỗi khi lưu bệnh án: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu bệnh án.");
         }
 
         private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,6 +295,7 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show($"Lỗi khi tải hồ sơ bệnh án: {ex.Message}");
             }
+            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xem bệnh án.");
         }
         private void cbIdPatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -324,7 +330,7 @@ namespace QuanlyPhongKham.Views
 
         private async Task LoadServicesToComboBoxAsync()
         {
-            var repo = new InvoiceRepository(); // hoặc dùng DI nếu có
+            var repo = new InvoiceRepository();
             var services = await repo.GetActiveServicesAsync();
 
             cbChonDichVu.DisplayMember = "ServicesName";
@@ -375,13 +381,9 @@ namespace QuanlyPhongKham.Views
 
             await _invoiceController.CreateInvoiceAsync(invoice);
             MessageBox.Show("Lưu hóa đơn thành công");
+            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu hóa đơn.");
         }
         
-        private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
             decimal tongTien = 0;
@@ -433,6 +435,10 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show("Lỗi khi tải danh sách bệnh nhân: " + ex.Message);
             }
+        }
+        private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Services;
 using QuanlyPhongKham.Views;
 using QuanlyPhongKham.Views.Admin;
 using QuanlyPhongKham.Views.Receptionist;
@@ -78,7 +79,7 @@ namespace QuanlyPhongKham
                 }
                 else if (user.Role == UserRole.Doctor)
                 {
-                    form = new BacSi(user);
+                    form = new BacSi(user, new LoggingService());
                 }
                 else if (user.Role == UserRole.Receptionist)
                 {
