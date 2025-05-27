@@ -232,7 +232,18 @@ namespace QuanlyPhongKham.Repository
             }
             return invoices;
         }
-        
+        public async Task SetInvoiceAsPaidAsync(int invoiceId)
+        {
+            using (var conn = await GetConnectionAsync())
+            {
+                string query = "UPDATE Invoice SET Status = 'Đã thanh toán' WHERE InvoiceId = @InvoiceId";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@InvoiceId", invoiceId);
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }
     }
 
 }

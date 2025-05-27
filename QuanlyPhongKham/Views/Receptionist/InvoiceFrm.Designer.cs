@@ -212,6 +212,7 @@
             // 
             // InvoiceGridView
             // 
+            InvoiceGridView.AllowUserToAddRows = false;
             InvoiceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             InvoiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InvoiceGridView.Location = new System.Drawing.Point(238, 325);
@@ -256,7 +257,6 @@
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "InvoiceFrm";
             Text = "InvoiceForm";
-            Load += InvoiceFrm_Load;
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
