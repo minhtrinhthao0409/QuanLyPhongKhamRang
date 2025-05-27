@@ -17,8 +17,6 @@ namespace QuanlyPhongKham.Views.Receptionist
         private User user;
         private Form currentForm = null;
         private readonly InvoiceService _invoiceService;
-    
-
 
         public InvoiceFrm(User user)
         {
@@ -26,7 +24,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             _invoiceService = new InvoiceService();
-           
+
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
@@ -52,8 +50,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 currentForm = new AppointmentFrm(user);
             else if (sender == Patientlbl)
                 currentForm = new PatientFrm(user);
-            //else if (sender == Schedulelbl)
-            //    currentForm = new ScheduleFrm(user);
+
             else if (sender == Invoicelbl)
                 currentForm = new InvoiceFrm(user);
 
@@ -96,7 +93,31 @@ namespace QuanlyPhongKham.Views.Receptionist
                 try
                 {
                     var details = await _invoiceService.GetInvoiceDetailsAsync(selectedInvoice.InvoiceId);
+
                     InvoiceDetailGridView.DataSource = details;
+
+                    if (InvoiceDetailGridView.Columns["ServiceName"] != null)
+                        InvoiceDetailGridView.Columns["ServiceName"].HeaderText = "Dịch vụ";
+
+                    if (InvoiceDetailGridView.Columns["UnitPrice"] != null)
+                    {
+                        InvoiceDetailGridView.Columns["UnitPrice"].HeaderText = "Đơn giá";
+                        InvoiceDetailGridView.Columns["UnitPrice"].DefaultCellStyle.Format = "N0";
+                    }
+
+                    if (InvoiceDetailGridView.Columns["Quantity"] != null)
+                        InvoiceDetailGridView.Columns["Quantity"].HeaderText = "Số lượng";
+
+                    if (InvoiceDetailGridView.Columns["TotalPrice"] != null)
+                    {
+                        InvoiceDetailGridView.Columns["TotalPrice"].HeaderText = "Tổng tiền";
+                        InvoiceDetailGridView.Columns["TotalPrice"].DefaultCellStyle.Format = "N0";
+                    }
+
+                    InvoiceDetailGridView.Columns["InvoiceId"].Visible = false;
+                    InvoiceDetailGridView.Columns["InvoiceDetailId"].Visible = false;
+                    if (InvoiceDetailGridView.Columns.Contains("Invoice"))
+                        InvoiceDetailGridView.Columns["Invoice"].Visible = false;
                 }
                 catch (Exception ex)
                 {
@@ -108,6 +129,36 @@ namespace QuanlyPhongKham.Views.Receptionist
         private void SignOutlbl_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private async void LoadInvoices()
+        {
+            var invoices = await _invoiceService.GetAllAsync();
+            InvoiceGridView.DataSource = invoices;
+
+            // Định dạng cột ngày
+            if (InvoiceGridView.Columns["CreatedAt"] != null)
+            {
+                InvoiceGridView.Columns["CreatedAt"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                InvoiceGridView.Columns["CreatedAt"].HeaderText = "Ngày tạo";
+            }
+            
+            if (InvoiceGridView.Columns["InvoiceId"] != null)
+                InvoiceGridView.Columns["InvoiceId"].HeaderText = "Mã hóa đơn";
+            if (InvoiceGridView.Columns["PatientName"] != null)
+                InvoiceGridView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
+            if (InvoiceGridView.Columns["TotalAmount"] != null)
+                InvoiceGridView.Columns["TotalAmount"].HeaderText = "Tổng tiền";
+            if (InvoiceGridView.Columns["PaidAmount"] != null)
+                InvoiceGridView.Columns["PaidAmount"].HeaderText = "Đã thanh toán";
+            if (InvoiceGridView.Columns["Status"] != null)
+                InvoiceGridView.Columns["Status"].HeaderText = "Trạng thái";
+
+            InvoiceGridView.Columns["PatientId"].Visible = false;
+
+        }
+        private void InvoiceFrm_Load(object sender, EventArgs e)
+        {
+            LoadInvoices();
         }
     }
 }

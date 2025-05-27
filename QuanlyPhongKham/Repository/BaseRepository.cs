@@ -9,7 +9,7 @@ public class BaseRepository : IDisposable
     public readonly string connection;
     private bool disposed;
 
-    public BaseRepository(string connectionString = null) // nếu không có chuỗi kết nối thì lấy từ cấu hình
+    public BaseRepository(string connectionString = null)
     {
         this.connection = connectionString
             ?? ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ConnectionString

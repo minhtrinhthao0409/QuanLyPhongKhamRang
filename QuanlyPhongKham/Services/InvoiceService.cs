@@ -43,6 +43,10 @@ namespace QuanlyPhongKham.Services
         {
             return await _invoiceRepository.GetInvoiceByTime(startDate, endDate);
         }
+        public async Task<List<Invoice>> GetAllAsync()
+        {
+            return await GetInvoiceByTime(DateTime.MinValue, DateTime.MaxValue);
+        }
     }
 
 }

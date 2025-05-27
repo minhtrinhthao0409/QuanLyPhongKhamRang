@@ -232,6 +232,7 @@ namespace QuanlyPhongKham.Repository
             }
             return invoices;
         }
+        
     }
 
 }
