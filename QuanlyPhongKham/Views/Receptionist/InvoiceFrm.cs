@@ -24,6 +24,11 @@ namespace QuanlyPhongKham.Views.Receptionist
             this.user = user;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            _invoiceService = new InvoiceService();
+
+            startTimePicker.Value = DateTime.Now.AddDays(-7);
+            endTimePicker.Value = DateTime.Now.AddDays(-1);
+
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
