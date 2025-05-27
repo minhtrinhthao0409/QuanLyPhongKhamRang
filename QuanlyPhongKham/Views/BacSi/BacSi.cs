@@ -368,7 +368,7 @@ namespace QuanlyPhongKham.Views
             {
                 if (row.Cells["TenDichVu"].Value != null)
                 {
-                    // Làm sạch giá (phòng trường hợp bạn hiển thị giá có định dạng VNĐ trong DataGridView)
+                   
                     string rawGia = row.Cells["Gia"].Value?.ToString().Replace("VNĐ", "").Replace(".", "").Trim() ?? "0";
 
                     if (!decimal.TryParse(rawGia, out decimal unitPrice))
@@ -436,7 +436,7 @@ namespace QuanlyPhongKham.Views
                 allPatients = await patientController.GetAllPatientsAsync();
                 cboPatientId.DataSource = allPatients;
                 cboPatientId.DisplayMember = "PhoneNumber";
-                cboPatientId.ValueMember = "PhoneNumber";
+                cboPatientId.ValueMember = "PatientId";
             }
             catch (Exception ex)
             {
