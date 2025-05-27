@@ -52,6 +52,11 @@ namespace QuanlyPhongKham.Views.Receptionist
             cbDoctorName.SelectedIndexChanged += cbDoctorName_SelectedIndexChanged;
             cbDoctorEmail.SelectedIndexChanged += cbDoctorEmail_SelectedIndexChanged;
 
+            startTimePicker.Value = DateTime.Now;
+            startTimePicker.MinDate = DateTime.Today;
+
+            StartDatePicker.Value = DateTime.Today.AddDays(-7);
+            EndDatePicker.Value = DateTime.Today;
 
             //LoadDoctorNameComboBox();
             this.Load += AppointmentFrm_Load;
