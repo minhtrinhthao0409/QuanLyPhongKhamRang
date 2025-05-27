@@ -92,7 +92,16 @@ namespace QuanlyPhongKham.Views.Receptionist
                 UpcomingAppointmentView.Columns["DoctorId"].Visible = false;
                 UpcomingAppointmentView.Columns["PatientId"].Visible = false;
                 UpcomingAppointmentView.Columns["AppointmentId"].Visible = false;
-                //SearchAppointmentGridView.Columns["Appointments"].Visible = false;
+                UpcomingAppointmentView.Columns["PaymentStatus"].Visible = false;
+
+
+                UpcomingAppointmentView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
+                UpcomingAppointmentView.Columns["PhoneNumber"].HeaderText = "Số điện thoại";
+                UpcomingAppointmentView.Columns["DoctorName"].HeaderText = "Bác sĩ phụ trách";
+                UpcomingAppointmentView.Columns["AppointmentDate"].HeaderText = "Ngày hẹn";
+                UpcomingAppointmentView.Columns["StartTime"].HeaderText = "Giờ bắt đầu";
+                //UpcomingAppointmentView.Columns["EndTime"].HeaderText = "Giờ kết thúc";
+
             }
             catch (Exception ex)
             {

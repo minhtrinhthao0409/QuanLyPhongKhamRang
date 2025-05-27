@@ -124,10 +124,13 @@
             // 
             // UpcomingAppointmentView
             // 
+            UpcomingAppointmentView.AllowUserToAddRows = false;
+            UpcomingAppointmentView.AllowUserToDeleteRows = false;
             UpcomingAppointmentView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             UpcomingAppointmentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             UpcomingAppointmentView.Location = new System.Drawing.Point(250, 301);
             UpcomingAppointmentView.Name = "UpcomingAppointmentView";
+            UpcomingAppointmentView.ReadOnly = true;
             UpcomingAppointmentView.Size = new System.Drawing.Size(675, 357);
             UpcomingAppointmentView.TabIndex = 18;
             UpcomingAppointmentView.CellContentClick += UpcomingAppointmentView_CellContentClick;

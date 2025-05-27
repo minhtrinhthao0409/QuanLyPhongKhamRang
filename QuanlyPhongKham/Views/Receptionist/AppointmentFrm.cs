@@ -134,7 +134,13 @@ namespace QuanlyPhongKham.Views.Receptionist
                 SearchAppointmentGridView.Columns["DoctorId"].Visible = false;
                 SearchAppointmentGridView.Columns["PatientId"].Visible = false;
                 SearchAppointmentGridView.Columns["AppointmentId"].Visible = false;
-                //SearchAppointmentGridView.Columns["Appointments"].Visible = false;
+                SearchAppointmentGridView.Columns["PaymentStatus"].Visible = false;
+
+                SearchAppointmentGridView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
+                SearchAppointmentGridView.Columns["PhoneNumber"].HeaderText = "Số điện thoại";
+                SearchAppointmentGridView.Columns["DoctorName"].HeaderText = "Bác sĩ phụ trách";
+                SearchAppointmentGridView.Columns["AppointmentDate"].HeaderText = "Ngày hẹn";
+                SearchAppointmentGridView.Columns["StartTime"].HeaderText = "Giờ bắt đầu";
             }
             catch (Exception ex)
             {

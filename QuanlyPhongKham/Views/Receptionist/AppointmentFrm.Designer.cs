@@ -301,10 +301,13 @@
             // 
             // SearchAppointmentGridView
             // 
+            SearchAppointmentGridView.AllowUserToAddRows = false;
+            SearchAppointmentGridView.AllowUserToDeleteRows = false;
             SearchAppointmentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             SearchAppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SearchAppointmentGridView.Location = new System.Drawing.Point(2, 229);
             SearchAppointmentGridView.Name = "SearchAppointmentGridView";
+            SearchAppointmentGridView.ReadOnly = true;
             SearchAppointmentGridView.Size = new System.Drawing.Size(796, 411);
             SearchAppointmentGridView.TabIndex = 6;
             SearchAppointmentGridView.CellClick += SearchAppointmentGridView_CellClick;

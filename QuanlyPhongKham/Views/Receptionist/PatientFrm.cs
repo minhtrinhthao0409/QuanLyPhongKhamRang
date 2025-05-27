@@ -174,11 +174,16 @@ namespace QuanlyPhongKham.Views.Receptionist
                 SearchPatientResultView.Columns["PatientId"].Visible = false;
                 SearchPatientResultView.Columns["GuardianId"].Visible = false;
                 SearchPatientResultView.Columns["MedRec"].Visible = false;
-                //SearchPatientResultView.Columns["Appoinments"].Visible = false;
                 if (SearchPatientResultView.Columns.Contains("Appointments"))
                 {
                     SearchPatientResultView.Columns["Appointments"].Visible = false;
                 }
+
+                SearchPatientResultView.Columns["Name"].HeaderText = "Tên bệnh nhân";
+                SearchPatientResultView.Columns["DOB"].HeaderText = "Ngày sinh";
+                SearchPatientResultView.Columns["Gender"].HeaderText = "Giới tính";
+                SearchPatientResultView.Columns["PhoneNumber"].HeaderText = "Số điện thoại";
+                SearchPatientResultView.Columns["GuardianName"].HeaderText = "Người giám hộ";
 
             }
             catch (Exception ex)
