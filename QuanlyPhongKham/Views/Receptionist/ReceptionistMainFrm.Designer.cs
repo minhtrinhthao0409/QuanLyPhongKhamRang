@@ -66,7 +66,7 @@
             Homelbl.Name = "Homelbl";
             Homelbl.Size = new System.Drawing.Size(170, 46);
             Homelbl.TabIndex = 7;
-            Homelbl.Text = "Home";
+            Homelbl.Text = "Trang Chủ";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Homelbl.Click += menulbl_click;
             // 
@@ -79,7 +79,7 @@
             Invoicelbl.Name = "Invoicelbl";
             Invoicelbl.Size = new System.Drawing.Size(170, 46);
             Invoicelbl.TabIndex = 6;
-            Invoicelbl.Text = "Invoice";
+            Invoicelbl.Text = "Quản Lý Hóa Đơn";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Invoicelbl.Click += menulbl_click;
             // 
@@ -92,7 +92,7 @@
             Patientlbl.Name = "Patientlbl";
             Patientlbl.Size = new System.Drawing.Size(170, 46);
             Patientlbl.TabIndex = 5;
-            Patientlbl.Text = "Patient";
+            Patientlbl.Text = "Quản Lý Bệnh Nhân";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Patientlbl.Click += menulbl_click;
             // 
@@ -105,7 +105,7 @@
             Appointmentlbl.Name = "Appointmentlbl";
             Appointmentlbl.Size = new System.Drawing.Size(170, 46);
             Appointmentlbl.TabIndex = 5;
-            Appointmentlbl.Text = "Appointment";
+            Appointmentlbl.Text = "Quản Lý Lịch Hẹn";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Appointmentlbl.Click += menulbl_click;
             // 
@@ -118,7 +118,7 @@
             SignOutlbl.Name = "SignOutlbl";
             SignOutlbl.Size = new System.Drawing.Size(170, 46);
             SignOutlbl.TabIndex = 4;
-            SignOutlbl.Text = "Sign Out";
+            SignOutlbl.Text = "Đăng Xuất";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             SignOutlbl.Click += SignOutlbl_Click;
             // 
@@ -138,18 +138,18 @@
             label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label1.Location = new System.Drawing.Point(208, 250);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(291, 32);
+            label1.Size = new System.Drawing.Size(301, 32);
             label1.TabIndex = 17;
-            label1.Text = "Upcoming Appointment";
+            label1.Text = "Những Cuộc Hẹn Sắp Tới";
             // 
             // Editbtn
             // 
             Editbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             Editbtn.Location = new System.Drawing.Point(638, 154);
             Editbtn.Name = "Editbtn";
-            Editbtn.Size = new System.Drawing.Size(72, 39);
+            Editbtn.Size = new System.Drawing.Size(88, 39);
             Editbtn.TabIndex = 16;
-            Editbtn.Text = "Edit";
+            Editbtn.Text = "Chỉnh sửa";
             Editbtn.UseVisualStyleBackColor = true;
             Editbtn.Click += Editbtn_Click;
             // 

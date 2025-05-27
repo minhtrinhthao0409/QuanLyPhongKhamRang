@@ -130,7 +130,7 @@ namespace QuanlyPhongKham
                 if (success)
                 {
                     MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
+                    this.Close();
                     using (Login login = new Login())
                     {
                         login.ShowDialog();

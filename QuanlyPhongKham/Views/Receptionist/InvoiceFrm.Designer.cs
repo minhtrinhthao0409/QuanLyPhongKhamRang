@@ -72,7 +72,7 @@
             Homelbl.Name = "Homelbl";
             Homelbl.Size = new System.Drawing.Size(170, 46);
             Homelbl.TabIndex = 7;
-            Homelbl.Text = "Home";
+            Homelbl.Text = "Trang Chủ";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Homelbl.Click += menulbl_click;
             // 
@@ -85,7 +85,7 @@
             Invoicelbl.Name = "Invoicelbl";
             Invoicelbl.Size = new System.Drawing.Size(170, 46);
             Invoicelbl.TabIndex = 6;
-            Invoicelbl.Text = "Invoice";
+            Invoicelbl.Text = "Quản Lý Hóa Đơn";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Invoicelbl.Click += menulbl_click;
             // 
@@ -98,7 +98,7 @@
             Patientlbl.Name = "Patientlbl";
             Patientlbl.Size = new System.Drawing.Size(170, 46);
             Patientlbl.TabIndex = 5;
-            Patientlbl.Text = "Patient";
+            Patientlbl.Text = "Quản Lý Bệnh Nhân";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Patientlbl.Click += menulbl_click;
             // 
@@ -111,7 +111,7 @@
             Appointmentlbl.Name = "Appointmentlbl";
             Appointmentlbl.Size = new System.Drawing.Size(170, 46);
             Appointmentlbl.TabIndex = 5;
-            Appointmentlbl.Text = "Appointment";
+            Appointmentlbl.Text = "Quản Lý Lịch Hẹn";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Appointmentlbl.Click += menulbl_click;
             // 
@@ -124,7 +124,7 @@
             SignOutlbl.Name = "SignOutlbl";
             SignOutlbl.Size = new System.Drawing.Size(170, 46);
             SignOutlbl.TabIndex = 4;
-            SignOutlbl.Text = "Sign Out";
+            SignOutlbl.Text = "Đăng Xuất";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             SignOutlbl.Click += SignOutlbl_Click;
             // 
@@ -149,7 +149,7 @@
             Searchbtn.Name = "Searchbtn";
             Searchbtn.Size = new System.Drawing.Size(93, 50);
             Searchbtn.TabIndex = 21;
-            Searchbtn.Text = "Search";
+            Searchbtn.Text = "Tìm kiếm";
             Searchbtn.UseVisualStyleBackColor = true;
             Searchbtn.Click += Searchbtn_Click;
             // 
@@ -166,9 +166,9 @@
             label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label5.Location = new System.Drawing.Point(50, 118);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(101, 17);
+            label5.Size = new System.Drawing.Size(90, 17);
             label5.TabIndex = 19;
-            label5.Text = "Phone Number";
+            label5.Text = "Số điện thoại";
             // 
             // endTimePicker
             // 
@@ -183,9 +183,9 @@
             endTimelbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             endTimelbl.Location = new System.Drawing.Point(403, 51);
             endTimelbl.Name = "endTimelbl";
-            endTimelbl.Size = new System.Drawing.Size(99, 17);
+            endTimelbl.Size = new System.Drawing.Size(67, 17);
             endTimelbl.TabIndex = 7;
-            endTimelbl.Text = "End Date Time";
+            endTimelbl.Text = "Đến ngày";
             // 
             // start_time_lbl
             // 
@@ -193,9 +193,9 @@
             start_time_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             start_time_lbl.Location = new System.Drawing.Point(46, 51);
             start_time_lbl.Name = "start_time_lbl";
-            start_time_lbl.Size = new System.Drawing.Size(105, 17);
+            start_time_lbl.Size = new System.Drawing.Size(59, 17);
             start_time_lbl.TabIndex = 5;
-            start_time_lbl.Text = "Start Date Time";
+            start_time_lbl.Text = "Từ ngày";
             // 
             // startTimePicker
             // 
@@ -229,9 +229,9 @@
             CrudPatient.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             CrudPatient.Location = new System.Drawing.Point(575, 442);
             CrudPatient.Name = "CrudPatient";
-            CrudPatient.Size = new System.Drawing.Size(132, 25);
+            CrudPatient.Size = new System.Drawing.Size(163, 25);
             CrudPatient.TabIndex = 16;
-            CrudPatient.Text = "Invoice Detail";
+            CrudPatient.Text = "Chi Tiết Hóa Đơn";
             // 
             // InvoiceFrm
             // 

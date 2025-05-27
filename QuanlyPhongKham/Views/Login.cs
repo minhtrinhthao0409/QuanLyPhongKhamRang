@@ -19,10 +19,12 @@ namespace QuanlyPhongKham
     public partial class Login : Form
     {
         UserControllers userController;
+        LoggingController loggingController;
         public Login()
         {
             InitializeComponent();
             userController = new UserControllers();
+            loggingController = new LoggingController();
             KeyPreview = true;
         }
 
@@ -72,6 +74,8 @@ namespace QuanlyPhongKham
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
+                string content = $"Tài khoản {user.UserName} đăng nhập";
+                await loggingController.AddLoggingAsync(user.Id, userName, content);
 
                 Form form = null;
 

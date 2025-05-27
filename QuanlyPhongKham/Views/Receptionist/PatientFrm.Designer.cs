@@ -130,7 +130,7 @@
             Homelbl.Name = "Homelbl";
             Homelbl.Size = new System.Drawing.Size(170, 46);
             Homelbl.TabIndex = 7;
-            Homelbl.Text = "Home";
+            Homelbl.Text = "Trang Chủ";
             Homelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Homelbl.Click += menulbl_click;
             // 
@@ -143,7 +143,7 @@
             Invoicelbl.Name = "Invoicelbl";
             Invoicelbl.Size = new System.Drawing.Size(170, 46);
             Invoicelbl.TabIndex = 6;
-            Invoicelbl.Text = "Invoice";
+            Invoicelbl.Text = "Quản Lý Hóa Đơn";
             Invoicelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Invoicelbl.Click += menulbl_click;
             // 
@@ -156,7 +156,7 @@
             Patientlbl.Name = "Patientlbl";
             Patientlbl.Size = new System.Drawing.Size(170, 46);
             Patientlbl.TabIndex = 5;
-            Patientlbl.Text = "Patient";
+            Patientlbl.Text = "Quản Lý Bệnh Nhân";
             Patientlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Patientlbl.Click += menulbl_click;
             // 
@@ -169,7 +169,7 @@
             Appointmentlbl.Name = "Appointmentlbl";
             Appointmentlbl.Size = new System.Drawing.Size(170, 46);
             Appointmentlbl.TabIndex = 5;
-            Appointmentlbl.Text = "Appointment";
+            Appointmentlbl.Text = "Quản Lý Lịch Hẹn";
             Appointmentlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Appointmentlbl.Click += menulbl_click;
             // 
@@ -182,7 +182,7 @@
             SignOutlbl.Name = "SignOutlbl";
             SignOutlbl.Size = new System.Drawing.Size(170, 46);
             SignOutlbl.TabIndex = 4;
-            SignOutlbl.Text = "Sign Out";
+            SignOutlbl.Text = "Đăng Xuất";
             SignOutlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             SignOutlbl.Click += SignOutlbl_Click;
             // 
@@ -206,7 +206,7 @@
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
             tabPage1.Size = new System.Drawing.Size(799, 637);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Search Patient";
+            tabPage1.Text = "Tra Cứu";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // SearchPatientResultView
@@ -241,8 +241,8 @@
             ResetSearchPatientbtn.Location = new System.Drawing.Point(398, 148);
             ResetSearchPatientbtn.Name = "ResetSearchPatientbtn";
             ResetSearchPatientbtn.Size = new System.Drawing.Size(93, 50);
-            ResetSearchPatientbtn.TabIndex = 23;
-            ResetSearchPatientbtn.Text = "Reset";
+            ResetSearchPatientbtn.TabIndex = 5;
+            ResetSearchPatientbtn.Text = "Hoàn tác";
             ResetSearchPatientbtn.UseVisualStyleBackColor = true;
             ResetSearchPatientbtn.Click += ResetSearchPatientbtn_Click;
             // 
@@ -251,7 +251,7 @@
             patientEmailTxt.Location = new System.Drawing.Point(521, 96);
             patientEmailTxt.Name = "patientEmailTxt";
             patientEmailTxt.Size = new System.Drawing.Size(211, 23);
-            patientEmailTxt.TabIndex = 20;
+            patientEmailTxt.TabIndex = 3;
             // 
             // label2
             // 
@@ -268,7 +268,7 @@
             PatientPhoneNoTxt.Location = new System.Drawing.Point(143, 95);
             PatientPhoneNoTxt.Name = "PatientPhoneNoTxt";
             PatientPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
-            PatientPhoneNoTxt.TabIndex = 18;
+            PatientPhoneNoTxt.TabIndex = 2;
             // 
             // PatientPhoneNolbl
             // 
@@ -276,16 +276,16 @@
             PatientPhoneNolbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             PatientPhoneNolbl.Location = new System.Drawing.Point(24, 96);
             PatientPhoneNolbl.Name = "PatientPhoneNolbl";
-            PatientPhoneNolbl.Size = new System.Drawing.Size(101, 17);
+            PatientPhoneNolbl.Size = new System.Drawing.Size(90, 17);
             PatientPhoneNolbl.TabIndex = 17;
-            PatientPhoneNolbl.Text = "Phone Number";
+            PatientPhoneNolbl.Text = "Số điện thoại";
             // 
             // PatientNameTxt
             // 
             PatientNameTxt.Location = new System.Drawing.Point(143, 48);
             PatientNameTxt.Name = "PatientNameTxt";
             PatientNameTxt.Size = new System.Drawing.Size(589, 23);
-            PatientNameTxt.TabIndex = 16;
+            PatientNameTxt.TabIndex = 1;
             // 
             // label1
             // 
@@ -293,9 +293,9 @@
             label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label1.Location = new System.Drawing.Point(20, 50);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(92, 17);
+            label1.Size = new System.Drawing.Size(68, 17);
             label1.TabIndex = 15;
-            label1.Text = "Patient Name";
+            label1.Text = "Họ và tên";
             // 
             // CrudPatient
             // 
@@ -303,9 +303,9 @@
             CrudPatient.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             CrudPatient.Location = new System.Drawing.Point(269, 10);
             CrudPatient.Name = "CrudPatient";
-            CrudPatient.Size = new System.Drawing.Size(244, 25);
+            CrudPatient.Size = new System.Drawing.Size(281, 25);
             CrudPatient.TabIndex = 15;
-            CrudPatient.Text = "Search Patient Infomation";
+            CrudPatient.Text = "Tra Cứu Thông Tin Bệnh Nhân";
             // 
             // SearchPatientBtn
             // 
@@ -313,8 +313,8 @@
             SearchPatientBtn.Location = new System.Drawing.Point(261, 148);
             SearchPatientBtn.Name = "SearchPatientBtn";
             SearchPatientBtn.Size = new System.Drawing.Size(93, 50);
-            SearchPatientBtn.TabIndex = 5;
-            SearchPatientBtn.Text = "Search";
+            SearchPatientBtn.TabIndex = 4;
+            SearchPatientBtn.Text = "Tra cứu";
             SearchPatientBtn.UseVisualStyleBackColor = true;
             SearchPatientBtn.Click += SearchPatientBtn_Click;
             // 
@@ -327,7 +327,7 @@
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
             tabPage2.Size = new System.Drawing.Size(799, 637);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Add Patient";
+            tabPage2.Text = "Tạo Hồ Sơ";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
@@ -368,7 +368,7 @@
             cbGender.Location = new System.Drawing.Point(466, 91);
             cbGender.Name = "cbGender";
             cbGender.Size = new System.Drawing.Size(51, 23);
-            cbGender.TabIndex = 27;
+            cbGender.TabIndex = 3;
             cbGender.SelectedIndexChanged += cbGender_SelectedIndexChanged;
             // 
             // dateTimePicker1
@@ -376,7 +376,7 @@
             dateTimePicker1.Location = new System.Drawing.Point(143, 88);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new System.Drawing.Size(211, 23);
-            dateTimePicker1.TabIndex = 26;
+            dateTimePicker1.TabIndex = 2;
             // 
             // Doblbl
             // 
@@ -384,16 +384,16 @@
             Doblbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             Doblbl.Location = new System.Drawing.Point(20, 92);
             Doblbl.Name = "Doblbl";
-            Doblbl.Size = new System.Drawing.Size(36, 17);
+            Doblbl.Size = new System.Drawing.Size(70, 17);
             Doblbl.TabIndex = 25;
-            Doblbl.Text = "DOB";
+            Doblbl.Text = "Ngày sinh";
             // 
             // Guardian
             // 
             Guardian.Location = new System.Drawing.Point(143, 162);
             Guardian.Name = "Guardian";
             Guardian.Size = new System.Drawing.Size(211, 23);
-            Guardian.TabIndex = 24;
+            Guardian.TabIndex = 6;
             // 
             // Guardianlbl
             // 
@@ -401,9 +401,9 @@
             Guardianlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             Guardianlbl.Location = new System.Drawing.Point(24, 163);
             Guardianlbl.Name = "Guardianlbl";
-            Guardianlbl.Size = new System.Drawing.Size(64, 17);
+            Guardianlbl.Size = new System.Drawing.Size(102, 17);
             Guardianlbl.TabIndex = 23;
-            Guardianlbl.Text = "Guardian";
+            Guardianlbl.Text = "Người giám hộ";
             // 
             // label3
             // 
@@ -411,16 +411,16 @@
             label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label3.Location = new System.Drawing.Point(397, 92);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(52, 17);
+            label3.Size = new System.Drawing.Size(62, 17);
             label3.TabIndex = 21;
-            label3.Text = "Gender";
+            label3.Text = "Giới tính";
             // 
             // PatientEmail
             // 
             PatientEmail.Location = new System.Drawing.Point(466, 130);
             PatientEmail.Name = "PatientEmail";
             PatientEmail.Size = new System.Drawing.Size(268, 23);
-            PatientEmail.TabIndex = 20;
+            PatientEmail.TabIndex = 5;
             // 
             // label4
             // 
@@ -437,7 +437,7 @@
             PatientPhoneNo.Location = new System.Drawing.Point(143, 129);
             PatientPhoneNo.Name = "PatientPhoneNo";
             PatientPhoneNo.Size = new System.Drawing.Size(211, 23);
-            PatientPhoneNo.TabIndex = 18;
+            PatientPhoneNo.TabIndex = 4;
             // 
             // label5
             // 
@@ -445,16 +445,16 @@
             label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label5.Location = new System.Drawing.Point(20, 130);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(101, 17);
+            label5.Size = new System.Drawing.Size(90, 17);
             label5.TabIndex = 17;
-            label5.Text = "Phone Number";
+            label5.Text = "Số điện thoại";
             // 
             // PatientName
             // 
             PatientName.Location = new System.Drawing.Point(143, 48);
             PatientName.Name = "PatientName";
             PatientName.Size = new System.Drawing.Size(591, 23);
-            PatientName.TabIndex = 16;
+            PatientName.TabIndex = 1;
             // 
             // label6
             // 
@@ -462,9 +462,9 @@
             label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label6.Location = new System.Drawing.Point(20, 50);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(92, 17);
+            label6.Size = new System.Drawing.Size(68, 17);
             label6.TabIndex = 15;
-            label6.Text = "Patient Name";
+            label6.Text = "Họ và tên";
             // 
             // label7
             // 
@@ -472,17 +472,17 @@
             label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label7.Location = new System.Drawing.Point(269, 11);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(222, 25);
+            label7.Size = new System.Drawing.Size(208, 25);
             label7.TabIndex = 15;
-            label7.Text = "Add Patient Infomation";
+            label7.Text = "Tạo Hồ Sơ Bệnh Nhân";
             // 
             // ResetBtn
             // 
             ResetBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ResetBtn.Location = new System.Drawing.Point(521, 215);
+            ResetBtn.Location = new System.Drawing.Point(477, 215);
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new System.Drawing.Size(93, 50);
-            ResetBtn.TabIndex = 7;
+            ResetBtn.TabIndex = 9;
             ResetBtn.Text = "Reset";
             ResetBtn.UseVisualStyleBackColor = true;
             ResetBtn.Click += ResetBtn_Click;
@@ -490,20 +490,20 @@
             // UpdatePatientBtn
             // 
             UpdatePatientBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdatePatientBtn.Location = new System.Drawing.Point(346, 215);
+            UpdatePatientBtn.Location = new System.Drawing.Point(334, 215);
             UpdatePatientBtn.Name = "UpdatePatientBtn";
             UpdatePatientBtn.Size = new System.Drawing.Size(93, 50);
-            UpdatePatientBtn.TabIndex = 6;
+            UpdatePatientBtn.TabIndex = 8;
             UpdatePatientBtn.Text = "Update";
             UpdatePatientBtn.UseVisualStyleBackColor = true;
             // 
             // AddPatientbtn
             // 
             AddPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddPatientbtn.Location = new System.Drawing.Point(155, 215);
+            AddPatientbtn.Location = new System.Drawing.Point(197, 215);
             AddPatientbtn.Name = "AddPatientbtn";
             AddPatientbtn.Size = new System.Drawing.Size(93, 50);
-            AddPatientbtn.TabIndex = 5;
+            AddPatientbtn.TabIndex = 7;
             AddPatientbtn.Text = "Add";
             AddPatientbtn.UseVisualStyleBackColor = true;
             AddPatientbtn.Click += AddPatientbtn_Click;
@@ -525,7 +525,7 @@
             tabPage3.Padding = new System.Windows.Forms.Padding(3);
             tabPage3.Size = new System.Drawing.Size(799, 637);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "Update Infomation";
+            tabPage3.Text = "Cập Nhật Thông Tin";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // SaveInfo
@@ -534,7 +534,7 @@
             SaveInfo.Location = new System.Drawing.Point(633, 304);
             SaveInfo.Name = "SaveInfo";
             SaveInfo.Size = new System.Drawing.Size(90, 31);
-            SaveInfo.TabIndex = 27;
+            SaveInfo.TabIndex = 8;
             SaveInfo.Text = "Save";
             SaveInfo.UseVisualStyleBackColor = true;
             SaveInfo.Click += SaveInfo_Click;
@@ -546,7 +546,7 @@
             CbEditGender.Location = new System.Drawing.Point(466, 304);
             CbEditGender.Name = "CbEditGender";
             CbEditGender.Size = new System.Drawing.Size(56, 23);
-            CbEditGender.TabIndex = 31;
+            CbEditGender.TabIndex = 7;
             CbEditGender.SelectedIndexChanged += CbEditGender_SelectedIndexChanged;
             // 
             // label15
@@ -555,16 +555,16 @@
             label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label15.Location = new System.Drawing.Point(387, 310);
             label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(52, 17);
+            label15.Size = new System.Drawing.Size(62, 17);
             label15.TabIndex = 30;
-            label15.Text = "Gender";
+            label15.Text = "Giới tính";
             // 
             // editDoB
             // 
             editDoB.Location = new System.Drawing.Point(131, 306);
             editDoB.Name = "editDoB";
             editDoB.Size = new System.Drawing.Size(223, 23);
-            editDoB.TabIndex = 29;
+            editDoB.TabIndex = 6;
             // 
             // label10
             // 
@@ -572,16 +572,16 @@
             label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label10.Location = new System.Drawing.Point(9, 311);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(90, 17);
+            label10.Size = new System.Drawing.Size(70, 17);
             label10.TabIndex = 28;
-            label10.Text = "Date Of Birth";
+            label10.Text = "Ngày sinh";
             // 
             // editPatientNameTxt
             // 
             editPatientNameTxt.Location = new System.Drawing.Point(132, 270);
             editPatientNameTxt.Name = "editPatientNameTxt";
             editPatientNameTxt.Size = new System.Drawing.Size(591, 23);
-            editPatientNameTxt.TabIndex = 27;
+            editPatientNameTxt.TabIndex = 5;
             // 
             // label9
             // 
@@ -589,9 +589,9 @@
             label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label9.Location = new System.Drawing.Point(9, 272);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(92, 17);
+            label9.Size = new System.Drawing.Size(68, 17);
             label9.TabIndex = 26;
-            label9.Text = "Patient Name";
+            label9.Text = "Họ và tên";
             // 
             // label8
             // 
@@ -599,9 +599,9 @@
             label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label8.Location = new System.Drawing.Point(269, 230);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(225, 25);
+            label8.Size = new System.Drawing.Size(262, 25);
             label8.TabIndex = 27;
-            label8.Text = "Edit General Infomation";
+            label8.Text = "Chỉnh Sửa Thông Tin Chung";
             // 
             // panel4
             // 
@@ -625,8 +625,8 @@
             ResetInfoBtn.Location = new System.Drawing.Point(397, 215);
             ResetInfoBtn.Name = "ResetInfoBtn";
             ResetInfoBtn.Size = new System.Drawing.Size(93, 50);
-            ResetInfoBtn.TabIndex = 26;
-            ResetInfoBtn.Text = "Reset";
+            ResetInfoBtn.TabIndex = 13;
+            ResetInfoBtn.Text = "Hoàn tác";
             ResetInfoBtn.UseVisualStyleBackColor = true;
             ResetInfoBtn.Click += ResetInfoBtn_Click;
             // 
@@ -635,7 +635,7 @@
             updatedGuardianTxt.Location = new System.Drawing.Point(143, 162);
             updatedGuardianTxt.Name = "updatedGuardianTxt";
             updatedGuardianTxt.Size = new System.Drawing.Size(591, 23);
-            updatedGuardianTxt.TabIndex = 24;
+            updatedGuardianTxt.TabIndex = 11;
             // 
             // newGuardian
             // 
@@ -643,16 +643,16 @@
             newGuardian.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             newGuardian.Location = new System.Drawing.Point(24, 163);
             newGuardian.Name = "newGuardian";
-            newGuardian.Size = new System.Drawing.Size(64, 17);
+            newGuardian.Size = new System.Drawing.Size(105, 17);
             newGuardian.TabIndex = 23;
-            newGuardian.Text = "Guardian";
+            newGuardian.Text = "Người Giám Hộ";
             // 
             // updatedEmailTxt
             // 
             updatedEmailTxt.Location = new System.Drawing.Point(143, 109);
             updatedEmailTxt.Name = "updatedEmailTxt";
             updatedEmailTxt.Size = new System.Drawing.Size(591, 23);
-            updatedEmailTxt.TabIndex = 20;
+            updatedEmailTxt.TabIndex = 10;
             // 
             // label18
             // 
@@ -669,7 +669,7 @@
             updatedPhoneNoTxt.Location = new System.Drawing.Point(143, 63);
             updatedPhoneNoTxt.Name = "updatedPhoneNoTxt";
             updatedPhoneNoTxt.Size = new System.Drawing.Size(591, 23);
-            updatedPhoneNoTxt.TabIndex = 18;
+            updatedPhoneNoTxt.TabIndex = 9;
             // 
             // label19
             // 
@@ -677,19 +677,19 @@
             label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label19.Location = new System.Drawing.Point(20, 63);
             label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(101, 17);
+            label19.Size = new System.Drawing.Size(95, 17);
             label19.TabIndex = 17;
-            label19.Text = "Phone Number";
+            label19.Text = "Số Điện Thoại";
             // 
             // label21
             // 
             label21.AutoSize = true;
             label21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label21.Location = new System.Drawing.Point(269, 11);
+            label21.Location = new System.Drawing.Point(261, 18);
             label21.Name = "label21";
-            label21.Size = new System.Drawing.Size(194, 25);
+            label21.Size = new System.Drawing.Size(266, 25);
             label21.TabIndex = 15;
-            label21.Text = "Updated Infomation";
+            label21.Text = "Cập Nhật Thông Tin Liên Lạc";
             // 
             // UpdateInfoBtn
             // 
@@ -697,8 +697,8 @@
             UpdateInfoBtn.Location = new System.Drawing.Point(261, 215);
             UpdateInfoBtn.Name = "UpdateInfoBtn";
             UpdateInfoBtn.Size = new System.Drawing.Size(93, 50);
-            UpdateInfoBtn.TabIndex = 6;
-            UpdateInfoBtn.Text = "Update";
+            UpdateInfoBtn.TabIndex = 12;
+            UpdateInfoBtn.Text = "Cập Nhật";
             UpdateInfoBtn.UseVisualStyleBackColor = true;
             UpdateInfoBtn.Click += UpdateInfoBtn_Click;
             // 
@@ -731,7 +731,7 @@
             currentGuardianTxt.Location = new System.Drawing.Point(143, 140);
             currentGuardianTxt.Name = "currentGuardianTxt";
             currentGuardianTxt.Size = new System.Drawing.Size(591, 23);
-            currentGuardianTxt.TabIndex = 24;
+            currentGuardianTxt.TabIndex = 4;
             // 
             // currentGuardian
             // 
@@ -739,16 +739,16 @@
             currentGuardian.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             currentGuardian.Location = new System.Drawing.Point(24, 141);
             currentGuardian.Name = "currentGuardian";
-            currentGuardian.Size = new System.Drawing.Size(64, 17);
+            currentGuardian.Size = new System.Drawing.Size(102, 17);
             currentGuardian.TabIndex = 23;
-            currentGuardian.Text = "Guardian";
+            currentGuardian.Text = "Người giám hộ";
             // 
             // currentEmailTxt
             // 
             currentEmailTxt.Location = new System.Drawing.Point(466, 94);
             currentEmailTxt.Name = "currentEmailTxt";
             currentEmailTxt.Size = new System.Drawing.Size(268, 23);
-            currentEmailTxt.TabIndex = 20;
+            currentEmailTxt.TabIndex = 3;
             // 
             // label11
             // 
@@ -765,7 +765,7 @@
             currentPhoneNoTxt.Location = new System.Drawing.Point(143, 93);
             currentPhoneNoTxt.Name = "currentPhoneNoTxt";
             currentPhoneNoTxt.Size = new System.Drawing.Size(211, 23);
-            currentPhoneNoTxt.TabIndex = 18;
+            currentPhoneNoTxt.TabIndex = 2;
             // 
             // label12
             // 
@@ -773,16 +773,16 @@
             label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label12.Location = new System.Drawing.Point(20, 94);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(101, 17);
+            label12.Size = new System.Drawing.Size(90, 17);
             label12.TabIndex = 17;
-            label12.Text = "Phone Number";
+            label12.Text = "Số điện thoại";
             // 
             // currentNameTxt
             // 
             currentNameTxt.Location = new System.Drawing.Point(143, 48);
             currentNameTxt.Name = "currentNameTxt";
             currentNameTxt.Size = new System.Drawing.Size(591, 23);
-            currentNameTxt.TabIndex = 16;
+            currentNameTxt.TabIndex = 1;
             // 
             // label13
             // 
@@ -790,9 +790,9 @@
             label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label13.Location = new System.Drawing.Point(20, 50);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(92, 17);
+            label13.Size = new System.Drawing.Size(68, 17);
             label13.TabIndex = 15;
-            label13.Text = "Patient Name";
+            label13.Text = "Họ và tên";
             // 
             // label14
             // 
@@ -800,9 +800,9 @@
             label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label14.Location = new System.Drawing.Point(269, 11);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(186, 25);
+            label14.Size = new System.Drawing.Size(181, 25);
             label14.TabIndex = 15;
-            label14.Text = "Current Infomation";
+            label14.Text = "Thông Tin Hiện Tại";
             // 
             // PatientFrm
             // 
