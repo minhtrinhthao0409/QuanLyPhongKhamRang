@@ -33,14 +33,8 @@ namespace QuanlyPhongKham.Views.Admin
             this._loggingController = new LoggingController();
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
-            //LoadUserDataAsync();
-            //LoadServiceDataasync();
-            //LoadLogDataAsync();
             AdminQLTKUpdatebtn.Enabled = false;
             AdminQLTKDeletebtn.Enabled = false;
-            AdminQLTKPasstbx.Enabled = false;
-            AdminQLTKUserNametbx.Enabled = false;
-            AdminQLTKRolecb.Enabled = false;
             AdminQLDVbtn.Enabled = false;
             AdminQLDVDelbtn.Enabled = false;
         }
@@ -78,6 +72,9 @@ namespace QuanlyPhongKham.Views.Admin
                 AdminQLTKRolecb.Text = selectedRow.Cells["Role"].Value.ToString() == "Admin" ? "Admin" : selectedRow.Cells["Role"].Value.ToString() == "Doctor" ? "Doctor" : "Receptionist";
                 AdminQLTKUpdatebtn.Enabled = true;
                 AdminQLTKDeletebtn.Enabled = true;
+                AdminQLTKPasstbx.Enabled = false;
+                AdminQLTKUserNametbx.Enabled = false;
+                AdminQLTKRolecb.Enabled = false;
             }
 
         }
