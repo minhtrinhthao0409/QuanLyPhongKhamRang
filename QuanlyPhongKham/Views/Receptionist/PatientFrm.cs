@@ -115,7 +115,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 if (result > 0)
                 {
                     MessageBox.Show("Thêm bệnh nhân thành công!");
-                    await _loggService.AddLoggingAsync(this.user.Id, this.user.FullName, "Thêm bệnh nhân");
+                    await _loggService.AddLoggingAsync(this.user.Id, this.user.UserName, $"Thêm bệnh nhân {name} - SĐT: {phoneNo}");
                     //ClearInputFields();
                 }
                 else
@@ -263,6 +263,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 if (result)
                 {
                     MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _loggService.AddLoggingAsync(this.user.Id, this.user.UserName, $"Cập nhật thông tin bệnh nhân {currentName}");
                 }
                 else
                 {
@@ -354,6 +355,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 if (result)
                 {
                     MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await _loggService.AddLoggingAsync(this.user.Id, this.user.UserName, $"Cập nhật thông tin cá nhân của bệnh nhân {currentName}");
                 }
                 else
                 {

@@ -23,9 +23,10 @@ namespace QuanlyPhongKham.Views.Receptionist
         private List<User> doctors;
         private Form currentForm = null;
 
-        private readonly AppointmentRepository _appointmentRepo;
+        //private readonly AppointmentRepository _appointmentRepo;
         private AppointmentController _appointmentControllers;
         private UserControllers _userController;
+        private readonly LoggingService _loggService;
 
         public delegate void AppointmentSelectedHandler(string name, string phone);
         public event AppointmentSelectedHandler OnAppointmentSelected;
@@ -37,6 +38,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             InitializeComponent();
             _appointmentControllers = new AppointmentController();
             _userController = new UserControllers();
+            _loggService = new LoggingService();
 
 
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -171,6 +173,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 if (result)
                 {
                     MessageBox.Show("Thêm lịch hẹn thành công!");
+                    await _loggService.AddLoggingAsync(this.user.Id, this.user.UserName, $"Thêm lịch hẹn cho bệnh nhân {patientName} với bác sĩ {doctorName} lúc {startTime} ngày {date}");
                     //ClearInputFields();
                 }
                 else
@@ -216,7 +219,7 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             if (doctors == null || doctors.Count == 0)
             {
-                MessageBox.Show("⚠ Không có dữ liệu người dùng.");
+                MessageBox.Show("Không có dữ liệu người dùng.");
                 return;
             }
 

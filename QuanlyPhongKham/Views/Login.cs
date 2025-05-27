@@ -32,8 +32,10 @@ namespace QuanlyPhongKham
             {
                 quenMatKhau.ShowDialog();
                 
+
             }
             this.Show();
+
 
         }
 
