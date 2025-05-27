@@ -293,11 +293,14 @@ namespace QuanlyPhongKham.Views
         }
         private void cbIdPatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
+            if (cbNamePatientRecord.SelectedIndex >= 0 && cbIdPatientRecord.SelectedIndex >= 0)
+            
+                    cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
         }
         private void cbNamePatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbIdPatientRecord.SelectedIndex = cbNamePatientRecord.SelectedIndex;
+            if (cbIdPatientRecord.SelectedIndex >= 0 && cbNamePatientRecord.SelectedIndex >= 0)
+                cbIdPatientRecord.SelectedIndex = cbNamePatientRecord.SelectedIndex;
         }
         private void btnThemDichVu_Click(object sender, EventArgs e)
         {
