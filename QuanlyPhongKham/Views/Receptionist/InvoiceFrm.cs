@@ -17,6 +17,8 @@ namespace QuanlyPhongKham.Views.Receptionist
         private User user;
         private Form currentForm = null;
         private readonly InvoiceService _invoiceService;
+    
+
 
         public InvoiceFrm(User user)
         {
@@ -24,6 +26,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             _invoiceService = new InvoiceService();
+           
 
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
