@@ -24,7 +24,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             this.user = user;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-
+            InvoiceGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             Appointmentlbl.Click += menulbl_click;
             Patientlbl.Click += menulbl_click;
             Invoicelbl.Click += menulbl_click;

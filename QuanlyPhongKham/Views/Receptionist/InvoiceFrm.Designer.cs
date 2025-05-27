@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             panel2 = new System.Windows.Forms.Panel();
             Homelbl = new System.Windows.Forms.Label();
             Invoicelbl = new System.Windows.Forms.Label();
@@ -213,8 +215,18 @@
             // InvoiceGridView
             // 
             InvoiceGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            InvoiceGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             InvoiceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             InvoiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            InvoiceGridView.DefaultCellStyle = dataGridViewCellStyle2;
             InvoiceGridView.Location = new System.Drawing.Point(238, 325);
             InvoiceGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             InvoiceGridView.Name = "InvoiceGridView";
