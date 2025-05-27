@@ -31,6 +31,10 @@ namespace QuanlyPhongKham.Views
         public BacSi(User user, LoggingService loggingService)
         {
             InitializeComponent();
+            dtpRecordDate.Value = DateTime.Now.Date;
+            dtpAppointmentDate.Value = DateTime.Now.Date;
+            dtpRecordDate.Value = DateTime.Now;
+            dtpNgayIn.Value = DateTime.Now;
             this.user = user;
             this.loggingService = loggingService;
         }
@@ -41,7 +45,7 @@ namespace QuanlyPhongKham.Views
             currentDoctorName = user.UserName;
             var appointmentDate = dtpAppointmentDate.Value.Date;
             cboPatientId.SelectedIndexChanged += cboPatientId_SelectedIndexChanged;
-            
+
             await LoadPatientsToComboBoxes();
             await LoadPatientsAsync();
             await LoadAppointmentsAsync();
@@ -300,8 +304,8 @@ namespace QuanlyPhongKham.Views
         private void cbIdPatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbNamePatientRecord.SelectedIndex >= 0 && cbIdPatientRecord.SelectedIndex >= 0)
-            
-                    cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
+
+                cbNamePatientRecord.SelectedIndex = cbIdPatientRecord.SelectedIndex;
         }
         private void cbNamePatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -386,7 +390,7 @@ namespace QuanlyPhongKham.Views
             MessageBox.Show("Lưu hóa đơn thành công");
             await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu hóa đơn.");
         }
-        
+
         private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
             decimal tongTien = 0;
@@ -442,6 +446,11 @@ namespace QuanlyPhongKham.Views
         private void BacSi_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void GhiBenhAn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
