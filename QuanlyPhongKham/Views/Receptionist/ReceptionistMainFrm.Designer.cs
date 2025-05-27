@@ -41,8 +41,11 @@
             Emaillbl = new System.Windows.Forms.Label();
             monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             Welcomelbl = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            ServiceGridView1 = new System.Windows.Forms.DataGridView();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)UpcomingAppointmentView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ServiceGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -124,11 +127,15 @@
             // 
             // UpcomingAppointmentView
             // 
+            UpcomingAppointmentView.AllowUserToAddRows = false;
+            UpcomingAppointmentView.AllowUserToDeleteRows = false;
             UpcomingAppointmentView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            UpcomingAppointmentView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
             UpcomingAppointmentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            UpcomingAppointmentView.Location = new System.Drawing.Point(250, 301);
+            UpcomingAppointmentView.Location = new System.Drawing.Point(259, 458);
             UpcomingAppointmentView.Name = "UpcomingAppointmentView";
-            UpcomingAppointmentView.Size = new System.Drawing.Size(675, 357);
+            UpcomingAppointmentView.ReadOnly = true;
+            UpcomingAppointmentView.Size = new System.Drawing.Size(666, 200);
             UpcomingAppointmentView.TabIndex = 18;
             UpcomingAppointmentView.CellContentClick += UpcomingAppointmentView_CellContentClick;
             // 
@@ -136,7 +143,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(208, 250);
+            label1.Location = new System.Drawing.Point(208, 409);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(301, 32);
             label1.TabIndex = 17;
@@ -145,7 +152,7 @@
             // Editbtn
             // 
             Editbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Editbtn.Location = new System.Drawing.Point(638, 154);
+            Editbtn.Location = new System.Drawing.Point(643, 112);
             Editbtn.Name = "Editbtn";
             Editbtn.Size = new System.Drawing.Size(88, 39);
             Editbtn.TabIndex = 16;
@@ -186,11 +193,36 @@
             Welcomelbl.TabIndex = 12;
             Welcomelbl.Text = "Welcome,";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(208, 174);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(212, 32);
+            label2.TabIndex = 19;
+            label2.Text = "Bảng Giá Dịch Vụ";
+            // 
+            // ServiceGridView1
+            // 
+            ServiceGridView1.AllowUserToAddRows = false;
+            ServiceGridView1.AllowUserToDeleteRows = false;
+            ServiceGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            ServiceGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
+            ServiceGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ServiceGridView1.Location = new System.Drawing.Point(259, 209);
+            ServiceGridView1.Name = "ServiceGridView1";
+            ServiceGridView1.ReadOnly = true;
+            ServiceGridView1.Size = new System.Drawing.Size(666, 165);
+            ServiceGridView1.TabIndex = 20;
+            // 
             // ReceptionistMainFrm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1008, 681);
+            Controls.Add(ServiceGridView1);
+            Controls.Add(label2);
             Controls.Add(UpcomingAppointmentView);
             Controls.Add(label1);
             Controls.Add(Editbtn);
@@ -204,6 +236,7 @@
             Load += ReceptionistMainFrm_Load;
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)UpcomingAppointmentView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ServiceGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,5 +256,7 @@
         private System.Windows.Forms.Label Emaillbl;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label Welcomelbl;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView ServiceGridView1;
     }
 }

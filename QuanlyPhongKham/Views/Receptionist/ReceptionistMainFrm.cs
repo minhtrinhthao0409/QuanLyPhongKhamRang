@@ -18,15 +18,17 @@ namespace QuanlyPhongKham.Views.Receptionist
         private User user;
         private Form currentForm = null;
 
-        private readonly AppointmentRepository _appointmentRepo = new();
+        //private readonly AppointmentRepository _appointmentRepo = new();
         private readonly AppointmentController _appointmentController;
-        private readonly UserRepository _userRepo = new();
+        //private readonly UserRepository _userRepo = new();
+        private readonly MedicalServiceController _medicalServiceController;
 
         public ReceptionistMainFrm(User user)
         {
             this.user = user;
             InitializeComponent();
             _appointmentController = new AppointmentController();
+            _medicalServiceController = new MedicalServiceController();
             this.StartPosition = FormStartPosition.CenterScreen;
 
             Appointmentlbl.Click += menulbl_click;
@@ -92,7 +94,30 @@ namespace QuanlyPhongKham.Views.Receptionist
                 UpcomingAppointmentView.Columns["DoctorId"].Visible = false;
                 UpcomingAppointmentView.Columns["PatientId"].Visible = false;
                 UpcomingAppointmentView.Columns["AppointmentId"].Visible = false;
-                //SearchAppointmentGridView.Columns["Appointments"].Visible = false;
+                UpcomingAppointmentView.Columns["PaymentStatus"].Visible = false;
+
+
+                UpcomingAppointmentView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
+                UpcomingAppointmentView.Columns["PhoneNumber"].HeaderText = "Số điện thoại";
+                UpcomingAppointmentView.Columns["DoctorName"].HeaderText = "Bác sĩ phụ trách";
+                UpcomingAppointmentView.Columns["AppointmentDate"].HeaderText = "Ngày hẹn";
+                UpcomingAppointmentView.Columns["StartTime"].HeaderText = "Giờ bắt đầu";
+                //UpcomingAppointmentView.Columns["EndTime"].HeaderText = "Giờ kết thúc";
+
+
+
+                var services = _medicalServiceController.GetAllService();
+                var loadservices = services.Result.Select(s => new
+                {
+                    s.ServicesId,
+                    s.ServicesName,
+                    s.CurrentPrice
+                }).OrderBy(s => s.ServicesName).ToList();
+                ServiceGridView1.DataSource = loadservices;
+                ServiceGridView1.Columns["ServicesId"].Visible=false;
+                ServiceGridView1.Columns["ServicesName"].HeaderText = "Tên dịch vụ";
+                ServiceGridView1.Columns["CurrentPrice"].HeaderText = "Giá Hiện Hành";
+
             }
             catch (Exception ex)
             {

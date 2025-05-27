@@ -117,87 +117,100 @@
             GhiBenhAn.Controls.Add(label3);
             GhiBenhAn.Controls.Add(label2);
             GhiBenhAn.Controls.Add(label1);
-            GhiBenhAn.Location = new System.Drawing.Point(4, 29);
+            GhiBenhAn.Location = new System.Drawing.Point(4, 24);
+            GhiBenhAn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             GhiBenhAn.Name = "GhiBenhAn";
-            GhiBenhAn.Size = new System.Drawing.Size(773, 521);
+            GhiBenhAn.Size = new System.Drawing.Size(675, 388);
             GhiBenhAn.TabIndex = 2;
             GhiBenhAn.Text = "Ghi Bệnh Án";
             GhiBenhAn.UseVisualStyleBackColor = true;
+            GhiBenhAn.Click += GhiBenhAn_Click;
             // 
             // txtTreatmentPlan
             // 
-            txtTreatmentPlan.Location = new System.Drawing.Point(256, 256);
+            txtTreatmentPlan.Location = new System.Drawing.Point(224, 224);
+            txtTreatmentPlan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtTreatmentPlan.Multiline = true;
             txtTreatmentPlan.Name = "txtTreatmentPlan";
-            txtTreatmentPlan.Size = new System.Drawing.Size(394, 27);
+            txtTreatmentPlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            txtTreatmentPlan.Size = new System.Drawing.Size(345, 57);
             txtTreatmentPlan.TabIndex = 22;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(123, 259);
+            label10.Location = new System.Drawing.Point(108, 226);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(124, 20);
+            label10.Size = new System.Drawing.Size(99, 15);
             label10.TabIndex = 23;
             label10.Text = "Kế hoạch điều trị:";
             // 
             // txtDiagnosis
             // 
-            txtDiagnosis.Location = new System.Drawing.Point(256, 209);
+            txtDiagnosis.Location = new System.Drawing.Point(224, 160);
+            txtDiagnosis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtDiagnosis.Multiline = true;
             txtDiagnosis.Name = "txtDiagnosis";
-            txtDiagnosis.Size = new System.Drawing.Size(394, 27);
+            txtDiagnosis.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            txtDiagnosis.Size = new System.Drawing.Size(345, 47);
             txtDiagnosis.TabIndex = 20;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(123, 212);
+            label9.Location = new System.Drawing.Point(108, 162);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(83, 20);
+            label9.Size = new System.Drawing.Size(68, 15);
             label9.TabIndex = 21;
             label9.Text = "Chẩn đoán:";
             // 
             // cbNamePatientRecord
             // 
             cbNamePatientRecord.FormattingEnabled = true;
-            cbNamePatientRecord.Location = new System.Drawing.Point(256, 114);
+            cbNamePatientRecord.Location = new System.Drawing.Point(224, 55);
+            cbNamePatientRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cbNamePatientRecord.Name = "cbNamePatientRecord";
-            cbNamePatientRecord.Size = new System.Drawing.Size(394, 28);
+            cbNamePatientRecord.Size = new System.Drawing.Size(345, 23);
             cbNamePatientRecord.TabIndex = 19;
             cbNamePatientRecord.SelectedIndexChanged += cbNamePatientRecord_SelectedIndexChanged;
             // 
             // cbIdPatientRecord
             // 
             cbIdPatientRecord.FormattingEnabled = true;
-            cbIdPatientRecord.Location = new System.Drawing.Point(256, 66);
+            cbIdPatientRecord.Location = new System.Drawing.Point(224, 19);
+            cbIdPatientRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cbIdPatientRecord.Name = "cbIdPatientRecord";
-            cbIdPatientRecord.Size = new System.Drawing.Size(394, 28);
+            cbIdPatientRecord.Size = new System.Drawing.Size(345, 23);
             cbIdPatientRecord.TabIndex = 18;
             cbIdPatientRecord.SelectedIndexChanged += cbIdPatientRecord_SelectedIndexChanged;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(123, 74);
+            label8.Location = new System.Drawing.Point(108, 25);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(112, 20);
+            label8.Size = new System.Drawing.Size(91, 15);
             label8.TabIndex = 17;
             label8.Text = "SĐT bệnh nhân:";
             // 
             // dtpRecordDate
             // 
             dtpRecordDate.CustomFormat = "dd-MM-yyyy";
+            dtpRecordDate.Enabled = false;
             dtpRecordDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            dtpRecordDate.Location = new System.Drawing.Point(256, 303);
+            dtpRecordDate.Location = new System.Drawing.Point(224, 303);
+            dtpRecordDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dtpRecordDate.Name = "dtpRecordDate";
-            dtpRecordDate.Size = new System.Drawing.Size(125, 27);
+            dtpRecordDate.Size = new System.Drawing.Size(110, 23);
             dtpRecordDate.TabIndex = 15;
             dtpRecordDate.Value = new System.DateTime(2025, 5, 21, 0, 0, 0, 0);
             // 
             // btnSaveRecord
             // 
-            btnSaveRecord.Location = new System.Drawing.Point(331, 404);
+            btnSaveRecord.Location = new System.Drawing.Point(285, 348);
+            btnSaveRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnSaveRecord.Name = "btnSaveRecord";
-            btnSaveRecord.Size = new System.Drawing.Size(111, 29);
+            btnSaveRecord.Size = new System.Drawing.Size(97, 22);
             btnSaveRecord.TabIndex = 3;
             btnSaveRecord.Text = "Lưu Bệnh Án";
             btnSaveRecord.UseVisualStyleBackColor = true;
@@ -205,35 +218,38 @@
             // 
             // txtSymptom
             // 
-            txtSymptom.Location = new System.Drawing.Point(256, 162);
+            txtSymptom.Location = new System.Drawing.Point(224, 91);
+            txtSymptom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            txtSymptom.Multiline = true;
             txtSymptom.Name = "txtSymptom";
-            txtSymptom.Size = new System.Drawing.Size(394, 27);
+            txtSymptom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            txtSymptom.Size = new System.Drawing.Size(345, 49);
             txtSymptom.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(123, 308);
+            label3.Location = new System.Drawing.Point(108, 307);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(87, 20);
+            label3.Size = new System.Drawing.Size(71, 15);
             label3.TabIndex = 6;
             label3.Text = "Ngày khám:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(123, 165);
+            label2.Location = new System.Drawing.Point(108, 93);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(89, 20);
+            label2.Size = new System.Drawing.Size(73, 15);
             label2.TabIndex = 5;
             label2.Text = "Triệu chứng:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(123, 117);
+            label1.Location = new System.Drawing.Point(108, 57);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(108, 20);
+            label1.Size = new System.Drawing.Size(89, 15);
             label1.TabIndex = 4;
             label1.Text = "Tên bệnh nhân:";
             // 
@@ -251,10 +267,11 @@
             LenLichHen.Controls.Add(lbStartTime);
             LenLichHen.Controls.Add(lbdtpAppointmentDate);
             LenLichHen.Controls.Add(lbPatientID);
-            LenLichHen.Location = new System.Drawing.Point(4, 29);
+            LenLichHen.Location = new System.Drawing.Point(4, 24);
+            LenLichHen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             LenLichHen.Name = "LenLichHen";
-            LenLichHen.Padding = new System.Windows.Forms.Padding(3);
-            LenLichHen.Size = new System.Drawing.Size(773, 521);
+            LenLichHen.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            LenLichHen.Size = new System.Drawing.Size(675, 388);
             LenLichHen.TabIndex = 1;
             LenLichHen.Text = "Lên Lịch Hẹn";
             // 
@@ -262,54 +279,59 @@
             // 
             dtpAppointmentDate.CustomFormat = "dd-MM-yyyy";
             dtpAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            dtpAppointmentDate.Location = new System.Drawing.Point(273, 164);
+            dtpAppointmentDate.Location = new System.Drawing.Point(239, 123);
+            dtpAppointmentDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dtpAppointmentDate.Name = "dtpAppointmentDate";
-            dtpAppointmentDate.Size = new System.Drawing.Size(125, 27);
+            dtpAppointmentDate.Size = new System.Drawing.Size(110, 23);
             dtpAppointmentDate.TabIndex = 14;
             dtpAppointmentDate.Value = new System.DateTime(2025, 5, 21, 0, 0, 0, 0);
             // 
             // mtbEndTime
             // 
-            mtbEndTime.Location = new System.Drawing.Point(273, 254);
+            mtbEndTime.Location = new System.Drawing.Point(239, 190);
+            mtbEndTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             mtbEndTime.Mask = "00:00";
             mtbEndTime.Name = "mtbEndTime";
-            mtbEndTime.Size = new System.Drawing.Size(125, 27);
+            mtbEndTime.Size = new System.Drawing.Size(110, 23);
             mtbEndTime.TabIndex = 13;
             mtbEndTime.ValidatingType = typeof(System.DateTime);
             // 
             // mtbStartTime
             // 
-            mtbStartTime.Location = new System.Drawing.Point(273, 211);
+            mtbStartTime.Location = new System.Drawing.Point(239, 158);
+            mtbStartTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             mtbStartTime.Mask = "00:00";
             mtbStartTime.Name = "mtbStartTime";
-            mtbStartTime.Size = new System.Drawing.Size(125, 27);
+            mtbStartTime.Size = new System.Drawing.Size(110, 23);
             mtbStartTime.TabIndex = 12;
             mtbStartTime.ValidatingType = typeof(System.DateTime);
             // 
             // cbPatientId
             // 
             cbPatientId.FormattingEnabled = true;
-            cbPatientId.Location = new System.Drawing.Point(273, 65);
+            cbPatientId.Location = new System.Drawing.Point(239, 49);
+            cbPatientId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cbPatientId.Name = "cbPatientId";
-            cbPatientId.Size = new System.Drawing.Size(340, 28);
+            cbPatientId.Size = new System.Drawing.Size(298, 23);
             cbPatientId.TabIndex = 0;
             cbPatientId.SelectedIndexChanged += cbPatientId_SelectedIndexChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(159, 68);
+            label7.Location = new System.Drawing.Point(139, 51);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(112, 20);
+            label7.Size = new System.Drawing.Size(91, 15);
             label7.TabIndex = 6;
             label7.Text = "SĐT bệnh nhân:";
             // 
             // btnSchedule
             // 
             btnSchedule.AutoSize = true;
-            btnSchedule.Location = new System.Drawing.Point(330, 311);
+            btnSchedule.Location = new System.Drawing.Point(289, 233);
+            btnSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnSchedule.Name = "btnSchedule";
-            btnSchedule.Size = new System.Drawing.Size(112, 30);
+            btnSchedule.Size = new System.Drawing.Size(98, 25);
             btnSchedule.TabIndex = 5;
             btnSchedule.Text = "Xác Nhận Lịch";
             btnSchedule.UseVisualStyleBackColor = true;
@@ -318,44 +340,45 @@
             // cbPatientName
             // 
             cbPatientName.FormattingEnabled = true;
-            cbPatientName.Location = new System.Drawing.Point(273, 116);
+            cbPatientName.Location = new System.Drawing.Point(239, 87);
+            cbPatientName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cbPatientName.Name = "cbPatientName";
-            cbPatientName.Size = new System.Drawing.Size(340, 28);
+            cbPatientName.Size = new System.Drawing.Size(298, 23);
             cbPatientName.TabIndex = 1;
             // 
             // lbEndTime
             // 
             lbEndTime.AutoSize = true;
-            lbEndTime.Location = new System.Drawing.Point(159, 257);
+            lbEndTime.Location = new System.Drawing.Point(139, 193);
             lbEndTime.Name = "lbEndTime";
-            lbEndTime.Size = new System.Drawing.Size(91, 20);
+            lbEndTime.Size = new System.Drawing.Size(74, 15);
             lbEndTime.TabIndex = 10;
             lbEndTime.Text = "Giờ kết thúc:";
             // 
             // lbStartTime
             // 
             lbStartTime.AutoSize = true;
-            lbStartTime.Location = new System.Drawing.Point(159, 214);
+            lbStartTime.Location = new System.Drawing.Point(139, 160);
             lbStartTime.Name = "lbStartTime";
-            lbStartTime.Size = new System.Drawing.Size(90, 20);
+            lbStartTime.Size = new System.Drawing.Size(71, 15);
             lbStartTime.TabIndex = 9;
             lbStartTime.Text = "Giờ bắt đầu:";
             // 
             // lbdtpAppointmentDate
             // 
             lbdtpAppointmentDate.AutoSize = true;
-            lbdtpAppointmentDate.Location = new System.Drawing.Point(159, 169);
+            lbdtpAppointmentDate.Location = new System.Drawing.Point(139, 127);
             lbdtpAppointmentDate.Name = "lbdtpAppointmentDate";
-            lbdtpAppointmentDate.Size = new System.Drawing.Size(75, 20);
+            lbdtpAppointmentDate.Size = new System.Drawing.Size(61, 15);
             lbdtpAppointmentDate.TabIndex = 8;
             lbdtpAppointmentDate.Text = "Ngày hẹn:";
             // 
             // lbPatientID
             // 
             lbPatientID.AutoSize = true;
-            lbPatientID.Location = new System.Drawing.Point(159, 119);
+            lbPatientID.Location = new System.Drawing.Point(139, 89);
             lbPatientID.Name = "lbPatientID";
-            lbPatientID.Size = new System.Drawing.Size(108, 20);
+            lbPatientID.Size = new System.Drawing.Size(89, 15);
             lbPatientID.TabIndex = 7;
             lbPatientID.Text = "Tên bệnh nhân:";
             // 
@@ -363,10 +386,11 @@
             // 
             XemLichHen.Controls.Add(btnLoadAppointments);
             XemLichHen.Controls.Add(dgvAppointments);
-            XemLichHen.Location = new System.Drawing.Point(4, 29);
+            XemLichHen.Location = new System.Drawing.Point(4, 24);
+            XemLichHen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             XemLichHen.Name = "XemLichHen";
-            XemLichHen.Padding = new System.Windows.Forms.Padding(3);
-            XemLichHen.Size = new System.Drawing.Size(773, 521);
+            XemLichHen.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            XemLichHen.Size = new System.Drawing.Size(675, 388);
             XemLichHen.TabIndex = 0;
             XemLichHen.Text = "Xem Lịch Hẹn";
             XemLichHen.UseVisualStyleBackColor = true;
@@ -374,9 +398,10 @@
             // btnLoadAppointments
             // 
             btnLoadAppointments.AutoSize = true;
-            btnLoadAppointments.Location = new System.Drawing.Point(339, 471);
+            btnLoadAppointments.Location = new System.Drawing.Point(297, 353);
+            btnLoadAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnLoadAppointments.Name = "btnLoadAppointments";
-            btnLoadAppointments.Size = new System.Drawing.Size(100, 30);
+            btnLoadAppointments.Size = new System.Drawing.Size(88, 25);
             btnLoadAppointments.TabIndex = 1;
             btnLoadAppointments.Text = "Tải Lịch Hẹn";
             btnLoadAppointments.UseVisualStyleBackColor = true;
@@ -394,10 +419,11 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAppointments.ColumnHeadersHeight = 29;
-            dgvAppointments.Location = new System.Drawing.Point(3, 3);
+            dgvAppointments.Location = new System.Drawing.Point(3, 2);
+            dgvAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dgvAppointments.Name = "dgvAppointments";
             dgvAppointments.RowHeadersWidth = 51;
-            dgvAppointments.Size = new System.Drawing.Size(767, 451);
+            dgvAppointments.Size = new System.Drawing.Size(671, 338);
             dgvAppointments.TabIndex = 0;
             // 
             // TapBacSi
@@ -409,9 +435,10 @@
             TapBacSi.Controls.Add(QLHoaDon);
             TapBacSi.Dock = System.Windows.Forms.DockStyle.Fill;
             TapBacSi.Location = new System.Drawing.Point(0, 0);
+            TapBacSi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             TapBacSi.Name = "TapBacSi";
             TapBacSi.SelectedIndex = 0;
-            TapBacSi.Size = new System.Drawing.Size(781, 554);
+            TapBacSi.Size = new System.Drawing.Size(683, 416);
             TapBacSi.TabIndex = 0;
             TapBacSi.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -419,10 +446,11 @@
             // 
             XemBenhAn.Controls.Add(btnLoadMedicalRecords);
             XemBenhAn.Controls.Add(dgvMedicalRecordView);
-            XemBenhAn.Location = new System.Drawing.Point(4, 29);
+            XemBenhAn.Location = new System.Drawing.Point(4, 24);
+            XemBenhAn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             XemBenhAn.Name = "XemBenhAn";
-            XemBenhAn.Padding = new System.Windows.Forms.Padding(3);
-            XemBenhAn.Size = new System.Drawing.Size(773, 521);
+            XemBenhAn.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            XemBenhAn.Size = new System.Drawing.Size(675, 388);
             XemBenhAn.TabIndex = 4;
             XemBenhAn.Text = "Xem Bệnh Án";
             XemBenhAn.UseVisualStyleBackColor = true;
@@ -430,9 +458,10 @@
             // btnLoadMedicalRecords
             // 
             btnLoadMedicalRecords.AutoSize = true;
-            btnLoadMedicalRecords.Location = new System.Drawing.Point(339, 471);
+            btnLoadMedicalRecords.Location = new System.Drawing.Point(297, 353);
+            btnLoadMedicalRecords.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnLoadMedicalRecords.Name = "btnLoadMedicalRecords";
-            btnLoadMedicalRecords.Size = new System.Drawing.Size(98, 30);
+            btnLoadMedicalRecords.Size = new System.Drawing.Size(86, 25);
             btnLoadMedicalRecords.TabIndex = 2;
             btnLoadMedicalRecords.Text = "Tải Bệnh Án";
             btnLoadMedicalRecords.UseVisualStyleBackColor = true;
@@ -451,9 +480,10 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dgvMedicalRecordView.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMedicalRecordView.Location = new System.Drawing.Point(3, 1);
+            dgvMedicalRecordView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dgvMedicalRecordView.Name = "dgvMedicalRecordView";
             dgvMedicalRecordView.RowHeadersWidth = 51;
-            dgvMedicalRecordView.Size = new System.Drawing.Size(767, 451);
+            dgvMedicalRecordView.Size = new System.Drawing.Size(671, 338);
             dgvMedicalRecordView.TabIndex = 1;
             // 
             // QLHoaDon
@@ -466,10 +496,11 @@
             QLHoaDon.Controls.Add(dtpNgayIn);
             QLHoaDon.Controls.Add(groupBox1);
             QLHoaDon.Controls.Add(groupBox2);
-            QLHoaDon.Location = new System.Drawing.Point(4, 29);
+            QLHoaDon.Location = new System.Drawing.Point(4, 24);
+            QLHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             QLHoaDon.Name = "QLHoaDon";
-            QLHoaDon.Padding = new System.Windows.Forms.Padding(3);
-            QLHoaDon.Size = new System.Drawing.Size(773, 521);
+            QLHoaDon.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            QLHoaDon.Size = new System.Drawing.Size(675, 388);
             QLHoaDon.TabIndex = 3;
             QLHoaDon.Text = "Quản Lý Hóa Đơn";
             QLHoaDon.UseVisualStyleBackColor = true;
@@ -477,9 +508,10 @@
             // btnSaveInvoice
             // 
             btnSaveInvoice.AutoSize = true;
-            btnSaveInvoice.Location = new System.Drawing.Point(326, 477);
+            btnSaveInvoice.Location = new System.Drawing.Point(285, 358);
+            btnSaveInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnSaveInvoice.Name = "btnSaveInvoice";
-            btnSaveInvoice.Size = new System.Drawing.Size(102, 30);
+            btnSaveInvoice.Size = new System.Drawing.Size(89, 25);
             btnSaveInvoice.TabIndex = 12;
             btnSaveInvoice.Text = "Lưu hóa đơn";
             btnSaveInvoice.UseVisualStyleBackColor = true;
@@ -509,7 +541,8 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dgvChiTiet.DefaultCellStyle = dataGridViewCellStyle5;
-            dgvChiTiet.Location = new System.Drawing.Point(0, 195);
+            dgvChiTiet.Location = new System.Drawing.Point(0, 146);
+            dgvChiTiet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dgvChiTiet.Name = "dgvChiTiet";
             dgvChiTiet.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -521,7 +554,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgvChiTiet.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvChiTiet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgvChiTiet.Size = new System.Drawing.Size(770, 188);
+            dgvChiTiet.Size = new System.Drawing.Size(674, 141);
             dgvChiTiet.TabIndex = 10;
             // 
             // TenDichVu
@@ -545,9 +578,10 @@
             // btnThemDichVu
             // 
             btnThemDichVu.AutoSize = true;
-            btnThemDichVu.Location = new System.Drawing.Point(581, 144);
+            btnThemDichVu.Location = new System.Drawing.Point(508, 108);
+            btnThemDichVu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnThemDichVu.Name = "btnThemDichVu";
-            btnThemDichVu.Size = new System.Drawing.Size(107, 30);
+            btnThemDichVu.Size = new System.Drawing.Size(94, 25);
             btnThemDichVu.TabIndex = 9;
             btnThemDichVu.Text = "Thêm dịch vụ";
             btnThemDichVu.UseVisualStyleBackColor = true;
@@ -555,25 +589,29 @@
             // 
             // nuChonSoLuong
             // 
-            nuChonSoLuong.Location = new System.Drawing.Point(381, 146);
+            nuChonSoLuong.Location = new System.Drawing.Point(333, 110);
+            nuChonSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             nuChonSoLuong.Name = "nuChonSoLuong";
-            nuChonSoLuong.Size = new System.Drawing.Size(108, 27);
+            nuChonSoLuong.Size = new System.Drawing.Size(94, 23);
             nuChonSoLuong.TabIndex = 8;
             // 
             // cbChonDichVu
             // 
             cbChonDichVu.FormattingEnabled = true;
-            cbChonDichVu.Location = new System.Drawing.Point(82, 145);
+            cbChonDichVu.Location = new System.Drawing.Point(72, 109);
+            cbChonDichVu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cbChonDichVu.Name = "cbChonDichVu";
-            cbChonDichVu.Size = new System.Drawing.Size(207, 28);
+            cbChonDichVu.Size = new System.Drawing.Size(182, 23);
             cbChonDichVu.TabIndex = 7;
             // 
             // dtpNgayIn
             // 
+            dtpNgayIn.Enabled = false;
             dtpNgayIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpNgayIn.Location = new System.Drawing.Point(239, 103);
+            dtpNgayIn.Location = new System.Drawing.Point(209, 77);
+            dtpNgayIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             dtpNgayIn.Name = "dtpNgayIn";
-            dtpNgayIn.Size = new System.Drawing.Size(126, 27);
+            dtpNgayIn.Size = new System.Drawing.Size(111, 23);
             dtpNgayIn.TabIndex = 6;
             // 
             // groupBox1
@@ -583,52 +621,56 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label5);
-            groupBox1.Location = new System.Drawing.Point(0, 6);
+            groupBox1.Location = new System.Drawing.Point(0, 4);
+            groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(770, 186);
+            groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox1.Size = new System.Drawing.Size(674, 140);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             // 
             // txtPatientName
             // 
-            txtPatientName.Location = new System.Drawing.Point(239, 54);
+            txtPatientName.Location = new System.Drawing.Point(209, 40);
+            txtPatientName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtPatientName.Name = "txtPatientName";
             txtPatientName.ReadOnly = true;
-            txtPatientName.Size = new System.Drawing.Size(340, 27);
+            txtPatientName.Size = new System.Drawing.Size(298, 23);
             txtPatientName.TabIndex = 18;
             // 
             // cboPatientId
             // 
             cboPatientId.FormattingEnabled = true;
-            cboPatientId.Location = new System.Drawing.Point(239, 16);
+            cboPatientId.Location = new System.Drawing.Point(209, 12);
+            cboPatientId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cboPatientId.Name = "cboPatientId";
-            cboPatientId.Size = new System.Drawing.Size(340, 28);
+            cboPatientId.Size = new System.Drawing.Size(298, 23);
             cboPatientId.TabIndex = 17;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(121, 23);
+            label6.Location = new System.Drawing.Point(106, 17);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(112, 20);
+            label6.Size = new System.Drawing.Size(91, 15);
             label6.TabIndex = 16;
             label6.Text = "SĐT bệnh nhân:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(121, 57);
+            label4.Location = new System.Drawing.Point(106, 43);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(81, 20);
+            label4.Size = new System.Drawing.Size(67, 15);
             label4.TabIndex = 3;
             label4.Text = "Bệnh nhân:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(121, 102);
+            label5.Location = new System.Drawing.Point(106, 76);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(63, 20);
+            label5.Size = new System.Drawing.Size(51, 15);
             label5.TabIndex = 4;
             label5.Text = "Ngày in:";
             // 
@@ -637,25 +679,29 @@
             groupBox2.Controls.Add(txtTongTien);
             groupBox2.Controls.Add(btnCalculateTotal);
             groupBox2.Controls.Add(lblInvoiceTotalAmount);
-            groupBox2.Location = new System.Drawing.Point(6, 389);
+            groupBox2.Location = new System.Drawing.Point(5, 292);
+            groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(767, 82);
+            groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox2.Size = new System.Drawing.Size(671, 62);
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             // 
             // txtTongTien
             // 
-            txtTongTien.Location = new System.Drawing.Point(465, 26);
+            txtTongTien.Location = new System.Drawing.Point(407, 20);
+            txtTongTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtTongTien.Name = "txtTongTien";
-            txtTongTien.Size = new System.Drawing.Size(217, 27);
+            txtTongTien.Size = new System.Drawing.Size(190, 23);
             txtTongTien.TabIndex = 14;
             // 
             // btnCalculateTotal
             // 
             btnCalculateTotal.AutoSize = true;
-            btnCalculateTotal.Location = new System.Drawing.Point(79, 24);
+            btnCalculateTotal.Location = new System.Drawing.Point(69, 18);
+            btnCalculateTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnCalculateTotal.Name = "btnCalculateTotal";
-            btnCalculateTotal.Size = new System.Drawing.Size(94, 30);
+            btnCalculateTotal.Size = new System.Drawing.Size(82, 25);
             btnCalculateTotal.TabIndex = 11;
             btnCalculateTotal.Text = "Tính tiền";
             btnCalculateTotal.UseVisualStyleBackColor = true;
@@ -664,9 +710,9 @@
             // lblInvoiceTotalAmount
             // 
             lblInvoiceTotalAmount.AutoSize = true;
-            lblInvoiceTotalAmount.Location = new System.Drawing.Point(384, 29);
+            lblInvoiceTotalAmount.Location = new System.Drawing.Point(336, 22);
             lblInvoiceTotalAmount.Name = "lblInvoiceTotalAmount";
-            lblInvoiceTotalAmount.Size = new System.Drawing.Size(75, 20);
+            lblInvoiceTotalAmount.Size = new System.Drawing.Size(61, 15);
             lblInvoiceTotalAmount.TabIndex = 13;
             lblInvoiceTotalAmount.Text = "Tổng tiền:";
             // 
@@ -679,10 +725,11 @@
             // 
             // BacSi
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(781, 554);
+            ClientSize = new System.Drawing.Size(683, 416);
             Controls.Add(TapBacSi);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "BacSi";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Bác Sĩ";
