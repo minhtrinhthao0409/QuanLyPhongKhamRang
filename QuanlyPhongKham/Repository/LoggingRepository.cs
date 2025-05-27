@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanlyPhongKham.Repository
 {
-    class LoggingRepository : BaseRepository
+    public class LoggingRepository : BaseRepository
     {
         public LoggingRepository(string connectionString = null) : base(connectionString) { }
 

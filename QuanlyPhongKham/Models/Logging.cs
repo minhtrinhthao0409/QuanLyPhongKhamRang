@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanlyPhongKham.Models
 {
-    class Logging
+    public class Logging
     {
         public string LoggingID { get; set; }
         public string UserID { get; set; }
