@@ -143,7 +143,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(208, 389);
+            label1.Location = new System.Drawing.Point(208, 409);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(301, 32);
             label1.TabIndex = 17;
@@ -152,7 +152,7 @@
             // Editbtn
             // 
             Editbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Editbtn.Location = new System.Drawing.Point(638, 154);
+            Editbtn.Location = new System.Drawing.Point(643, 112);
             Editbtn.Name = "Editbtn";
             Editbtn.Size = new System.Drawing.Size(88, 39);
             Editbtn.TabIndex = 16;
