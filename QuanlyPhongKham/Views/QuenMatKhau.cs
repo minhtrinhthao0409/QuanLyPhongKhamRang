@@ -52,7 +52,7 @@ namespace QuanlyPhongKham
 
         private void QuenMatKhau_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            this.Close(); //???có nên exit không hay là close
         }
     }
 }

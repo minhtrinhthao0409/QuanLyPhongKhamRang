@@ -90,10 +90,10 @@ namespace QuanlyPhongKham
                 {
                     MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-                    using (Login login = new Login())
-                    {
-                        login.ShowDialog();
-                    }
+                    //using (Login login = new Login())
+                    //{
+                    //    login.ShowDialog();
+                    //}
                     this.Show();
                 }
                 else

@@ -50,7 +50,8 @@ namespace QuanlyPhongKham
                 dangKyForm.ShowDialog(); // Show modal
                 
             }
-            this.Show();
+            if(!this.IsDisposed)
+                this.Show();
 
         }
 

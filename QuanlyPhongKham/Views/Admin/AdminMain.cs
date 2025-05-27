@@ -33,17 +33,10 @@ namespace QuanlyPhongKham.Views.Admin
             this._loggingController = new LoggingController();
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
-            //LoadUserDataAsync();
-            //LoadServiceDataasync();
-            //LoadLogDataAsync();
             AdminQLTKUpdatebtn.Enabled = false;
             AdminQLTKDeletebtn.Enabled = false;
-            AdminQLTKPasstbx.Enabled = false;
-            AdminQLTKUserNametbx.Enabled = false;
-            AdminQLTKRolecb.Enabled = false;
             AdminQLDVbtn.Enabled = false;
             AdminQLDVDelbtn.Enabled = false;
-            _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, "Đăng nhập vào hệ thống quản lý phòng khám");
         }
         private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -79,6 +72,9 @@ namespace QuanlyPhongKham.Views.Admin
                 AdminQLTKRolecb.Text = selectedRow.Cells["Role"].Value.ToString() == "Admin" ? "Admin" : selectedRow.Cells["Role"].Value.ToString() == "Doctor" ? "Doctor" : "Receptionist";
                 AdminQLTKUpdatebtn.Enabled = true;
                 AdminQLTKDeletebtn.Enabled = true;
+                AdminQLTKPasstbx.Enabled = false;
+                AdminQLTKUserNametbx.Enabled = false;
+                AdminQLTKRolecb.Enabled = false;
             }
 
         }
@@ -121,6 +117,7 @@ namespace QuanlyPhongKham.Views.Admin
                 {
                     MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUserDataAsync();
+                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã đăng ký tài khoản mới: {username} với vai trò {rolestring}").Wait();
                 }
                 else
                 {
@@ -171,6 +168,7 @@ namespace QuanlyPhongKham.Views.Admin
                 {
                     MessageBox.Show("Cập nhật tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUserDataAsync();
+                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã cập nhật tài khoản: {username} với vai trò {rolestring}").Wait();
                 }
                 else
                 {
@@ -197,6 +195,7 @@ namespace QuanlyPhongKham.Views.Admin
                 {
                     MessageBox.Show("Xóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUserDataAsync();
+                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã xóa tài khoản: {username}").Wait();
                 }
                 else
                 {
@@ -264,7 +263,7 @@ namespace QuanlyPhongKham.Views.Admin
                 {
                     MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadServiceDataasync();
-                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName ,$"Đã thêm dịch vụ: {serviceName} với giá {price}").Wait();
+                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã thêm dịch vụ: {serviceName} với giá {price}").Wait();
                 }
                 else
                 {
@@ -283,6 +282,7 @@ namespace QuanlyPhongKham.Views.Admin
             {
                 MessageBox.Show("Xóa dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadServiceDataasync();
+                _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã xóa dịch vụ: {serviceName}").Wait();
             }
             else
             {
@@ -306,6 +306,7 @@ namespace QuanlyPhongKham.Views.Admin
                 {
                     MessageBox.Show("Cập nhật dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadServiceDataasync();
+                    _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã cập nhật dịch vụ: {serviceName} với giá {price}").Wait();
                 }
                 else
                 {
@@ -336,29 +337,7 @@ namespace QuanlyPhongKham.Views.Admin
 
         private async void AdminBCTCXuatbtn_ClickAsync(object sender, EventArgs e)
         {
-            try
-            {
-                // Lấy giá trị từ DateTimePicker
-                DateTime startDate = AdminBCTCFromTP.Value;
-                DateTime endDate = AdminBCTCFToTP.Value;
-
-                // Kiểm tra ngày hợp lệ
-                if (endDate < startDate)
-                {
-                    MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Gọi phương thức từ controller để lấy tổng doanh thu
-                decimal totalRevenue = await _invoiceController.GetTotalRevenueAsync(startDate, endDate);
-
-                // Chuyển đổi decimal thành string và hiển thị trong TextBox
-                AdminBCTCRevtbx.Text = totalRevenue.ToString("C"); // Định dạng tiền tệ, ví dụ: $12,345.67
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadInvoiceDataAsync();
         }
         private async void LoadInvoiceDataAsync()
         {
@@ -377,6 +356,7 @@ namespace QuanlyPhongKham.Views.Admin
                 var invoices = await _invoiceController.GetInvoiceByTime(startDate, endDate);
                 // Hiển thị danh sách hóa đơn trong DataGridView
                 AdminBCTCdgv.DataSource = invoices;
+                _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã xuất báo cáo tài chính từ {startDate.ToShortDateString()} đến {endDate.ToShortDateString()}").Wait();
             }
             catch (Exception ex)
             {
@@ -396,34 +376,10 @@ namespace QuanlyPhongKham.Views.Admin
         }
 
         #endregion BCTC
-        //#region Logging
-        //private async void LoadLogDataAsync()
-        //{
-        //    try
-        //    {
-        //        // Gọi phương thức từ controller để lấy danh sách log
-        //        var logs = await _loggingController.GetAllLoggingsAsync();
-        //        // Hiển thị danh sách log trong DataGridView
-        //        LoggingData.DataSource = logs;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        //private void AdminLoggingbtn_Click(object sender, EventArgs e)
-        //{
-        //    LoadLogDataAsync();
-        //}
-        //#endregion Logging
-        
+
 
         private async void LoadLogDataAsync()
         {
-            
-           
-
-            
             try
             {
                 Console.WriteLine("Đang lấy dữ liệu log...");
@@ -524,7 +480,7 @@ namespace QuanlyPhongKham.Views.Admin
             }
             finally
             {
-               
+
                 Console.WriteLine("LoadLogDataAsync hoàn tất.");
             }
         }
@@ -532,6 +488,32 @@ namespace QuanlyPhongKham.Views.Admin
         private void AdminLoggingbtn_Click(object sender, EventArgs e)
         {
             LoadLogDataAsync();
+        }
+
+        private void AdminMainTab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedTabIndex = AdminMainTab.SelectedIndex;
+            string selectedTabName = AdminMainTab.SelectedTab.Text;
+
+            switch (selectedTabIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                   
+                    break;
+                case 2:
+                    LoadUserDataAsync();
+                    break;
+                case 3:
+                    LoadServiceDataasync();
+                    break;
+                case 4:
+                    LoadLogDataAsync();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

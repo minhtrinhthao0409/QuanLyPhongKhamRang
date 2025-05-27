@@ -73,9 +73,9 @@
             AdminQLDVPricetbx = new System.Windows.Forms.TextBox();
             AdminQLDVNameTb = new System.Windows.Forms.TextBox();
             AdminLogging = new System.Windows.Forms.TabPage();
+            AdminLoggingbtn = new System.Windows.Forms.Button();
             label11 = new System.Windows.Forms.Label();
             LoggingData = new System.Windows.Forms.DataGridView();
-            AdminLoggingbtn = new System.Windows.Forms.Button();
             AdminMainTab.SuspendLayout();
             tabPage1.SuspendLayout();
             AdminBCTC.SuspendLayout();
@@ -101,6 +101,7 @@
             AdminMainTab.SelectedIndex = 0;
             AdminMainTab.Size = new System.Drawing.Size(877, 698);
             AdminMainTab.TabIndex = 0;
+            AdminMainTab.SelectedIndexChanged += AdminMainTab_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -542,6 +543,16 @@
             AdminLogging.Text = "Logging";
             AdminLogging.UseVisualStyleBackColor = true;
             // 
+            // AdminLoggingbtn
+            // 
+            AdminLoggingbtn.Location = new System.Drawing.Point(747, 41);
+            AdminLoggingbtn.Name = "AdminLoggingbtn";
+            AdminLoggingbtn.Size = new System.Drawing.Size(94, 29);
+            AdminLoggingbtn.TabIndex = 2;
+            AdminLoggingbtn.Text = "Tải lại";
+            AdminLoggingbtn.UseVisualStyleBackColor = true;
+            AdminLoggingbtn.Click += AdminLoggingbtn_Click;
+            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -560,16 +571,6 @@
             LoggingData.RowHeadersWidth = 51;
             LoggingData.Size = new System.Drawing.Size(813, 532);
             LoggingData.TabIndex = 0;
-            // 
-            // AdminLoggingbtn
-            // 
-            AdminLoggingbtn.Location = new System.Drawing.Point(747, 41);
-            AdminLoggingbtn.Name = "AdminLoggingbtn";
-            AdminLoggingbtn.Size = new System.Drawing.Size(94, 29);
-            AdminLoggingbtn.TabIndex = 2;
-            AdminLoggingbtn.Text = "Tải lại";
-            AdminLoggingbtn.UseVisualStyleBackColor = true;
-            AdminLoggingbtn.Click += AdminLoggingbtn_Click;
             // 
             // AdminMain
             // 
