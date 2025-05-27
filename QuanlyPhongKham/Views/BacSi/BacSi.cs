@@ -41,7 +41,7 @@ namespace QuanlyPhongKham.Views
             currentDoctorName = user.UserName;
             var appointmentDate = dtpAppointmentDate.Value.Date;
             cboPatientId.SelectedIndexChanged += cboPatientId_SelectedIndexChanged;
-            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Đăng nhập vào giao diện bác sĩ.");
+            
             await LoadPatientsToComboBoxes();
             await LoadPatientsAsync();
             await LoadAppointmentsAsync();
