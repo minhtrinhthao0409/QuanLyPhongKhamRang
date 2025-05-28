@@ -27,7 +27,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             _invoiceService = new InvoiceService();
 
             startTimePicker.Value = DateTime.Now.AddDays(-7);
-            endTimePicker.Value = DateTime.Now.AddDays(-1);
+            endTimePicker.Value = DateTime.Now.AddDays(1);
 
 
             Appointmentlbl.Click += menulbl_click;
@@ -202,6 +202,13 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             Application.Exit();
         }
-        
+
+        private void Searchbtn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Searchbtn.PerformClick();
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Models;
+﻿using QuanlyPhongKham.config;
+using QuanlyPhongKham.Models;
 using QuanlyPhongKham.Services;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,13 @@ namespace QuanlyPhongKham.Views.Receptionist
     {
         private User user;
         private Form currentForm = null;
-        private object selectedGender;
+        //private object selectedGender;
         private readonly PatientService _patientService;
         private readonly LoggingService _loggService;
 
         public delegate void PatientSelectedHandler(string fullName, string phoneNumber);
         public event PatientSelectedHandler OnPatientSelected;
+        ValidInput validInput = new ValidInput();
 
         //SearchPatientResultView
 
@@ -95,6 +97,18 @@ namespace QuanlyPhongKham.Views.Receptionist
                 Guid? guardianId = null;
 
                 int result;
+
+                
+                if(!validInput.IsValidPhoneNumber(phoneNo))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ.");
+                    return;
+                }
+                else if (!string.IsNullOrWhiteSpace(email) && !validInput.IsValidEmail(email))
+                {
+                    MessageBox.Show("Email không hợp lệ.");
+                    return;
+                }
 
 
                 if (!string.IsNullOrWhiteSpace(guardianName))
@@ -210,7 +224,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             updatedGuardianTxt.Text = "";
 
             editPatientNameTxt.Text = "";
-            
+
         }
 
         private async void UpdateInfoBtn_Click(object sender, EventArgs e)
@@ -224,8 +238,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             string updatedGuardianName = updatedGuardianTxt.Text.Trim();
             string updatedEmail = updatedEmailTxt.Text.Trim();
 
-
-
+ 
 
             if (string.IsNullOrWhiteSpace(currentName) ||
                string.IsNullOrWhiteSpace(currentPhoneNo) &&
@@ -238,6 +251,22 @@ namespace QuanlyPhongKham.Views.Receptionist
 
             try
             {
+                if (!validInput.IsValidPhoneNumber(currentPhoneNo))
+                {
+                    MessageBox.Show("Số điện thoại hiện tại không hợp lệ.");
+                    return;
+                }
+                else if  (!string.IsNullOrWhiteSpace(updatedPhoneNo) && !validInput.IsValidPhoneNumber(updatedPhoneNo))
+                { 
+                    MessageBox.Show("Số điện thoại thay đổi không hợp lệ");
+                    return;
+                }    
+                else if (!string.IsNullOrWhiteSpace(currentEmail) && !validInput.IsValidEmail(currentEmail) || !string.IsNullOrWhiteSpace(updatedEmail) && !validInput.IsValidEmail(updatedEmail))
+                {
+                    MessageBox.Show("Email không hợp lệ.");
+                    return;
+                }
+
                 var patients = await _patientService.SearchPatientsAsync(currentName, currentPhoneNo, currentEmail);
 
                 if (patients.Count == 0)
@@ -350,11 +379,9 @@ namespace QuanlyPhongKham.Views.Receptionist
                     patientId: patient.PatientId,
                     name: editName,
                     gender: gender,
-                    phoneNumber: currentPhoneNo,
-                    email: currentEmail,
+                    phoneNumber: string.IsNullOrWhiteSpace(currentPhoneNo) ? patient.PhoneNumber : currentPhoneNo,
+                    email: string.IsNullOrWhiteSpace(currentEmail) ? patient.Email : currentEmail,
                     dob: dob
-                //guardianId: patient.GuardianId?.ToString()
-                //guardianName: string.IsNullOrWhiteSpace(updatedGuardianName) ? null : updatedGuardianName
                 );
 
                 if (result)
@@ -378,6 +405,16 @@ namespace QuanlyPhongKham.Views.Receptionist
         private void CbEditGender_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedEditGender = CbEditGender.SelectedItem.ToString();
+        }
+
+        private void btn_KeyDown(object sender, KeyEventArgs e)
+        {
+            Button button = sender as Button;
+            
+            if (e.KeyCode == Keys.Enter)
+            {
+                button.PerformClick();
+            }
         }
     }
 }

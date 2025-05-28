@@ -21,14 +21,15 @@ namespace QuanlyPhongKham.Views
         MedicalRecordController medicalRecordController = new MedicalRecordController();
         InvoiceController _invoiceController = new InvoiceController();
         private readonly MedicalServiceController _medicalServiceController = new MedicalServiceController();
+        private readonly LoggingController loggingController;
         private Dictionary<string, string> patientMap;
         private User user;
         private string currentDoctorId;
         private string currentDoctorName;
         private List<Patient> allPatients;
-        private readonly LoggingService loggingService;
 
-        public BacSi(User user, LoggingService loggingService)
+
+        public BacSi(User user, LoggingController loggingController)
         {
             InitializeComponent();
             dtpRecordDate.Value = DateTime.Now.Date;
@@ -36,7 +37,7 @@ namespace QuanlyPhongKham.Views
             dtpRecordDate.Value = DateTime.Now;
             dtpNgayIn.Value = DateTime.Now;
             this.user = user;
-            this.loggingService = loggingService;
+            this.loggingController = loggingController;
         }
 
         private async void BacSi_Load(object sender, EventArgs e)
@@ -108,7 +109,7 @@ namespace QuanlyPhongKham.Views
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xem danh sách lịch hẹn.");
+            await loggingController.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xem danh sách lịch hẹn.");
         }
         private void cbPatientId_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -188,7 +189,7 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show("Lỗi khi thêm lịch hẹn!");
             }
-            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xác nhận lịch hẹn với bệnh nhân.");
+            await loggingController.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xác nhận lịch hẹn với bệnh nhân.");
         }
         private async Task LoadPatientsToComboBoxes()
         {
@@ -241,7 +242,7 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show("Lỗi khi lưu bệnh án: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu bệnh án.");
+            await loggingController.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu bệnh án.");
         }
 
         private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -299,7 +300,7 @@ namespace QuanlyPhongKham.Views
             {
                 MessageBox.Show($"Lỗi khi tải hồ sơ bệnh án: {ex.Message}");
             }
-            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xem bệnh án.");
+            await loggingController.AddLoggingAsync(currentDoctorId, currentDoctorName, "Xem bệnh án.");
         }
         private void cbIdPatientRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -368,7 +369,7 @@ namespace QuanlyPhongKham.Views
             {
                 if (row.Cells["TenDichVu"].Value != null)
                 {
-                   
+
                     string rawGia = row.Cells["Gia"].Value?.ToString().Replace("VNĐ", "").Replace(".", "").Trim() ?? "0";
 
                     if (!decimal.TryParse(rawGia, out decimal unitPrice))
@@ -388,7 +389,7 @@ namespace QuanlyPhongKham.Views
 
             await _invoiceController.CreateInvoiceAsync(invoice);
             MessageBox.Show("Lưu hóa đơn thành công");
-            await loggingService.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu hóa đơn.");
+            await loggingController.AddLoggingAsync(currentDoctorId, currentDoctorName, "Lưu hóa đơn.");
         }
 
         private void btnCalculateTotal_Click(object sender, EventArgs e)
@@ -451,6 +452,19 @@ namespace QuanlyPhongKham.Views
         private void GhiBenhAn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+
+                var loginForm = new Login(); 
+                loginForm.FormClosed += (s, args) => Application.Exit(); 
+                loginForm.Show();
+            }
         }
     }
 }

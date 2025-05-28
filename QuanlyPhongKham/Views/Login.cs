@@ -86,7 +86,7 @@ namespace QuanlyPhongKham
                 }
                 else if (user.Role == UserRole.Doctor)
                 {
-                    form = new BacSi(user, new LoggingService());
+                    form = new BacSi(user, new LoggingController());
                 }
                 else if (user.Role == UserRole.Receptionist)
                 {

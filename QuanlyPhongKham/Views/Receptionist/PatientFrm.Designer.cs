@@ -64,7 +64,6 @@
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             ResetBtn = new System.Windows.Forms.Button();
-            UpdatePatientBtn = new System.Windows.Forms.Button();
             AddPatientbtn = new System.Windows.Forms.Button();
             tabPage3 = new System.Windows.Forms.TabPage();
             SaveInfo = new System.Windows.Forms.Button();
@@ -245,6 +244,7 @@
             ResetSearchPatientbtn.Text = "Hoàn tác";
             ResetSearchPatientbtn.UseVisualStyleBackColor = true;
             ResetSearchPatientbtn.Click += ResetSearchPatientbtn_Click;
+            ResetSearchPatientbtn.KeyDown += btn_KeyDown;
             // 
             // patientEmailTxt
             // 
@@ -317,6 +317,7 @@
             SearchPatientBtn.Text = "Tra cứu";
             SearchPatientBtn.UseVisualStyleBackColor = true;
             SearchPatientBtn.Click += SearchPatientBtn_Click;
+            SearchPatientBtn.KeyDown += btn_KeyDown;
             // 
             // tabPage2
             // 
@@ -354,7 +355,6 @@
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(ResetBtn);
-            panel1.Controls.Add(UpdatePatientBtn);
             panel1.Controls.Add(AddPatientbtn);
             panel1.Location = new System.Drawing.Point(3, 3);
             panel1.Name = "panel1";
@@ -367,7 +367,7 @@
             cbGender.Items.AddRange(new object[] { "Male", "Female" });
             cbGender.Location = new System.Drawing.Point(466, 91);
             cbGender.Name = "cbGender";
-            cbGender.Size = new System.Drawing.Size(51, 23);
+            cbGender.Size = new System.Drawing.Size(73, 23);
             cbGender.TabIndex = 3;
             cbGender.SelectedIndexChanged += cbGender_SelectedIndexChanged;
             // 
@@ -392,14 +392,14 @@
             // 
             Guardian.Location = new System.Drawing.Point(143, 162);
             Guardian.Name = "Guardian";
-            Guardian.Size = new System.Drawing.Size(211, 23);
+            Guardian.Size = new System.Drawing.Size(591, 23);
             Guardian.TabIndex = 6;
             // 
             // Guardianlbl
             // 
             Guardianlbl.AutoSize = true;
             Guardianlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            Guardianlbl.Location = new System.Drawing.Point(24, 163);
+            Guardianlbl.Location = new System.Drawing.Point(20, 163);
             Guardianlbl.Name = "Guardianlbl";
             Guardianlbl.Size = new System.Drawing.Size(102, 17);
             Guardianlbl.TabIndex = 23;
@@ -479,34 +479,26 @@
             // ResetBtn
             // 
             ResetBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            ResetBtn.Location = new System.Drawing.Point(477, 215);
+            ResetBtn.Location = new System.Drawing.Point(397, 215);
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new System.Drawing.Size(93, 50);
             ResetBtn.TabIndex = 9;
-            ResetBtn.Text = "Reset";
+            ResetBtn.Text = "Hoàn tác";
             ResetBtn.UseVisualStyleBackColor = true;
             ResetBtn.Click += ResetBtn_Click;
-            // 
-            // UpdatePatientBtn
-            // 
-            UpdatePatientBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            UpdatePatientBtn.Location = new System.Drawing.Point(334, 215);
-            UpdatePatientBtn.Name = "UpdatePatientBtn";
-            UpdatePatientBtn.Size = new System.Drawing.Size(93, 50);
-            UpdatePatientBtn.TabIndex = 8;
-            UpdatePatientBtn.Text = "Update";
-            UpdatePatientBtn.UseVisualStyleBackColor = true;
+            ResetBtn.KeyDown += btn_KeyDown;
             // 
             // AddPatientbtn
             // 
             AddPatientbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            AddPatientbtn.Location = new System.Drawing.Point(197, 215);
+            AddPatientbtn.Location = new System.Drawing.Point(261, 215);
             AddPatientbtn.Name = "AddPatientbtn";
             AddPatientbtn.Size = new System.Drawing.Size(93, 50);
             AddPatientbtn.TabIndex = 7;
-            AddPatientbtn.Text = "Add";
+            AddPatientbtn.Text = "Thêm hồ sơ";
             AddPatientbtn.UseVisualStyleBackColor = true;
             AddPatientbtn.Click += AddPatientbtn_Click;
+            AddPatientbtn.KeyDown += btn_KeyDown;
             // 
             // tabPage3
             // 
@@ -538,6 +530,7 @@
             SaveInfo.Text = "Save";
             SaveInfo.UseVisualStyleBackColor = true;
             SaveInfo.Click += SaveInfo_Click;
+            SaveInfo.KeyDown += btn_KeyDown;
             // 
             // CbEditGender
             // 
@@ -629,6 +622,7 @@
             ResetInfoBtn.Text = "Hoàn tác";
             ResetInfoBtn.UseVisualStyleBackColor = true;
             ResetInfoBtn.Click += ResetInfoBtn_Click;
+            ResetInfoBtn.KeyDown += btn_KeyDown;
             // 
             // updatedGuardianTxt
             // 
@@ -701,6 +695,7 @@
             UpdateInfoBtn.Text = "Cập Nhật";
             UpdateInfoBtn.UseVisualStyleBackColor = true;
             UpdateInfoBtn.Click += UpdateInfoBtn_Click;
+            UpdateInfoBtn.KeyDown += btn_KeyDown;
             // 
             // panel3
             // 
@@ -870,7 +865,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button ResetBtn;
-        private System.Windows.Forms.Button UpdatePatientBtn;
         private System.Windows.Forms.Button AddPatientbtn;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel4;

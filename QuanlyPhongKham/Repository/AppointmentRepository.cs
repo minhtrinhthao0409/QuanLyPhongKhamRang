@@ -22,7 +22,8 @@ namespace QuanlyPhongKham.Repository
                     SELECT COUNT(*) FROM Appointments
                     WHERE (DoctorId = @DoctorId OR PatientId = @PatientId)
                     AND AppointmentDate = @Date AND (StartTime < @EndTime AND EndTime > @StartTime)
-                    OR (PatientId = @PatientId AND AppointmentDate = @Date) ", conn);
+                    OR (PatientId = @PatientId AND AppointmentDate = @Date)", 
+                    conn);
 
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
@@ -157,11 +158,11 @@ namespace QuanlyPhongKham.Repository
                 transaction = conn.BeginTransaction();
 
 
-                Guid doctorId;
-                Guid patientId;
+                string doctorId;
+                string patientId;
 
                 string getDoctorsQuery = "SELECT Id, Email FROM Users WHERE FullName = @FullName AND Role = @Role";
-                List<(Guid Id, string Email)> matchedDoctors = new();
+                List<(string Id, string Email)> matchedDoctors = new();
 
                 await using (var getDoctorsCmd = new SQLiteCommand(getDoctorsQuery, conn, transaction))
                 {
@@ -173,7 +174,7 @@ namespace QuanlyPhongKham.Repository
                     while (await reader.ReadAsync())
                     {
                         matchedDoctors.Add((
-                            Guid.Parse(reader["Id"].ToString()),
+                            reader["Id"].ToString(),
                             reader["Email"].ToString()
                         ));
                     }
@@ -216,7 +217,7 @@ namespace QuanlyPhongKham.Repository
                     {
                         throw new Exception("Thông tin bác sĩ không chính xác hoặc chưa có hồ sơ bệnh nhân!");
                     }
-                    patientId = Guid.Parse(result.ToString());
+                    patientId = result.ToString();
 
                     if (await HasScheduleConflictAsync(doctorId.ToString(), patientId.ToString(), date, start, end))
                     {
@@ -312,6 +313,7 @@ namespace QuanlyPhongKham.Repository
 
                 // Ghép câu truy vấn đầy đủ
                 baseQuery += string.Join(" AND ", whereClauses);
+                baseQuery += "ORDER BY a.AppointmentDate";
                 cmd.CommandText = baseQuery;
 
                 using var reader = await cmd.ExecuteReaderAsync();
