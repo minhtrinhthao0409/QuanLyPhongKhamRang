@@ -1,4 +1,5 @@
-﻿using QuanlyPhongKham.Models;
+﻿using QuanlyPhongKham.config;
+using QuanlyPhongKham.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -12,12 +13,17 @@ namespace QuanlyPhongKham.Repository
 {
     public class PatientRepository(string connectionString = null) : BaseRepository(connectionString)
     {
+        
         public async Task<int> CreatePatientAsync(Guid patientId, string name, bool gender, string phoneNumber, string email, DateTime dob, Guid? guardianId = null)
         {
+            
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Tên bệnh nhân không được rỗng.", nameof(name));
             if (string.IsNullOrWhiteSpace(phoneNumber))
                 throw new ArgumentException("Số điện thoại không được rỗng.", nameof(phoneNumber));
+            
+                
+
 
             int affectedRows = 0;
 
@@ -159,7 +165,7 @@ namespace QuanlyPhongKham.Repository
             return patients;
         }
 
-        public async Task<bool> UpdatePatientAsync(string patientId, string name, bool gender,string phoneNumber, string email, DateTime dob,
+        public async Task<bool> UpdatePatientAsync(string patientId, string name, bool gender,string? phoneNumber, string? email, DateTime dob,
                                                     string? guardianId = null, string? guardianName = null)
         {
             if (string.IsNullOrWhiteSpace(name))

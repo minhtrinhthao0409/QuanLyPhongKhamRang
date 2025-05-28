@@ -50,6 +50,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = System.Drawing.SystemColors.Control;
             panel2.Controls.Add(Homelbl);
             panel2.Controls.Add(Invoicelbl);
             panel2.Controls.Add(Patientlbl);
@@ -62,6 +63,7 @@
             // 
             // Homelbl
             // 
+            Homelbl.BackColor = System.Drawing.SystemColors.Control;
             Homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
             Homelbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Homelbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, 0);
@@ -210,7 +212,7 @@
             ServiceGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             ServiceGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
             ServiceGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ServiceGridView1.Location = new System.Drawing.Point(259, 209);
+            ServiceGridView1.Location = new System.Drawing.Point(259, 220);
             ServiceGridView1.Name = "ServiceGridView1";
             ServiceGridView1.ReadOnly = true;
             ServiceGridView1.Size = new System.Drawing.Size(666, 165);
