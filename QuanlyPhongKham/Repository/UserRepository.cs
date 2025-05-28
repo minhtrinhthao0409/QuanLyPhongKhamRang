@@ -67,7 +67,8 @@ namespace QuanlyPhongKham.Repository
                     FullName = reader["FullName"].ToString(),
                     Email = reader["Email"].ToString(),
                     Password = reader["Password"].ToString(),
-                    Role = (UserRole)Convert.ToInt32(reader["Role"])
+                    Role = (UserRole)Convert.ToInt32(reader["Role"]),
+                    active = Convert.ToInt32(reader["Active"]),
                 };
             }
             return null;
@@ -198,6 +199,33 @@ namespace QuanlyPhongKham.Repository
             return rowsAffected > 0;
         }
 
+        public async Task<List<(string DoctorName, int AppointmentCount)>> GetDoctorAppointmentRankingAsync()
+        {
+            var appointments = new List<(string DoctorName, int AppointmentCount)>();
+            using var connection = await GetConnectionAsync();
+
+            string query = @"
+                   SELECT u.FullName, COUNT(a.AppointmentId) as AppointmentCount
+            FROM users u
+            JOIN appointments a ON u.Id = a.DoctorId
+            WHERE u.Role = 2
+            AND a.AppointmentDate BETWEEN date('2025-05-27', '-30 days') AND date('2025-05-27')
+            GROUP BY u.FullName
+            ORDER BY AppointmentCount DESC;";
+
+            using var command = new SQLiteCommand(query, connection);
+
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                appointments.Add((
+                    reader["FullName"].ToString(), // Tên bác sĩ
+                    Convert.ToInt32(reader["AppointmentCount"]) // Số lịch hẹn
+                ));
+            }
+
+            return appointments;
+        }
 
     }
 }

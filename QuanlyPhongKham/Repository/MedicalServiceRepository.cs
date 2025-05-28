@@ -132,5 +132,34 @@ namespace QuanlyPhongKham.Repository
                 }
             }
         }
+
+        public async Task<List<(string ServiceName, decimal TotalRevenue)>> GetTopServiceRevenueAsync()
+        {
+            var serviceRevenues = new List<(string ServiceName, decimal TotalRevenue)>();
+            using var connection = await GetConnectionAsync();
+
+            string query = @"
+            SELECT s.ServicesName, SUM(id.TotalPrice) as TotalRevenue
+            FROM services s
+            JOIN invoicedetail id ON s.ServicesName = id.ServiceName
+            JOIN invoice i ON id.InvoiceId = i.InvoiceId
+            WHERE i.CreatedAt BETWEEN date('2025-05-27', '-30 days') AND datetime('2025-05-27 23:59:59')
+            GROUP BY s.ServicesName
+            ORDER BY TotalRevenue DESC;";
+            //  WHERE i.CreatedAt BETWEEN date('2025-05-27', '-30 days') AND datetime('2025-05-27 23:59:59') And Status = ""Đã thanh toán""
+            using var command = new SQLiteCommand(query, connection);
+            command.Parameters.AddWithValue("@Status", "Đã thanh toán");
+
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                serviceRevenues.Add((
+                    reader["ServicesName"].ToString(),
+                    Convert.ToDecimal(reader["TotalRevenue"])
+                ));
+            }
+
+            return serviceRevenues;
+        }
     }
 }

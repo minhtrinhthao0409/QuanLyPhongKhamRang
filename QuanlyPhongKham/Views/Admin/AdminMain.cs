@@ -22,6 +22,7 @@ namespace QuanlyPhongKham.Views.Admin
         private MedicalServiceController _medicalServiceController;
         private InvoiceController _invoiceController;
         private LoggingController _loggingController;
+        private AdminThongKe _adminBieuDo;
 
         public AdminMain(User user)
         {
@@ -40,7 +41,9 @@ namespace QuanlyPhongKham.Views.Admin
         }
         private void AdminMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, "Đăng xuất khỏi hệ thống").Wait();
+            //Application.Exit();
+            Environment.Exit(0);
         }
         #region QLTK
 
@@ -500,7 +503,7 @@ namespace QuanlyPhongKham.Views.Admin
                 case 0:
                     break;
                 case 1:
-                   
+
                     break;
                 case 2:
                     LoadUserDataAsync();
@@ -514,6 +517,24 @@ namespace QuanlyPhongKham.Views.Admin
                 default:
                     break;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminThongKe adminBieuDo = new AdminThongKe(2);
+            adminBieuDo.Show();
+        }
+
+        private void Doctor_Click(object sender, EventArgs e)
+        {
+            AdminThongKe adminBieuDo = new AdminThongKe(1);
+            adminBieuDo.Show();
+        }
+
+        private void AdminCC_Click(object sender, EventArgs e)
+        {
+            AdminThongKe adminBieuDo = new AdminThongKe(3);
+            adminBieuDo.Show();
         }
     }
 }

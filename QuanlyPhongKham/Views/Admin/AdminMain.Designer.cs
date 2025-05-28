@@ -28,23 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AdminMainTab = new System.Windows.Forms.TabControl();
-            tabPage1 = new System.Windows.Forms.TabPage();
-            AdminMainDXbtn = new System.Windows.Forms.Button();
-            monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            AdminIDtb = new System.Windows.Forms.TextBox();
-            AdminNametb = new System.Windows.Forms.TextBox();
-            AdminMainIDlbl = new System.Windows.Forms.Label();
-            AdminMainNamelbl = new System.Windows.Forms.Label();
-            AdminBCTC = new System.Windows.Forms.TabPage();
-            AdminBCTCRevtbx = new System.Windows.Forms.TextBox();
-            label10 = new System.Windows.Forms.Label();
-            AdminBCTCXuatbtn = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            AdminBCTCFromlbl = new System.Windows.Forms.Label();
-            AdminBCTCFToTP = new System.Windows.Forms.DateTimePicker();
-            AdminBCTCFromTP = new System.Windows.Forms.DateTimePicker();
-            AdminBCTCdgv = new System.Windows.Forms.DataGridView();
+            AdminLogging = new System.Windows.Forms.TabPage();
+            AdminLoggingbtn = new System.Windows.Forms.Button();
+            label11 = new System.Windows.Forms.Label();
+            LoggingData = new System.Windows.Forms.DataGridView();
+            AdminQLDV = new System.Windows.Forms.TabPage();
+            AdminQbtnLDVRabtn = new System.Windows.Forms.Button();
+            AdminQLDVdata = new System.Windows.Forms.DataGridView();
+            AdminQLDVAddButton = new System.Windows.Forms.Button();
+            AdminQLDVDelbtn = new System.Windows.Forms.Button();
+            AdminQLDVbtn = new System.Windows.Forms.Button();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            AdminQLDVPricetbx = new System.Windows.Forms.TextBox();
+            AdminQLDVNameTb = new System.Windows.Forms.TextBox();
             tabPage2 = new System.Windows.Forms.TabPage();
             AdminQLTKRolecb = new System.Windows.Forms.ComboBox();
             AdminQLTKPhonetbx = new System.Windows.Forms.TextBox();
@@ -62,198 +59,191 @@
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             AdminQLTKdata = new System.Windows.Forms.DataGridView();
-            AdminQLDV = new System.Windows.Forms.TabPage();
-            AdminQbtnLDVRabtn = new System.Windows.Forms.Button();
-            AdminQLDVdata = new System.Windows.Forms.DataGridView();
-            AdminQLDVAddButton = new System.Windows.Forms.Button();
-            AdminQLDVDelbtn = new System.Windows.Forms.Button();
-            AdminQLDVbtn = new System.Windows.Forms.Button();
-            label8 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            AdminQLDVPricetbx = new System.Windows.Forms.TextBox();
-            AdminQLDVNameTb = new System.Windows.Forms.TextBox();
-            AdminLogging = new System.Windows.Forms.TabPage();
-            AdminLoggingbtn = new System.Windows.Forms.Button();
-            label11 = new System.Windows.Forms.Label();
-            LoggingData = new System.Windows.Forms.DataGridView();
-            AdminMainTab.SuspendLayout();
-            tabPage1.SuspendLayout();
-            AdminBCTC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).BeginInit();
-            tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).BeginInit();
-            AdminQLDV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).BeginInit();
+            AdminBCTC = new System.Windows.Forms.TabPage();
+            AdminBCTCRevtbx = new System.Windows.Forms.TextBox();
+            label10 = new System.Windows.Forms.Label();
+            AdminBCTCXuatbtn = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            AdminBCTCFromlbl = new System.Windows.Forms.Label();
+            AdminBCTCFToTP = new System.Windows.Forms.DateTimePicker();
+            AdminBCTCFromTP = new System.Windows.Forms.DateTimePicker();
+            AdminBCTCdgv = new System.Windows.Forms.DataGridView();
+            tabPage1 = new System.Windows.Forms.TabPage();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            Doctor = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
+            AdminMainDXbtn = new System.Windows.Forms.Button();
+            monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            AdminIDtb = new System.Windows.Forms.TextBox();
+            AdminNametb = new System.Windows.Forms.TextBox();
+            AdminMainIDlbl = new System.Windows.Forms.Label();
+            AdminMainNamelbl = new System.Windows.Forms.Label();
+            AdminMainTab = new System.Windows.Forms.TabControl();
+            AdminCC = new System.Windows.Forms.Button();
             AdminLogging.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LoggingData).BeginInit();
+            AdminQLDV.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).BeginInit();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).BeginInit();
+            AdminBCTC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).BeginInit();
+            tabPage1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            AdminMainTab.SuspendLayout();
             SuspendLayout();
             // 
-            // AdminMainTab
+            // AdminLogging
             // 
-            AdminMainTab.Controls.Add(tabPage1);
-            AdminMainTab.Controls.Add(AdminBCTC);
-            AdminMainTab.Controls.Add(tabPage2);
-            AdminMainTab.Controls.Add(AdminQLDV);
-            AdminMainTab.Controls.Add(AdminLogging);
-            AdminMainTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            AdminMainTab.Location = new System.Drawing.Point(0, 0);
-            AdminMainTab.Name = "AdminMainTab";
-            AdminMainTab.SelectedIndex = 0;
-            AdminMainTab.Size = new System.Drawing.Size(877, 698);
-            AdminMainTab.TabIndex = 0;
-            AdminMainTab.SelectedIndexChanged += AdminMainTab_SelectedIndexChanged;
+            AdminLogging.Controls.Add(AdminLoggingbtn);
+            AdminLogging.Controls.Add(label11);
+            AdminLogging.Controls.Add(LoggingData);
+            AdminLogging.Location = new System.Drawing.Point(4, 29);
+            AdminLogging.Name = "AdminLogging";
+            AdminLogging.Padding = new System.Windows.Forms.Padding(3);
+            AdminLogging.Size = new System.Drawing.Size(869, 665);
+            AdminLogging.TabIndex = 4;
+            AdminLogging.Text = "Logging";
+            AdminLogging.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // AdminLoggingbtn
             // 
-            tabPage1.Controls.Add(AdminMainDXbtn);
-            tabPage1.Controls.Add(monthCalendar1);
-            tabPage1.Controls.Add(AdminIDtb);
-            tabPage1.Controls.Add(AdminNametb);
-            tabPage1.Controls.Add(AdminMainIDlbl);
-            tabPage1.Controls.Add(AdminMainNamelbl);
-            tabPage1.Location = new System.Drawing.Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(869, 665);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Main";
-            tabPage1.UseVisualStyleBackColor = true;
+            AdminLoggingbtn.Location = new System.Drawing.Point(747, 41);
+            AdminLoggingbtn.Name = "AdminLoggingbtn";
+            AdminLoggingbtn.Size = new System.Drawing.Size(94, 29);
+            AdminLoggingbtn.TabIndex = 2;
+            AdminLoggingbtn.Text = "Tải lại";
+            AdminLoggingbtn.UseVisualStyleBackColor = true;
+            AdminLoggingbtn.Click += AdminLoggingbtn_Click;
             // 
-            // AdminMainDXbtn
+            // label11
             // 
-            AdminMainDXbtn.Location = new System.Drawing.Point(43, 622);
-            AdminMainDXbtn.Name = "AdminMainDXbtn";
-            AdminMainDXbtn.Size = new System.Drawing.Size(94, 29);
-            AdminMainDXbtn.TabIndex = 5;
-            AdminMainDXbtn.Text = "Đăng xuất";
-            AdminMainDXbtn.UseVisualStyleBackColor = true;
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label11.Location = new System.Drawing.Point(28, 18);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(228, 38);
+            label11.TabIndex = 1;
+            label11.Text = "Tracking Logging";
             // 
-            // monthCalendar1
+            // LoggingData
             // 
-            monthCalendar1.Location = new System.Drawing.Point(593, 444);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 4;
+            LoggingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            LoggingData.Location = new System.Drawing.Point(28, 105);
+            LoggingData.Name = "LoggingData";
+            LoggingData.RowHeadersWidth = 51;
+            LoggingData.Size = new System.Drawing.Size(813, 532);
+            LoggingData.TabIndex = 0;
             // 
-            // AdminIDtb
+            // AdminQLDV
             // 
-            AdminIDtb.Location = new System.Drawing.Point(104, 46);
-            AdminIDtb.Name = "AdminIDtb";
-            AdminIDtb.Size = new System.Drawing.Size(273, 27);
-            AdminIDtb.TabIndex = 3;
+            AdminQLDV.Controls.Add(AdminQbtnLDVRabtn);
+            AdminQLDV.Controls.Add(AdminQLDVdata);
+            AdminQLDV.Controls.Add(AdminQLDVAddButton);
+            AdminQLDV.Controls.Add(AdminQLDVDelbtn);
+            AdminQLDV.Controls.Add(AdminQLDVbtn);
+            AdminQLDV.Controls.Add(label8);
+            AdminQLDV.Controls.Add(label9);
+            AdminQLDV.Controls.Add(AdminQLDVPricetbx);
+            AdminQLDV.Controls.Add(AdminQLDVNameTb);
+            AdminQLDV.Location = new System.Drawing.Point(4, 29);
+            AdminQLDV.Name = "AdminQLDV";
+            AdminQLDV.Padding = new System.Windows.Forms.Padding(3);
+            AdminQLDV.Size = new System.Drawing.Size(869, 665);
+            AdminQLDV.TabIndex = 3;
+            AdminQLDV.Text = "QLDV";
+            AdminQLDV.UseVisualStyleBackColor = true;
+            AdminQLDV.Click += AdminQLDV_Click;
             // 
-            // AdminNametb
+            // AdminQbtnLDVRabtn
             // 
-            AdminNametb.Location = new System.Drawing.Point(104, 89);
-            AdminNametb.Name = "AdminNametb";
-            AdminNametb.Size = new System.Drawing.Size(273, 27);
-            AdminNametb.TabIndex = 2;
+            AdminQbtnLDVRabtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQbtnLDVRabtn.Location = new System.Drawing.Point(686, 81);
+            AdminQbtnLDVRabtn.Name = "AdminQbtnLDVRabtn";
+            AdminQbtnLDVRabtn.Size = new System.Drawing.Size(94, 29);
+            AdminQbtnLDVRabtn.TabIndex = 16;
+            AdminQbtnLDVRabtn.Text = "Sắp xếp";
+            AdminQbtnLDVRabtn.UseVisualStyleBackColor = true;
+            AdminQbtnLDVRabtn.Click += AdminQbtnLDVRabtn_Click;
             // 
-            // AdminMainIDlbl
+            // AdminQLDVdata
             // 
-            AdminMainIDlbl.AutoSize = true;
-            AdminMainIDlbl.Location = new System.Drawing.Point(43, 53);
-            AdminMainIDlbl.Name = "AdminMainIDlbl";
-            AdminMainIDlbl.Size = new System.Drawing.Size(24, 20);
-            AdminMainIDlbl.TabIndex = 1;
-            AdminMainIDlbl.Text = "ID";
+            AdminQLDVdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdminQLDVdata.Location = new System.Drawing.Point(6, 127);
+            AdminQLDVdata.Name = "AdminQLDVdata";
+            AdminQLDVdata.RowHeadersWidth = 51;
+            AdminQLDVdata.Size = new System.Drawing.Size(853, 532);
+            AdminQLDVdata.TabIndex = 15;
+            AdminQLDVdata.CellContentClick += AdminQLDVdata_CellContentClick;
             // 
-            // AdminMainNamelbl
+            // AdminQLDVAddButton
             // 
-            AdminMainNamelbl.AutoSize = true;
-            AdminMainNamelbl.Location = new System.Drawing.Point(43, 96);
-            AdminMainNamelbl.Name = "AdminMainNamelbl";
-            AdminMainNamelbl.Size = new System.Drawing.Size(49, 20);
-            AdminMainNamelbl.TabIndex = 0;
-            AdminMainNamelbl.Text = "Name";
+            AdminQLDVAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVAddButton.Location = new System.Drawing.Point(558, 21);
+            AdminQLDVAddButton.Name = "AdminQLDVAddButton";
+            AdminQLDVAddButton.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVAddButton.TabIndex = 14;
+            AdminQLDVAddButton.Text = "Thêm";
+            AdminQLDVAddButton.UseVisualStyleBackColor = true;
+            AdminQLDVAddButton.Click += AdminQLDVAddButton_Click;
             // 
-            // AdminBCTC
+            // AdminQLDVDelbtn
             // 
-            AdminBCTC.Controls.Add(AdminBCTCRevtbx);
-            AdminBCTC.Controls.Add(label10);
-            AdminBCTC.Controls.Add(AdminBCTCXuatbtn);
-            AdminBCTC.Controls.Add(label1);
-            AdminBCTC.Controls.Add(AdminBCTCFromlbl);
-            AdminBCTC.Controls.Add(AdminBCTCFToTP);
-            AdminBCTC.Controls.Add(AdminBCTCFromTP);
-            AdminBCTC.Controls.Add(AdminBCTCdgv);
-            AdminBCTC.Location = new System.Drawing.Point(4, 29);
-            AdminBCTC.Name = "AdminBCTC";
-            AdminBCTC.Padding = new System.Windows.Forms.Padding(3);
-            AdminBCTC.Size = new System.Drawing.Size(869, 665);
-            AdminBCTC.TabIndex = 1;
-            AdminBCTC.Text = "BCTC";
-            AdminBCTC.UseVisualStyleBackColor = true;
+            AdminQLDVDelbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVDelbtn.Location = new System.Drawing.Point(558, 81);
+            AdminQLDVDelbtn.Name = "AdminQLDVDelbtn";
+            AdminQLDVDelbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVDelbtn.TabIndex = 13;
+            AdminQLDVDelbtn.Text = "Xóa";
+            AdminQLDVDelbtn.UseVisualStyleBackColor = true;
+            AdminQLDVDelbtn.Click += AdminQLDVDelbtn_Click;
             // 
-            // AdminBCTCRevtbx
+            // AdminQLDVbtn
             // 
-            AdminBCTCRevtbx.Location = new System.Drawing.Point(688, 20);
-            AdminBCTCRevtbx.Name = "AdminBCTCRevtbx";
-            AdminBCTCRevtbx.Size = new System.Drawing.Size(155, 27);
-            AdminBCTCRevtbx.TabIndex = 10;
+            AdminQLDVbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVbtn.Location = new System.Drawing.Point(686, 21);
+            AdminQLDVbtn.Name = "AdminQLDVbtn";
+            AdminQLDVbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVbtn.TabIndex = 12;
+            AdminQLDVbtn.Text = "Sửa giá";
+            AdminQLDVbtn.UseVisualStyleBackColor = true;
+            AdminQLDVbtn.Click += AdminQLDVbtn_Click;
             // 
-            // label10
+            // label8
             // 
-            label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(563, 27);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(119, 20);
-            label10.TabIndex = 9;
-            label10.Text = "Tổng Doanh Thu";
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            label8.Location = new System.Drawing.Point(30, 81);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(101, 23);
+            label8.TabIndex = 11;
+            label8.Text = "Giá Dịch vụ";
             // 
-            // AdminBCTCXuatbtn
+            // label9
             // 
-            AdminBCTCXuatbtn.Location = new System.Drawing.Point(731, 71);
-            AdminBCTCXuatbtn.Name = "AdminBCTCXuatbtn";
-            AdminBCTCXuatbtn.Size = new System.Drawing.Size(112, 29);
-            AdminBCTCXuatbtn.TabIndex = 8;
-            AdminBCTCXuatbtn.Text = "Tính tổng";
-            AdminBCTCXuatbtn.UseVisualStyleBackColor = true;
-            AdminBCTCXuatbtn.Click += AdminBCTCXuatbtn_ClickAsync;
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            label9.Location = new System.Drawing.Point(28, 21);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(102, 23);
+            label9.TabIndex = 10;
+            label9.Text = "Tên Dịch vụ";
             // 
-            // label1
+            // AdminQLDVPricetbx
             // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(28, 71);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(86, 23);
-            label1.TabIndex = 7;
-            label1.Text = "Đến ngày";
+            AdminQLDVPricetbx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVPricetbx.Location = new System.Drawing.Point(142, 77);
+            AdminQLDVPricetbx.Name = "AdminQLDVPricetbx";
+            AdminQLDVPricetbx.Size = new System.Drawing.Size(327, 29);
+            AdminQLDVPricetbx.TabIndex = 9;
             // 
-            // AdminBCTCFromlbl
+            // AdminQLDVNameTb
             // 
-            AdminBCTCFromlbl.AutoSize = true;
-            AdminBCTCFromlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            AdminBCTCFromlbl.Location = new System.Drawing.Point(28, 31);
-            AdminBCTCFromlbl.Name = "AdminBCTCFromlbl";
-            AdminBCTCFromlbl.Size = new System.Drawing.Size(75, 23);
-            AdminBCTCFromlbl.TabIndex = 6;
-            AdminBCTCFromlbl.Text = "Từ ngày";
-            // 
-            // AdminBCTCFToTP
-            // 
-            AdminBCTCFToTP.Location = new System.Drawing.Point(129, 67);
-            AdminBCTCFToTP.Name = "AdminBCTCFToTP";
-            AdminBCTCFToTP.Size = new System.Drawing.Size(250, 27);
-            AdminBCTCFToTP.TabIndex = 5;
-            AdminBCTCFToTP.ValueChanged += AdminBCTCFToTP_ValueChanged;
-            // 
-            // AdminBCTCFromTP
-            // 
-            AdminBCTCFromTP.Location = new System.Drawing.Point(129, 27);
-            AdminBCTCFromTP.Name = "AdminBCTCFromTP";
-            AdminBCTCFromTP.Size = new System.Drawing.Size(250, 27);
-            AdminBCTCFromTP.TabIndex = 4;
-            AdminBCTCFromTP.ValueChanged += AdminBCTCFromTP_ValueChanged;
-            // 
-            // AdminBCTCdgv
-            // 
-            AdminBCTCdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminBCTCdgv.Location = new System.Drawing.Point(8, 125);
-            AdminBCTCdgv.Name = "AdminBCTCdgv";
-            AdminBCTCdgv.RowHeadersWidth = 51;
-            AdminBCTCdgv.Size = new System.Drawing.Size(853, 532);
-            AdminBCTCdgv.TabIndex = 0;
+            AdminQLDVNameTb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            AdminQLDVNameTb.Location = new System.Drawing.Point(142, 17);
+            AdminQLDVNameTb.Name = "AdminQLDVNameTb";
+            AdminQLDVNameTb.Size = new System.Drawing.Size(327, 29);
+            AdminQLDVNameTb.TabIndex = 8;
             // 
             // tabPage2
             // 
@@ -420,157 +410,216 @@
             AdminQLTKdata.TabIndex = 0;
             AdminQLTKdata.CellContentClick += AdminQLTKdata_CellContentClick;
             // 
-            // AdminQLDV
+            // AdminBCTC
             // 
-            AdminQLDV.Controls.Add(AdminQbtnLDVRabtn);
-            AdminQLDV.Controls.Add(AdminQLDVdata);
-            AdminQLDV.Controls.Add(AdminQLDVAddButton);
-            AdminQLDV.Controls.Add(AdminQLDVDelbtn);
-            AdminQLDV.Controls.Add(AdminQLDVbtn);
-            AdminQLDV.Controls.Add(label8);
-            AdminQLDV.Controls.Add(label9);
-            AdminQLDV.Controls.Add(AdminQLDVPricetbx);
-            AdminQLDV.Controls.Add(AdminQLDVNameTb);
-            AdminQLDV.Location = new System.Drawing.Point(4, 29);
-            AdminQLDV.Name = "AdminQLDV";
-            AdminQLDV.Padding = new System.Windows.Forms.Padding(3);
-            AdminQLDV.Size = new System.Drawing.Size(869, 665);
-            AdminQLDV.TabIndex = 3;
-            AdminQLDV.Text = "QLDV";
-            AdminQLDV.UseVisualStyleBackColor = true;
-            AdminQLDV.Click += AdminQLDV_Click;
+            AdminBCTC.Controls.Add(AdminBCTCRevtbx);
+            AdminBCTC.Controls.Add(label10);
+            AdminBCTC.Controls.Add(AdminBCTCXuatbtn);
+            AdminBCTC.Controls.Add(label1);
+            AdminBCTC.Controls.Add(AdminBCTCFromlbl);
+            AdminBCTC.Controls.Add(AdminBCTCFToTP);
+            AdminBCTC.Controls.Add(AdminBCTCFromTP);
+            AdminBCTC.Controls.Add(AdminBCTCdgv);
+            AdminBCTC.Location = new System.Drawing.Point(4, 29);
+            AdminBCTC.Name = "AdminBCTC";
+            AdminBCTC.Padding = new System.Windows.Forms.Padding(3);
+            AdminBCTC.Size = new System.Drawing.Size(869, 665);
+            AdminBCTC.TabIndex = 1;
+            AdminBCTC.Text = "BCTC";
+            AdminBCTC.UseVisualStyleBackColor = true;
             // 
-            // AdminQbtnLDVRabtn
+            // AdminBCTCRevtbx
             // 
-            AdminQbtnLDVRabtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQbtnLDVRabtn.Location = new System.Drawing.Point(686, 81);
-            AdminQbtnLDVRabtn.Name = "AdminQbtnLDVRabtn";
-            AdminQbtnLDVRabtn.Size = new System.Drawing.Size(94, 29);
-            AdminQbtnLDVRabtn.TabIndex = 16;
-            AdminQbtnLDVRabtn.Text = "Sắp xếp";
-            AdminQbtnLDVRabtn.UseVisualStyleBackColor = true;
-            AdminQbtnLDVRabtn.Click += AdminQbtnLDVRabtn_Click;
+            AdminBCTCRevtbx.Location = new System.Drawing.Point(688, 20);
+            AdminBCTCRevtbx.Name = "AdminBCTCRevtbx";
+            AdminBCTCRevtbx.Size = new System.Drawing.Size(155, 27);
+            AdminBCTCRevtbx.TabIndex = 10;
             // 
-            // AdminQLDVdata
+            // label10
             // 
-            AdminQLDVdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminQLDVdata.Location = new System.Drawing.Point(6, 127);
-            AdminQLDVdata.Name = "AdminQLDVdata";
-            AdminQLDVdata.RowHeadersWidth = 51;
-            AdminQLDVdata.Size = new System.Drawing.Size(853, 532);
-            AdminQLDVdata.TabIndex = 15;
-            AdminQLDVdata.CellContentClick += AdminQLDVdata_CellContentClick;
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(563, 27);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(119, 20);
+            label10.TabIndex = 9;
+            label10.Text = "Tổng Doanh Thu";
             // 
-            // AdminQLDVAddButton
+            // AdminBCTCXuatbtn
             // 
-            AdminQLDVAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVAddButton.Location = new System.Drawing.Point(558, 21);
-            AdminQLDVAddButton.Name = "AdminQLDVAddButton";
-            AdminQLDVAddButton.Size = new System.Drawing.Size(94, 29);
-            AdminQLDVAddButton.TabIndex = 14;
-            AdminQLDVAddButton.Text = "Thêm";
-            AdminQLDVAddButton.UseVisualStyleBackColor = true;
-            AdminQLDVAddButton.Click += AdminQLDVAddButton_Click;
+            AdminBCTCXuatbtn.Location = new System.Drawing.Point(731, 71);
+            AdminBCTCXuatbtn.Name = "AdminBCTCXuatbtn";
+            AdminBCTCXuatbtn.Size = new System.Drawing.Size(112, 29);
+            AdminBCTCXuatbtn.TabIndex = 8;
+            AdminBCTCXuatbtn.Text = "Tính tổng";
+            AdminBCTCXuatbtn.UseVisualStyleBackColor = true;
+            AdminBCTCXuatbtn.Click += AdminBCTCXuatbtn_ClickAsync;
             // 
-            // AdminQLDVDelbtn
+            // label1
             // 
-            AdminQLDVDelbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVDelbtn.Location = new System.Drawing.Point(558, 81);
-            AdminQLDVDelbtn.Name = "AdminQLDVDelbtn";
-            AdminQLDVDelbtn.Size = new System.Drawing.Size(94, 29);
-            AdminQLDVDelbtn.TabIndex = 13;
-            AdminQLDVDelbtn.Text = "Xóa";
-            AdminQLDVDelbtn.UseVisualStyleBackColor = true;
-            AdminQLDVDelbtn.Click += AdminQLDVDelbtn_Click;
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(28, 71);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(86, 23);
+            label1.TabIndex = 7;
+            label1.Text = "Đến ngày";
             // 
-            // AdminQLDVbtn
+            // AdminBCTCFromlbl
             // 
-            AdminQLDVbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVbtn.Location = new System.Drawing.Point(686, 21);
-            AdminQLDVbtn.Name = "AdminQLDVbtn";
-            AdminQLDVbtn.Size = new System.Drawing.Size(94, 29);
-            AdminQLDVbtn.TabIndex = 12;
-            AdminQLDVbtn.Text = "Sửa giá";
-            AdminQLDVbtn.UseVisualStyleBackColor = true;
-            AdminQLDVbtn.Click += AdminQLDVbtn_Click;
+            AdminBCTCFromlbl.AutoSize = true;
+            AdminBCTCFromlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            AdminBCTCFromlbl.Location = new System.Drawing.Point(28, 31);
+            AdminBCTCFromlbl.Name = "AdminBCTCFromlbl";
+            AdminBCTCFromlbl.Size = new System.Drawing.Size(75, 23);
+            AdminBCTCFromlbl.TabIndex = 6;
+            AdminBCTCFromlbl.Text = "Từ ngày";
             // 
-            // label8
+            // AdminBCTCFToTP
             // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            label8.Location = new System.Drawing.Point(30, 81);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(101, 23);
-            label8.TabIndex = 11;
-            label8.Text = "Giá Dịch vụ";
+            AdminBCTCFToTP.Location = new System.Drawing.Point(129, 67);
+            AdminBCTCFToTP.Name = "AdminBCTCFToTP";
+            AdminBCTCFToTP.Size = new System.Drawing.Size(250, 27);
+            AdminBCTCFToTP.TabIndex = 5;
+            AdminBCTCFToTP.ValueChanged += AdminBCTCFToTP_ValueChanged;
             // 
-            // label9
+            // AdminBCTCFromTP
             // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            label9.Location = new System.Drawing.Point(28, 21);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(102, 23);
-            label9.TabIndex = 10;
-            label9.Text = "Tên Dịch vụ";
+            AdminBCTCFromTP.Location = new System.Drawing.Point(129, 27);
+            AdminBCTCFromTP.Name = "AdminBCTCFromTP";
+            AdminBCTCFromTP.Size = new System.Drawing.Size(250, 27);
+            AdminBCTCFromTP.TabIndex = 4;
+            AdminBCTCFromTP.ValueChanged += AdminBCTCFromTP_ValueChanged;
             // 
-            // AdminQLDVPricetbx
+            // AdminBCTCdgv
             // 
-            AdminQLDVPricetbx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVPricetbx.Location = new System.Drawing.Point(142, 77);
-            AdminQLDVPricetbx.Name = "AdminQLDVPricetbx";
-            AdminQLDVPricetbx.Size = new System.Drawing.Size(327, 29);
-            AdminQLDVPricetbx.TabIndex = 9;
+            AdminBCTCdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdminBCTCdgv.Location = new System.Drawing.Point(8, 125);
+            AdminBCTCdgv.Name = "AdminBCTCdgv";
+            AdminBCTCdgv.RowHeadersWidth = 51;
+            AdminBCTCdgv.Size = new System.Drawing.Size(853, 532);
+            AdminBCTCdgv.TabIndex = 0;
             // 
-            // AdminQLDVNameTb
+            // tabPage1
             // 
-            AdminQLDVNameTb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVNameTb.Location = new System.Drawing.Point(142, 17);
-            AdminQLDVNameTb.Name = "AdminQLDVNameTb";
-            AdminQLDVNameTb.Size = new System.Drawing.Size(327, 29);
-            AdminQLDVNameTb.TabIndex = 8;
+            tabPage1.Controls.Add(groupBox1);
+            tabPage1.Controls.Add(AdminMainDXbtn);
+            tabPage1.Controls.Add(monthCalendar1);
+            tabPage1.Controls.Add(AdminIDtb);
+            tabPage1.Controls.Add(AdminNametb);
+            tabPage1.Controls.Add(AdminMainIDlbl);
+            tabPage1.Controls.Add(AdminMainNamelbl);
+            tabPage1.Location = new System.Drawing.Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            tabPage1.Size = new System.Drawing.Size(869, 665);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Main";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
-            // AdminLogging
+            // groupBox1
             // 
-            AdminLogging.Controls.Add(AdminLoggingbtn);
-            AdminLogging.Controls.Add(label11);
-            AdminLogging.Controls.Add(LoggingData);
-            AdminLogging.Location = new System.Drawing.Point(4, 29);
-            AdminLogging.Name = "AdminLogging";
-            AdminLogging.Padding = new System.Windows.Forms.Padding(3);
-            AdminLogging.Size = new System.Drawing.Size(869, 665);
-            AdminLogging.TabIndex = 4;
-            AdminLogging.Text = "Logging";
-            AdminLogging.UseVisualStyleBackColor = true;
+            groupBox1.Controls.Add(AdminCC);
+            groupBox1.Controls.Add(Doctor);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Location = new System.Drawing.Point(43, 176);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(327, 285);
+            groupBox1.TabIndex = 7;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
             // 
-            // AdminLoggingbtn
+            // Doctor
             // 
-            AdminLoggingbtn.Location = new System.Drawing.Point(747, 41);
-            AdminLoggingbtn.Name = "AdminLoggingbtn";
-            AdminLoggingbtn.Size = new System.Drawing.Size(94, 29);
-            AdminLoggingbtn.TabIndex = 2;
-            AdminLoggingbtn.Text = "Tải lại";
-            AdminLoggingbtn.UseVisualStyleBackColor = true;
-            AdminLoggingbtn.Click += AdminLoggingbtn_Click;
+            Doctor.Location = new System.Drawing.Point(184, 125);
+            Doctor.Name = "Doctor";
+            Doctor.Size = new System.Drawing.Size(94, 29);
+            Doctor.TabIndex = 8;
+            Doctor.Text = "Doctor";
+            Doctor.UseVisualStyleBackColor = true;
+            Doctor.Click += Doctor_Click;
             // 
-            // label11
+            // button1
             // 
-            label11.AutoSize = true;
-            label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label11.Location = new System.Drawing.Point(28, 18);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(228, 38);
-            label11.TabIndex = 1;
-            label11.Text = "Tracking Logging";
+            button1.Location = new System.Drawing.Point(184, 56);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(94, 29);
+            button1.TabIndex = 6;
+            button1.Text = "Service";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // LoggingData
+            // AdminMainDXbtn
             // 
-            LoggingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            LoggingData.Location = new System.Drawing.Point(28, 105);
-            LoggingData.Name = "LoggingData";
-            LoggingData.RowHeadersWidth = 51;
-            LoggingData.Size = new System.Drawing.Size(813, 532);
-            LoggingData.TabIndex = 0;
+            AdminMainDXbtn.Location = new System.Drawing.Point(43, 622);
+            AdminMainDXbtn.Name = "AdminMainDXbtn";
+            AdminMainDXbtn.Size = new System.Drawing.Size(94, 29);
+            AdminMainDXbtn.TabIndex = 5;
+            AdminMainDXbtn.Text = "Đăng xuất";
+            AdminMainDXbtn.UseVisualStyleBackColor = true;
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new System.Drawing.Point(518, 26);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 4;
+            // 
+            // AdminIDtb
+            // 
+            AdminIDtb.Location = new System.Drawing.Point(104, 46);
+            AdminIDtb.Name = "AdminIDtb";
+            AdminIDtb.Size = new System.Drawing.Size(273, 27);
+            AdminIDtb.TabIndex = 3;
+            // 
+            // AdminNametb
+            // 
+            AdminNametb.Location = new System.Drawing.Point(104, 89);
+            AdminNametb.Name = "AdminNametb";
+            AdminNametb.Size = new System.Drawing.Size(273, 27);
+            AdminNametb.TabIndex = 2;
+            // 
+            // AdminMainIDlbl
+            // 
+            AdminMainIDlbl.AutoSize = true;
+            AdminMainIDlbl.Location = new System.Drawing.Point(43, 53);
+            AdminMainIDlbl.Name = "AdminMainIDlbl";
+            AdminMainIDlbl.Size = new System.Drawing.Size(24, 20);
+            AdminMainIDlbl.TabIndex = 1;
+            AdminMainIDlbl.Text = "ID";
+            // 
+            // AdminMainNamelbl
+            // 
+            AdminMainNamelbl.AutoSize = true;
+            AdminMainNamelbl.Location = new System.Drawing.Point(43, 96);
+            AdminMainNamelbl.Name = "AdminMainNamelbl";
+            AdminMainNamelbl.Size = new System.Drawing.Size(49, 20);
+            AdminMainNamelbl.TabIndex = 0;
+            AdminMainNamelbl.Text = "Name";
+            // 
+            // AdminMainTab
+
+            // 
+            AdminMainTab.Controls.Add(tabPage1);
+            AdminMainTab.Controls.Add(AdminBCTC);
+            AdminMainTab.Controls.Add(tabPage2);
+            AdminMainTab.Controls.Add(AdminQLDV);
+            AdminMainTab.Controls.Add(AdminLogging);
+            AdminMainTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            AdminMainTab.Location = new System.Drawing.Point(0, 0);
+            AdminMainTab.Name = "AdminMainTab";
+            AdminMainTab.SelectedIndex = 0;
+            AdminMainTab.Size = new System.Drawing.Size(877, 698);
+            AdminMainTab.TabIndex = 0;
+            AdminMainTab.SelectedIndexChanged += AdminMainTab_SelectedIndexChanged;
+            // 
+            // AdminCC
+            // 
+            AdminCC.Location = new System.Drawing.Point(184, 194);
+            AdminCC.Name = "AdminCC";
+            AdminCC.Size = new System.Drawing.Size(94, 29);
+            AdminCC.TabIndex = 9;
+            AdminCC.Text = "Chấm công";
+            AdminCC.UseVisualStyleBackColor = true;
+            AdminCC.Click += AdminCC_Click;
             // 
             // AdminMain
             // 
@@ -581,76 +630,80 @@
             Name = "AdminMain";
             Text = "AdminMain";
             FormClosing += AdminMain_FormClosing;
-            AdminMainTab.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
-            AdminBCTC.ResumeLayout(false);
-            AdminBCTC.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).EndInit();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).EndInit();
-            AdminQLDV.ResumeLayout(false);
-            AdminQLDV.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).EndInit();
             AdminLogging.ResumeLayout(false);
             AdminLogging.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)LoggingData).EndInit();
+            AdminQLDV.ResumeLayout(false);
+            AdminQLDV.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)AdminQLDVdata).EndInit();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)AdminQLTKdata).EndInit();
+            AdminBCTC.ResumeLayout(false);
+            AdminBCTC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)AdminBCTCdgv).EndInit();
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            AdminMainTab.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl AdminMainTab;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label AdminMainNamelbl;
-        private System.Windows.Forms.TabPage AdminBCTC;
-        private System.Windows.Forms.Label AdminMainIDlbl;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.TextBox AdminIDtb;
-        private System.Windows.Forms.TextBox AdminNametb;
-        private System.Windows.Forms.Button AdminMainDXbtn;
-        private System.Windows.Forms.DataGridView AdminBCTCdgv;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label AdminBCTCFromlbl;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button AdminBCTCXuatbtn;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView AdminQLTKdata;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button AdminQLTKDeletebtn;
-        private System.Windows.Forms.Button AdminQLTKUpdatebtn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage AdminLogging;
+        private System.Windows.Forms.Button AdminLoggingbtn;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView LoggingData;
         private System.Windows.Forms.TabPage AdminQLDV;
+        private System.Windows.Forms.Button AdminQbtnLDVRabtn;
+        private System.Windows.Forms.DataGridView AdminQLDVdata;
+        private System.Windows.Forms.Button AdminQLDVAddButton;
         private System.Windows.Forms.Button AdminQLDVDelbtn;
         private System.Windows.Forms.Button AdminQLDVbtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox AdminQLDVPricetbx;
         private System.Windows.Forms.TextBox AdminQLDVNameTb;
-        private System.Windows.Forms.DataGridView AdminQLDVdata;
-        private System.Windows.Forms.Button AdminQLDVAddButton;
-        private System.Windows.Forms.Button AdminQLTKAddbtn;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox AdminQLTKRolecb;
         private System.Windows.Forms.TextBox AdminQLTKPhonetbx;
         private System.Windows.Forms.TextBox AdminQLTKFullNametbx;
         private System.Windows.Forms.TextBox AdminQLTKEmailtbx;
         private System.Windows.Forms.TextBox AdminQLTKPasstbx;
         private System.Windows.Forms.TextBox AdminQLTKUserNametbx;
-        private System.Windows.Forms.ComboBox AdminQLTKRolecb;
-        private System.Windows.Forms.Button AdminQbtnLDVRabtn;
-        private System.Windows.Forms.DateTimePicker AdminBCTCFromTP;
-        private System.Windows.Forms.DateTimePicker AdminBCTCFToTP;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button AdminQLTKAddbtn;
+        private System.Windows.Forms.Button AdminQLTKDeletebtn;
+        private System.Windows.Forms.Button AdminQLTKUpdatebtn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView AdminQLTKdata;
+        private System.Windows.Forms.TabPage AdminBCTC;
         private System.Windows.Forms.TextBox AdminBCTCRevtbx;
-        private System.Windows.Forms.TabPage AdminLogging;
-        private System.Windows.Forms.DataGridView LoggingData;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button AdminLoggingbtn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button AdminBCTCXuatbtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AdminBCTCFromlbl;
+        private System.Windows.Forms.DateTimePicker AdminBCTCFToTP;
+        private System.Windows.Forms.DateTimePicker AdminBCTCFromTP;
+        private System.Windows.Forms.DataGridView AdminBCTCdgv;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AdminMainDXbtn;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.TextBox AdminIDtb;
+        private System.Windows.Forms.TextBox AdminNametb;
+        private System.Windows.Forms.Label AdminMainIDlbl;
+        private System.Windows.Forms.Label AdminMainNamelbl;
+        private System.Windows.Forms.TabControl AdminMainTab;
+        private System.Windows.Forms.Button Doctor;
+        private System.Windows.Forms.Button AdminCC;
     }
 }

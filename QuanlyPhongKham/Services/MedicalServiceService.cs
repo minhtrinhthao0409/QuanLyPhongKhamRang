@@ -49,6 +49,11 @@ namespace QuanlyPhongKham.Services
         {
             return await _repository.SortServiceByCount();
         }
+
+        public async Task<List<(string ServiceName, decimal TotalRevenue)>> GetTopServiceRevenueAsync()
+        {
+            return await _repository.GetTopServiceRevenueAsync();
+        }
     }
         
 }

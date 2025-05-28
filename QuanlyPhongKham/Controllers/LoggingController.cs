@@ -23,5 +23,14 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _loggingService.GetAllLoggingsAsync();
         }
+
+        public async Task<List<(string username, DateTime logOutTime)>> GetUserLogOutBefore17Async(string username)
+        {
+            return await _loggingService.GetUserLogOutBefore17Async(username);
+        }
+        public async Task<List<(string username, int logOutCount)>> GetUsersLogOutCountBefore17Async()
+        {
+            return await _loggingService.GetUsersLogOutCountBefore17Async();
+        }
     }
 }

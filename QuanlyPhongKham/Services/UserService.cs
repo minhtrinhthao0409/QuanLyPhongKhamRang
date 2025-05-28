@@ -95,5 +95,10 @@ namespace QuanlyPhongKham.Services
         {
             return await _userRepository.DeleteUserAsync(userName);
         }
+
+        public async Task<List<(string DoctorName, int AppointmentCount)>> GetDoctorAppointmentRankingAsync()
+        {
+            return await _userRepository.GetDoctorAppointmentRankingAsync();
+        }
     }
 }

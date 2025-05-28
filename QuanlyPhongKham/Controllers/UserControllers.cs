@@ -55,5 +55,10 @@ namespace QuanlyPhongKham.Controllers
         {
             return await _userService.DeleteUserAsync(userName);
         }
+
+        public async Task<List<(string DoctorName, int AppointmentCount)>> GetDoctorAppointmentRankingAsync()
+        {
+            return await _userService.GetDoctorAppointmentRankingAsync();
+        }
     }
 }

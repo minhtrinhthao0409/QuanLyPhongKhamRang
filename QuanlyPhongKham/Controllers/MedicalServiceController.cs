@@ -8,12 +8,12 @@ namespace QuanlyPhongKham.Controllers
     public class MedicalServiceController
     {
         private readonly MedicalServiceService _service;
-        
+
         public MedicalServiceController()
         {
             _service = new MedicalServiceService();
         }
-        
+
         public decimal? LayGiaDichVu(string tenDichVu)
         {
             return _service.LayGiaDichVu(tenDichVu);
@@ -39,6 +39,11 @@ namespace QuanlyPhongKham.Controllers
         public async Task<List<MedicalService>> SortServiceByCount()
         {
             return await _service.SortServiceByCount();
+        }
+
+        public async Task<List<(string ServiceName, decimal TotalRevenue)>> GetTopServiceRevenueAsync()
+        {
+            return await _service.GetTopServiceRevenueAsync();
         }
     }
 }
