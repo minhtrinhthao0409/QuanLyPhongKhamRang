@@ -210,7 +210,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             updatedGuardianTxt.Text = "";
 
             editPatientNameTxt.Text = "";
-            
+
         }
 
         private async void UpdateInfoBtn_Click(object sender, EventArgs e)
@@ -378,6 +378,16 @@ namespace QuanlyPhongKham.Views.Receptionist
         private void CbEditGender_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedEditGender = CbEditGender.SelectedItem.ToString();
+        }
+
+        private void btn_KeyDown(object sender, KeyEventArgs e)
+        {
+            Button button = sender as Button;
+            
+            if (e.KeyCode == Keys.Enter)
+            {
+                button.PerformClick();
+            }
         }
     }
 }

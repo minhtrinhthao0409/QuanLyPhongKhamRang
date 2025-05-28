@@ -245,6 +245,7 @@
             ResetSearchPatientbtn.Text = "Hoàn tác";
             ResetSearchPatientbtn.UseVisualStyleBackColor = true;
             ResetSearchPatientbtn.Click += ResetSearchPatientbtn_Click;
+            ResetSearchPatientbtn.KeyDown += btn_KeyDown;
             // 
             // patientEmailTxt
             // 
@@ -317,6 +318,7 @@
             SearchPatientBtn.Text = "Tra cứu";
             SearchPatientBtn.UseVisualStyleBackColor = true;
             SearchPatientBtn.Click += SearchPatientBtn_Click;
+            SearchPatientBtn.KeyDown += btn_KeyDown;
             // 
             // tabPage2
             // 
@@ -392,7 +394,7 @@
             // 
             Guardian.Location = new System.Drawing.Point(143, 162);
             Guardian.Name = "Guardian";
-            Guardian.Size = new System.Drawing.Size(211, 23);
+            Guardian.Size = new System.Drawing.Size(591, 23);
             Guardian.TabIndex = 6;
             // 
             // Guardianlbl
@@ -486,6 +488,7 @@
             ResetBtn.Text = "Reset";
             ResetBtn.UseVisualStyleBackColor = true;
             ResetBtn.Click += ResetBtn_Click;
+            ResetBtn.KeyDown += btn_KeyDown;
             // 
             // UpdatePatientBtn
             // 
@@ -496,6 +499,7 @@
             UpdatePatientBtn.TabIndex = 8;
             UpdatePatientBtn.Text = "Update";
             UpdatePatientBtn.UseVisualStyleBackColor = true;
+            UpdatePatientBtn.KeyDown += btn_KeyDown;
             // 
             // AddPatientbtn
             // 
@@ -507,6 +511,7 @@
             AddPatientbtn.Text = "Add";
             AddPatientbtn.UseVisualStyleBackColor = true;
             AddPatientbtn.Click += AddPatientbtn_Click;
+            AddPatientbtn.KeyDown += btn_KeyDown;
             // 
             // tabPage3
             // 
@@ -538,6 +543,7 @@
             SaveInfo.Text = "Save";
             SaveInfo.UseVisualStyleBackColor = true;
             SaveInfo.Click += SaveInfo_Click;
+            SaveInfo.KeyDown += btn_KeyDown;
             // 
             // CbEditGender
             // 
@@ -629,6 +635,7 @@
             ResetInfoBtn.Text = "Hoàn tác";
             ResetInfoBtn.UseVisualStyleBackColor = true;
             ResetInfoBtn.Click += ResetInfoBtn_Click;
+            ResetInfoBtn.KeyDown += btn_KeyDown;
             // 
             // updatedGuardianTxt
             // 
@@ -701,6 +708,7 @@
             UpdateInfoBtn.Text = "Cập Nhật";
             UpdateInfoBtn.UseVisualStyleBackColor = true;
             UpdateInfoBtn.Click += UpdateInfoBtn_Click;
+            UpdateInfoBtn.KeyDown += btn_KeyDown;
             // 
             // panel3
             // 

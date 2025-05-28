@@ -274,9 +274,25 @@ namespace QuanlyPhongKham.Views.Receptionist
 
         private void SignOutlbl_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             Application.Exit();
+        }
+
+        private void AddScheduleBtn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddScheduleBtn.PerformClick();
+            }
+        }
+
+        private void Searchbtn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Searchbtn.PerformClick();
+            }
         }
     }
 }

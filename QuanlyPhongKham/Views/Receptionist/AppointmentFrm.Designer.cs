@@ -276,6 +276,7 @@
             AddScheduleBtn.Text = "&Thêm";
             AddScheduleBtn.UseVisualStyleBackColor = true;
             AddScheduleBtn.Click += AddScheduleBtn_Click;
+            AddScheduleBtn.KeyDown += AddScheduleBtn_KeyDown;
             // 
             // doctorlbl
             // 
@@ -366,6 +367,7 @@
             Searchbtn.Text = "Tìm Kiếm";
             Searchbtn.UseVisualStyleBackColor = true;
             Searchbtn.Click += Searchbtn_Click;
+            Searchbtn.KeyDown += Searchbtn_KeyDown;
             // 
             // StartDatePicker
             // 

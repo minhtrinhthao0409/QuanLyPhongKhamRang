@@ -202,6 +202,13 @@ namespace QuanlyPhongKham.Views.Receptionist
         {
             Application.Exit();
         }
-        
+
+        private void Searchbtn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Searchbtn.PerformClick();
+            }
+        }
     }
 }
