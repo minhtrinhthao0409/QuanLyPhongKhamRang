@@ -22,7 +22,8 @@ namespace QuanlyPhongKham.Repository
                     SELECT COUNT(*) FROM Appointments
                     WHERE (DoctorId = @DoctorId OR PatientId = @PatientId)
                     AND AppointmentDate = @Date AND (StartTime < @EndTime AND EndTime > @StartTime)
-                    OR (PatientId = @PatientId AND AppointmentDate = @Date) ", conn);
+                    OR (PatientId = @PatientId AND AppointmentDate = @Date)", 
+                    conn);
 
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);
                 cmd.Parameters.AddWithValue("@PatientId", patientId);
@@ -312,6 +313,7 @@ namespace QuanlyPhongKham.Repository
 
                 // Ghép câu truy vấn đầy đủ
                 baseQuery += string.Join(" AND ", whereClauses);
+                baseQuery += "ORDER BY a.AppointmentDate";
                 cmd.CommandText = baseQuery;
 
                 using var reader = await cmd.ExecuteReaderAsync();

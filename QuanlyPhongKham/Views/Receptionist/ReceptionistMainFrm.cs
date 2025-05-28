@@ -95,6 +95,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 UpcomingAppointmentView.Columns["PatientId"].Visible = false;
                 UpcomingAppointmentView.Columns["AppointmentId"].Visible = false;
                 UpcomingAppointmentView.Columns["PaymentStatus"].Visible = false;
+                UpcomingAppointmentView.Columns["EndTime"].Visible = false;
 
 
                 UpcomingAppointmentView.Columns["PatientName"].HeaderText = "Tên bệnh nhân";
