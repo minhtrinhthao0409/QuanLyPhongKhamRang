@@ -131,6 +131,7 @@
             // 
             // LoggingData
             // 
+            LoggingData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             LoggingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             LoggingData.Location = new System.Drawing.Point(28, 105);
             LoggingData.Name = "LoggingData";
@@ -171,6 +172,7 @@
             // 
             // AdminQLDVdata
             // 
+            AdminQLDVdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminQLDVdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdminQLDVdata.Location = new System.Drawing.Point(6, 127);
             AdminQLDVdata.Name = "AdminQLDVdata";
@@ -405,6 +407,7 @@
             // 
             // AdminQLTKdata
             // 
+            AdminQLTKdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminQLTKdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdminQLTKdata.Location = new System.Drawing.Point(8, 125);
             AdminQLTKdata.Name = "AdminQLTKdata";
@@ -496,7 +499,7 @@
             // 
             // AdminBCTCdgv
             // 
-            AdminBCTCdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            AdminBCTCdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminBCTCdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdminBCTCdgv.Location = new System.Drawing.Point(8, 125);
             AdminBCTCdgv.Name = "AdminBCTCdgv";

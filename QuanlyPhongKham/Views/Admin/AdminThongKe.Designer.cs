@@ -34,6 +34,7 @@
             // 
             // AdminBieuDodgv
             // 
+            AdminBieuDodgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminBieuDodgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdminBieuDodgv.Location = new System.Drawing.Point(23, 43);
             AdminBieuDodgv.Name = "AdminBieuDodgv";
@@ -43,13 +44,13 @@
             AdminBieuDodgv.CellClick += AdminBieuDodgv_CellClick;
             AdminBieuDodgv.CellContentClick += AdminBieuDodgv_CellContentClick;
             // 
-            // AdminBieuDo
+            // AdminThongKe
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(AdminBieuDodgv);
-            Name = "AdminBieuDo";
+            Name = "AdminThongKe";
             Text = "AdminBieuDo";
             Load += AdminBieuDo_Load;
             ((System.ComponentModel.ISupportInitialize)AdminBieuDodgv).EndInit();
