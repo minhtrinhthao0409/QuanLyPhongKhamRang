@@ -135,7 +135,7 @@
             txtTreatmentPlan.Name = "txtTreatmentPlan";
             txtTreatmentPlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             txtTreatmentPlan.Size = new System.Drawing.Size(394, 75);
-            txtTreatmentPlan.TabIndex = 22;
+            txtTreatmentPlan.TabIndex = 4;
             // 
             // label10
             // 
@@ -143,7 +143,7 @@
             label10.Location = new System.Drawing.Point(123, 301);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(124, 20);
-            label10.TabIndex = 23;
+            label10.TabIndex = 11;
             label10.Text = "Kế hoạch điều trị:";
             // 
             // txtDiagnosis
@@ -153,7 +153,7 @@
             txtDiagnosis.Name = "txtDiagnosis";
             txtDiagnosis.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             txtDiagnosis.Size = new System.Drawing.Size(394, 61);
-            txtDiagnosis.TabIndex = 20;
+            txtDiagnosis.TabIndex = 3;
             // 
             // label9
             // 
@@ -161,7 +161,7 @@
             label9.Location = new System.Drawing.Point(123, 216);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(83, 20);
-            label9.TabIndex = 21;
+            label9.TabIndex = 10;
             label9.Text = "Chẩn đoán:";
             // 
             // cbNamePatientRecord
@@ -170,7 +170,7 @@
             cbNamePatientRecord.Location = new System.Drawing.Point(256, 73);
             cbNamePatientRecord.Name = "cbNamePatientRecord";
             cbNamePatientRecord.Size = new System.Drawing.Size(394, 28);
-            cbNamePatientRecord.TabIndex = 19;
+            cbNamePatientRecord.TabIndex = 1;
             cbNamePatientRecord.SelectedIndexChanged += cbNamePatientRecord_SelectedIndexChanged;
             // 
             // cbIdPatientRecord
@@ -179,7 +179,7 @@
             cbIdPatientRecord.Location = new System.Drawing.Point(256, 25);
             cbIdPatientRecord.Name = "cbIdPatientRecord";
             cbIdPatientRecord.Size = new System.Drawing.Size(394, 28);
-            cbIdPatientRecord.TabIndex = 18;
+            cbIdPatientRecord.TabIndex = 0;
             cbIdPatientRecord.SelectedIndexChanged += cbIdPatientRecord_SelectedIndexChanged;
             // 
             // label8
@@ -188,7 +188,7 @@
             label8.Location = new System.Drawing.Point(123, 33);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(112, 20);
-            label8.TabIndex = 17;
+            label8.TabIndex = 7;
             label8.Text = "SĐT bệnh nhân:";
             // 
             // dtpRecordDate
@@ -199,7 +199,7 @@
             dtpRecordDate.Location = new System.Drawing.Point(256, 404);
             dtpRecordDate.Name = "dtpRecordDate";
             dtpRecordDate.Size = new System.Drawing.Size(125, 27);
-            dtpRecordDate.TabIndex = 15;
+            dtpRecordDate.TabIndex = 6;
             dtpRecordDate.Value = new System.DateTime(2025, 5, 21, 0, 0, 0, 0);
             // 
             // btnSaveRecord
@@ -207,7 +207,7 @@
             btnSaveRecord.Location = new System.Drawing.Point(326, 464);
             btnSaveRecord.Name = "btnSaveRecord";
             btnSaveRecord.Size = new System.Drawing.Size(111, 29);
-            btnSaveRecord.TabIndex = 3;
+            btnSaveRecord.TabIndex = 5;
             btnSaveRecord.Text = "Lưu Bệnh Án";
             btnSaveRecord.UseVisualStyleBackColor = true;
             btnSaveRecord.Click += btnSaveRecord_Click;
@@ -219,7 +219,7 @@
             txtSymptom.Name = "txtSymptom";
             txtSymptom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             txtSymptom.Size = new System.Drawing.Size(394, 64);
-            txtSymptom.TabIndex = 1;
+            txtSymptom.TabIndex = 2;
             // 
             // label3
             // 
@@ -227,7 +227,7 @@
             label3.Location = new System.Drawing.Point(123, 409);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(87, 20);
-            label3.TabIndex = 6;
+            label3.TabIndex = 12;
             label3.Text = "Ngày khám:";
             // 
             // label2
@@ -236,7 +236,7 @@
             label2.Location = new System.Drawing.Point(123, 124);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(89, 20);
-            label2.TabIndex = 5;
+            label2.TabIndex = 9;
             label2.Text = "Triệu chứng:";
             // 
             // label1
@@ -245,7 +245,7 @@
             label1.Location = new System.Drawing.Point(123, 76);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(108, 20);
-            label1.TabIndex = 4;
+            label1.TabIndex = 8;
             label1.Text = "Tên bệnh nhân:";
             // 
             // LenLichHen
