@@ -369,7 +369,7 @@ namespace QuanlyPhongKham.Views
             {
                 if (row.Cells["TenDichVu"].Value != null)
                 {
-                   
+
                     string rawGia = row.Cells["Gia"].Value?.ToString().Replace("VNĐ", "").Replace(".", "").Trim() ?? "0";
 
                     if (!decimal.TryParse(rawGia, out decimal unitPrice))
@@ -452,6 +452,19 @@ namespace QuanlyPhongKham.Views
         private void GhiBenhAn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+
+                var loginForm = new Login(); 
+                loginForm.FormClosed += (s, args) => Application.Exit(); 
+                loginForm.Show();
+            }
         }
     }
 }
