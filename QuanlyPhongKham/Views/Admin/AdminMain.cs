@@ -340,7 +340,14 @@ namespace QuanlyPhongKham.Views.Admin
 
         private async void AdminBCTCXuatbtn_ClickAsync(object sender, EventArgs e)
         {
-            LoadInvoiceDataAsync();
+            try {
+                AdminBCTCRevtbx.Text = _invoiceController.GetTotalRevenueAsync(AdminBCTCFromTP.Value, AdminBCTCFToTP.Value).Result.ToString("C2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private async void LoadInvoiceDataAsync()
         {
@@ -349,17 +356,49 @@ namespace QuanlyPhongKham.Views.Admin
                 // Lấy giá trị từ DateTimePicker
                 DateTime startDate = AdminBCTCFromTP.Value;
                 DateTime endDate = AdminBCTCFToTP.Value;
+
                 // Kiểm tra ngày hợp lệ
                 if (endDate < startDate)
                 {
                     MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 // Gọi phương thức từ controller để lấy danh sách hóa đơn
                 var invoices = await _invoiceController.GetInvoiceByTime(startDate, endDate);
-                // Hiển thị danh sách hóa đơn trong DataGridView
+
+                // Cấu hình DataGridView
+                AdminBCTCdgv.AutoGenerateColumns = false; // Tắt tự động tạo cột
+                AdminBCTCdgv.Columns.Clear(); // Xóa các cột hiện tại
+
+                // Thêm các cột mong muốn
+                AdminBCTCdgv.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "InvoiceId",
+                    HeaderText = "Mã hóa đơn",
+                    Name = "InvoiceId"
+                });
+                AdminBCTCdgv.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "CreatedAt",
+                    HeaderText = "Ngày tạo",
+                    Name = "CreatedAt",
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:mm" } // Định dạng ngày
+                });
+                AdminBCTCdgv.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "TotalAmount",
+                    HeaderText = "Tổng tiền",
+                    Name = "TotalAmount",
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } // Định dạng tiền tệ
+                });
+
+                // Gán dữ liệu vào DataGridView
                 AdminBCTCdgv.DataSource = invoices;
-                _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã xuất báo cáo tài chính từ {startDate.ToShortDateString()} đến {endDate.ToShortDateString()}").Wait();
+
+                // Ghi log
+                await _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName,
+                    $"Đã xuất báo cáo tài chính từ {startDate.ToShortDateString()} đến {endDate.ToShortDateString()}");
             }
             catch (Exception ex)
             {

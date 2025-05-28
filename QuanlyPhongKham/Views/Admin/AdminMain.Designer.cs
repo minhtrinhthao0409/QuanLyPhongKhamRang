@@ -70,6 +70,9 @@
             AdminBCTCdgv = new System.Windows.Forms.DataGridView();
             tabPage1 = new System.Windows.Forms.TabPage();
             groupBox1 = new System.Windows.Forms.GroupBox();
+            label14 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
             AdminCC = new System.Windows.Forms.Button();
             Doctor = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
@@ -80,9 +83,6 @@
             AdminMainIDlbl = new System.Windows.Forms.Label();
             AdminMainNamelbl = new System.Windows.Forms.Label();
             AdminMainTab = new System.Windows.Forms.TabControl();
-            label12 = new System.Windows.Forms.Label();
-            label13 = new System.Windows.Forms.Label();
-            label14 = new System.Windows.Forms.Label();
             AdminLogging.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LoggingData).BeginInit();
             AdminQLDV.SuspendLayout();
@@ -435,6 +435,7 @@
             // 
             AdminBCTCRevtbx.Location = new System.Drawing.Point(688, 20);
             AdminBCTCRevtbx.Name = "AdminBCTCRevtbx";
+            AdminBCTCRevtbx.ReadOnly = true;
             AdminBCTCRevtbx.Size = new System.Drawing.Size(155, 27);
             AdminBCTCRevtbx.TabIndex = 10;
             // 
@@ -495,6 +496,7 @@
             // 
             // AdminBCTCdgv
             // 
+            AdminBCTCdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             AdminBCTCdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdminBCTCdgv.Location = new System.Drawing.Point(8, 125);
             AdminBCTCdgv.Name = "AdminBCTCdgv";
@@ -533,6 +535,33 @@
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thống kê nhanh";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(23, 198);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(153, 20);
+            label14.TabIndex = 11;
+            label14.Text = "User logout trước 17h";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(23, 134);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(132, 20);
+            label13.TabIndex = 11;
+            label13.Text = "TKBS theo lịch hẹn";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(23, 60);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(145, 20);
+            label12.TabIndex = 10;
+            label12.Text = "TKDV theo doanh số";
             // 
             // AdminCC
             // 
@@ -625,33 +654,6 @@
             AdminMainTab.Size = new System.Drawing.Size(877, 698);
             AdminMainTab.TabIndex = 0;
             AdminMainTab.SelectedIndexChanged += AdminMainTab_SelectedIndexChanged;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(23, 60);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(145, 20);
-            label12.TabIndex = 10;
-            label12.Text = "TKDV theo doanh số";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(23, 134);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(132, 20);
-            label13.TabIndex = 11;
-            label13.Text = "TKBS theo lịch hẹn";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(23, 198);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(153, 20);
-            label14.TabIndex = 11;
-            label14.Text = "User logout trước 17h";
             // 
             // AdminMain
             // 

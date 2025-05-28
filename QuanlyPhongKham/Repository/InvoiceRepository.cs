@@ -178,7 +178,7 @@ namespace QuanlyPhongKham.Repository
                 string query = @"
                     SELECT SUM(TotalAmount) AS TotalRevenue
                     FROM Invoice
-                    WHERE CreatedAt BETWEEN @StartDate AND @EndDate";
+                    WHERE CreatedAt BETWEEN @StartDate AND @EndDate And Status = ""Đã thanh toán""";
 
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
@@ -207,7 +207,7 @@ namespace QuanlyPhongKham.Repository
                 string query = @"
                     SELECT InvoiceId, PatientId, PatientName, CreatedAt, TotalAmount, PaidAmount, Status
                     FROM Invoice
-                    WHERE CreatedAt BETWEEN @StartDate AND @EndDate";
+                    WHERE CreatedAt BETWEEN @StartDate AND @EndDate And Status = ""Đã thanh toán""";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", startDate);
