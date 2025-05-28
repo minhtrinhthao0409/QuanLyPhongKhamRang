@@ -33,7 +33,6 @@
             txtTendangnhap = new System.Windows.Forms.TextBox();
             txtMatKhau = new System.Windows.Forms.TextBox();
             linkQuenMatKhau = new System.Windows.Forms.LinkLabel();
-            linkDangKy = new System.Windows.Forms.LinkLabel();
             btnDangNhap = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -56,7 +55,7 @@
             // 
             txtTendangnhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtTendangnhap.ForeColor = System.Drawing.Color.Black;
-            txtTendangnhap.Location = new System.Drawing.Point(223, 379);
+            txtTendangnhap.Location = new System.Drawing.Point(219, 379);
             txtTendangnhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             txtTendangnhap.Name = "txtTendangnhap";
             txtTendangnhap.Size = new System.Drawing.Size(223, 30);
@@ -77,7 +76,7 @@
             // 
             linkQuenMatKhau.AutoSize = true;
             linkQuenMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            linkQuenMatKhau.Location = new System.Drawing.Point(76, 545);
+            linkQuenMatKhau.Location = new System.Drawing.Point(190, 530);
             linkQuenMatKhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             linkQuenMatKhau.Name = "linkQuenMatKhau";
             linkQuenMatKhau.Size = new System.Drawing.Size(142, 24);
@@ -86,19 +85,6 @@
             linkQuenMatKhau.Text = "Quên Mật Khẩu";
             linkQuenMatKhau.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             linkQuenMatKhau.LinkClicked += linkQuenMatKhau_LinkClicked;
-            // 
-            // linkDangKy
-            // 
-            linkDangKy.AutoSize = true;
-            linkDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            linkDangKy.Location = new System.Drawing.Point(365, 545);
-            linkDangKy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            linkDangKy.Name = "linkDangKy";
-            linkDangKy.Size = new System.Drawing.Size(81, 24);
-            linkDangKy.TabIndex = 5;
-            linkDangKy.TabStop = true;
-            linkDangKy.Text = "Đăng Ký";
-            linkDangKy.LinkClicked += linkDangKy_LinkClicked;
             // 
             // btnDangNhap
             // 
@@ -147,7 +133,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnDangNhap);
-            Controls.Add(linkDangKy);
             Controls.Add(linkQuenMatKhau);
             Controls.Add(txtMatKhau);
             Controls.Add(txtTendangnhap);
@@ -172,7 +157,6 @@
         private System.Windows.Forms.TextBox txtTendangnhap;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.LinkLabel linkQuenMatKhau;
-        private System.Windows.Forms.LinkLabel linkDangKy;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
