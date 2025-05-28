@@ -506,6 +506,7 @@
             Controls.Add(AppointmentTab);
             Name = "AppointmentFrm";
             Text = "AppointmentFrm";
+            Load += AppointmentFrm_Load_1;
             AppointmentTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             CrudPanel.ResumeLayout(false);

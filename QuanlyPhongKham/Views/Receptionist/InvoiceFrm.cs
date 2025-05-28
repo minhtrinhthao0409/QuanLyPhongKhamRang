@@ -203,7 +203,15 @@ namespace QuanlyPhongKham.Views.Receptionist
         }
         private void SignOutlbl_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+
+                var loginForm = new Login();
+                loginForm.FormClosed += (s, args) => Application.Exit();
+                loginForm.Show();
+            }
         }
 
         private void Searchbtn_KeyDown(object sender, KeyEventArgs e)

@@ -101,19 +101,21 @@
             AdminLogging.Controls.Add(AdminLoggingbtn);
             AdminLogging.Controls.Add(label11);
             AdminLogging.Controls.Add(LoggingData);
-            AdminLogging.Location = new System.Drawing.Point(4, 29);
+            AdminLogging.Location = new System.Drawing.Point(4, 24);
+            AdminLogging.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminLogging.Name = "AdminLogging";
-            AdminLogging.Padding = new System.Windows.Forms.Padding(3);
-            AdminLogging.Size = new System.Drawing.Size(869, 665);
+            AdminLogging.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminLogging.Size = new System.Drawing.Size(759, 496);
             AdminLogging.TabIndex = 4;
             AdminLogging.Text = "Logging";
             AdminLogging.UseVisualStyleBackColor = true;
             // 
             // AdminLoggingbtn
             // 
-            AdminLoggingbtn.Location = new System.Drawing.Point(747, 41);
+            AdminLoggingbtn.Location = new System.Drawing.Point(654, 31);
+            AdminLoggingbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminLoggingbtn.Name = "AdminLoggingbtn";
-            AdminLoggingbtn.Size = new System.Drawing.Size(94, 29);
+            AdminLoggingbtn.Size = new System.Drawing.Size(82, 22);
             AdminLoggingbtn.TabIndex = 2;
             AdminLoggingbtn.Text = "Tải lại";
             AdminLoggingbtn.UseVisualStyleBackColor = true;
@@ -123,9 +125,9 @@
             // 
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label11.Location = new System.Drawing.Point(28, 18);
+            label11.Location = new System.Drawing.Point(24, 14);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(228, 38);
+            label11.Size = new System.Drawing.Size(178, 30);
             label11.TabIndex = 1;
             label11.Text = "Tracking Logging";
             // 
@@ -133,10 +135,11 @@
             // 
             LoggingData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             LoggingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            LoggingData.Location = new System.Drawing.Point(28, 105);
+            LoggingData.Location = new System.Drawing.Point(24, 79);
+            LoggingData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             LoggingData.Name = "LoggingData";
             LoggingData.RowHeadersWidth = 51;
-            LoggingData.Size = new System.Drawing.Size(813, 532);
+            LoggingData.Size = new System.Drawing.Size(711, 399);
             LoggingData.TabIndex = 0;
             // 
             // AdminQLDV
@@ -150,10 +153,11 @@
             AdminQLDV.Controls.Add(label9);
             AdminQLDV.Controls.Add(AdminQLDVPricetbx);
             AdminQLDV.Controls.Add(AdminQLDVNameTb);
-            AdminQLDV.Location = new System.Drawing.Point(4, 29);
+            AdminQLDV.Location = new System.Drawing.Point(4, 24);
+            AdminQLDV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDV.Name = "AdminQLDV";
-            AdminQLDV.Padding = new System.Windows.Forms.Padding(3);
-            AdminQLDV.Size = new System.Drawing.Size(869, 665);
+            AdminQLDV.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminQLDV.Size = new System.Drawing.Size(759, 496);
             AdminQLDV.TabIndex = 3;
             AdminQLDV.Text = "QLDV";
             AdminQLDV.UseVisualStyleBackColor = true;
@@ -162,9 +166,10 @@
             // AdminQbtnLDVRabtn
             // 
             AdminQbtnLDVRabtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQbtnLDVRabtn.Location = new System.Drawing.Point(686, 81);
+            AdminQbtnLDVRabtn.Location = new System.Drawing.Point(600, 61);
+            AdminQbtnLDVRabtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQbtnLDVRabtn.Name = "AdminQbtnLDVRabtn";
-            AdminQbtnLDVRabtn.Size = new System.Drawing.Size(94, 29);
+            AdminQbtnLDVRabtn.Size = new System.Drawing.Size(82, 22);
             AdminQbtnLDVRabtn.TabIndex = 16;
             AdminQbtnLDVRabtn.Text = "Sắp xếp";
             AdminQbtnLDVRabtn.UseVisualStyleBackColor = true;
@@ -174,19 +179,21 @@
             // 
             AdminQLDVdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminQLDVdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminQLDVdata.Location = new System.Drawing.Point(6, 127);
+            AdminQLDVdata.Location = new System.Drawing.Point(5, 95);
+            AdminQLDVdata.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDVdata.Name = "AdminQLDVdata";
             AdminQLDVdata.RowHeadersWidth = 51;
-            AdminQLDVdata.Size = new System.Drawing.Size(853, 532);
+            AdminQLDVdata.Size = new System.Drawing.Size(746, 399);
             AdminQLDVdata.TabIndex = 15;
             AdminQLDVdata.CellContentClick += AdminQLDVdata_CellContentClick;
             // 
             // AdminQLDVAddButton
             // 
             AdminQLDVAddButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVAddButton.Location = new System.Drawing.Point(558, 21);
+            AdminQLDVAddButton.Location = new System.Drawing.Point(488, 16);
+            AdminQLDVAddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDVAddButton.Name = "AdminQLDVAddButton";
-            AdminQLDVAddButton.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVAddButton.Size = new System.Drawing.Size(82, 22);
             AdminQLDVAddButton.TabIndex = 14;
             AdminQLDVAddButton.Text = "Thêm";
             AdminQLDVAddButton.UseVisualStyleBackColor = true;
@@ -195,9 +202,10 @@
             // AdminQLDVDelbtn
             // 
             AdminQLDVDelbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVDelbtn.Location = new System.Drawing.Point(558, 81);
+            AdminQLDVDelbtn.Location = new System.Drawing.Point(488, 61);
+            AdminQLDVDelbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDVDelbtn.Name = "AdminQLDVDelbtn";
-            AdminQLDVDelbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVDelbtn.Size = new System.Drawing.Size(82, 22);
             AdminQLDVDelbtn.TabIndex = 13;
             AdminQLDVDelbtn.Text = "Xóa";
             AdminQLDVDelbtn.UseVisualStyleBackColor = true;
@@ -206,9 +214,10 @@
             // AdminQLDVbtn
             // 
             AdminQLDVbtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVbtn.Location = new System.Drawing.Point(686, 21);
+            AdminQLDVbtn.Location = new System.Drawing.Point(600, 16);
+            AdminQLDVbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDVbtn.Name = "AdminQLDVbtn";
-            AdminQLDVbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLDVbtn.Size = new System.Drawing.Size(82, 22);
             AdminQLDVbtn.TabIndex = 12;
             AdminQLDVbtn.Text = "Sửa giá";
             AdminQLDVbtn.UseVisualStyleBackColor = true;
@@ -218,9 +227,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            label8.Location = new System.Drawing.Point(30, 81);
+            label8.Location = new System.Drawing.Point(26, 61);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(101, 23);
+            label8.Size = new System.Drawing.Size(79, 17);
             label8.TabIndex = 11;
             label8.Text = "Giá Dịch vụ";
             // 
@@ -228,26 +237,28 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            label9.Location = new System.Drawing.Point(28, 21);
+            label9.Location = new System.Drawing.Point(24, 16);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(102, 23);
+            label9.Size = new System.Drawing.Size(81, 17);
             label9.TabIndex = 10;
             label9.Text = "Tên Dịch vụ";
             // 
             // AdminQLDVPricetbx
             // 
             AdminQLDVPricetbx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVPricetbx.Location = new System.Drawing.Point(142, 77);
+            AdminQLDVPricetbx.Location = new System.Drawing.Point(124, 58);
+            AdminQLDVPricetbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDVPricetbx.Name = "AdminQLDVPricetbx";
-            AdminQLDVPricetbx.Size = new System.Drawing.Size(327, 29);
+            AdminQLDVPricetbx.Size = new System.Drawing.Size(287, 25);
             AdminQLDVPricetbx.TabIndex = 9;
             // 
             // AdminQLDVNameTb
             // 
             AdminQLDVNameTb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            AdminQLDVNameTb.Location = new System.Drawing.Point(142, 17);
+            AdminQLDVNameTb.Location = new System.Drawing.Point(124, 13);
+            AdminQLDVNameTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLDVNameTb.Name = "AdminQLDVNameTb";
-            AdminQLDVNameTb.Size = new System.Drawing.Size(327, 29);
+            AdminQLDVNameTb.Size = new System.Drawing.Size(287, 25);
             AdminQLDVNameTb.TabIndex = 8;
             // 
             // tabPage2
@@ -268,10 +279,11 @@
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
             tabPage2.Controls.Add(AdminQLTKdata);
-            tabPage2.Location = new System.Drawing.Point(4, 29);
+            tabPage2.Location = new System.Drawing.Point(4, 24);
+            tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(869, 665);
+            tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tabPage2.Size = new System.Drawing.Size(759, 496);
             tabPage2.TabIndex = 2;
             tabPage2.Text = "QLTK";
             tabPage2.UseVisualStyleBackColor = true;
@@ -281,51 +293,58 @@
             // 
             AdminQLTKRolecb.FormattingEnabled = true;
             AdminQLTKRolecb.Items.AddRange(new object[] { "Doctor", "Receptionist", "Admin", "Null" });
-            AdminQLTKRolecb.Location = new System.Drawing.Point(469, 82);
+            AdminQLTKRolecb.Location = new System.Drawing.Point(410, 62);
+            AdminQLTKRolecb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKRolecb.Name = "AdminQLTKRolecb";
-            AdminQLTKRolecb.Size = new System.Drawing.Size(239, 28);
+            AdminQLTKRolecb.Size = new System.Drawing.Size(210, 23);
             AdminQLTKRolecb.TabIndex = 16;
             // 
             // AdminQLTKPhonetbx
             // 
-            AdminQLTKPhonetbx.Location = new System.Drawing.Point(469, 46);
+            AdminQLTKPhonetbx.Location = new System.Drawing.Point(410, 34);
+            AdminQLTKPhonetbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKPhonetbx.Name = "AdminQLTKPhonetbx";
-            AdminQLTKPhonetbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKPhonetbx.Size = new System.Drawing.Size(210, 23);
             AdminQLTKPhonetbx.TabIndex = 15;
             // 
             // AdminQLTKFullNametbx
             // 
-            AdminQLTKFullNametbx.Location = new System.Drawing.Point(469, 15);
+            AdminQLTKFullNametbx.Location = new System.Drawing.Point(410, 11);
+            AdminQLTKFullNametbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKFullNametbx.Name = "AdminQLTKFullNametbx";
-            AdminQLTKFullNametbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKFullNametbx.Size = new System.Drawing.Size(210, 23);
             AdminQLTKFullNametbx.TabIndex = 14;
             // 
             // AdminQLTKEmailtbx
             // 
-            AdminQLTKEmailtbx.Location = new System.Drawing.Point(109, 82);
+            AdminQLTKEmailtbx.Location = new System.Drawing.Point(95, 62);
+            AdminQLTKEmailtbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKEmailtbx.Name = "AdminQLTKEmailtbx";
-            AdminQLTKEmailtbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKEmailtbx.Size = new System.Drawing.Size(210, 23);
             AdminQLTKEmailtbx.TabIndex = 13;
             // 
             // AdminQLTKPasstbx
             // 
-            AdminQLTKPasstbx.Location = new System.Drawing.Point(109, 46);
+            AdminQLTKPasstbx.Location = new System.Drawing.Point(95, 34);
+            AdminQLTKPasstbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKPasstbx.Name = "AdminQLTKPasstbx";
-            AdminQLTKPasstbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKPasstbx.Size = new System.Drawing.Size(210, 23);
             AdminQLTKPasstbx.TabIndex = 12;
             // 
             // AdminQLTKUserNametbx
             // 
-            AdminQLTKUserNametbx.Location = new System.Drawing.Point(109, 15);
+            AdminQLTKUserNametbx.Location = new System.Drawing.Point(95, 11);
+            AdminQLTKUserNametbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKUserNametbx.Name = "AdminQLTKUserNametbx";
-            AdminQLTKUserNametbx.Size = new System.Drawing.Size(239, 27);
+            AdminQLTKUserNametbx.Size = new System.Drawing.Size(210, 23);
             AdminQLTKUserNametbx.TabIndex = 11;
             // 
             // AdminQLTKAddbtn
             // 
-            AdminQLTKAddbtn.Location = new System.Drawing.Point(767, 9);
+            AdminQLTKAddbtn.Location = new System.Drawing.Point(671, 7);
+            AdminQLTKAddbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKAddbtn.Name = "AdminQLTKAddbtn";
-            AdminQLTKAddbtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKAddbtn.Size = new System.Drawing.Size(82, 22);
             AdminQLTKAddbtn.TabIndex = 10;
             AdminQLTKAddbtn.Text = "Thêm";
             AdminQLTKAddbtn.UseVisualStyleBackColor = true;
@@ -333,9 +352,10 @@
             // 
             // AdminQLTKDeletebtn
             // 
-            AdminQLTKDeletebtn.Location = new System.Drawing.Point(767, 90);
+            AdminQLTKDeletebtn.Location = new System.Drawing.Point(671, 68);
+            AdminQLTKDeletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKDeletebtn.Name = "AdminQLTKDeletebtn";
-            AdminQLTKDeletebtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKDeletebtn.Size = new System.Drawing.Size(82, 22);
             AdminQLTKDeletebtn.TabIndex = 9;
             AdminQLTKDeletebtn.Text = "Xóa";
             AdminQLTKDeletebtn.UseVisualStyleBackColor = true;
@@ -343,9 +363,10 @@
             // 
             // AdminQLTKUpdatebtn
             // 
-            AdminQLTKUpdatebtn.Location = new System.Drawing.Point(767, 49);
+            AdminQLTKUpdatebtn.Location = new System.Drawing.Point(671, 37);
+            AdminQLTKUpdatebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKUpdatebtn.Name = "AdminQLTKUpdatebtn";
-            AdminQLTKUpdatebtn.Size = new System.Drawing.Size(94, 29);
+            AdminQLTKUpdatebtn.Size = new System.Drawing.Size(82, 22);
             AdminQLTKUpdatebtn.TabIndex = 8;
             AdminQLTKUpdatebtn.Text = "Cập nhật";
             AdminQLTKUpdatebtn.UseVisualStyleBackColor = true;
@@ -354,54 +375,54 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(378, 49);
+            label7.Location = new System.Drawing.Point(331, 37);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(50, 20);
+            label7.Size = new System.Drawing.Size(41, 15);
             label7.TabIndex = 7;
             label7.Text = "Phone";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(378, 18);
+            label6.Location = new System.Drawing.Point(331, 14);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(72, 20);
+            label6.Size = new System.Drawing.Size(58, 15);
             label6.TabIndex = 6;
             label6.Text = "FullName";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(25, 82);
+            label4.Location = new System.Drawing.Point(22, 62);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(46, 20);
+            label4.Size = new System.Drawing.Size(36, 15);
             label4.TabIndex = 5;
             label4.Text = "Email";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(25, 49);
+            label5.Location = new System.Drawing.Point(22, 37);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(70, 20);
+            label5.Size = new System.Drawing.Size(57, 15);
             label5.TabIndex = 4;
             label5.Text = "Password";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(25, 18);
+            label3.Location = new System.Drawing.Point(22, 14);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(78, 20);
+            label3.Size = new System.Drawing.Size(62, 15);
             label3.TabIndex = 2;
             label3.Text = "UserName";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(378, 82);
+            label2.Location = new System.Drawing.Point(331, 62);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(39, 20);
+            label2.Size = new System.Drawing.Size(30, 15);
             label2.TabIndex = 1;
             label2.Text = "Role";
             // 
@@ -409,10 +430,11 @@
             // 
             AdminQLTKdata.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminQLTKdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminQLTKdata.Location = new System.Drawing.Point(8, 125);
+            AdminQLTKdata.Location = new System.Drawing.Point(7, 94);
+            AdminQLTKdata.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminQLTKdata.Name = "AdminQLTKdata";
             AdminQLTKdata.RowHeadersWidth = 51;
-            AdminQLTKdata.Size = new System.Drawing.Size(853, 532);
+            AdminQLTKdata.Size = new System.Drawing.Size(746, 399);
             AdminQLTKdata.TabIndex = 0;
             AdminQLTKdata.CellContentClick += AdminQLTKdata_CellContentClick;
             // 
@@ -426,36 +448,39 @@
             AdminBCTC.Controls.Add(AdminBCTCFToTP);
             AdminBCTC.Controls.Add(AdminBCTCFromTP);
             AdminBCTC.Controls.Add(AdminBCTCdgv);
-            AdminBCTC.Location = new System.Drawing.Point(4, 29);
+            AdminBCTC.Location = new System.Drawing.Point(4, 24);
+            AdminBCTC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBCTC.Name = "AdminBCTC";
-            AdminBCTC.Padding = new System.Windows.Forms.Padding(3);
-            AdminBCTC.Size = new System.Drawing.Size(869, 665);
+            AdminBCTC.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            AdminBCTC.Size = new System.Drawing.Size(759, 496);
             AdminBCTC.TabIndex = 1;
             AdminBCTC.Text = "BCTC";
             AdminBCTC.UseVisualStyleBackColor = true;
             // 
             // AdminBCTCRevtbx
             // 
-            AdminBCTCRevtbx.Location = new System.Drawing.Point(688, 20);
+            AdminBCTCRevtbx.Location = new System.Drawing.Point(602, 15);
+            AdminBCTCRevtbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBCTCRevtbx.Name = "AdminBCTCRevtbx";
             AdminBCTCRevtbx.ReadOnly = true;
-            AdminBCTCRevtbx.Size = new System.Drawing.Size(155, 27);
+            AdminBCTCRevtbx.Size = new System.Drawing.Size(136, 23);
             AdminBCTCRevtbx.TabIndex = 10;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(563, 27);
+            label10.Location = new System.Drawing.Point(493, 20);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(119, 20);
+            label10.Size = new System.Drawing.Size(97, 15);
             label10.TabIndex = 9;
             label10.Text = "Tổng Doanh Thu";
             // 
             // AdminBCTCXuatbtn
             // 
-            AdminBCTCXuatbtn.Location = new System.Drawing.Point(731, 71);
+            AdminBCTCXuatbtn.Location = new System.Drawing.Point(640, 53);
+            AdminBCTCXuatbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBCTCXuatbtn.Name = "AdminBCTCXuatbtn";
-            AdminBCTCXuatbtn.Size = new System.Drawing.Size(112, 29);
+            AdminBCTCXuatbtn.Size = new System.Drawing.Size(98, 22);
             AdminBCTCXuatbtn.TabIndex = 8;
             AdminBCTCXuatbtn.Text = "Tính tổng";
             AdminBCTCXuatbtn.UseVisualStyleBackColor = true;
@@ -465,9 +490,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(28, 71);
+            label1.Location = new System.Drawing.Point(24, 53);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(86, 23);
+            label1.Size = new System.Drawing.Size(67, 17);
             label1.TabIndex = 7;
             label1.Text = "Đến ngày";
             // 
@@ -475,25 +500,27 @@
             // 
             AdminBCTCFromlbl.AutoSize = true;
             AdminBCTCFromlbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            AdminBCTCFromlbl.Location = new System.Drawing.Point(28, 31);
+            AdminBCTCFromlbl.Location = new System.Drawing.Point(24, 23);
             AdminBCTCFromlbl.Name = "AdminBCTCFromlbl";
-            AdminBCTCFromlbl.Size = new System.Drawing.Size(75, 23);
+            AdminBCTCFromlbl.Size = new System.Drawing.Size(59, 17);
             AdminBCTCFromlbl.TabIndex = 6;
             AdminBCTCFromlbl.Text = "Từ ngày";
             // 
             // AdminBCTCFToTP
             // 
-            AdminBCTCFToTP.Location = new System.Drawing.Point(129, 67);
+            AdminBCTCFToTP.Location = new System.Drawing.Point(113, 50);
+            AdminBCTCFToTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBCTCFToTP.Name = "AdminBCTCFToTP";
-            AdminBCTCFToTP.Size = new System.Drawing.Size(250, 27);
+            AdminBCTCFToTP.Size = new System.Drawing.Size(219, 23);
             AdminBCTCFToTP.TabIndex = 5;
             AdminBCTCFToTP.ValueChanged += AdminBCTCFToTP_ValueChanged;
             // 
             // AdminBCTCFromTP
             // 
-            AdminBCTCFromTP.Location = new System.Drawing.Point(129, 27);
+            AdminBCTCFromTP.Location = new System.Drawing.Point(113, 20);
+            AdminBCTCFromTP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBCTCFromTP.Name = "AdminBCTCFromTP";
-            AdminBCTCFromTP.Size = new System.Drawing.Size(250, 27);
+            AdminBCTCFromTP.Size = new System.Drawing.Size(219, 23);
             AdminBCTCFromTP.TabIndex = 4;
             AdminBCTCFromTP.ValueChanged += AdminBCTCFromTP_ValueChanged;
             // 
@@ -501,10 +528,11 @@
             // 
             AdminBCTCdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminBCTCdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminBCTCdgv.Location = new System.Drawing.Point(8, 125);
+            AdminBCTCdgv.Location = new System.Drawing.Point(7, 94);
+            AdminBCTCdgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBCTCdgv.Name = "AdminBCTCdgv";
             AdminBCTCdgv.RowHeadersWidth = 51;
-            AdminBCTCdgv.Size = new System.Drawing.Size(853, 532);
+            AdminBCTCdgv.Size = new System.Drawing.Size(746, 399);
             AdminBCTCdgv.TabIndex = 0;
             // 
             // tabPage1
@@ -516,10 +544,11 @@
             tabPage1.Controls.Add(AdminNametb);
             tabPage1.Controls.Add(AdminMainIDlbl);
             tabPage1.Controls.Add(AdminMainNamelbl);
-            tabPage1.Location = new System.Drawing.Point(4, 29);
+            tabPage1.Location = new System.Drawing.Point(4, 24);
+            tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(869, 665);
+            tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tabPage1.Size = new System.Drawing.Size(759, 496);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Main";
             tabPage1.UseVisualStyleBackColor = true;
@@ -532,9 +561,11 @@
             groupBox1.Controls.Add(AdminCC);
             groupBox1.Controls.Add(Doctor);
             groupBox1.Controls.Add(button1);
-            groupBox1.Location = new System.Drawing.Point(43, 176);
+            groupBox1.Location = new System.Drawing.Point(38, 132);
+            groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(327, 285);
+            groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            groupBox1.Size = new System.Drawing.Size(286, 214);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thống kê nhanh";
@@ -542,35 +573,36 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(23, 198);
+            label14.Location = new System.Drawing.Point(20, 148);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(153, 20);
+            label14.Size = new System.Drawing.Size(121, 15);
             label14.TabIndex = 11;
             label14.Text = "User logout trước 17h";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(23, 134);
+            label13.Location = new System.Drawing.Point(20, 100);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(132, 20);
+            label13.Size = new System.Drawing.Size(106, 15);
             label13.TabIndex = 11;
             label13.Text = "TKBS theo lịch hẹn";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(23, 60);
+            label12.Location = new System.Drawing.Point(20, 45);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(145, 20);
+            label12.Size = new System.Drawing.Size(115, 15);
             label12.TabIndex = 10;
             label12.Text = "TKDV theo doanh số";
             // 
             // AdminCC
             // 
-            AdminCC.Location = new System.Drawing.Point(184, 194);
+            AdminCC.Location = new System.Drawing.Point(161, 146);
+            AdminCC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminCC.Name = "AdminCC";
-            AdminCC.Size = new System.Drawing.Size(94, 29);
+            AdminCC.Size = new System.Drawing.Size(82, 22);
             AdminCC.TabIndex = 9;
             AdminCC.Text = "Chấm công";
             AdminCC.UseVisualStyleBackColor = true;
@@ -578,9 +610,10 @@
             // 
             // Doctor
             // 
-            Doctor.Location = new System.Drawing.Point(184, 125);
+            Doctor.Location = new System.Drawing.Point(161, 94);
+            Doctor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Doctor.Name = "Doctor";
-            Doctor.Size = new System.Drawing.Size(94, 29);
+            Doctor.Size = new System.Drawing.Size(82, 22);
             Doctor.TabIndex = 8;
             Doctor.Text = "Doctor";
             Doctor.UseVisualStyleBackColor = true;
@@ -588,9 +621,10 @@
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(184, 56);
+            button1.Location = new System.Drawing.Point(161, 42);
+            button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(94, 29);
+            button1.Size = new System.Drawing.Size(82, 22);
             button1.TabIndex = 6;
             button1.Text = "Service";
             button1.UseVisualStyleBackColor = true;
@@ -598,48 +632,53 @@
             // 
             // AdminMainDXbtn
             // 
-            AdminMainDXbtn.Location = new System.Drawing.Point(43, 622);
+            AdminMainDXbtn.Location = new System.Drawing.Point(38, 466);
+            AdminMainDXbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminMainDXbtn.Name = "AdminMainDXbtn";
-            AdminMainDXbtn.Size = new System.Drawing.Size(94, 29);
+            AdminMainDXbtn.Size = new System.Drawing.Size(82, 22);
             AdminMainDXbtn.TabIndex = 5;
             AdminMainDXbtn.Text = "Đăng xuất";
             AdminMainDXbtn.UseVisualStyleBackColor = true;
+            AdminMainDXbtn.Click += AdminMainDXbtn_Click;
             // 
             // monthCalendar1
             // 
-            monthCalendar1.Location = new System.Drawing.Point(518, 26);
+            monthCalendar1.Location = new System.Drawing.Point(453, 20);
+            monthCalendar1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 4;
             // 
             // AdminIDtb
             // 
-            AdminIDtb.Location = new System.Drawing.Point(104, 46);
+            AdminIDtb.Location = new System.Drawing.Point(91, 34);
+            AdminIDtb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminIDtb.Name = "AdminIDtb";
-            AdminIDtb.Size = new System.Drawing.Size(273, 27);
+            AdminIDtb.Size = new System.Drawing.Size(239, 23);
             AdminIDtb.TabIndex = 3;
             // 
             // AdminNametb
             // 
-            AdminNametb.Location = new System.Drawing.Point(104, 89);
+            AdminNametb.Location = new System.Drawing.Point(91, 67);
+            AdminNametb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminNametb.Name = "AdminNametb";
-            AdminNametb.Size = new System.Drawing.Size(273, 27);
+            AdminNametb.Size = new System.Drawing.Size(239, 23);
             AdminNametb.TabIndex = 2;
             // 
             // AdminMainIDlbl
             // 
             AdminMainIDlbl.AutoSize = true;
-            AdminMainIDlbl.Location = new System.Drawing.Point(43, 53);
+            AdminMainIDlbl.Location = new System.Drawing.Point(38, 40);
             AdminMainIDlbl.Name = "AdminMainIDlbl";
-            AdminMainIDlbl.Size = new System.Drawing.Size(24, 20);
+            AdminMainIDlbl.Size = new System.Drawing.Size(18, 15);
             AdminMainIDlbl.TabIndex = 1;
             AdminMainIDlbl.Text = "ID";
             // 
             // AdminMainNamelbl
             // 
             AdminMainNamelbl.AutoSize = true;
-            AdminMainNamelbl.Location = new System.Drawing.Point(43, 96);
+            AdminMainNamelbl.Location = new System.Drawing.Point(38, 72);
             AdminMainNamelbl.Name = "AdminMainNamelbl";
-            AdminMainNamelbl.Size = new System.Drawing.Size(49, 20);
+            AdminMainNamelbl.Size = new System.Drawing.Size(39, 15);
             AdminMainNamelbl.TabIndex = 0;
             AdminMainNamelbl.Text = "Name";
             // 
@@ -652,18 +691,20 @@
             AdminMainTab.Controls.Add(AdminLogging);
             AdminMainTab.Dock = System.Windows.Forms.DockStyle.Fill;
             AdminMainTab.Location = new System.Drawing.Point(0, 0);
+            AdminMainTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminMainTab.Name = "AdminMainTab";
             AdminMainTab.SelectedIndex = 0;
-            AdminMainTab.Size = new System.Drawing.Size(877, 698);
+            AdminMainTab.Size = new System.Drawing.Size(767, 524);
             AdminMainTab.TabIndex = 0;
             AdminMainTab.SelectedIndexChanged += AdminMainTab_SelectedIndexChanged;
             // 
             // AdminMain
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(877, 698);
+            ClientSize = new System.Drawing.Size(767, 524);
             Controls.Add(AdminMainTab);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "AdminMain";
             Text = "AdminMain";
             FormClosing += AdminMain_FormClosing;

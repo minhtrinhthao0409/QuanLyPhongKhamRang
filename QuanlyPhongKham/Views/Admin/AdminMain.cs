@@ -145,7 +145,7 @@ namespace QuanlyPhongKham.Views.Admin
             AdminQLTKPasstbx.Text = null;
             AdminQLTKRolecb.SelectedIndex = 3;
         }
-        
+
         private async void AdminQLTKUpdatebtn_Click(object sender, EventArgs e)
         {
             string username = AdminQLTKUserNametbx.Text.Trim();
@@ -349,7 +349,8 @@ namespace QuanlyPhongKham.Views.Admin
 
         private async void AdminBCTCXuatbtn_ClickAsync(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 AdminBCTCRevtbx.Text = _invoiceController.GetTotalRevenueAsync(AdminBCTCFromTP.Value, AdminBCTCFToTP.Value).Result.ToString("C2");
             }
             catch (Exception ex)
@@ -583,6 +584,19 @@ namespace QuanlyPhongKham.Views.Admin
         {
             AdminThongKe adminBieuDo = new AdminThongKe(3);
             adminBieuDo.Show();
+        }
+
+        private void AdminMainDXbtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+
+                var loginForm = new Login();
+                loginForm.FormClosed += (s, args) => Application.Exit();
+                loginForm.Show();
+            }
         }
     }
 }
