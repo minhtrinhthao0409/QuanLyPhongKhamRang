@@ -42,19 +42,6 @@ namespace QuanlyPhongKham
 
         }
 
-        private void linkDangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.Hide();
-            using (DangKy dangKyForm = new DangKy())
-            {
-                dangKyForm.ShowDialog(); // Show modal
-                
-            }
-            if(!this.IsDisposed)
-                this.Show();
-
-        }
-
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             string userName = txtTendangnhap.Text;
