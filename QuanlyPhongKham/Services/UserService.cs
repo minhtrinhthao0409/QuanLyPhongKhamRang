@@ -55,24 +55,24 @@ namespace QuanlyPhongKham.Services
             if (user == null) return null;
 
             string newPassword = GenerateRandomPassword();
-            string hashedPassword = HashPassword(newPassword);
+            string hashedPassword = PasswordHasher.HashPassword(newPassword);
 
             await _userRepository.UpdatePasswordAsync(user.Id, hashedPassword);
             return newPassword;
         }
 
-        private string GenerateRandomPassword(int length = 8)
+        public string GenerateRandomPassword(int length = 8)
         {
             const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length).Select(s => s[rand.Next(s.Length)]).ToArray());
         }
 
-        private string HashPassword(string password)
-        {
-            using var sha256 = SHA256.Create();
-            var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-            return string.Concat(bytes.Select(b => b.ToString("x2")));
-        }
+        //private string HashPassword(string password)
+        //{
+        //    using var sha256 = SHA256.Create();
+        //    var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+        //    return string.Concat(bytes.Select(b => b.ToString("x2")));
+        //}
         public async Task<List<User>> GetAllUser()
         {
             List<User> users = new List<User>();

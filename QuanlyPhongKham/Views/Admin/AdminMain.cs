@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanlyPhongKham.Controllers;
 using QuanlyPhongKham.Models;
+using QuanlyPhongKham.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
@@ -23,6 +24,7 @@ namespace QuanlyPhongKham.Views.Admin
         private InvoiceController _invoiceController;
         private LoggingController _loggingController;
         private AdminThongKe _adminBieuDo;
+        private readonly UserService _userService;
 
         public AdminMain(User user)
         {
@@ -32,6 +34,7 @@ namespace QuanlyPhongKham.Views.Admin
             this._medicalServiceController = new MedicalServiceController();
             this._invoiceController = new InvoiceController();
             this._loggingController = new LoggingController();
+            _userService = new UserService();
             AdminIDtb.Text = user.Id;
             AdminNametb.Text = user.FullName;
             AdminQLTKUpdatebtn.Enabled = false;
@@ -142,8 +145,8 @@ namespace QuanlyPhongKham.Views.Admin
             AdminQLTKPasstbx.Text = null;
             AdminQLTKRolecb.SelectedIndex = 3;
         }
-
-        private void AdminQLTKUpdatebtn_Click(object sender, EventArgs e)
+        
+        private async void AdminQLTKUpdatebtn_Click(object sender, EventArgs e)
         {
             string username = AdminQLTKUserNametbx.Text.Trim();
             string password = AdminQLTKPasstbx.Text;
@@ -151,6 +154,10 @@ namespace QuanlyPhongKham.Views.Admin
             string fullName = AdminQLTKFullNametbx.Text.Trim();
             string phone = AdminQLTKPhonetbx.Text.Trim();
             string rolestring = AdminQLTKRolecb.Text.Trim();
+
+            string newpassword = _userService.GenerateRandomPassword();
+            string newHashedPass = PasswordHasher.HashPassword(newpassword);
+
             if (rolestring == "Admin" || rolestring == "Null")
             {
                 MessageBox.Show("Vui lòng chọn vai trò khác ngoài Admin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -166,10 +173,12 @@ namespace QuanlyPhongKham.Views.Admin
             }
             try
             {
-                bool success = _userControllers.UpdateUserAsync(username, password, fullName, email, phone).Result;
+                bool success = _userControllers.UpdateUserAsync(username, newHashedPass, fullName, email, phone).Result;
                 if (success)
                 {
                     MessageBox.Show("Cập nhật tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AdminQLTKPasstbx.Text = newpassword;
+                    MessageBox.Show($"Mật khẩu mới của {username} là {newpassword}");
                     LoadUserDataAsync();
                     _loggingController.AddLoggingAsync(Admin.Id, Admin.UserName, $"Đã cập nhật tài khoản: {username} với vai trò {rolestring}").Wait();
                 }
