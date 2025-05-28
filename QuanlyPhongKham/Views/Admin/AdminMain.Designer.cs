@@ -70,6 +70,7 @@
             AdminBCTCdgv = new System.Windows.Forms.DataGridView();
             tabPage1 = new System.Windows.Forms.TabPage();
             groupBox1 = new System.Windows.Forms.GroupBox();
+            AdminCC = new System.Windows.Forms.Button();
             Doctor = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
             AdminMainDXbtn = new System.Windows.Forms.Button();
@@ -79,7 +80,9 @@
             AdminMainIDlbl = new System.Windows.Forms.Label();
             AdminMainNamelbl = new System.Windows.Forms.Label();
             AdminMainTab = new System.Windows.Forms.TabControl();
-            AdminCC = new System.Windows.Forms.Button();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
             AdminLogging.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LoggingData).BeginInit();
             AdminQLDV.SuspendLayout();
@@ -518,6 +521,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(label13);
+            groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(AdminCC);
             groupBox1.Controls.Add(Doctor);
             groupBox1.Controls.Add(button1);
@@ -526,7 +532,17 @@
             groupBox1.Size = new System.Drawing.Size(327, 285);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Thống kê nhanh";
+            // 
+            // AdminCC
+            // 
+            AdminCC.Location = new System.Drawing.Point(184, 194);
+            AdminCC.Name = "AdminCC";
+            AdminCC.Size = new System.Drawing.Size(94, 29);
+            AdminCC.TabIndex = 9;
+            AdminCC.Text = "Chấm công";
+            AdminCC.UseVisualStyleBackColor = true;
+            AdminCC.Click += AdminCC_Click;
             // 
             // Doctor
             // 
@@ -596,7 +612,6 @@
             AdminMainNamelbl.Text = "Name";
             // 
             // AdminMainTab
-
             // 
             AdminMainTab.Controls.Add(tabPage1);
             AdminMainTab.Controls.Add(AdminBCTC);
@@ -611,15 +626,32 @@
             AdminMainTab.TabIndex = 0;
             AdminMainTab.SelectedIndexChanged += AdminMainTab_SelectedIndexChanged;
             // 
-            // AdminCC
+            // label12
             // 
-            AdminCC.Location = new System.Drawing.Point(184, 194);
-            AdminCC.Name = "AdminCC";
-            AdminCC.Size = new System.Drawing.Size(94, 29);
-            AdminCC.TabIndex = 9;
-            AdminCC.Text = "Chấm công";
-            AdminCC.UseVisualStyleBackColor = true;
-            AdminCC.Click += AdminCC_Click;
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(23, 60);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(145, 20);
+            label12.TabIndex = 10;
+            label12.Text = "TKDV theo doanh số";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(23, 134);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(132, 20);
+            label13.TabIndex = 11;
+            label13.Text = "TKBS theo lịch hẹn";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(23, 198);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(153, 20);
+            label14.TabIndex = 11;
+            label14.Text = "User logout trước 17h";
             // 
             // AdminMain
             // 
@@ -645,6 +677,7 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             AdminMainTab.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -705,5 +738,8 @@
         private System.Windows.Forms.TabControl AdminMainTab;
         private System.Windows.Forms.Button Doctor;
         private System.Windows.Forms.Button AdminCC;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
