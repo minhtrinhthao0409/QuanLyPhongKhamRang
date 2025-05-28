@@ -103,7 +103,8 @@ namespace QuanlyPhongKham.Repository
                            a.AppointmentDate, a.StartTime, a.EndTime
                     FROM Appointments a
                     JOIN Patients p ON a.PatientId = p.PatientId
-                    WHERE a.DoctorId = @DoctorId AND a.AppointmentDate >= @CurrentDate";
+                    WHERE a.DoctorId = @DoctorId AND a.AppointmentDate >= @CurrentDate
+                    ORDER BY a.AppointmentDate";
 
                 using var cmd = new SQLiteCommand(query, conn);
                 cmd.Parameters.AddWithValue("@DoctorId", doctorId);

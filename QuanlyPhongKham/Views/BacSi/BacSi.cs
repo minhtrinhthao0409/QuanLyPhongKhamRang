@@ -68,7 +68,6 @@ namespace QuanlyPhongKham.Views
                 cbPatientName.DisplayMember = "Name";
                 cbPatientName.ValueMember = "PatientId";
 
-                // Gắn sự kiện đồng bộ
                 cbPatientId.SelectedIndexChanged += (s, e) =>
                 {
                     cbPatientName.SelectedIndex = cbPatientId.SelectedIndex;
