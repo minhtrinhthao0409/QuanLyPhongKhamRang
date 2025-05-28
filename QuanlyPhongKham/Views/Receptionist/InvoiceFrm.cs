@@ -19,12 +19,14 @@ namespace QuanlyPhongKham.Views.Receptionist
         private Form currentForm = null;
         private readonly InvoiceService _invoiceService = new InvoiceService();
         private readonly InvoiceController _invoiceController = new InvoiceController();
+        private readonly LoggingController _loggingController;
         public InvoiceFrm(User user)
         {
             this.user = user;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             _invoiceService = new InvoiceService();
+            _loggingController = new LoggingController();
 
             startTimePicker.Value = DateTime.Now.AddDays(-7);
             endTimePicker.Value = DateTime.Now.AddDays(1);
@@ -190,6 +192,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                         invoice.Status = "Đã thanh toán"; // Cập nhật status thủ công
                         InvoiceGridView.Refresh(); // Cập nhật lại UI
                         MessageBox.Show("Cập nhật trạng thái thành công!");
+                        await _loggingController.AddLoggingAsync(this.user.Id, this.user.UserName, $"Đã cập nhật trạng thái thanh toán hóa đơn {invoice.InvoiceId}");
                     }
                     catch (Exception ex)
                     {
