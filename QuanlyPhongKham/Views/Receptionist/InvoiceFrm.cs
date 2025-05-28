@@ -27,7 +27,7 @@ namespace QuanlyPhongKham.Views.Receptionist
             _invoiceService = new InvoiceService();
 
             startTimePicker.Value = DateTime.Now.AddDays(-7);
-            endTimePicker.Value = DateTime.Now.AddDays(-1);
+            endTimePicker.Value = DateTime.Now.AddDays(1);
 
 
             Appointmentlbl.Click += menulbl_click;
