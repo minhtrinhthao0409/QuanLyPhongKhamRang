@@ -183,21 +183,19 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 if (result)
                 {
-                    MessageBox.Show("Thêm lịch hẹn thành công!");
+                    MessageBox.Show("Thêm lịch hẹn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await _loggService.AddLoggingAsync(this.user.Id, this.user.UserName, $"Thêm lịch hẹn cho bệnh nhân {patientName} với bác sĩ {doctorName} lúc {startTime} ngày {date}");
                     //ClearInputFields();
                 }
                 else
                 {
-                    MessageBox.Show("Thêm lịch hẹn thất bại.");
+                    MessageBox.Show("Thêm lịch hẹn thất bại.","Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                 }
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message +
-                                "\nChi tiết: " + ex.InnerException?.Message +
-                                "\nToàn bộ: " + ex.ToString());
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

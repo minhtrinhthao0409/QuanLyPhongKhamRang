@@ -112,7 +112,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 {
                     s.ServicesId,
                     s.ServicesName,
-                    s.CurrentPrice
+                    CurrentPrice = string.Format("{0:N0} VNĐ", s.CurrentPrice)
                 }).OrderBy(s => s.ServicesName).ToList();
                 ServiceGridView1.DataSource = loadservices;
                 ServiceGridView1.Columns["ServicesId"].Visible=false;

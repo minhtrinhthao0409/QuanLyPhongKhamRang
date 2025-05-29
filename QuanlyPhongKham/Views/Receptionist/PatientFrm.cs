@@ -128,21 +128,19 @@ namespace QuanlyPhongKham.Views.Receptionist
 
                 if (result > 0)
                 {
-                    MessageBox.Show("Thêm bệnh nhân thành công!");
+                    MessageBox.Show("Thêm bệnh nhân thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await _loggService.AddLoggingAsync(this.user.Id, this.user.UserName, $"Thêm bệnh nhân {name} - SĐT: {phoneNo}");
                     //ClearInputFields();
                 }
                 else
                 {
-                    MessageBox.Show("Thêm bệnh nhân thất bại.");
+                    MessageBox.Show("Thêm bệnh nhân thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message +
-                                "\nChi tiết: " + ex.InnerException?.Message +
-                                "\nToàn bộ: " + ex.ToString());
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
