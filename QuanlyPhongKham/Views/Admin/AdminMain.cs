@@ -229,7 +229,7 @@ namespace QuanlyPhongKham.Views.Admin
             {
                 s.ServicesId,
                 s.ServicesName,
-                s.CurrentPrice
+                CurrentPrice = string.Format("{0:N0} VNĐ", s.CurrentPrice)
             }).ToList();
             AdminQLDVdata.DataSource = loadservices;
         }
