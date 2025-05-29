@@ -81,7 +81,7 @@ namespace QuanlyPhongKham.Views.Receptionist
                 string patientPhoneNo = patientPhoneNoTxt.Text.Trim();
 
                 List<Invoice> result;
-                if (string.IsNullOrEmpty(patientPhoneNo))
+                if (!string.IsNullOrWhiteSpace(patientPhoneNo))
                 {
                     result = await _invoiceService.GetInvoiceByTime(startDate, endDate);
                 }
