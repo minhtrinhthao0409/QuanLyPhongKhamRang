@@ -143,6 +143,7 @@ namespace QuanlyPhongKham.Repository
             FROM services s
             JOIN invoicedetail id ON s.ServicesName = id.ServiceName
             JOIN invoice i ON id.InvoiceId = i.InvoiceId
+            WHERE strftime('%Y-%m', i.CreatedAt) = strftime('%Y-%m', 'now')
             GROUP BY s.ServicesName
             ORDER BY TotalRevenue DESC
             LIMIT 5";
