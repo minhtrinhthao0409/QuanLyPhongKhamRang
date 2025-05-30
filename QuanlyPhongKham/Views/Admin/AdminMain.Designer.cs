@@ -706,6 +706,7 @@
             Controls.Add(AdminMainTab);
             Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "AdminMain";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "AdminMain";
             FormClosing += AdminMain_FormClosing;
             AdminLogging.ResumeLayout(false);

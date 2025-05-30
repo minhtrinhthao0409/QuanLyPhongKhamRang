@@ -209,10 +209,11 @@ namespace QuanlyPhongKham.Repository
             FROM users u
             JOIN appointments a ON u.Id = a.DoctorId
             WHERE u.Role = 2
-            AND a.AppointmentDate BETWEEN date('2025-05-27', '-30 days') AND date('2025-05-27')
+            AND a.AppointmentDate 
             GROUP BY u.FullName
-            ORDER BY AppointmentCount DESC;";
-
+            ORDER BY AppointmentCount DESC
+            LIMIT 10;";
+            //BETWEEN date('2025-05-27', '-30 days') AND date('2025-05-27')
             using var command = new SQLiteCommand(query, connection);
 
             using var reader = await command.ExecuteReaderAsync();

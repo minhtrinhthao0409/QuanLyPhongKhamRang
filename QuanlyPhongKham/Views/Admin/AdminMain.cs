@@ -501,7 +501,7 @@ namespace QuanlyPhongKham.Views.Admin
                         TenNguoiDung = l.UserName,
                         NoiDung = l.Content,
                         ThoiGian = l.DateTime
-                    }).ToList();
+                    }).OrderByDescending(l => l.ThoiGian).ToList();
 
                     LoggingData.DataSource = displayList;
 

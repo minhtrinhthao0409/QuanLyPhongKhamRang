@@ -59,7 +59,9 @@ namespace QuanlyPhongKham.Views.Admin
 
                 // Gán dữ liệu cho DataGridView
                 AdminBieuDodgv.DataSource = dt;
-             
+
+                AdminBieuDodgv.Columns["TotalRevenue"].DefaultCellStyle.Format = "N0"; 
+
             }
 
             catch (Exception ex)

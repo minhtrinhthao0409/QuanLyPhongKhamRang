@@ -36,21 +36,24 @@
             // 
             AdminBieuDodgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminBieuDodgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdminBieuDodgv.Location = new System.Drawing.Point(23, 43);
+            AdminBieuDodgv.Location = new System.Drawing.Point(20, 32);
+            AdminBieuDodgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             AdminBieuDodgv.Name = "AdminBieuDodgv";
             AdminBieuDodgv.RowHeadersWidth = 51;
-            AdminBieuDodgv.Size = new System.Drawing.Size(745, 377);
+            AdminBieuDodgv.Size = new System.Drawing.Size(652, 283);
             AdminBieuDodgv.TabIndex = 0;
             AdminBieuDodgv.CellClick += AdminBieuDodgv_CellClick;
             AdminBieuDodgv.CellContentClick += AdminBieuDodgv_CellContentClick;
             // 
             // AdminThongKe
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(700, 338);
             Controls.Add(AdminBieuDodgv);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "AdminThongKe";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "AdminBieuDo";
             Load += AdminBieuDo_Load;
             ((System.ComponentModel.ISupportInitialize)AdminBieuDodgv).EndInit();

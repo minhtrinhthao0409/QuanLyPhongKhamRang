@@ -143,10 +143,11 @@ namespace QuanlyPhongKham.Repository
             FROM services s
             JOIN invoicedetail id ON s.ServicesName = id.ServiceName
             JOIN invoice i ON id.InvoiceId = i.InvoiceId
-            WHERE i.CreatedAt BETWEEN date('2025-05-27', '-30 days') AND datetime('2025-05-27 23:59:59')
             GROUP BY s.ServicesName
-            ORDER BY TotalRevenue DESC;";
+            ORDER BY TotalRevenue DESC
+            LIMIT 5";
             //  WHERE i.CreatedAt BETWEEN date('2025-05-27', '-30 days') AND datetime('2025-05-27 23:59:59') And Status = ""Đã thanh toán""
+            // //WHERE i.CreatedAt BETWEEN date('2025-05-27', '-30 days') AND datetime('2025-05-27 23:59:59')
             using var command = new SQLiteCommand(query, connection);
             command.Parameters.AddWithValue("@Status", "Đã thanh toán");
 
