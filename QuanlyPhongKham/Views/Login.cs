@@ -28,19 +28,7 @@ namespace QuanlyPhongKham
             KeyPreview = true;
         }
 
-        private void linkQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.Hide();
-            using (QuenMatKhau quenMatKhau = new QuenMatKhau())
-            {
-                quenMatKhau.ShowDialog();
-                
 
-            }
-            this.Show();
-
-
-        }
 
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
@@ -112,5 +100,21 @@ namespace QuanlyPhongKham
         {
             Application.Exit();
         }
+
+        private void showPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtMatKhau.UseSystemPasswordChar = true;
+        }
+
+        private void showPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtMatKhau.UseSystemPasswordChar = false;
+        }
+
+
+        //private void showPassword_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    txtMatKhau.UseSystemPasswordChar = false;
+        //}
     }
 }
