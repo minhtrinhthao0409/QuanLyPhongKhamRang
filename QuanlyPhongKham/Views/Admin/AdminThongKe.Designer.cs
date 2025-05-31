@@ -34,6 +34,7 @@
             // 
             // AdminBieuDodgv
             // 
+            AdminBieuDodgv.AllowUserToAddRows = false;
             AdminBieuDodgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             AdminBieuDodgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdminBieuDodgv.Location = new System.Drawing.Point(20, 32);
